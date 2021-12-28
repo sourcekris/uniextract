@@ -78,14 +78,30 @@ def install_apt_packages(definitions):
                 except Exception as e:
                     print(f'error installing archiver {d["name"]}: {e}')
             
-            if test_archiver(d):
-                print("OK")
-            else:
-                print("Failed")
+                if test_archiver(d):
+                    print("OK")
+                else:
+                    print("Failed")
+
+def install_pip_packages(definitions):
+    for d in definitions:
+        if "install" in d and "method" in d["install"]:
+            if "pip" in d["install"]["method"] and "package" in d["install"]:
+                print(f"trying to install archiver: {d['name']}: ", end="")
+                try:
+                    aptres = subprocess.check_output(['sudo','pip','install',d["install"]["package"]], stderr=subprocess.PIPE)
+                except Exception as e:
+                    print(f'error installing archiver {d["name"]}: {e}')
+            
+                if test_archiver(d):
+                    print("OK")
+                else:
+                    print("Failed")
 
 def main():
     defs = load_defs()
     install_apt_packages(defs)
+    install_pip_packages(defs)
 
 if __name__ == "__main__":
     main()

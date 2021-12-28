@@ -1,0 +1,19 @@
+{
+    "name":"7-zip",
+    "extensions":["7z"],
+    "install": {
+        "method":"apt",
+        "package":"7zip"
+    },
+    "unpack": {
+        "exe":"7z",
+        "cmdline":"$tool x $archive -o$destdir",
+        "extension":"7z",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAOgCy2EAAzOv2rNeXYaB5WV6/QkOBgjwgtIFJzk+MDIwm0d5BjAwsrAxMHJyMLBzMzIwKioyMvCwMHBwMd4SdE5nYGBllORhQAKCrAwGQEqEi5Gh4aCIwrPf1xlF2RgZFBqWNDIwAAC370SicgAAAA==",
+        "file":"0",
+        "content":"7ZIP"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name":"ACE",
+    "extensions":["ace"],
+    "install": {
+        "method":"pip",
+        "package":"acefile"
+    },
+    "unpack": {
+        "exe":"acefile-unace",
+        "cmdline":"$tool --extract -d $destdir $archive",
+        "extension":"ace",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAOcEy2EAA4vlM2RgYJigpeXo7KqlJSLCxDBHZU6wdPFNL6Awg5hWqF+Qq7tncIhrkKuLQphrULCnv5/WA3kFBkbGBmagChA+pjwnWAFIH85gWcPAysUQ4srIYAA0DwB+L0ozXAAAAA==",
+        "file":"0",
+        "content":"ACE"
+    }
+}
