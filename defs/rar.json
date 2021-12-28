@@ -1,0 +1,19 @@
+{
+    "name":"RAR",
+    "extensions":["rar", "r00"],
+    "install": {
+        "method":"apt",
+        "package":"unrar"
+    },
+    "unpack": {
+        "exe":"unrar",
+        "cmdline":"$tool x $archive -op $destdir",
+        "extension":"rar",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIACMAy2EAAwtKLFKUYmdkMJ609SkXIysbAysjY0MDQ7C1Zpo8EzN3MwNLM8OSZqaA3Lo/DQyMjAZczMLiDKcT1yvFGQc5BsmWhwUys7IwAABZeEQERgAAAA==",
+        "file":"0",
+        "content":"RAR"
+    }
+}
