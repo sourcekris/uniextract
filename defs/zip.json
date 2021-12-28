@@ -1,0 +1,19 @@
+{
+    "name":"ZIP",
+    "extensions":["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm"],
+    "install": {
+        "method":"apt",
+        "package":"unzip"
+    },
+    "unpack": {
+        "exe":"unzip",
+        "cmdline":"$tool $archive -d $destdir",
+        "extension":"zip",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAOL0ymEAAwvwZmbhYgCBhs1zgs9c33WFGcgGYUYGGQaD0BBOBuYDX04lgnBpBTcDIwtILZiI8gwI8GZkkmPGpV8CLM4IxEsaQSygaawQ09BMCvBmZYMoZWRwB9J2YI0AHG5Bv5sAAAA=",
+        "file":"0",
+        "content":"ZIP"
+    }
+}
