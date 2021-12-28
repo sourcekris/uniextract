@@ -55,12 +55,22 @@ def test_archiver(d):
             cmdline = cmdline.replace("$destdir", tmpdir)
 
             try:
-                extractres = subprocess.check_output(cmdline, shell=True)
+                extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
             except Exception as e:
                 print(f"error running unarchive of test data: {e}\ncmdline: {cmdline}")
                 return 0
             
-            resultdata = open(os.path.join(tmpdir, d["test"]["file"])).read()
+            extracted_file = os.path.join(tmpdir, d["test"]["file"])
+            if extracted_file.endswith("?"):
+                # in case the archive does not store the name of the compressed file, e.g. gzip.
+                basename = os.path.splitext(os.path.basename(arcfile.name))[0]
+                extracted_file = os.path.join(tmpdir, basename)
+
+            resultdata = ""
+            try:
+                resultdata = open(extracted_file).read()
+            except Exception as e:
+                print(f"error opening unarchived test data: {e}\ncmdline: {cmdline}")
 
             if resultdata == d["test"]["content"]:
                 return 1
