@@ -58,12 +58,15 @@ def test_archiver(d):
                 cmdline = cmdline.replace("$archive", arcfile.name)
                 cmdline = cmdline.replace("$destdir", tmpdir)
 
+                # print(f"{cmdline}", flush=True, end="")
                 try:
                     extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
                 except Exception as e:
                     print(f"error running unarchive of test data: {e}\ncmdline: {cmdline}")
                     # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
                     return 0
+
+                # print("Extracted, ", flush=True, end="")
                 
                 #print(subprocess.check_output(f"ls -la {os.path.basename(arcfile.name)}",shell=True).decode())
                 extracted_file = os.path.join(tmpdir, d["test"]["file"])
@@ -100,7 +103,8 @@ def install_apt_packages(definitions):
                 except Exception as e:
                     print(f'error installing archiver {d["name"]}: {e}')
                     continue
-            
+
+                # print(f"Installed, Testing: ", flush=True, end="")
                 if test_archiver(d):
                     print("OK")
                 else:

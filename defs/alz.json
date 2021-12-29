@@ -1,0 +1,20 @@
+{
+    "name":"alzip",
+    "extensions":["alz"],
+    "install": {
+        "method":"apt",
+        "packages":["atool", "unalz"]
+    },
+    "unpack": {
+        "exe":"unalz",
+        "cmdline":"$tool -d $destdir $archive",
+        "extension":"alz",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAPdRzGEAA3P0iWLkYmBgcALSjAwKrXJzgxUYmBj253dEsjOwMhgUf+n8xMPA4AyUZoACIJsJAPUf+dQ3AAAA",
+        "file":"0",
+        "content":"ALZIP",
+        "delete":true
+    }
+}
