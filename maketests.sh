@@ -39,3 +39,6 @@ e=arc && echo -n ARC > 0 && arc an 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0
 
 echo -n "compress test: "
 e=Z && echo -n Z > 0 && compress -f 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
+
+echo -n "XZ test: "
+e=xz && echo -n XZ > 0 && xz -z 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e

@@ -1,0 +1,19 @@
+{
+    "name":"xz",
+    "extensions":["xz"],
+    "install": {
+        "method":"apt",
+        "packages":["atool"]
+    },
+    "unpack": {
+        "exe":"atool",
+        "cmdline":"$tool --extract-to=$destdir $archive",
+        "extension":"xz",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIADD9y2EAA/trXhURxcDA8uzaFjcmBkVGMQYGhhL9p4sZGRhB4gzOLN8tKu/nv2RglGK6o7e0Tn7b51pGoDgDS2QUAEcdz0o8AAAA",
+        "file":"?",
+        "content":"XZ"
+    }
+}
