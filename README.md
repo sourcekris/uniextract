@@ -16,6 +16,10 @@ a Linux environment with a Python API.
         "method":"apt",
         "packages":["unzip"]
     },
+    "pack": {
+      "exe":"zip",
+      "cmdline":"$tool $file.zip $file"  
+    },
     "unpack": {
         "exe":"unzip",
         "cmdline":"$tool $archive -d $destdir",
