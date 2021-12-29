@@ -1,0 +1,20 @@
+{
+    "name":"KGB",
+    "extensions":["kgb", "kge"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/sourcekris/KGB_archiver",
+        "build":"make && cp KGB_arch $tools"
+    },
+    "unpack": {
+        "exe":"$tools/KGB_arch",
+        "cmdline":"$tool -d $destdir $archive",
+        "extension":"kgb",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAHITy2EAA/N2d4pPLErOUNC15OUy5jTg5ZLiYThw5MQpAMfXNfEZAAAA",
+        "file":"0",
+        "content":"KGB"
+    }
+}
