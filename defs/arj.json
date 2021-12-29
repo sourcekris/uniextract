@@ -3,7 +3,7 @@
     "extensions":["arj"],
     "install": {
         "method":"apt",
-        "package":"arj"
+        "packages":["arj"]
     },
     "unpack": {
         "exe":"arj",

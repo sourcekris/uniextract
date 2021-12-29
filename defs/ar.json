@@ -3,7 +3,7 @@
     "extensions":["ar", "a"],
     "install": {
         "method":"apt",
-        "package":"binutils"
+        "packages":["binutils"]
     },
     "unpack": {
         "exe":"ar",

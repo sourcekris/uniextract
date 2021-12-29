@@ -33,3 +33,6 @@ e=arj && echo -n ARJ > 0 && arj a 0.$e 0 > /dev/null && gzip < 0.$e | base64 -w 
 
 echo -n "AR test: "
 e=a && echo -n AR > 0 && atool -a -q 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "ARC test: "
+e=arc && echo -n ARC > 0 && arc an 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e

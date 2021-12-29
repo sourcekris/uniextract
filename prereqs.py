@@ -84,10 +84,12 @@ def test_archiver(d):
 def install_apt_packages(definitions):
     for d in definitions:
         if "install" in d and "method" in d["install"]:
-            if "apt" in d["install"]["method"] and "package" in d["install"]:
+            if "apt" in d["install"]["method"] and "packages" in d["install"]:
                 print(f"trying to install archiver: {d['name']}: ", end="")
+                args = ['sudo','apt','install']
+                args += d["install"]["packages"]
                 try:
-                    aptres = subprocess.check_output(['sudo','apt','install',d["install"]["package"]], stderr=subprocess.PIPE)
+                    aptres = subprocess.check_output(args, stderr=subprocess.PIPE)
                 except Exception as e:
                     print(f'error installing archiver {d["name"]}: {e}')
                     continue

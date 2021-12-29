@@ -3,7 +3,7 @@
     "extensions":["lzo", "lzop"],
     "install": {
         "method":"apt",
-        "package":"lzop"
+        "packages":["lzop"]
     },
     "unpack": {
         "exe":"lzop",

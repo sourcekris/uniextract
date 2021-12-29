@@ -3,7 +3,7 @@
     "extensions":["gz", "tgz"],
     "install": {
         "method":"apt",
-        "package":"atool"
+        "packages":["atool"]
     },
     "unpack": {
         "exe":"atool",

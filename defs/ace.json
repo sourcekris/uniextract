@@ -3,7 +3,7 @@
     "extensions":["ace"],
     "install": {
         "method":"pip",
-        "package":"acefile"
+        "packages":["acefile"]
     },
     "unpack": {
         "exe":"acefile-unace",

@@ -3,7 +3,7 @@
     "extensions":["rar", "r00"],
     "install": {
         "method":"apt",
-        "package":"unrar"
+        "packages":["unrar"]
     },
     "unpack": {
         "exe":"unrar",

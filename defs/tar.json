@@ -3,7 +3,7 @@
     "extensions":["tar", "ctar"],
     "install": {
         "method":"apt",
-        "package":"tar"
+        "packages":["tar"]
     },
     "unpack": {
         "exe":"tar",
