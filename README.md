@@ -14,7 +14,7 @@ a Linux environment with a Python API.
     "extensions":["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm"],
     "install": {
         "method":"apt",
-        "package":"unzip"
+        "packages":["unzip"]
     },
     "unpack": {
         "exe":"unzip",
