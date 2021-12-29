@@ -62,6 +62,7 @@ def test_archiver(d):
                     extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
                 except Exception as e:
                     print(f"error running unarchive of test data: {e}\ncmdline: {cmdline}")
+                    # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
                     return 0
                 
                 #print(subprocess.check_output(f"ls -la {os.path.basename(arcfile.name)}",shell=True).decode())

@@ -48,3 +48,6 @@ e=lrz && echo -n LRZIP > 0 && lrzip -q 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.
 
 echo -n "RZIP test: "
 e=rz && echo -n RZIP > 0 && rzip 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
+
+echo -n "LZMA test: "
+e=lzma && echo -n LZMA > 0 && lzma 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
