@@ -1,10 +1,29 @@
 #!/bin/bash
 
 echo -n "ZIP test: "
-echo -n ZIP > 0 && zip -q 0.zip 0 && gzip < 0.zip | base64 -w 0 && rm 0 0.zip
+e=zip echo -n ZIP > 0 && zip -q 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
 
 echo -n "CPIO test: "
-echo -n CPIO > 0 && echo 0 | cpio -o --quiet -F 0.cpio && gzip < 0.cpio | base64 -w 0 && rm 0 0.cpio
+e=cpio echo -n CPIO > 0 && echo 0 | cpio -o --quiet -F 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
 
 echo -n "KGB test: "
-echo -n KGB > 0 && tools/KGB_arch -9 0.kgb 0 > /dev/null && gzip < 0.kgb | base64 -w 0 && rm 0 0.kgb
+e=kgb echo -n KGB > 0 && tools/KGB_arch -9 0.$e 0 > /dev/null && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "LZOP test: "
+e=lzo echo -n LZOP > 0 && lzop -9 -o 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "TAR test: "
+e=tar echo -n TAR > 0 && tar -cf 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "GZIP test: "
+e=gz echo -n GZ > 0 && gzip < 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "RAR test: "
+e=rar echo -n RAR > 0 && rar a -inul 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "7zip test: "
+echo -n 7ZIP > 0 && 7z a 0.7z 0 >/dev/null && gzip < 0.7z | base64 -w 0 && rm 0 0.7z
+
+echo -n "ACE test: "
+# we cannot create ACE archives on linux so heres one we created elsewhere.
+e=ace echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e
