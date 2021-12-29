@@ -1,0 +1,21 @@
+{
+    "name":"EGG",
+    "extensions":["egg"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/sourcekris/UnEgg",
+        "build":"cd Source/unegg/release-x64 && make clean && make && cp unegg $tools"
+    },
+    "unpack": {
+        "exe":"$tools/unegg",
+        "cmdline":"$tool -x $archive $destdir",
+        "extension":"egg",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAEpYzGEAA3N1d3dkYFz2+JIpAxAoNT3ieDyhlQvEZmaAgDUTgXxGBgPuqW06DJwMDA/eLU//c50RrFaYZysTIytIJSsQn5g94R5ItLi0nB0sDQDqidt+XQAAAA==",
+        "file":"0",
+        "content":"EGG",
+        "delete":true
+    }
+}

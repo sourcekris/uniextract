@@ -131,14 +131,14 @@ def install_from_source(definitions):
         if "install" in d and "method" in d["install"]:
             if "source" in d["install"]["method"] and "repo" in d["install"]:
                 with tempfile.TemporaryDirectory() as tmpdir:
-                    print(f"trying to build archiver: {d['name']}: ", end="")
+                    print(f"trying to build archiver: {d['name']}: ", flush=True, end="")
                     try:
                         cloneres = subprocess.check_output(['git','clone',d["install"]["repo"], tmpdir], stderr=subprocess.PIPE)
                     except Exception as e:
                         print(f'error cloning repo {d["install"]["repo"]} to {tmpdir}: {e}')
                         continue
 
-                    print("Cloned, ", end="")
+                    print("Cloned, ", flush=True, end="")
 
                     # Create build script
                     tp = os.path.join(os.getcwd(), tools_path)
@@ -159,9 +159,9 @@ def install_from_source(definitions):
 
 def main():
     defs = load_defs()
-    install_apt_packages(defs)
+    #install_apt_packages(defs)
     #install_pip_packages(defs)
-    #install_from_source(defs)
+    install_from_source(defs)
 
 if __name__ == "__main__":
     main()
