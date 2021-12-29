@@ -57,6 +57,9 @@ e=bz2 && echo -n BZIP2 > 0 && atool -a 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm
 echo -n "LZH test: "
 e=lzh && echo -n LZH > 0 && jlha -aq9 0.$e 0 2>/dev/null && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
+echo -n "uuencode test: "
+e=uue && echo -n UUE > 0 && uuencode 0 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
