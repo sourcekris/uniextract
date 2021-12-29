@@ -36,3 +36,6 @@ e=a && echo -n AR > 0 && atool -a -q 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0
 
 echo -n "ARC test: "
 e=arc && echo -n ARC > 0 && arc an 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "compress test: "
+e=Z && echo -n Z > 0 && compress -f 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
