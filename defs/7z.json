@@ -5,6 +5,10 @@
         "method":"apt",
         "packages":["7zip"]
     },
+    "pack":{
+        "exe":"7z",
+        "cmdline":"$tool a $file.7z $file"
+    },
     "unpack": {
         "exe":"7z",
         "cmdline":"$tool x $archive -o$destdir",

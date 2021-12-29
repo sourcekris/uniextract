@@ -7,7 +7,7 @@
     },
     "pack": {
         "exe":"zip",
-        "cmdline":"$tool $file.zip $file"  
+        "cmdline":"$tool -q $file.zip $file"  
     },
     "unpack": {
         "exe":"unzip",

@@ -5,6 +5,10 @@
         "method":"apt",
         "packages":["lrzip"]
     },
+    "pack":{
+        "exe":"lrzip",
+        "cmdline":"$tool -q $file"
+    },
     "unpack": {
         "exe":"lrzip",
         "cmdline":"$tool -d -O $destdir $archive",

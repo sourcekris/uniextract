@@ -6,6 +6,10 @@
         "repo":"https://github.com/sourcekris/KGB_archiver",
         "build":"make && cp KGB_arch $tools"
     },
+    "pack":{
+        "exe":"$tools/KGB_arch",
+        "cmdline":"$tool $file.kgb $file"
+    },
     "unpack": {
         "exe":"$tools/KGB_arch",
         "cmdline":"$tool -d $destdir $archive",

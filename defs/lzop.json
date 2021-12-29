@@ -5,6 +5,10 @@
         "method":"apt",
         "packages":["lzop"]
     },
+    "pack":{
+        "exe":"lzop",
+        "cmdline":"$tool -o $file.lzo $file"
+    },
     "unpack": {
         "exe":"lzop",
         "cmdline":"$tool -d -p$destdir $archive",

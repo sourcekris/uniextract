@@ -5,6 +5,10 @@
         "method":"apt",
         "packages":["unrar"]
     },
+    "pack":{
+        "exe":"rar",
+        "cmdline":"$tool a -inul $file.rar $file"
+    },
     "unpack": {
         "exe":"unrar",
         "cmdline":"$tool x $archive -op $destdir",

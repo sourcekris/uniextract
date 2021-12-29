@@ -3,7 +3,11 @@
     "extensions":["ar", "a"],
     "install": {
         "method":"apt",
-        "packages":["binutils"]
+        "packages":["binutils", "atool"]
+    },
+    "pack":{
+        "exe":"atool",
+        "cmdline":"$tool -a -q $file.a $file"
     },
     "unpack": {
         "exe":"ar",

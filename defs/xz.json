@@ -3,7 +3,11 @@
     "extensions":["xz"],
     "install": {
         "method":"apt",
-        "packages":["atool"]
+        "packages":["atool","xz"]
+    },
+    "pack":{
+        "exe":"xz",
+        "cmdline":"$tool -z $file"
     },
     "unpack": {
         "exe":"atool",

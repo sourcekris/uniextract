@@ -3,7 +3,11 @@
     "extensions":["Z"],
     "install": {
         "method":"apt",
-        "packages":["atool"]
+        "packages":["atool", "ncompress"]
+    },
+    "pack":{
+        "exe":"compress",
+        "cmdline":"$tool -f $file"
     },
     "unpack": {
         "exe":"atool",

@@ -3,7 +3,11 @@
     "extensions":["arc", "ark"],
     "install": {
         "method":"apt",
-        "packages":["atool", "nomarch"]
+        "packages":["atool", "nomarch", "arc"]
+    },
+    "pack":{
+        "exe":"arc",
+        "cmdline":"$tool an $file.arc $file"
     },
     "unpack": {
         "exe":"atool",

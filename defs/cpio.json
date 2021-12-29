@@ -5,6 +5,10 @@
         "method":"apt",
         "packages":["cpio"]
     },
+    "pack":{
+        "exe":"atool",
+        "cmdline":"echo $file | $tool -o --quiet -F $file.cpio"
+    },
     "unpack": {
         "exe":"cpio",
         "cmdline":"$tool -i -D $destdir -F $archive",

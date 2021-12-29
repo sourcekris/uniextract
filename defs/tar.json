@@ -5,6 +5,10 @@
         "method":"apt",
         "packages":["tar"]
     },
+    "pack":{
+        "exe":"tar",
+        "cmdline":"$tool cf $file.tar $file"
+    },
     "unpack": {
         "exe":"tar",
         "cmdline":"$tool xf $archive -C $destdir",
