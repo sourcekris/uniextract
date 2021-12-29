@@ -1,6 +1,6 @@
 {
     "name":"base64",
-    "extensions":["b64"],
+    "extensions":["b64", "mme", "mime"],
     "install": {
         "method":"apt",
         "packages":["coreutils"]
