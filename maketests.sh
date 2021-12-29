@@ -30,3 +30,6 @@ e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU
 
 echo -n "ARJ test: "
 e=arj && echo -n ARJ > 0 && arj a 0.$e 0 > /dev/null && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
+
+echo -n "AR test: "
+e=a && echo -n AR > 0 && atool -a -q 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e

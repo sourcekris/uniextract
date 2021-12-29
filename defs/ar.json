@@ -1,0 +1,19 @@
+{
+    "name":"AR",
+    "extensions":["ar", "a"],
+    "install": {
+        "method":"apt",
+        "package":"binutils"
+    },
+    "unpack": {
+        "exe":"ar",
+        "cmdline":"$tool x --output=$destdir $archive",
+        "extension":"ar",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIANn3y2EAA1O0SSxKzrDjMtBXQAEGGGwIaWZiAqaN4LIJXI5BABdO6idGAAAA",
+        "file":"0",
+        "content":"AR"
+    }
+}
