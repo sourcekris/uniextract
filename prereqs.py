@@ -72,7 +72,8 @@ def test_archiver(d):
             try:
                 resultdata = open(extracted_file).read()
             except Exception as e:
-                print(f"error opening unarchived test data: {e}\ncmdline: {cmdline}")
+                print(f"error opening unarchived test data: {e}")
+                # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
 
             if resultdata == d["test"]["content"]:
                 return 1
@@ -145,9 +146,9 @@ def install_from_source(definitions):
 
 def main():
     defs = load_defs()
-    #install_apt_packages(defs)
+    install_apt_packages(defs)
     #install_pip_packages(defs)
-    install_from_source(defs)
+    #install_from_source(defs)
 
 if __name__ == "__main__":
     main()
