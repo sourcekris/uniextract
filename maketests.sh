@@ -60,6 +60,9 @@ e=lzh && echo -n LZH > 0 && jlha -aq9 0.$e 0 2>/dev/null && gzip < 0.$e | base64
 echo -n "uuencode test: "
 e=uue && echo -n UUE > 0 && uuencode 0 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
+echo -n "base64 test: "
+e=b64 && echo -n BASE64 > 0 && base64 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
@@ -71,3 +74,15 @@ e=alz && echo "QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAA
 echo -n "EGG test: "
 # we cannot create egg archives on linux so heres one we created elsewhere.
 e=egg && echo "RUdHQQABpuPSNQAAAAAiguII45CFCgAAAAADAAAAAAAAAKyRhQoAAQAwC5WGLAAJAADg7qdn/NcBACKC4ggTDLUCAQUDAAAABQAAAMibkN4iguIIc3V3BwAiguII" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "SITX test: "
+# we cannot create sit archives on linux so heres one we created elsewhere.
+e=sitx && echo "U3R1ZmZJdCGhCpvdQhUzmVelAuMQEJyw11hPVhTvf7Gv8RF8KW4xgrunZoX/wAACArEbsZpRBUsFScxoSwpRFHcAAAADAAAAAVQA2Ke9dkwA/wIV3AYoWgJjWwEZJPL0HhcCFTtTweEC1woZmPZCiFECAlU=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "MacBinary test: "
+# we cannot create macbinary archives on linux so heres one we created elsewhere.
+e=bin && echo "AAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAN3yD6/d8hQ6AAAAbUJJTgAAAAAAAAAAAAAAAAAAAACBgeItAABNQUNCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "AppleSingle test: "
+# we cannot create applesingle archives on linux so heres one we created elsewhere.
+e=as && echo "AAUWAAACAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAPgAAAAEAAAAIAAAAPwAAABAAAAABAAAATwAAAAswKV8brylfIJ2AAAAAgAAAAEFQUExFU0lOR0xF" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

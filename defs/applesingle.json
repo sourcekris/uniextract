@@ -1,0 +1,20 @@
+{
+    "name":"Apple Single",
+    "extensions":["as"],
+    "install": {
+        "method":"apt",
+        "packages":["unar"]
+    },
+    "unpack": {
+        "exe":"unar",
+        "cmdline":"$tool -o $destdir $archive",
+        "extension":"as",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIACpmzGEAA2NgFWNgYGLABMxQbAfEjEDMAcT2QCwA5fsDMbeBZrz0es14hbkNQB4IOwYE+LgGe/q5+7gCAO9NUadaAAAA",
+        "file":"0",
+        "content":"APPLESINGLE",
+        "delete":true
+    }
+}

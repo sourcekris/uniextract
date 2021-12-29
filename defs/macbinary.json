@@ -1,0 +1,20 @@
+{
+    "name":"MacBinary",
+    "extensions":["bin"],
+    "install": {
+        "method":"apt",
+        "packages":["unar"]
+    },
+    "unpack": {
+        "exe":"unar",
+        "cmdline":"$tool -o $destdir $archive",
+        "extension":"bin",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIALtlzGEAA2NgNGCgPmABEXc/8a+/+0nECsjMdfL0Q1fT2PhIl4HB19HZiQYOIBoAAMMU5G4AAQAA",
+        "file":"0",
+        "content":"MACB",
+        "delete":true
+    }
+}

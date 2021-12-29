@@ -57,6 +57,7 @@ def test_archiver(d):
                 cmdline = cmdline.replace("$tool", exe)
                 cmdline = cmdline.replace("$archive", arcfile.name)
                 cmdline = cmdline.replace("$destdir", tmpdir)
+                cmdline = cmdline.replace("$basename", os.path.splitext(os.path.basename(arcfile.name))[0])
 
                 # print(f"{cmdline}", flush=True, end="")
                 try:
@@ -113,10 +114,12 @@ def install_apt_packages(definitions):
 def install_pip_packages(definitions):
     for d in definitions:
         if "install" in d and "method" in d["install"]:
-            if "pip" in d["install"]["method"] and "package" in d["install"]:
-                print(f"trying to install archiver: {d['name']}: ", end="")
+            if "pip" in d["install"]["method"] and "packages" in d["install"]:
+                print(f"trying to install archiver: {d['name']}: ", flush=True, end="")
+                args = ['sudo','pip','install']
+                args += d["install"]["packages"]
                 try:
-                    aptres = subprocess.check_output(['sudo','pip','install',d["install"]["package"]], stderr=subprocess.PIPE)
+                    aptres = subprocess.check_output(args, stderr=subprocess.PIPE)
                 except Exception as e:
                     print(f'error installing archiver {d["name"]}: {e}')
                     continue
