@@ -14,6 +14,7 @@
     "test": {
         "blob":"H4sIADDsy2EAAzteyMjxuWhJIwMQMALx6USDN0xAmoXBgME5wNP/eCEDHDBCaW4wGRLk6OnjGqSoqMgwCoYsAADcJzxcAAIAAA==",
         "file":"0",
-        "content":"CPIO"
+        "content":"CPIO",
+        "delete":true
     }
 }

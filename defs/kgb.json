@@ -15,6 +15,7 @@
     "test": {
         "blob":"H4sIAHITy2EAA/N2d4pPLErOUNC15OUy5jTg5ZLiYThw5MQpAMfXNfEZAAAA",
         "file":"0",
-        "content":"KGB"
+        "content":"KGB",
+        "delete":true
     }
 }

@@ -14,6 +14,7 @@
     "test": {
         "blob":"H4sIANn3y2EAA1O0SSxKzrDjMtBXQAEGGGwIaWZiAqaN4LIJXI5BABdO6idGAAAA",
         "file":"0",
-        "content":"AR"
+        "content":"AR",
+        "delete":true
     }
 }

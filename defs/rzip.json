@@ -1,0 +1,20 @@
+{
+    "name":"rzip",
+    "extensions":["rz"],
+    "install": {
+        "method":"apt",
+        "packages":["atool", "rzip"]
+    },
+    "unpack": {
+        "exe":"atool",
+        "cmdline":"$tool --extract-to=$destdir $archive",
+        "extension":"rz",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIADkRzGEAAwuK8gxgYmRgYGBhQAHMMIYUMscQxOECElwwEbC27yf/ezGzIBkSBDQVAB9prDFaAAAA",
+        "file":"?",
+        "content":"RZIP",
+        "delete":false
+    }
+}

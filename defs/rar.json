@@ -14,6 +14,7 @@
     "test": {
         "blob":"H4sIACMAy2EAAwtKLFKUYmdkMJ609SkXIysbAysjY0MDQ7C1Zpo8EzN3MwNLM8OSZqaA3Lo/DQyMjAZczMLiDKcT1yvFGQc5BsmWhwUys7IwAABZeEQERgAAAA==",
         "file":"0",
-        "content":"RAR"
+        "content":"RAR",
+        "delete":true
     }
 }
