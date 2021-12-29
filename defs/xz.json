@@ -3,7 +3,7 @@
     "extensions":["xz"],
     "install": {
         "method":"apt",
-        "packages":["atool","xz"]
+        "packages":["atool","xz-utils"]
     },
     "pack":{
         "exe":"xz",

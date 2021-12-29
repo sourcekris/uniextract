@@ -1,0 +1,24 @@
+{
+    "name":"lzh",
+    "extensions":["lzh", "lha"],
+    "install": {
+        "method":"apt",
+        "packages":["atool","lhasa", "jlha-utils"]
+    },
+    "pack":{
+        "exe":"jlha",
+        "cmdline":"$tool -aq9 $file.lzh $file"
+    },
+    "unpack": {
+        "exe":"atool",
+        "cmdline":"$tool --extract-to=$destdir $archive",
+        "extension":"lzh",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAP1JzGEAA1Nm0M3JMNBlZmBgAOG/nmcSFZh+OzKwMjA8MWVhYDRgYPCJ8mAAAHLU72UnAAAA",
+        "file":"0",
+        "content":"LZH",
+        "delete":true
+    }
+}

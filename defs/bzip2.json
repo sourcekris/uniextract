@@ -1,0 +1,24 @@
+{
+    "name":"bzip2",
+    "extensions":["bz2"],
+    "install": {
+        "method":"apt",
+        "packages":["atool", "bzip2"]
+    },
+    "pack":{
+        "exe":"atool",
+        "cmdline":"$tool -a $file.bz2 $file"
+    },
+    "unpack": {
+        "exe":"atool",
+        "cmdline":"$tool --extract-to=$destdir $archive",
+        "extension":"bz2",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAGUkzGEAA3OKyrA0dIxUC47cFXn2DgMDQx+DAIOAgoOAAoPBWYaDyxoKy1WCWzm5l865ewAAc7t3bywAAAA=",
+        "file":"?",
+        "content":"BZIP2",
+        "delete":true
+    }
+}

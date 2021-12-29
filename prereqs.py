@@ -92,7 +92,7 @@ def install_apt_packages(definitions):
     for d in definitions:
         if "install" in d and "method" in d["install"]:
             if "apt" in d["install"]["method"] and "packages" in d["install"]:
-                print(f"trying to install archiver: {d['name']}: ", end="")
+                print(f"trying to install archiver: {d['name']}: ", flush=True, end="")
                 args = ['sudo','apt','install']
                 args += d["install"]["packages"]
                 try:

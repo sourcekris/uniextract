@@ -54,3 +54,9 @@ e=lzma && echo -n LZMA > 0 && lzma 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
 
 echo -n "LZIP test: "
 e=lz && echo -n LZIP > 0 && lzip 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
+
+echo -n "BZIP2 test: "
+e=bz2 && echo -n BZIP2 > 0 && atool -a 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e
+
+echo -n "LZH test: "
+e=lzh && echo -n LZH > 0 && jlha -aq9 0.$e 0 2>/dev/null && gzip < 0.$e | base64 -w 0 && rm 0.$e
