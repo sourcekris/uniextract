@@ -107,3 +107,7 @@ e=zoo && echo "Wk9PIDIuMTAgQXJjaGl2ZS4aAADcp8T9KgAAANb///8CAAEAAAAAAAAD3KfE/QIAd
 echo -n "CPShrink: "
 # we cannot create cpz archives on linux so heres one we created elsewhere.
 e=cpz && echo "AQAAAOsx0501D5i8MACwAPKuFOJMrwCbwfpdAgMAAAADAAAAnlOug0NQWg==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Crush: "
+# we cannot create cru archives on linux so heres one we created elsewhere.
+e=cru && echo "Q1JVU0ggdjEuOAoaAHSgVwAAAgAAACAAAABDUlVDUlUAIFuMnlMDAAAAMC5UWFQAq9AjIn8AAAAAIK6OnlMDAAAAMS5UWFQAAAAAAAAAAAA=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

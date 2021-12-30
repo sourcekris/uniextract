@@ -149,7 +149,15 @@ def install_pip_packages(definitions):
 def install_from_source(definitions):
     for d in definitions:
         if archiver_in_path(d):
-            print(f"trying to build archiver: {d['name']}: Already installed.")
+            print(f"trying to build archiver: {d['name']}: Exists, Testing: ", flush=True, end="")
+
+            # archiver is in path so, overwrite the local stash folder that comes in the config.
+            d["unpack"]["exe"] = d["unpack"]["exe"].replace("$tools/","")
+            if test_archiver(d):
+                print("OK")
+            else:
+                print("Failed")
+
             continue
 
         if "install" in d and "method" in d["install"]:
