@@ -1,0 +1,25 @@
+{
+    "name":"yEnc",
+    "comment":"Older usenet encoding format",
+    "extensions":["yenc"],
+    "install": {
+        "method":"apt",
+        "packages":["python3-yenc"]
+    },
+    "pack":{
+        "exe":"python",
+        "cmdline":"$tool -c \"__import__('yenc').encode('$file','$file.yenc')\""
+    },
+    "unpack": {
+        "exe":"python",
+        "cmdline":"$tool -c \"__import__('yenc').decode('$archive','$destdir/$basename')\"",
+        "extension":"yenc",
+        "force_extension": false
+    },
+    "test": {
+        "blob":"H4sIAJ4izWEAA2vOr8jl5QIAGmB7iQYAAAA=",
+        "file":"?",
+        "content":"YENC",
+        "delete":true
+    }
+}

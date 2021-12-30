@@ -69,6 +69,9 @@ e=adf && echo -n ADF > 0 && xdftool 0.$e create + format 0 + write 0 && gzip < 0
 echo -n "HDF test: "
 e=hdf && echo -n HDF > 0 && xdftool 0.$e create size=1M + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
+echo -n "yencode test: "
+e=yenc && echo -n YENC > 0 && python -c "__import__('yenc').encode('0','0.yenc')" && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
