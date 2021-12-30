@@ -1,0 +1,21 @@
+{
+    "name":"LZX",
+    "comment":"Older compression format popular on the Amiga",
+    "extensions":["lzx"],
+    "install": {
+        "method":"apt",
+        "packages":["unar"]
+    },
+    "unpack": {
+        "exe":"unar",
+        "cmdline":"$tool -o $destdir $archive",
+        "extension":"lzx",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAHYVzWEAA/OJimDgYeBiYWDgZ2BmYABjLgYI8fXWWdZ1B1UXqxmqFDAa+ERFAABCWw5/LQAAAA==",
+        "file":"0",
+        "content":"LZX",
+        "delete":true
+    }
+}

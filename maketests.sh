@@ -63,6 +63,12 @@ e=uue && echo -n UUE > 0 && uuencode 0 0 > 0.$e && gzip < 0.$e | base64 -w 0 && 
 echo -n "base64 test: "
 e=b64 && echo -n BASE64 > 0 && base64 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
+echo -n "ADF test: "
+e=adf && echo -n ADF > 0 && xdftool 0.$e create + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "HDF test: "
+e=hdf && echo -n HDF > 0 && xdftool 0.$e create size=1M + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
@@ -86,3 +92,7 @@ e=bin && echo "AAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 echo -n "AppleSingle test: "
 # we cannot create applesingle archives on linux so heres one we created elsewhere.
 e=as && echo "AAUWAAACAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAPgAAAAEAAAAIAAAAPwAAABAAAAABAAAATwAAAAswKV8brylfIJ2AAAAAgAAAAEFQUExFU0lOR0xF" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "LZX: "
+# we cannot create lzx archives on linux so heres one we created elsewhere.
+e=lzx && echo "TFpYAAwACgQAAA8AAwAAAAMAAAAKAAAAAAoAAPXazQWuwSWjJjEkcAEwTFpY" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

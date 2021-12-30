@@ -163,8 +163,8 @@ def install_from_source(definitions):
 def main():
     defs = load_defs()
     install_apt_packages(defs)
-    #install_pip_packages(defs)
-    #install_from_source(defs)
+    install_pip_packages(defs)
+    install_from_source(defs)
 
 if __name__ == "__main__":
     main()
