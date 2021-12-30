@@ -1,0 +1,25 @@
+{
+    "name":"Dar",
+    "comment":"Disk Archiver - designed as a replacement for TAR - http://dar.linux.free.fr/",
+    "extensions":["dar"],
+    "install": {
+        "method":"apt",
+        "packages":["dar"]
+    },
+    "pack":{
+        "exe":"dar",
+        "cmdline":"$tool -c $file -X $file.1.dar"
+    },
+    "unpack": {
+        "exe":"dar",
+        "cmdline":"mv $archive $destdir/0.1.dar && cd $destdir && $tool -x 0 -q",
+        "extension":"dar",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAEeszWEAA2NgYKh2X3M2kQEIfDJDQhqANCMDM4jiQogbWBsy5PnpOzIIgCSYHFTW/n1VruiCUADmB+iX5BaAsF5GZoRHUpaje54BA1jGLc2AQRiklQFMMC7Ja0g8u8a9QXeumht2JtgeEGELIpgZ8sAC0RNcHIPAJgaB+CxAHsSCYBCXNycxEcmInKREIE4C4mQgTgHiVCBOA+J0IM4A4kwgzgLibCDOcQMbVAw291LjsUYw1xnhRWyeSynKzy+BhBbEZwwMYAMYoM7QE7dwgwhQGACL4M4CBweI6EIKGHBAVIFZAnLHJ4EYv4D4ADzeJEBCgmAzL+oAKcYdIOkQAHZgs3j+AQAA",
+        "file":"0",
+        "content":"DAR",
+        "delete":false
+    }
+}

@@ -76,7 +76,7 @@ def test_archiver(d):
                 cmdline = cmdline.replace("$destdir", tmpdir)
                 cmdline = cmdline.replace("$basename", os.path.splitext(os.path.basename(arcfile.name))[0])
 
-                # print(f"{cmdline}", flush=True, end="")
+                #print(f"{cmdline}", flush=True, end="")
                 try:
                     extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
                 except Exception as e:
@@ -84,8 +84,7 @@ def test_archiver(d):
                     # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
                     return 0
 
-                # print("Extracted, ", flush=True, end="")
-                
+                #print("Extracted, ", flush=True, end="") 
                 #print(subprocess.check_output(f"ls -la {os.path.basename(arcfile.name)}",shell=True).decode())
                 extracted_file = os.path.join(tmpdir, d["test"]["file"])
                 if extracted_file.endswith("?"):
@@ -122,7 +121,7 @@ def install_apt_packages(definitions):
                     print(f'error installing archiver {d["name"]}: {e}')
                     continue
 
-                # print(f"Installed, Testing: ", flush=True, end="")
+                #print(f"Installed, Testing: ", flush=True, end="")
                 if test_archiver(d):
                     print("OK")
                 else:
@@ -191,9 +190,9 @@ def install_from_source(definitions):
 
 def main():
     defs = load_defs()
-    #install_apt_packages(defs)
+    install_apt_packages(defs)
     #install_pip_packages(defs)
-    install_from_source(defs)
+    #install_from_source(defs)
 
 if __name__ == "__main__":
     main()

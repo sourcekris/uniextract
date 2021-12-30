@@ -55,22 +55,25 @@ echo -n "BZIP2 test: "
 e=bz2 && echo -n BZIP2 > 0 && atool -a 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
 echo -n "LZH test: "
-e=lzh && echo -n LZH > 0 && jlha -aq9 0.$e 0 2>/dev/null && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=lzh && echo -n LZH > 0 && jlha -aq9 0.$e 0 2>/dev/null && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
 echo -n "uuencode test: "
-e=uue && echo -n UUE > 0 && uuencode 0 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=uue && echo -n UUE > 0 && uuencode 0 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
 echo -n "base64 test: "
-e=b64 && echo -n BASE64 > 0 && base64 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=b64 && echo -n BASE64 > 0 && base64 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
 echo -n "ADF test: "
-e=adf && echo -n ADF > 0 && xdftool 0.$e create + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=adf && echo -n ADF > 0 && xdftool 0.$e create + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
 echo -n "HDF test: "
-e=hdf && echo -n HDF > 0 && xdftool 0.$e create size=1M + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=hdf && echo -n HDF > 0 && xdftool 0.$e create size=1M + format 0 + write 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
 echo -n "yencode test: "
-e=yenc && echo -n YENC > 0 && python -c "__import__('yenc').encode('0','0.yenc')" && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=yenc && echo -n YENC > 0 && python -c "__import__('yenc').encode('0','0.yenc')" && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
+echo -n "dar test: "
+e=dar && td=$(mktemp -d) && echo -n DAR > $td/0 && pushd $td > /dev/null && dar -c 0 -q -X 0.1.$e && gzip < 0.1.$e | base64 -w 0 && popd > /dev/null && rm -fr $td && echo
 
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
