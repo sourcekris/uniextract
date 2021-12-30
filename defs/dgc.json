@@ -1,0 +1,25 @@
+{
+    "name":"DGCA",
+    "comment":"DGCA (Digital G Codec Archiver) is an archiving format developed in 2001 by Japanese programmer Shin-ichi Tsuruta - http://fileformats.archiveteam.org/wiki/DGCA",
+    "extensions":["dgc","dgca"],
+    "install": {
+        "method":"apt",
+        "packages":["wine"]
+    },
+    "pack":{
+        "exe":"wine $tools/dgcac.exe",
+        "cmdline":"$tool a $file.dgc $file"
+    },
+    "unpack": {
+        "exe":"wine $tools/dgcac.exe",
+        "cmdline":"cd $destdir && $tool e z:$archive",
+        "extension":"dgc",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIACS1zWEAA3Nxd3ZUYGBgOMDIAAYgSgCI+aXfZZlMLwhxcQwByxswIABInrm//JSHlHeei7uzM0ieB02+6uNml2fy3b9AfBYgBqpzBLE9/dz8QeoD0Oy7dvU84+XfTJqejkFg8wLQzNu8xc2soNliCYivYGBgCJPboLDQr/HvdUYGNAATYIHSDlCaFU2dp5tLCMi+AjT7pOrClVaevFMP858HmvwDtspJngl8MjCzPz/LmAVSZ9yh9X/rn+uMiSbHnEDugtmPHH74gKebn68CA2Z4xzy7La+tuCkQ5h5eNPmLUlFx87eZToP5kRFqJwDVuIST4AEAAA==",
+        "file":"0",
+        "content":"DGCA",
+        "delete":true
+    }
+}
