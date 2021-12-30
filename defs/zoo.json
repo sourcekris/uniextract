@@ -1,0 +1,22 @@
+{
+    "name":"Zoo",
+    "comment":"Zoo archiver, popularized on Amiga and OpenVMS - http://fileformats.archiveteam.org/wiki/Zoo",
+    "extensions":["zoo"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/jsummers/deark",
+        "build":"make && cp deark $tools"
+    },
+    "unpack": {
+        "exe":"$tools/deark",
+        "cmdline":"$tool -od $destdir -o 0 $archive",
+        "extension":"zoo",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAEInzWEAA4vy91cw0jM0UHAsSs7ILEvVk2JguLP8yF8tBgaGa////2diYGQAA2aQKBNDCZBZCMTzgjWLQ68zgySAGKoGCAwYkAAXQ73gHwTXQVNZgyHK3x9iEqngTzMAsiZHV6wAAAA=",
+        "file":"0.000.0",
+        "content":"ZOO",
+        "delete":true
+    }
+}
