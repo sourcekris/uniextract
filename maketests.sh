@@ -103,3 +103,7 @@ e=lzx && echo "TFpYAAwACgQAAA8AAwAAAAMAAAAKAAAAAAoAAPXazQWuwSWjJjEkcAEwTFpY" | b
 echo -n "ZOO: "
 # we cannot create zoo archives on linux so heres one we created elsewhere.
 e=zoo && echo "Wk9PIDIuMTAgQXJjaGl2ZS4aAADcp8T9KgAAANb///8CAAEAAAAAAAAD3KfE/QIAdAAAAHEAAACeUylzVdcDAAAAAwAAAAEAAAAAAAAAAAAwAAAAAAAAAAAAAAAACgB/EfwAAAAAAAAAAAAAQCkjKABaT0/cp8T9AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8gw==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "CPShrink: "
+# we cannot create cpz archives on linux so heres one we created elsewhere.
+e=cpz && echo "AQAAAOsx0501D5i8MACwAPKuFOJMrwCbwfpdAgMAAAADAAAAnlOug0NQWg==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

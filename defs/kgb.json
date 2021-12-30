@@ -4,7 +4,8 @@
     "install": {
         "method":"source",
         "repo":"https://github.com/sourcekris/KGB_archiver",
-        "build":"make && cp KGB_arch $tools"
+        "build":"make && cp KGB_arch $tools",
+        "exist_check":["KGB_arch", "kgb_arch.exe [-d dest-folder] archive.kgb"]
     },
     "pack":{
         "exe":"$tools/KGB_arch",

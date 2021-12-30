@@ -1,3 +1,5 @@
 # Archives we're testing with
 0.*
 0
+# dos, amiga, etc tools cant be put on github as the licensing is usually too weird to figure out.
+3rdparty/*

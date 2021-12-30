@@ -5,7 +5,8 @@
     "install": {
         "method":"source",
         "repo":"https://github.com/jsummers/deark",
-        "build":"make && cp deark $tools"
+        "build":"make && cp deark $tools",
+        "exist_check":["deark -version","Deark version:"]
     },
     "unpack": {
         "exe":"$tools/deark",

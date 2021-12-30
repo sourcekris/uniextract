@@ -1,0 +1,23 @@
+{
+    "name":"CPShrink",
+    "comment":"Central Point Software DOS Archiver - http://fileformats.archiveteam.org/wiki/CP_Shrink",
+    "extensions":["cpz"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/jsummers/deark",
+        "build":"make && cp deark $tools",
+        "exist_check":["deark -version","Deark version:"]
+    },
+    "unpack": {
+        "exe":"$tools/deark",
+        "cmdline":"$tool -od $destdir -o 0 $archive",
+        "extension":"cpz",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAHFIzWEAA2NkYGB4bXh5rin/jD0GDBsYPq0TeeSznmH2wV+xTMxAORCeF7yu2TkgCgC/LQRMKwAAAA==",
+        "file":"0.000.0",
+        "content":"CPZ",
+        "delete":true
+    }
+}

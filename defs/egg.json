@@ -4,7 +4,8 @@
     "install": {
         "method":"source",
         "repo":"https://github.com/sourcekris/UnEgg",
-        "build":"cd Source/unegg/release-x64 && make clean && make && cp unegg $tools"
+        "build":"cd Source/unegg/release-x64 && make clean && make && cp unegg $tools",
+        "exist_check":["unegg -h","unegg v"]
     },
     "unpack": {
         "exe":"$tools/unegg",

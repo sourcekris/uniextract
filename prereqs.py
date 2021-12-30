@@ -26,6 +26,23 @@ def load_defs():
         definitions.append(jd)
     return definitions
 
+# return True if the archiver needed to unpack d is already in the system path.
+def archiver_in_path(d):
+    if "install" in d and "exist_check" in d["install"] and len(d["install"]["exist_check"]) > 1:
+        cmdline = d["install"]["exist_check"][0]
+        want = d["install"]["exist_check"][1]
+
+        try:
+            res = subprocess.check_output(cmdline, shell=True)
+            if want in res.decode():
+                return True
+        except subprocess.CalledProcessError as e:
+            # Some processes return an erroneous exit code even when they are working.
+            if want in e.stdout.decode() or want in e.stderr.decode():
+                return True
+            return False
+    return False
+
 # test the archiver give the test parameters in the definition for that 
 # archiver
 def test_archiver(d):
@@ -131,6 +148,10 @@ def install_pip_packages(definitions):
 
 def install_from_source(definitions):
     for d in definitions:
+        if archiver_in_path(d):
+            print(f"trying to build archiver: {d['name']}: Already installed.")
+            continue
+
         if "install" in d and "method" in d["install"]:
             if "source" in d["install"]["method"] and "repo" in d["install"]:
                 with tempfile.TemporaryDirectory() as tmpdir:
@@ -162,8 +183,8 @@ def install_from_source(definitions):
 
 def main():
     defs = load_defs()
-    install_apt_packages(defs)
-    install_pip_packages(defs)
+    #install_apt_packages(defs)
+    #install_pip_packages(defs)
     install_from_source(defs)
 
 if __name__ == "__main__":
