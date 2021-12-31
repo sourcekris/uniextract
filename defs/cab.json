@@ -1,0 +1,25 @@
+{
+    "name":"CAB",
+    "comment":"Microsoft Cabinet Archive",
+    "extensions":["cab"],
+    "install": {
+        "method":"apt",
+        "packages":["gcab"]
+    },
+    "pack": {
+        "exe":"gcab",
+        "cmdline":"$tool -c $file.cab $file"
+    },
+    "unpack": {
+        "exe":"gcab",
+        "cmdline":"$tool -x -C $destdir $archive",
+        "extension":"cab",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAAJpzmEAA/MNdnZjAAJPBgjQgdLMjIwMjFC2HRCD2MwMMDA/eKaQAoMBg6OjA1CUmcHZ0QkA1WEjeUkAAAA=",
+        "file":"0",
+        "content":"CAB",
+        "delete":true
+    }
+}

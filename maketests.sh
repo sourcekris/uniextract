@@ -75,6 +75,9 @@ e=yenc && echo -n YENC > 0 && python -c "__import__('yenc').encode('0','0.yenc')
 echo -n "dar test: "
 e=dar && td=$(mktemp -d) && echo -n DAR > $td/0 && pushd $td > /dev/null && dar -c 0 -q -X 0.1.$e && gzip < 0.1.$e | base64 -w 0 && popd > /dev/null && rm -fr $td && echo
 
+echo -n "CAB test: "
+e=cab && echo -n CAB > 0 && gcab -c 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
