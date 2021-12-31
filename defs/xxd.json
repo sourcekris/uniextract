@@ -1,0 +1,25 @@
+{
+    "name":"XXD",
+    "comment":"xxd hex dump utility",
+    "extensions":["xxd"],
+    "install": {
+        "method":"apt",
+        "packages":["xxd"]
+    },
+    "pack": {
+        "exe":"xxd",
+        "cmdline":"$tool $file $file.xxd"
+    },
+    "unpack": {
+        "exe":"xxd",
+        "cmdline":"$tool -r $archive $destdir/$basename",
+        "extension":"xxd",
+        "force_extension": false
+    },
+    "test": {
+        "blob":"H4sIAFOdzmEAAzMwgAArBVMLUwsFExMFgiAiwoULAPMQ+uw3AAAA",
+        "file":"?",
+        "content":"XXD",
+        "delete":true
+    }
+}
