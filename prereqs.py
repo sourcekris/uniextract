@@ -99,7 +99,7 @@ def test_archiver(d):
                     extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
                 except Exception as e:
                     print(f"error running unarchive of test data: {e}\ncmdline: {cmdline}")
-                    # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
+                    #print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
                     return 0
 
                 #print("Extracted, ", flush=True, end="") 
@@ -109,13 +109,19 @@ def test_archiver(d):
                     # in case the archive does not store the name of the compressed file, e.g. gzip.
                     basename = os.path.splitext(os.path.basename(arcfile.name))[0]
                     extracted_file = os.path.join(tmpdir, basename)
+                
+                if "?/" in extracted_file:
+                    fn = extracted_file.split("/")[-1]
+                    # in case the archive creates a folder based on the archive name to put the files into e.g. msi.
+                    basename = os.path.splitext(os.path.basename(arcfile.name))[0]
+                    extracted_file = os.path.join(tmpdir, basename, fn)
 
                 resultdata = ""
                 try:
                     resultdata = open(extracted_file).read()
                 except Exception as e:
                     print(f"error opening unarchived test data: {e}")
-                    # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
+                    print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
 
                 if resultdata == d["test"]["content"]:
                     return 1

@@ -78,6 +78,9 @@ e=dar && td=$(mktemp -d) && echo -n DAR > $td/0 && pushd $td > /dev/null && dar 
 echo -n "CAB test: "
 e=cab && echo -n CAB > 0 && gcab -c 0.$e 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
+echo -n "MSI test: "
+e=msi && echo -n MSI > 0 && msibuild 0.$e -a 0 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

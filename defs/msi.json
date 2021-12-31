@@ -1,0 +1,25 @@
+{
+    "name":"MSI",
+    "comment":"Microsoft Installer",
+    "extensions":["msi"],
+    "install": {
+        "method":"apt",
+        "packages":["unar"]
+    },
+    "pack": {
+        "exe":"msibuild",
+        "cmdline":"$tool $file.cab -a $file $file"
+    },
+    "unpack": {
+        "exe":"unar",
+        "cmdline":"$tool -o $destdir $archive",
+        "extension":"msi",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAOhuzmEAA7twXvDBwo1SDxnQgB0DM8O//5wMbEhijEDMBOMIQPgg/O////8gIRYg/j8KhhRAj3dSwT+gCayIVIGSVh60zv/00z9DYPVEDgZt9c03DYBiH4CYA5qOPBhAehkYMoCYHYgbgJgTiCcAMR8QHwBifiA+AUluDBeAWAiIbwCxHBCLAbFnXnFJYk5OYklmfp6CS2JJYlJicSpUnh8hn1qko+Ab7AkRB6Vpa0MDY2OoOnUgrjZ1tnQycbNw1nUzdzbXNTG1sNR1NDYx13UxcHNzcTO1dHU2dqtlAOYKiHuYof6E0XJQN+ZkJuUWZyoAcVJpZk4KwfADO2oAASjvguIC5A9Q/mWFiv0b6IQ5CugCghjygbCEQYHBlSEPSBcxVJKUfsQYWBlhZoHST4sAD1j8AETaDZe+A4wQ2sHD3r7cNccly/qJq4oHqakXlOeYwPaD0jCIJkbPPyR1cPvtNrnoU2A/Mwn2Q/RBACtDMEMpQy4QJoLD3hMYC2nAGCkCi5QwZALZeXjM0YDaDwPE2A0KegVo+DOQ4WdkwAK1H1RuEGs/qPyFlZsOHvX2KY76TmZkuoMHaj8jCfb/IyGehjuAlfXMUPZfmpY2o2CwAQBEWE0TAAwAAA==",
+        "file":"?/0",
+        "content":"MSI",
+        "delete":true
+    }
+}
