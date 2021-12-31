@@ -1,0 +1,27 @@
+{
+    "name":"xxencode",
+    "comment":"xxencode - https://en.wikipedia.org/wiki/Xxencoding",
+    "extensions":["xxe", "xxenc", "xx"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/jsummers/deark",
+        "build":"make && cp deark $tools",
+        "exist_check":["deark -version","Deark version:"]
+    },
+    "pack": {
+        "exe":"sfk",
+        "cmdline":"$tool xxenc $file -tofile $file.xxe -yes -quiet"
+    },
+    "unpack": {
+        "exe":"$tools/deark",
+        "cmdline":"$tool -od $destdir -o 0 $archive",
+        "extension":"xxe",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAHhzzmEAA8tNLUlUKDZVKDEyMDI0NDI2NDQxMDWyUEg2NrcwM7NMMVBIq+BKSk3PzFMwMzFRMOAy9jYOM/aIdNTmSs1L4eICAEHmQxxAAAAA",
+        "file":"0.000.0",
+        "content":"XXENC",
+        "delete":true
+    }
+}

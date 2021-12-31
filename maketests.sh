@@ -60,6 +60,9 @@ e=lzh && echo -n LZH > 0 && jlha -aq9 0.$e 0 2>/dev/null && gzip < 0.$e | base64
 echo -n "uuencode test: "
 e=uue && echo -n UUE > 0 && uuencode 0 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
+echo -n "xxencode test: "
+e=xxe && echo -n XXENC > 0 && sfk xxenc 0 -tofile 0.$e -yes -quiet && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "base64 test: "
 e=b64 && echo -n BASE64 > 0 && base64 0 > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
