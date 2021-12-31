@@ -1,0 +1,25 @@
+{
+    "name":"Intel Hex",
+    "comment":"Intel hex encoded objects",
+    "extensions":["ihex"],
+    "install": {
+        "method":"apt",
+        "packages":["binutils"]
+    },
+    "pack": {
+        "exe":"obcopy",
+        "cmdline":"$tool -I binary $file -O ihex $file.ihex"
+    },
+    "unpack": {
+        "exe":"objcopy",
+        "cmdline":"$tool -I ihex $archive -O binary $destdir/$basename",
+        "extension":"ihex",
+        "force_extension": false
+    },
+    "test": {
+        "blob":"H4sIAESazmEAA7MyMDEAAxNLEwsTU1MLZ1deLiuIkIGhmxsvFwBDVBqPIgAAAA==",
+        "file":"?",
+        "content":"IHEX",
+        "delete":true
+    }
+}
