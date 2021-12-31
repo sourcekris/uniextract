@@ -1,0 +1,25 @@
+{
+    "name":"Hex",
+    "comment":"Hex encoded file, aka base16 encoded",
+    "extensions":["hex", "b16", "base16"],
+    "install": {
+        "method":"apt",
+        "packages":["xxd"]
+    },
+    "pack": {
+        "exe":"xxd",
+        "cmdline":"$tool -p $file $file.xxd"
+    },
+    "unpack": {
+        "exe":"xxd",
+        "cmdline":"$tool -p -r $archive $destdir/$basename",
+        "extension":"hex",
+        "force_extension": false
+    },
+    "test": {
+        "blob":"H4sIACCfzmEAAzOxMDE1teACALS/128HAAAA",
+        "file":"?",
+        "content":"HEX",
+        "delete":true
+    }
+}
