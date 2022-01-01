@@ -92,13 +92,18 @@ def test_archiver(d):
                 return 0
                 
             with tempfile.TemporaryDirectory() as tmpdir:
+                tools = os.path.join(os.getcwd(), tools_path)
+                basename = os.path.splitext(os.path.basename(arcfile.name))[0]
                 exe = d["unpack"]["exe"]
-                exe = exe.replace("$tools", os.path.join(os.getcwd(), tools_path))
+                exe = exe.replace("$tools", tools)
                 cmdline = d["unpack"]["cmdline"]
+                cmdline = cmdline.replace("$tools", tools)
                 cmdline = cmdline.replace("$tool", exe)
                 cmdline = cmdline.replace("$archive", arcfile.name)
+                cmdline = cmdline.replace("$arcloc", os.path.dirname(arcfile.name))
                 cmdline = cmdline.replace("$destdir", tmpdir)
-                cmdline = cmdline.replace("$basename", os.path.splitext(os.path.basename(arcfile.name))[0])
+                cmdline = cmdline.replace("$basename", basename)
+                cmdline = cmdline.replace("$shortname", basename[:6]+"~1"+extension) # for dos unpackers, but ~1 might not be good enough?
 
                 #print(f"{cmdline}", flush=True, end="")
                 try:

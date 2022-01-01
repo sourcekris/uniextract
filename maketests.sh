@@ -93,6 +93,9 @@ e=xxd && echo -n XXD > 0 && xxd 0 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e
 echo -n "HEX test: "
 e=hex && echo -n HEX > 0 && xxd -p 0 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
+echo -n "Squeeze It test: "
+e=sqz && echo -n SQUEEZIT > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "SQZ a D:\\0 D:\\0" -c "exit" > /dev/null && mv 0.SQZ 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
@@ -149,9 +152,13 @@ echo -n "crlzh: "
 # we cannot create crlzh archives on linux so heres one we created elsewhere.
 e=yyy && echo "dv0wLiAgIAAgIAAF5vc63k6Wk5oBfAF/digBDg==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
-echo -n "squeeze: "
+echo -n "Squeeze: "
 # we cannot create squeeze archives on linux so heres one we created elsewhere.
 e=qqq && echo "dv9sDjAACAACAAEAuv8DAAcABQAEAAYArv+l/6r/hv+s/2//5f///jeqDW8C" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Squeeze 2: "
+# we cannot create squeeze2 archives on linux so heres one we created elsewhere.
+e=sq2 && echo "+v8wADAxLzAxLzEyMgAAGtYAIVRulwMAAQACAK7/rP/N///+0ho=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
 echo -n "crunch: "
 # we cannot create crunch archives on linux so heres one we created elsewhere.
