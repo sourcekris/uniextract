@@ -1,0 +1,27 @@
+{
+    "name":"Squeeze (Dan Bernstein)",
+    "comment":"Compression utility using Miller-Wegman encoding - http://fileformats.archiveteam.org/wiki/Squeeze_(Daniel_Bernstein)",
+    "extensions":["mw"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/sourcekris/squeeze",
+        "build":"make && cp squeeze $tools/mwsqueeze && cp unsqueeze $tools/mwunsqueeze",
+        "exist_check":["mwsqueeze mwsqueeze","squeeze: I am a filter"]
+    },
+    "pack": {
+        "exe":"$tools/mwsqueeze",
+        "cmdline":"cat $file | $tool > $file.mw"
+    },
+    "unpack": {
+        "exe":"$tools/mwunsqueeze",
+        "cmdline":"cat $archive | $tool > $destdir/$basename",
+        "extension":"mw",
+        "force_extension": false
+    },
+    "test": {
+        "blob":"H4sIAE5Y0GEAA/Nd59MZtNRDUNeVAQDGhD51CwAAAA==",
+        "file":"?",
+        "content":"MWSQUEEZE",
+        "delete":true
+    }
+}

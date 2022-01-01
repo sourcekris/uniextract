@@ -33,13 +33,17 @@ def archiver_in_path(d):
         want = d["install"]["exist_check"][1]
 
         try:
-            res = subprocess.check_output(cmdline, shell=True)
+            res = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
             if want in res.decode():
                 return True
         except subprocess.CalledProcessError as e:
             # Some processes return an erroneous exit code even when they are working.
-            if want in e.stdout.decode() or want in e.stderr.decode():
-                return True
+            try:
+                if want in e.stdout.decode() or want in e.stderr.decode():
+                    return True
+            except AttributeError:
+                return False
+
             return False
     return False
 
@@ -235,9 +239,9 @@ def install_from_source(definitions):
 
 def main():
     defs = load_defs()
-    install_apt_packages(defs)
+    #install_apt_packages(defs)
     #install_pip_packages(defs)
-    #install_from_source(defs)
+    install_from_source(defs)
 
 if __name__ == "__main__":
     main()

@@ -96,6 +96,9 @@ e=hex && echo -n HEX > 0 && xxd -p 0 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0
 echo -n "Squeeze It test: "
 e=sqz && echo -n SQUEEZIT > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "SQZ a D:\\0 D:\\0" -c "exit" > /dev/null && mv 0.SQZ 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
+echo -n "Squeeze (Dan Bernstein): "
+e=mw && echo -n MWSQUEEZE > 0 && cat 0 | tools/mwsqueeze > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
