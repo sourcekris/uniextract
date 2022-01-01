@@ -1,0 +1,23 @@
+{
+    "name":"Squeeze",
+    "comment":"Huffman coding compression format CP/M era - http://fileformats.archiveteam.org/wiki/Squeeze",
+    "extensions":["qqq","sq","sqz"],
+    "install": {
+        "method":"apt",
+        "packages":["unar"]
+    },
+    "unpack": {
+        "exe":"unar",
+        "cmdline":"$tool -o $destdir $archive",
+        "extension":"qqq",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAA35z2EAAwEtANL/dv9sDjAACAACAAEAuv8DAAcABQAEAAYArv+l/6r/hv+s/2//5f///jeqDW8CgUsVES0AAAA=",
+        "file":"0",
+        "content":"SQUEEZE",
+        "padbyte":"0x1a",
+        "padlen":128,
+        "delete":true
+    }
+}

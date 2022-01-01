@@ -139,4 +139,20 @@ e=dgc && echo "REdDQSAAAADAAQAAAAAAAAEAAAAQAAAADxvuajSXcFREQVRBIAAAADAAAAAAAAAAA
 
 echo -n "LBR: "
 # we cannot create lbr archives on linux so heres one we created elsewhere.
-e=lbr && echo "ACAgICAgICAgICAgAAABAN0CAAAAAAAAAAAAAAAAAAAAMCAgICAgICAgICABAAEA/moAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMQlIaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGg==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+e=lbr && echo "ACAgICAgICAgICAgAAABAN0CAAAAAAAAAAAAAAAAAAAAMCAgICAgICAgICABAAEA/moAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMQlI=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "PMArc: "
+# we cannot create PMArc archives on linux so heres one we created elsewhere.
+e=pma && echo "GKEtcG0yLREAAACAAAAAAAAAACAAAjAuXMvsoBIAAAAAALgAIHBpDWvkAAA=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "crlzh: "
+# we cannot create crlzh archives on linux so heres one we created elsewhere.
+e=yyy && echo "dv0wLiAgIAAgIAAF5vc63k6Wk5oBfAF/digBDg==" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "squeeze: "
+# we cannot create squeeze archives on linux so heres one we created elsewhere.
+e=qqq && echo "dv9sDjAACAACAAEAuv8DAAcABQAEAAYArv+l/6r/hv+s/2//5f///jeqDW8C" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "crunch: "
+# we cannot create crunch archives on linux so heres one we created elsewhere.
+e=zzz && echo "dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

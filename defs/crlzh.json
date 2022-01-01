@@ -1,0 +1,23 @@
+{
+    "name":"CrLZH",
+    "comment":"LHA compression format CP/M era - http://fileformats.archiveteam.org/wiki/CrLZH",
+    "extensions":["yyy"],
+    "install": {
+        "method":"apt",
+        "packages":["unar"]
+    },
+    "unpack": {
+        "exe":"unar",
+        "cmdline":"$tool -o $destdir $archive",
+        "extension":"yyy",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAJv8z2EAAyv7a6CnoKDAAESsz75b3fObNnkWYw1jfZkGIx8A2v7FOxwAAAA=",
+        "file":"0.",
+        "content":"CRLZH",
+        "padbyte":"0x1a",
+        "padlen":128,
+        "delete":true
+    }
+}
