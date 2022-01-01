@@ -61,6 +61,12 @@ def apt_already_installed(d):
     
     return False
 
+# used for archivers that extract entire blocks to disk e.g. CPM archivers.
+def pad(data, padbyte, padlen):
+    pb = chr(int(padbyte, 16))
+    pbl = padlen - divmod(len(data), padlen)[1]
+    return data + (pb * pbl)
+
 # test the archiver give the test parameters in the definition for that 
 # archiver
 def test_archiver(d):
@@ -121,12 +127,18 @@ def test_archiver(d):
                     resultdata = open(extracted_file).read()
                 except Exception as e:
                     print(f"error opening unarchived test data: {e}")
-                    print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
+                    # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
 
-                if resultdata == d["test"]["content"]:
+                # did we get want we want?
+                want = d["test"]["content"]
+                if "padbyte" in d["test"] and "padlen" in d["test"]:
+                    # some formats come padded (CP/M)
+                    want = pad(want, d["test"]["padbyte"],d["test"]["padlen"])
+
+                if resultdata == want:
                     return 1
                 else:
-                    print(f"archiver test file content mismatch:\ngot: {resultdata}\nwant: {d['test']['content']}")
+                    print(f"archiver test file content mismatch:\ngot: {resultdata.encode()}\nwant: {want.encode()}")
                     return 0
         finally:
             if "delete" in d["test"] and d["test"]["delete"]:
