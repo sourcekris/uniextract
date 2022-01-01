@@ -2,6 +2,7 @@
 
 import os
 import os.path
+import sys
 import subprocess
 from glob import glob
 import json
@@ -98,6 +99,8 @@ def test_archiver(d):
             with tempfile.TemporaryDirectory() as tmpdir:
                 tools = os.path.join(os.getcwd(), tools_path)
                 basename = os.path.splitext(os.path.basename(arcfile.name))[0]
+                windest = "z:" + tmpdir.replace("/","\\\\")
+                winarc = "z:" + arcfile.name.replace("/","\\\\")
                 exe = d["unpack"]["exe"]
                 exe = exe.replace("$tools", tools)
                 cmdline = d["unpack"]["cmdline"]
@@ -105,6 +108,8 @@ def test_archiver(d):
                 cmdline = cmdline.replace("$tool", exe)
                 cmdline = cmdline.replace("$archive", arcfile.name)
                 cmdline = cmdline.replace("$arcloc", os.path.dirname(arcfile.name))
+                cmdline = cmdline.replace("$windestdir", windest)
+                cmdline = cmdline.replace("$winarchive", winarc)
                 cmdline = cmdline.replace("$destdir", tmpdir)
                 cmdline = cmdline.replace("$basename", basename)
                 cmdline = cmdline.replace("$shortname", basename[:6]+"~1"+extension) # for dos unpackers, but ~1 might not be good enough?
@@ -136,7 +141,7 @@ def test_archiver(d):
                     resultdata = open(extracted_file).read()
                 except Exception as e:
                     print(f"error opening unarchived test data: {e}")
-                    # print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
+                    #print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
 
                 # did we get want we want?
                 want = d["test"]["content"]
@@ -237,11 +242,31 @@ def install_from_source(definitions):
                 else:
                     print("Failed")
 
-def main():
+def main(args):
     defs = load_defs()
-    #install_apt_packages(defs)
-    #install_pip_packages(defs)
+
+    if len(args) > 0:
+        if args[1] in ["apt", "pip", "source"]:
+            if "apt" in args[1]:
+                if len(args) == 3:
+                    for d in defs:
+                        if d["name"] == args[2]:
+                            install_apt_packages([d])
+                else:
+                    install_apt_packages(defs)
+                return
+
+            if "pip" in args[1]:
+                install_pip_packages(defs)
+                return
+
+            if "source" in args[1]:
+                install_from_source(defs)
+                return
+
+    install_apt_packages(defs)
+    install_pip_packages(defs)
     install_from_source(defs)
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)

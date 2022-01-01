@@ -166,3 +166,7 @@ e=sq2 && echo "+v8wADAxLzAxLzEyMgAAGtYAIVRulwMAAQACAK7/rP/N///+0ho=" | base64 -d
 echo -n "crunch: "
 # we cannot create crunch archives on linux so heres one we created elsewhere.
 e=zzz && echo "dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "SQX: "
+# we cannot create sqx archives on linux so heres one we created elsewhere.
+e=sqx && echo "ULBSAAAZAC1zcXgtCwAAAAAAAAAAAAAAAEeoRAAFLAAAAAAUFAJZ7cTYIAAAAKIJIlQcAAAACQAAAAkAdG1wXG1vb1wwZgQJAAAAAEAFAAAA4hxgOvvo3wimlDZDAAAnSz4rUwAABwA=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
