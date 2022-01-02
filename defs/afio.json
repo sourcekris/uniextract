@@ -1,0 +1,25 @@
+{
+    "name":"AFIO",
+    "comment":"afio is like cpio but supports compression - http://fileformats.archiveteam.org/wiki/Afio",
+    "extensions":["afio", "af"],
+    "install": {
+        "method":"apt",
+        "packages":["afio"]
+    },
+    "pack":{
+        "exe":"afio",
+        "cmdline":"echo $file | $tool -o $file.cpio"
+    },
+    "unpack": {
+        "exe":"afio",
+        "cmdline":"cd $destdir && $tool -i $archive",
+        "extension":"afio",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIABiI0WEAA+3MQQqAMAxEUa/SG0zaaNcuFAqCIN7/LFYsCCKI+/+yGBKGKOscuWTKUX0NDV7XB2vhNniq9XTt8W64unEuq9rHT/Z+bY/N+pj3bSzLtIUQOgAAAAAAAAC/HUNOrYsAFAAA",
+        "file":"0",
+        "content":"AFIO",
+        "delete":true
+    }
+}

@@ -6,7 +6,7 @@
         "packages":["cpio"]
     },
     "pack":{
-        "exe":"atool",
+        "exe":"cpio",
         "cmdline":"echo $file | $tool -o --quiet -F $file.cpio"
     },
     "unpack": {

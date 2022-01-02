@@ -161,6 +161,7 @@ function wine_test_do () {
 # Store the archiver tests in the hashmaps.
 archiver_test "zip" "ZIP" "zip -q 0.\$e 0" true
 archiver_test "cpio" "CPIO" "echo 0 | cpio -o --quiet -F 0.\$e" true
+archiver_test "afio" "AFIO" "echo 0 | afio -o 0.\$e" true
 archiver_test "kgb" "KGB" "tools/KGB_arch -9 0.\$e 0 > /dev/null" true
 archiver_test "lzo" "LZOP" "lzop -9 -o 0.\$e 0" true
 archiver_test "tar" "TAR" "tar -cf 0.\$e 0" true
@@ -223,6 +224,7 @@ blob_test "qqq" "Squeeze" "dv9sDjAACAACAAEAuv8DAAcABQAEAAYArv+l/6r/hv+s/2//5f///
 blob_test "sq2" "Squeeze2" "+v8wADAxLzAxLzEyMgAAGtYAIVRulwMAAQACAK7/rP/N///+0ho="
 blob_test "zzz" "crunch" "dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE="
 blob_test "sqx" "SQX" "ULBSAAAZAC1zcXgtCwAAAAAAAAAAAAAAAEeoRAAFLAAAAAAUFAJZ7cTYIAAAAKIJIlQcAAAACQAAAAkAdG1wXG1vb1wwZgQJAAAAAEAFAAAA4hxgOvvo3wimlDZDAAAnSz4rUwAABwA="
+blob_test "acb" "ACB" "CoAIAIw5c+WZ55vfDOMOU+sK"
 
 # Actually do the tests now.
 
