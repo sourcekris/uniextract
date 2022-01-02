@@ -9,6 +9,7 @@ SPECIFIC_TEST=""
 # create maps for storing our tests in.
 declare -A at_e at_c at_r   # archiver_test
 declare -A wt_e wt_c wt_r   # wine_test
+declare -A dt_e dt_c dt_r   # dosbox_test
 declare -A bt_e bt_b        # blob_test
 
 while [[ $# -gt 0 ]]; do
@@ -43,18 +44,9 @@ done
 # - $3 - string - archiver packing command
 # - $4 - bool - does the test need to rm the original file (true / false)
 function archiver_test () {
-  e="$1"
-  msg="$2"
-  cmdline="$3"
-  rmorig=$4
-
-  at_e[$msg]="$e"
-  at_c[$msg]="$cmdline"
-  at_r[$msg]=$rmorig
-
-  if [ $DEBUG = true ]; then
-    echo "stored: $msg: ${at_e[$msg]} => ${at_c[$msg]} => ${at_r[$msg]}"
-  fi
+  at_e[$2]="$1"
+  at_c[$2]="$3"
+  at_r[$2]=$4
 }
 
 # does the archiver test we stored earlier in the global maps.
@@ -66,11 +58,6 @@ function archiver_test_do () {
   
   echo -n "$msg test: "
   echo -n "$msg" > 0
-
-  if [ $DEBUG = true ]; then
-    echo "$cmdline"
-  fi
-
   eval "$cmdline"
   B64=$(gzip < 0.$e | base64 -w 0)
 
@@ -87,16 +74,8 @@ function archiver_test_do () {
 # - $2 - string - user facing message for the test
 # - $3 - string - the base64 encoded archive
 function blob_test () {
-  e="$1"
-  msg="$2"
-  blob="$3"
-
-  bt_e[$msg]="$e"
-  bt_b[$msg]="$blob"
-
-  if [ $DEBUG = true ]; then
-    echo "stored: $msg: ${bt_e[$msg]} => ${bt_b[$msg]}"
-  fi
+  bt_e[$2]="$1"
+  bt_b[$2]="$3"
 }
 
 function blob_test_do () {
@@ -117,18 +96,9 @@ function blob_test_do () {
 # - $3 - string - archiver packing command
 # - $4 - bool - does the test need to rm the original file (true / false)
 function wine_test () {
-  e="$1"
-  msg="$2"
-  cmdline="$3"
-  rmorig=$4
-
-  wt_e[$msg]="$e"
-  wt_c[$msg]="$cmdline"
-  wt_r[$msg]=$rmorig
-
-  if [ $DEBUG = true ]; then
-    echo "stored: $msg: ${wt_e[$msg]} => ${wt_c[$msg]} => ${wt_r[$msg]}"
-  fi
+  wt_e[$2]="$1"
+  wt_c[$2]="$3"
+  wt_r[$2]=$4
 }
 
 # does the wine based test we stored earlier in the global maps.
@@ -140,11 +110,6 @@ function wine_test_do () {
   
   echo -n "$msg test: "
   echo -n "$msg" > 0
-
-  if [ $DEBUG = true ]; then
-    echo "$cmdline"
-  fi
-
   eval "$cmdline"
   B64=$(gzip < 0.$e | base64 -w 0)
 
@@ -156,7 +121,32 @@ function wine_test_do () {
   echo "$B64"
 }
 
+function dosbox_test () {
+  dt_e[$2]="$1"
+  dt_c[$2]="$3"
+  dt_r[$2]=$4
+}
 
+function dosbox_test_do () {
+  e="${dt_e[$1]}"
+  cmdline="${dt_c[$1]}"
+  rmorig=${dt_r[$1]}
+
+  eu=${e^^}
+  
+  echo -n "$1 test: "
+  echo -n "$1" > 0
+  #echo "cmdline: $cmdline"
+  eval "$cmdline" > /dev/null
+  B64=$(gzip < 0.$eu | base64 -w 0)
+
+  rm -f 0.$e 0.$eu
+  if [ $rmorig = true ]; then
+    rm 0
+  fi
+
+  echo "$B64"
+}
 
 # Store the archiver tests in the hashmaps.
 archiver_test "zip" "ZIP" "zip -q 0.\$e 0" true
@@ -205,7 +195,11 @@ wine_test "bix" "BIX" "wine tools/bix a 0.\$e 0 > /dev/null" true
 wine_test "ufa" "UFA" "wine tools/ufa a 0.\$e 0 > /dev/null" true
 wine_test "777" "777" "wine tools/777 a 0.\$e 0 > /dev/null" true
 
-# store all of the blob tests in the global maps.
+dosbox_test "ain" "AIN" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\scancode WaitForText 25,1 \\\"Press\\\",\\\"y\\\"\" -c \"e:\\ain a 0.\$e 0\" -c \"exit\"" true
+dosbox_test "sqz" "SQUEEZIT" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\sqz a 0 0\" -c \"exit\"" true
+dosbox_test "lzw" "LZWCOM" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\lzwcom 0 0.\$e\" -c \"exit\"" true
+dosbox_test "amg" "AMG" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\amgc a 0.\$e 0\" -c \"exit\"" true
+
 blob_test "ace" "ACE" "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U="
 blob_test "alz" "ALZIP" "QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg=="
 blob_test "egg" "EGG" "RUdHQQABpuPSNQAAAAAiguII45CFCgAAAAADAAAAAAAAAKyRhQoAAQAwC5WGLAAJAADg7qdn/NcBACKC4ggTDLUCAQUDAAAABQAAAMibkN4iguIIc3V3BwAiguII"
@@ -236,6 +230,8 @@ if [ ! -z "$SPECIFIC_TEST" ]; then
     blob_test_do "$SPECIFIC_TEST"
   elif [ ${wt_e[$SPECIFIC_TEST]+abc} ]; then
     wine_test_do "$SPECIFIC_TEST"
+  elif [ ${dt_e[$SPECIFIC_TEST]+abc} ]; then
+    dosbox_test_do "$SPECIFIC_TEST"
   else
     echo "error: test $SPECIFIC_TEST not found."
   fi
@@ -252,19 +248,10 @@ for key in ${!bt_e[@]}; do
   blob_test_do "$key"
 done
 
-# Extra / Odd tests below...
-echo -n "dar test: "
-e=dar && td=$(mktemp -d) && echo -n DAR > $td/0 && pushd $td > /dev/null && dar -c 0 -q -X 0.1.$e && gzip < 0.1.$e | base64 -w 0 && popd > /dev/null && rm -fr $td && echo
-
 if [ "$SKIP_DOSBOX" = false ]; then
-    echo -n "Squeeze It test: "
-    e=sqz && echo -n SQUEEZIT > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "SQZ a D:\\0 D:\\0" -c "exit" > /dev/null && mv 0.SQZ 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
-
-    echo -n "LZWCOM test: "
-    e=lzw && echo -n LZWCOM > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "LZWCOM D:\\0 D:\\0.$e" -c "exit" > /dev/null && mv 0.LZW 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
-
-    echo -n "AMG test: "
-    e=amg && echo -n AMG > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "AMGC a D:\\0.$e D:\\0" -c "exit" > /dev/null && mv 0.AMG 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+    for key in ${!dt_e[@]}; do
+      dosbox_test_do "$key"
+    done
 fi
 
 if [ "$SKIP_WINE" = false ]; then
@@ -272,3 +259,7 @@ if [ "$SKIP_WINE" = false ]; then
     wine_test_do "$key"
   done
 fi
+
+# Extra / Odd tests below...
+echo -n "dar test: "
+e=dar && td=$(mktemp -d) && echo -n DAR > $td/0 && pushd $td > /dev/null && dar -c 0 -q -X 0.1.$e && gzip < 0.1.$e | base64 -w 0 && popd > /dev/null && rm -fr $td && echo
