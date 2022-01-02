@@ -126,6 +126,9 @@ e=zst && echo -n FACEBOOKZSTD > 0 && tools/zstd -q 0 && gzip < 0.$e | base64 -w 
 echo -n "Zstandard lz4 format: "
 e=lz4 && echo -n ZSTANDARDLZ4 > 0 && tools/zstd -q --format=lz4 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
+echo -n "ZPAQ format: "
+e=zpaq && echo -n ZPAQ > 0 && zpaq a 0.zpaq 0 > /dev/null 2>&1 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo

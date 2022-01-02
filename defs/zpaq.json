@@ -1,0 +1,25 @@
+{
+    "name":"ZPAQ",
+    "comment":"Zpaq journaling archiver - http://fileformats.archiveteam.org/wiki/ZPAQ",
+    "extensions":["zpaq"],
+    "install": {
+        "method":"apt",
+        "packages":["zpaq"]
+    },
+    "pack": {
+        "exe":"zpaq",
+        "cmdline":"$tool a $file.zpaq $file"
+    },
+    "unpack": {
+        "exe":"zpaq",
+        "cmdline":"$tool x $archive -to $destdir",
+        "extension":"zpaq",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAF4r0WEAAzPPDi5ZYNh8uWeTxobLVQGBTIzsDFDAmOXibGRgZGRgaGBkYGJsYmyRbAADhgwWCkBpRrBCToYKBgT4u2ZuRNClgrdr4kx1mGyrPTf/WL/W8L85hj18DJwCIPVCGe3/I4ossFiXgmSdoRnCPkGGqADHQBaYM2H2fourlmysyY/a1HnsCvciMemW+f93YLEXj/8ykCw0QvKgLNiDFmeLFrbzsGnkT/xlpxi/4+pPgfRkmCP+/ouQYj36Xd4/OUBtyoP98ofD3y9bhsvTIvg8nYnsBlO4Gxh9GPUY3//X52XhEZExZzRnMmc2Z7E43RTgztEcwc54n0Hf2B0o6rSe+T2DvhzTeWZzZqfrTAH8zOvZG0FM5gDnftYIoBJGey6QhJSUO7M5I1Ajo76t83smfQun9SC2qNN1xgB+oDGMjY1A04AcKSl7KRDNznSeyQNoPFgYpF/KnQlo2F6gEUz6luzMr9VNnMzZnM3Z+ZndGU9GMK1qjuBncewOkGdyBrqIQ8o1QZDT0v6zozkLOxs/88UAdvbOCBawC5j1tZ3fM+qrQVwgAnEBigM4wbQ7ULn9eaAGFn0l5/fs+rL8LE4JlpxAE52ucwC9xxHBzsRkzgQMCmagSguGmGLL//flJjMwNDBKAENwhTIvD5DigKfTuFNtf6Z82Zdm8JSV4aOVknX65qWy/wH15D2eEAMAAA==",
+        "file":"0",
+        "content":"ZPAQ",
+        "delete":true
+    }
+}
