@@ -207,6 +207,9 @@ if [ "$SKIP_DOSBOX" = false ]; then
 
     echo -n "LZWCOM test: "
     e=lzw && echo -n LZWCOM > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "LZWCOM D:\\0 D:\\0.$e" -c "exit" > /dev/null && mv 0.LZW 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
+    echo -n "AMG test: "
+    e=amg && echo -n AMG > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "AMGC a D:\\0.$e D:\\0" -c "exit" > /dev/null && mv 0.AMG 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 fi
 
 # if [ "$SKIP_WINE" = false ]; then

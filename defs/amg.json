@@ -1,0 +1,25 @@
+{
+    "name":"AMG",
+    "comment":"An early-1990s archival/compression program for DOS - http://fileformats.archiveteam.org/wiki/AMG_(compressed_archive)",
+    "extensions":["amg"],
+    "install": {
+        "method":"apt",
+        "packages":["dosbox"]
+    },
+    "pack": {
+        "exe":"dosbox",
+        "cmdline":"p=$(pwd) && dosbox -noconsole -c \"MOUNT D $p\" -c \"MOUNT E $p/tools\" -c \"E:\" -c \"AMGC a D:\\0.$e D:\\0\" -c \"exit\" > /dev/null && mv 0.AMG 0.amg"
+    },
+    "unpack": {
+        "exe":"dosbox",
+        "cmdline":"$tool -noconsole -c \"MOUNT D $tools\" -c \"MOUNT E $destdir\" -c \"MOUNT F $arcloc\" -c \"D:\\\\AMGC e F:\\\\$shortname E:\\\\\" -c \"exit\"",
+        "extension":"amg",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAJJT0WEAA1trpsQAA1NkNIEkMxC7TFYKUWBgcPR1ZzBgQAHMIEEAL2bLuTUAAAA=",
+        "file":"0",
+        "content":"AMG",
+        "delete":true
+    }
+}
