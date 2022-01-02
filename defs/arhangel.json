@@ -1,0 +1,27 @@
+{
+    "name":"ARHANGEL",
+    "comment":"A DOS compression utility by George Lyapko - http://fileformats.archiveteam.org/wiki/ARHANGEL",
+    "extensions":["lg"],
+    "install": {
+        "method":"apt",
+        "packages":["dosbox"]
+    },
+    "pack": {
+        "exe":"dosbox",
+        "cmdline":"$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"ARHANGEL a $file.arg $file\" -c \"exit\""
+    },
+    "unpack": {
+        "exe":"dosbox",
+        "cmdline":"$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"D:\\\\ARHANGEL e F:\\\\$shortname\" -c \"exit\"",
+        "extension":"lg",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAC+n0WEAA/NxZ2Rg4GCA4DNye/1uMymHMBgwKDA4Bnk4+rm7+gAA7tqjviIAAAA=",
+        "file":"0",
+        "content":"ARHANGEL",
+        "delete":true
+    }
+}
+
+
