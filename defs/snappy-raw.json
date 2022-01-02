@@ -1,0 +1,27 @@
+{
+    "name":"Snappy raw format",
+    "comment":"Google's snappy compression library raw format - https://github.com/google/snappy",
+    "extensions":["raw", "snappy"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/kubo/snzip",
+        "build":"apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+        "exist_check":["snzip -h","Usage: snzip"]
+    },
+    "pack": {
+        "exe":"$tools/snzip",
+        "cmdline":"$tool -t raw $file"
+    },
+    "unpack": {
+        "exe":"$tools/snzip",
+        "cmdline":"$tool -d -t raw < $archive > $destdir/$basename",
+        "extension":"raw",
+        "force_extension": false
+    },
+    "test": {
+        "blob":"H4sIALga0WEAA+NUCPZzDAiIDHIMBwDBmO47CwAAAA==",
+        "file":"?",
+        "content":"SNAPPYRAW",
+        "delete":true
+    }
+}

@@ -1,7 +1,7 @@
 {
-    "name":"Snappy framing format",
-    "comment":"Google's snappy compression library default framing format - https://github.com/google/snappy",
-    "extensions":["sz", "snappy"],
+    "name":"Snappy hadoop format",
+    "comment":"Google's snappy compression library hadoop format - https://github.com/google/snappy",
+    "extensions":["snappy"],
     "install": {
         "method":"source",
         "repo":"https://github.com/kubo/snzip",
@@ -10,18 +10,18 @@
     },
     "pack": {
         "exe":"$tools/snzip",
-        "cmdline":"$tool $file"
+        "cmdline":"$tool -t hadoop-snappy $file"
     },
     "unpack": {
         "exe":"$tools/snzip",
         "cmdline":"$tool -d < $archive > $destdir/$basename",
-        "extension":"sz",
-        "force_extension": true
+        "extension":"snappy",
+        "force_extension": false
     },
     "test": {
-        "blob":"H4sIALga0WEAA/vPxsBQ7JcYUBDJyMPAkHJLcHKwn2NAQGRwFAAxLFpuGgAAAA==",
+        "blob":"H4sIALga0WEAA2NgYOBhYGDg49EJ9nMMCIj0cHTx9w8AAN/smnwWAAAA",
         "file":"?",
-        "content":"SNAPPYSZ",
+        "content":"SNAPPYHADOOP",
         "delete":true
     }
 }
