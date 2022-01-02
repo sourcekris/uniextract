@@ -1,0 +1,27 @@
+{
+    "name":"Snappy framing format",
+    "comment":"Google's snappy compression library default framing format - https://github.com/google/snappy",
+    "extensions":["sz", "snappy"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/kubo/snzip",
+        "build":"apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+        "exist_check":["snzip -h","Usage: snzip"]
+    },
+    "pack": {
+        "exe":"$tools/snzip",
+        "cmdline":"$tool $file"
+    },
+    "unpack": {
+        "exe":"$tools/snzip",
+        "cmdline":"$tool -d < $archive > $destdir/$basename",
+        "extension":"sz",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIALga0WEAA/vPxsBQ7JcYUBDJyMPAkHJLcHKwn2NAQGRwFAAxLFpuGgAAAA==",
+        "file":"?",
+        "content":"SNAPPYSZ",
+        "delete":false
+    }
+}

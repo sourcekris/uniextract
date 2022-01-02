@@ -102,6 +102,24 @@ e=lzw && echo -n LZWCOM > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c 
 echo -n "Squeeze (Dan Bernstein): "
 e=mw && echo -n MWSQUEEZE > 0 && cat 0 | tools/mwsqueeze > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 
+echo -n "Snappy framing format: "
+e=sz && echo -n SNAPPYSZ > 0 && tools/snzip 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Snappy snzip format: "
+e=snz && echo -n SNAPPYSNZIP > 0 && tools/snzip -t snzip 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Snappy raw format: "
+e=raw && echo -n SNAPPYRAW > 0 && tools/snzip -t raw 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Snappy Appli iWA format: "
+e=iwa && echo -n SNAPPYIWA > 0 && tools/snzip -t iwa 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Snappy Java format: "
+e=snappy && echo -n SNAPPYJAVA > 0 && tools/snzip -t snappy-java 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
+echo -n "Snappy Hadoop format: "
+e=snappy && echo -n SNAPPYHADOOP > 0 && tools/snzip -t hadoop-snappy 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
