@@ -120,6 +120,12 @@ e=snappy && echo -n SNAPPYJAVA > 0 && tools/snzip -t snappy-java 0 && gzip < 0.$
 echo -n "Snappy Hadoop format: "
 e=snappy && echo -n SNAPPYHADOOP > 0 && tools/snzip -t hadoop-snappy 0 && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
 
+echo -n "Facebook Zstandard format: "
+e=zst && echo -n FACEBOOKZSTD > 0 && tools/zstd -q 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
+echo -n "Zstandard lz4 format: "
+e=lz4 && echo -n ZSTANDARDLZ4 > 0 && tools/zstd -q --format=lz4 0 && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
+
 echo -n "ACE test: "
 # we cannot create ACE archives on linux so heres one we created elsewhere.
 e=ace && echo "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0 && rm 0.$e && echo
