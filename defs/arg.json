@@ -1,0 +1,27 @@
+{
+    "name":"ARG",
+    "comment":"A DOS compression utility by Igor Pavlov - http://fileformats.archiveteam.org/wiki/ARG",
+    "extensions":["arg"],
+    "install": {
+        "method":"apt",
+        "packages":["dosbox"]
+    },
+    "pack": {
+        "exe":"dosbox",
+        "cmdline":"$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"arg a $file.arg $file\" -c \"exit\""
+    },
+    "unpack": {
+        "exe":"dosbox",
+        "cmdline":"$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"D:\\\\arg e F:\\\\$shortname\" -c \"exit\"",
+        "extension":"arg",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIADKm0WEAA2MwYEACIUzKIcxAGoQdg9wZAaxjSuEeAAAA",
+        "file":"0",
+        "content":"ARG",
+        "delete":true
+    }
+}
+
+
