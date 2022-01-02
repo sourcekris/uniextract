@@ -6,6 +6,10 @@ SKIP_WINE=false
 DEBUG=false
 SPECIFIC_TEST=""
 
+# create maps for storing our tests in.
+declare -A at_e at_c at_r
+declare -A bt_e bt_b
+
 while [[ $# -gt 0 ]]; do
   case $1 in
     -t|--test)
@@ -32,7 +36,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# archiver_test conducts a test for an archiver taking 4 arguments:
+# archiver_test stores a test for an archiver in the at_* hashmaps. Takes 4 arguments:
 # - $1 - string - extension
 # - $2 - string - user facing message for the test and what is written to the test archive.
 # - $3 - string - archiver packing command
@@ -43,6 +47,22 @@ function archiver_test () {
   cmdline="$3"
   rmorig=$4
 
+  at_e[$msg]="$e"
+  at_c[$msg]="$cmdline"
+  at_r[$msg]=$rmorig
+
+  if [ $DEBUG = true ]; then
+    echo "stored: $msg: ${at_e[$msg]} => ${at_c[$msg]} => ${at_r[$msg]}"
+  fi
+}
+
+# does the archiver test we stored earlier in the global maps.
+function archiver_test_do () {
+  msg="$1"
+  e="${at_e[$msg]}"
+  cmdline="${at_c[$msg]}"
+  rmorig=${at_r[$msg]}
+  
   echo -n "$msg test: "
   echo -n "$msg" > 0
 
@@ -61,7 +81,7 @@ function archiver_test () {
   echo "$B64"
 }
 
-# blob_test emits a test string given a archive base64 blob:
+# blob_test stores test parameters an archive base64 blob:
 # - $1 - string - extension
 # - $2 - string - user facing message for the test
 # - $3 - string - the base64 encoded archive
@@ -70,6 +90,19 @@ function blob_test () {
   msg="$2"
   blob="$3"
 
+  bt_e[$msg]="$e"
+  bt_b[$msg]="$blob"
+
+  if [ $DEBUG = true ]; then
+    echo "stored: $msg: ${bt_e[$msg]} => ${bt_b[$msg]}"
+  fi
+}
+
+function blob_test_do () {
+  msg="$1"
+  e="${bt_e[$msg]}"
+  blob="${bt_b[$msg]}"
+
   echo -n "$msg test: "
   B64=$(echo "$blob" | base64 -d > 0.$e && gzip < 0.$e | base64 -w 0)
   rm 0.$e
@@ -77,6 +110,7 @@ function blob_test () {
   echo "$B64"
 }
 
+# Store the archiver tests in the hashmaps.
 archiver_test "zip" "ZIP" "zip -q 0.\$e 0" true
 archiver_test "cpio" "CPIO" "echo 0 | cpio -o --quiet -F 0.\$e" true
 archiver_test "kgb" "KGB" "tools/KGB_arch -9 0.\$e 0 > /dev/null" true
@@ -118,6 +152,7 @@ archiver_test "zst" "FACEBOOKZSTD" "tools/zstd -q 0" true
 archiver_test "lz4" "ZSTANDARDLZ4" "tools/zstd -q --format=lz4 0" true
 archiver_test "zpaq" "ZPAQ" "zpaq a 0.zpaq 0 > /dev/null 2>&1" true
 
+# store all of the blob tests in the global maps.
 blob_test "ace" "ACE" "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U="
 blob_test "alz" "ALZIP" "QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg=="
 blob_test "egg" "EGG" "RUdHQQABpuPSNQAAAAAiguII45CFCgAAAAADAAAAAAAAAKyRhQoAAQAwC5WGLAAJAADg7qdn/NcBACKC4ggTDLUCAQUDAAAABQAAAMibkN4iguIIc3V3BwAiguII"
@@ -138,6 +173,31 @@ blob_test "zzz" "crunch" "dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE="
 blob_test "sqx" "SQX" "ULBSAAAZAC1zcXgtCwAAAAAAAAAAAAAAAEeoRAAFLAAAAAAUFAJZ7cTYIAAAAKIJIlQcAAAACQAAAAkAdG1wXG1vb1wwZgQJAAAAAEAFAAAA4hxgOvvo3wimlDZDAAAnSz4rUwAABwA="
 
 
+# Actually do the tests now.
+
+# If the user requests a specific test, do it and exit now.
+if [ ! -z "$SPECIFIC_TEST" ]; then
+  if [ ${at_e[$SPECIFIC_TEST]+abc} ]; then
+    archiver_test_do "$SPECIFIC_TEST"
+  elif [ ${bt_e[$SPECIFIC_TEST]+abc} ]; then
+    blob_test_do "$SPECIFIC_TEST"
+  else
+    echo "error: test $SPECIFIC_TEST not found."
+  fi
+  exit
+fi
+
+# Run all archiver tests.
+for key in ${!at_e[@]}; do
+  archiver_test_do "$key"
+done
+
+# Run all blob tests.
+for key in ${!bt_e[@]}; do
+  blob_test_do "$key"
+done
+
+# Extra / Odd tests below...
 echo -n "dar test: "
 e=dar && td=$(mktemp -d) && echo -n DAR > $td/0 && pushd $td > /dev/null && dar -c 0 -q -X 0.1.$e && gzip < 0.1.$e | base64 -w 0 && popd > /dev/null && rm -fr $td && echo
 
