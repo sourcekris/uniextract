@@ -1,0 +1,25 @@
+{
+    "name":"BIX",
+    "comment":"Precursor to 7z by Igor Pavlov - http://fileformats.archiveteam.org/wiki/BIX",
+    "extensions":["bix"],
+    "install": {
+        "method":"apt",
+        "packages":["wine"]
+    },
+    "pack": {
+        "exe":"wine",
+        "cmdline":"$tool $tools/bix a $file.bix $file"
+    },
+    "unpack": {
+        "exe":"wine",
+        "cmdline":"cd $destdir && $tool $tools/bix e -o. z:$archive",
+        "extension":"bix",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAAB/0WEAA3PyjDA4uIN51kfHo67azAwM/AwQkNMtd4nFoUGZASgGxmZrQ068Xa0UwsAIhApAAQMnzwgA4l0wTD4AAAA=",
+        "file":"0",
+        "content":"BIX",
+        "delete":true
+    }
+}

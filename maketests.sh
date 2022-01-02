@@ -7,8 +7,9 @@ DEBUG=false
 SPECIFIC_TEST=""
 
 # create maps for storing our tests in.
-declare -A at_e at_c at_r
-declare -A bt_e bt_b
+declare -A at_e at_c at_r   # archiver_test
+declare -A wt_e wt_c wt_r   # wine_test
+declare -A bt_e bt_b        # blob_test
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -110,6 +111,53 @@ function blob_test_do () {
   echo "$B64"
 }
 
+# wine_test stores a test for an archiver that uses wine in the wt_* hashmaps. Takes 4 arguments:
+# - $1 - string - extension
+# - $2 - string - user facing message for the test and what is written to the test archive.
+# - $3 - string - archiver packing command
+# - $4 - bool - does the test need to rm the original file (true / false)
+function wine_test () {
+  e="$1"
+  msg="$2"
+  cmdline="$3"
+  rmorig=$4
+
+  wt_e[$msg]="$e"
+  wt_c[$msg]="$cmdline"
+  wt_r[$msg]=$rmorig
+
+  if [ $DEBUG = true ]; then
+    echo "stored: $msg: ${wt_e[$msg]} => ${wt_c[$msg]} => ${wt_r[$msg]}"
+  fi
+}
+
+# does the wine based test we stored earlier in the global maps.
+function wine_test_do () {
+  msg="$1"
+  e="${wt_e[$msg]}"
+  cmdline="${wt_c[$msg]}"
+  rmorig=${wt_r[$msg]}
+  
+  echo -n "$msg test: "
+  echo -n "$msg" > 0
+
+  if [ $DEBUG = true ]; then
+    echo "$cmdline"
+  fi
+
+  eval "$cmdline"
+  B64=$(gzip < 0.$e | base64 -w 0)
+
+  rm 0.$e
+  if [ $rmorig = true ]; then
+    rm 0
+  fi
+
+  echo "$B64"
+}
+
+
+
 # Store the archiver tests in the hashmaps.
 archiver_test "zip" "ZIP" "zip -q 0.\$e 0" true
 archiver_test "cpio" "CPIO" "echo 0 | cpio -o --quiet -F 0.\$e" true
@@ -152,6 +200,10 @@ archiver_test "zst" "FACEBOOKZSTD" "tools/zstd -q 0" true
 archiver_test "lz4" "ZSTANDARDLZ4" "tools/zstd -q --format=lz4 0" true
 archiver_test "zpaq" "ZPAQ" "zpaq a 0.zpaq 0 > /dev/null 2>&1" true
 
+wine_test "bix" "BIX" "wine tools/bix a 0.\$e 0 > /dev/null" true
+wine_test "ufa" "UFA" "wine tools/ufa a 0.\$e 0 > /dev/null" true
+wine_test "777" "777" "wine tools/777 a 0.\$e 0 > /dev/null" true
+
 # store all of the blob tests in the global maps.
 blob_test "ace" "ACE" "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U="
 blob_test "alz" "ALZIP" "QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg=="
@@ -172,7 +224,6 @@ blob_test "sq2" "Squeeze2" "+v8wADAxLzAxLzEyMgAAGtYAIVRulwMAAQACAK7/rP/N///+0ho=
 blob_test "zzz" "crunch" "dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE="
 blob_test "sqx" "SQX" "ULBSAAAZAC1zcXgtCwAAAAAAAAAAAAAAAEeoRAAFLAAAAAAUFAJZ7cTYIAAAAKIJIlQcAAAACQAAAAkAdG1wXG1vb1wwZgQJAAAAAEAFAAAA4hxgOvvo3wimlDZDAAAnSz4rUwAABwA="
 
-
 # Actually do the tests now.
 
 # If the user requests a specific test, do it and exit now.
@@ -181,6 +232,8 @@ if [ ! -z "$SPECIFIC_TEST" ]; then
     archiver_test_do "$SPECIFIC_TEST"
   elif [ ${bt_e[$SPECIFIC_TEST]+abc} ]; then
     blob_test_do "$SPECIFIC_TEST"
+  elif [ ${wt_e[$SPECIFIC_TEST]+abc} ]; then
+    wine_test_do "$SPECIFIC_TEST"
   else
     echo "error: test $SPECIFIC_TEST not found."
   fi
@@ -212,6 +265,8 @@ if [ "$SKIP_DOSBOX" = false ]; then
     e=amg && echo -n AMG > 0 && p=$(pwd) && dosbox -noconsole -c "MOUNT D $p" -c "MOUNT E $p/tools" -c "E:" -c "AMGC a D:\\0.$e D:\\0" -c "exit" > /dev/null && mv 0.AMG 0.$e && gzip < 0.$e | base64 -w 0 && rm 0 0.$e && echo
 fi
 
-# if [ "$SKIP_WINE" = false ]; then
-#   # no wine invoking tests just yet.
-#fi
+if [ "$SKIP_WINE" = false ]; then
+  for key in ${!wt_e[@]}; do
+    wine_test_do "$key"
+  done
+fi
