@@ -199,6 +199,7 @@ dosbox_test "ain" "AIN" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"
 dosbox_test "sqz" "SQUEEZIT" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\sqz a 0 0\" -c \"exit\"" true
 dosbox_test "lzw" "LZWCOM" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\lzwcom 0 0.\$e\" -c \"exit\"" true
 dosbox_test "amg" "AMG" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\amgc a 0.\$e 0\" -c \"exit\"" true
+dosbox_test "ar7" "AR7" "dosbox -c \"mount d $(pwd)\" -c \"mount e tools\" -c \"d:\" -c \"e:\\ar7 a 0.\$e 0\" -c \"exit\"" true
 
 blob_test "ace" "ACE" "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U="
 blob_test "alz" "ALZIP" "QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg=="
