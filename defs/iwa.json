@@ -1,5 +1,5 @@
 {
-    "name":"Apple iWork iwa format",
+    "name":"AppleiWork",
     "comment":"Apple iWork files are snappy compressed protobufs - https://github.com/obriensp/iWorkFileFormat/blob/master/Docs/index.md#snappy-compression",
     "extensions":["iwa", "snappy"],
     "install": {

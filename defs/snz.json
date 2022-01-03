@@ -1,5 +1,5 @@
 {
-    "name":"Snappy snzip format",
+    "name":"SnappySnzip",
     "comment":"Google's snappy compression library used for snzip format - https://github.com/kubo/snzip",
     "extensions":["snz", "snappy"],
     "install": {

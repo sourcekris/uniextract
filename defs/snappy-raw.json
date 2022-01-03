@@ -1,5 +1,5 @@
 {
-    "name":"Snappy raw format",
+    "name":"SnappyRaw",
     "comment":"Google's snappy compression library raw format - https://github.com/google/snappy",
     "extensions":["raw", "snappy"],
     "install": {

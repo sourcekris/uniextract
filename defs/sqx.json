@@ -1,6 +1,6 @@
 {
-    "name":"SQX - Squeez 5",
-    "comment":"http://fileformats.archiveteam.org/wiki/SQX",
+    "name":"SQX",
+    "comment":"SQX, Squeez 5 format - http://fileformats.archiveteam.org/wiki/SQX",
     "extensions":["sqx"],
     "install": {
         "method":"apt",

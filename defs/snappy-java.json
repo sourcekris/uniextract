@@ -1,5 +1,5 @@
 {
-    "name":"Snappy java format",
+    "name":"SnappyJava",
     "comment":"Google's snappy compression library java format - https://github.com/google/snappy",
     "extensions":["snappy"],
     "install": {

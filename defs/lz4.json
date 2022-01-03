@@ -1,5 +1,5 @@
 {
-    "name":"Facebook Zstandard lz4 format",
+    "name":"FacebookZstandardLz4",
     "comment":"Facebook's Zstandard implementation of lz4 - https://github.com/facebook/zstd",
     "extensions":["lz4"],
     "install": {

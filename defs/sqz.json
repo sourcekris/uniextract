@@ -1,5 +1,5 @@
 {
-    "name":"Squeeze It",
+    "name":"SqueezeIt",
     "comment":"An early-1990s archival/compression program for DOS - http://fileformats.archiveteam.org/wiki/Squeeze_It",
     "extensions":["sqz"],
     "install": {

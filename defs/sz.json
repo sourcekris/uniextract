@@ -1,5 +1,5 @@
 {
-    "name":"Snappy framing format",
+    "name":"SnappyFraming",
     "comment":"Google's snappy compression library default framing format - https://github.com/google/snappy",
     "extensions":["sz", "snappy"],
     "install": {

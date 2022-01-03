@@ -1,6 +1,6 @@
 {
-    "name":"Squeeze (Dan Bernstein)",
-    "comment":"Compression utility using Miller-Wegman encoding - http://fileformats.archiveteam.org/wiki/Squeeze_(Daniel_Bernstein)",
+    "name":"MWSqueeze",
+    "comment":"Compression utility using Miller-Wegman encoding by Dan Bernstein - http://fileformats.archiveteam.org/wiki/Squeeze_(Daniel_Bernstein)",
     "extensions":["mw"],
     "install": {
         "method":"source",

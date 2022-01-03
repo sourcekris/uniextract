@@ -13,7 +13,6 @@ def archiver_in_path(d):
         try:
             p = subprocess.Popen(cmdline, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             out, err = p.communicate()
-            #res = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
             if want in out.decode() or want in err.decode():
                 return True
         except subprocess.CalledProcessError as e:

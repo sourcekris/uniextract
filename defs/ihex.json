@@ -1,5 +1,5 @@
 {
-    "name":"Intel Hex",
+    "name":"IntelHex",
     "comment":"Intel hex encoded objects",
     "extensions":["ihex"],
     "install": {
