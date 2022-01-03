@@ -6,7 +6,7 @@ import json
 definitions_path = "defs/"
 tools_path = "tools/"
 
-def load_defs():
+def load_defs(addfn=False):
     defnames = glob(os.path.join(definitions_path, "*.json"))
     definitions = []
     for d in defnames:
@@ -16,5 +16,7 @@ def load_defs():
             print(f'error loading archiver definition {d}: {e}, continuing...')
             continue
 
+        if addfn:
+            jd["definition_filename"] = d
         definitions.append(jd)
     return definitions
