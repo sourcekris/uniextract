@@ -7,6 +7,10 @@
         "build":"cd Source/unegg/release-x64 && make clean && make && cp unegg $tools",
         "exist_check":["unegg -h","unegg v"]
     },
+    "pack":{
+        "type":"blob",
+        "blob":"RUdHQQABpuPSNQAAAAAiguII45CFCgAAAAADAAAAAAAAAKyRhQoAAQAwC5WGLAAJAADg7qdn/NcBACKC4ggTDLUCAQUDAAAABQAAAMibkN4iguIIc3V3BwAiguII"
+    },
     "unpack": {
         "exe":"$tools/unegg",
         "cmdline":"$tool -x $archive $destdir",

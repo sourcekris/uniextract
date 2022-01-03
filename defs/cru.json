@@ -8,6 +8,10 @@
         "build":"make && cp deark $tools",
         "exist_check":["deark -version","Deark version:"]
     },
+    "pack":{
+        "type":"blob",
+        "blob":"Q1JVU0ggdjEuOAoaAHSgVwAAAgAAACAAAABDUlVDUlUAIFuMnlMDAAAAMC5UWFQAq9AjIn8AAAAAIK6OnlMDAAAAMS5UWFQAAAAAAAAAAAA="
+    },
     "unpack": {
         "exe":"$tools/deark",
         "cmdline":"$tool -od $destdir -o 0 $archive",

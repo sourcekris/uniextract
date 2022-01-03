@@ -9,11 +9,9 @@ def main(args):
     defs = load_defs()
     for d in defs:
         name = d["name"]
-        if ' ' in name:
-            print(f'archiver "{name}" has space in name')
-        # if "pack" not in d:
-        #     print(f"archiver {name} has no packer")
 
+        if "pack" not in d and name in bt:
+            print(f"archiver {name} has no packer and is a blob test")
 
 if __name__ == "__main__":
     main(sys.argv)

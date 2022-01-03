@@ -5,6 +5,11 @@
         "method":"apt",
         "packages":["arj"]
     },
+    "pack": {
+        "type":"archiver",
+        "exe":"arj",
+        "cmdline":"$tool a $file.$extension $file"
+    },
     "unpack": {
         "exe":"arj",
         "cmdline":"$tool x -ht$destdir $archive",

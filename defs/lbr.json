@@ -1,23 +1,28 @@
 {
     "name":"LBR",
-    "comment":"Library File from the CP/M era - http://fileformats.archiveteam.org/wiki/LBR",
+    "comment":"Library Archive from the CP/M era - http://fileformats.archiveteam.org/wiki/LBR",
     "extensions":["lbr"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method":"source",
+        "repo":"https://github.com/sourcekris/lar",
+        "build":"make && cp lar $tools",
+        "exist_check":["lar -h","Usage: lar"]
+    },
+    "pack": {
+        "type":"archiver",
+        "exe":"$tools/lar",
+        "cmdline":"echo 1 | $tool u $file.$extension $file"
     },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
+        "exe":"$tools/lar",
+        "cmdline":"cd $destdir && $tool e $archive",
         "extension":"lbr",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAGLUz2EAA2NQQAAGBkaGu0wMqMAAIc8IlP+XhSr9nwE/ICTv4xQkNZAAALO5VUoAAQAA",
-        "file":"0. ",
+        "blob":"H4sIABZ70mEAA2NQQAAGBkaGq29P2Z2yS6xOrGaAAAOEPCNQ/l8WTL4WLP0fRT8mICTv4xQkNZAAAFP6BcgAAQAA",
+        "file":"0.",
         "content":"LBR",
-        "padbyte":"0x1a",
-        "padlen":128,
         "delete":true
     }
 }

@@ -1,9 +1,14 @@
 {
-    "name":"alzip",
+    "name":"ALZip",
+    "comment":"ALZip is a Windows and Mac archiver by ESTSoft and has been supersceeded by the EGG archive format - http://fileformats.archiveteam.org/wiki/ALZ",
     "extensions":["alz"],
     "install": {
         "method":"apt",
         "packages":["atool", "unalz"]
+    },
+    "pack":{
+        "type":"blob",
+        "blob":"QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg=="
     },
     "unpack": {
         "exe":"unalz",

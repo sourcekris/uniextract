@@ -5,6 +5,10 @@
         "method":"pip",
         "packages":["acefile"]
     },
+    "pack":{
+        "type":"blob",
+        "blob":"TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U="
+    },
     "unpack": {
         "exe":"acefile-unace",
         "cmdline":"$tool --extract -d $destdir $archive",

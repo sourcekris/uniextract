@@ -6,6 +6,10 @@
         "method":"apt",
         "packages":["unar"]
     },
+    "pack":{
+        "type":"blob",
+        "blob":"GKEtcG0yLREAAACAAAAAAAAAACAAAjAuXMvsoBIAAAAAALgAIHBpDWvkAAA="
+    },
     "unpack": {
         "exe":"unar",
         "cmdline":"$tool -o $destdir $archive",
