@@ -1,27 +1,28 @@
 {
-    "name":"FacebookZstandardLz4",
-    "comment":"Facebook's Zstandard implementation of lz4 - https://github.com/facebook/zstd",
-    "extensions":["lz4"],
+    "name": "FacebookZstandardLz4",
+    "comment": "Facebook's Zstandard implementation of lz4 - https://github.com/facebook/zstd",
+    "extensions": ["lz4"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/facebook/zstd",
-        "build":"make && cp zstd $tools",
-        "exist_check":["zstd -V","zstd command line interface"]
+        "method": "source",
+        "repo": "https://github.com/facebook/zstd",
+        "build": "make && cp zstd $tools",
+        "exist_check": ["zstd -V", "zstd command line interface"]
     },
     "pack": {
-        "exe":"$tools/zstd",
-        "cmdline":"$tool --format=lz4 $file"
+        "exe": "$tools/zstd",
+        "cmdline": "$tool --format=lz4 $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"$tools/zstd",
-        "cmdline":"$tool -d $archive --output-dir-flat $destdir",
-        "extension":"lz4",
+        "exe": "$tools/zstd",
+        "cmdline": "$tool -d $archive --output-dir-flat $destdir",
+        "extension": "lz4",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPAk0WEAA2NR8pXwceBhgIA7QEZDVHCIo5+LY5CLT5QJSHBVvW06ALdvykEnAAAA",
-        "file":"?",
-        "content":"ZSTANDARDLZ4",
-        "delete":true
+        "blob": "H4sIAPAk0WEAA2NR8pXwceBhgIA7QEZDVHCIo5+LY5CLT5QJSHBVvW06ALdvykEnAAAA",
+        "file": "?",
+        "content": "ZSTANDARDLZ4",
+        "delete": true
     }
 }

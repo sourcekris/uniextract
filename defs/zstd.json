@@ -1,27 +1,28 @@
 {
-    "name":"FacebookZstandard",
-    "comment":"Facebook's Zstandard compression library and program - https://github.com/facebook/zstd",
-    "extensions":["zst"],
+    "name": "FacebookZstandard",
+    "comment": "Facebook's Zstandard compression library and program - https://github.com/facebook/zstd",
+    "extensions": ["zst"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/facebook/zstd",
-        "build":"make && cp zstd $tools",
-        "exist_check":["zstd -V","zstd command line interface"]
+        "method": "source",
+        "repo": "https://github.com/facebook/zstd",
+        "build": "make && cp zstd $tools",
+        "exist_check": ["zstd -V", "zstd command line interface"]
     },
     "pack": {
-        "exe":"$tools/zstd",
-        "cmdline":"$tool $file"
+        "exe": "$tools/zstd",
+        "cmdline": "$tool $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"$tools/zstd",
-        "cmdline":"$tool -d $archive --output-dir-flat $destdir",
-        "extension":"zst",
+        "exe": "$tools/zstd",
+        "cmdline": "$tool -d $archive --output-dir-flat $destdir",
+        "extension": "zst",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAHZU0WEAA9PYqv9XhSeRgcHN0dnVyd/fOyo4xIWv7sEGAOr2U2cZAAAA",
-        "file":"?",
-        "content":"FACEBOOKZSTD",
-        "delete":true
+        "blob": "H4sIAHZU0WEAA9PYqv9XhSeRgcHN0dnVyd/fOyo4xIWv7sEGAOr2U2cZAAAA",
+        "file": "?",
+        "content": "FACEBOOKZSTD",
+        "delete": true
     }
 }

@@ -1,27 +1,28 @@
 {
-    "name":"LZWCOM",
-    "comment":"A hashed LZW compressor which was a precursor to Crunch - http://fileformats.archiveteam.org/wiki/LZWCOM",
-    "extensions":["lzw"],
+    "name": "LZWCOM",
+    "comment": "A hashed LZW compressor which was a precursor to Crunch - http://fileformats.archiveteam.org/wiki/LZWCOM",
+    "extensions": ["lzw"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/jsummers/deark",
-        "build":"make && cp deark $tools",
-        "exist_check":["deark -version","Deark version:"]
+        "method": "source",
+        "repo": "https://github.com/jsummers/deark",
+        "build": "make && cp deark $tools",
+        "exist_check": ["deark -version", "Deark version:"]
     },
     "pack": {
-        "exe":"dosbox",
-        "cmdline":"p=$(pwd) && cp $tools/LZWCOM.EXE $p && $tool -noconsole -c \"MOUNT D $p\" -c \"D:\" -c \"LZWCOM $file $file.lzw\" -c \"exit\" && mv $file.LZW $file.lzw"
+        "exe": "dosbox",
+        "cmdline": "p=$(pwd) && cp $tools/LZWCOM.EXE $p && $tool -noconsole -c \"MOUNT D $p\" -c \"D:\" -c \"LZWCOM $file $file.lzw\" -c \"exit\" && mv $file.LZW $file.lzw",
+        "type": "dosbox"
     },
     "unpack": {
-        "exe":"$tools/deark",
-        "cmdline":"$tool -od $destdir -m lzwcom -o 0 $archive",
-        "extension":"lzw",
+        "exe": "$tools/deark",
+        "cmdline": "$tool -od $destdir -m lzwcom -o 0 $archive",
+        "extension": "lzw",
         "force_extension": false
     },
     "test": {
-        "blob":"H4sIAE/50GEAAzMs2x1vcMT2cxQA0EREqgkAAAA=",
-        "file":"0.000.unc",
-        "content":"LZWCOM",
-        "delete":true
+        "blob": "H4sIAE/50GEAAzMs2x1vcMT2cxQA0EREqgkAAAA=",
+        "file": "0.000.unc",
+        "content": "LZWCOM",
+        "delete": true
     }
 }

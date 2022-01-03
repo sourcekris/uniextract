@@ -1,27 +1,28 @@
 {
-    "name":"AppleiWork",
-    "comment":"Apple iWork files are snappy compressed protobufs - https://github.com/obriensp/iWorkFileFormat/blob/master/Docs/index.md#snappy-compression",
-    "extensions":["iwa", "snappy"],
+    "name": "AppleiWork",
+    "comment": "Apple iWork files are snappy compressed protobufs - https://github.com/obriensp/iWorkFileFormat/blob/master/Docs/index.md#snappy-compression",
+    "extensions": ["iwa", "snappy"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/kubo/snzip",
-        "build":"apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
-        "exist_check":["snzip -h","Usage: snzip"]
+        "method": "source",
+        "repo": "https://github.com/kubo/snzip",
+        "build": "apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+        "exist_check": ["snzip -h", "Usage: snzip"]
     },
     "pack": {
-        "exe":"$tools/snzip",
-        "cmdline":"$tool -t iwa $file"
+        "exe": "$tools/snzip",
+        "cmdline": "$tool -t iwa $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"$tools/snzip",
-        "cmdline":"$tool -d -t iwa < $archive > $destdir/$basename",
-        "extension":"iwa",
+        "exe": "$tools/snzip",
+        "cmdline": "$tool -d -t iwa < $archive > $destdir/$basename",
+        "extension": "iwa",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIALga0WEAA2PgZmDgVAj2cwwIiPQMdwQAMF29MA8AAAA=",
-        "file":"?",
-        "content":"SNAPPYIWA",
-        "delete":true
+        "blob": "H4sIALga0WEAA2PgZmDgVAj2cwwIiPQMdwQAMF29MA8AAAA=",
+        "file": "?",
+        "content": "SNAPPYIWA",
+        "delete": true
     }
 }

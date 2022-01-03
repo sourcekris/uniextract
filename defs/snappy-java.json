@@ -1,27 +1,28 @@
 {
-    "name":"SnappyJava",
-    "comment":"Google's snappy compression library java format - https://github.com/google/snappy",
-    "extensions":["snappy"],
+    "name": "SnappyJava",
+    "comment": "Google's snappy compression library java format - https://github.com/google/snappy",
+    "extensions": ["snappy"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/kubo/snzip",
-        "build":"apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
-        "exist_check":["snzip -h","Usage: snzip"]
+        "method": "source",
+        "repo": "https://github.com/kubo/snzip",
+        "build": "apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+        "exist_check": ["snzip -h", "Usage: snzip"]
     },
     "pack": {
-        "exe":"$tools/snzip",
-        "cmdline":"$tool -t snappy-java $file"
+        "exe": "$tools/snzip",
+        "cmdline": "$tool -t snappy-java $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"$tools/snzip",
-        "cmdline":"$tool -d < $archive > $destdir/$basename",
-        "extension":"snappy",
+        "exe": "$tools/snzip",
+        "cmdline": "$tool -d < $archive > $destdir/$basename",
+        "extension": "snappy",
         "force_extension": false
     },
     "test": {
-        "blob":"H4sIALga0WEAA2sK9nMMCIhkAAJGKObhUoEIejmGOQIARZ0hXiAAAAA=",
-        "file":"?",
-        "content":"SNAPPYJAVA",
-        "delete":true
+        "blob": "H4sIALga0WEAA2sK9nMMCIhkAAJGKObhUoEIejmGOQIARZ0hXiAAAAA=",
+        "file": "?",
+        "content": "SNAPPYJAVA",
+        "delete": true
     }
 }

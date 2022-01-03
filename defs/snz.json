@@ -1,27 +1,28 @@
 {
-    "name":"SnappySnzip",
-    "comment":"Google's snappy compression library used for snzip format - https://github.com/kubo/snzip",
-    "extensions":["snz", "snappy"],
+    "name": "SnappySnzip",
+    "comment": "Google's snappy compression library used for snzip format - https://github.com/kubo/snzip",
+    "extensions": ["snz", "snappy"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/kubo/snzip",
-        "build":"apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
-        "exist_check":["snzip -h","Usage: snzip"]
+        "method": "source",
+        "repo": "https://github.com/kubo/snzip",
+        "build": "apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+        "exist_check": ["snzip -h", "Usage: snzip"]
     },
     "pack": {
-        "exe":"$tools/snzip",
-        "cmdline":"$tool -t snzip $file"
+        "exe": "$tools/snzip",
+        "cmdline": "$tool -t snzip $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"$tools/snzip",
-        "cmdline":"$tool -d < $archive > $destdir/$basename",
-        "extension":"snz",
+        "exe": "$tools/snzip",
+        "cmdline": "$tool -d < $archive > $destdir/$basename",
+        "extension": "snz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIALga0WEAAwv2i2IU4OXWCPZzDAiIDPaL8gxgAABqulUyFAAAAA==",
-        "file":"?",
-        "content":"SNAPPYSNZIP",
-        "delete":true
+        "blob": "H4sIALga0WEAAwv2i2IU4OXWCPZzDAiIDPaL8gxgAABqulUyFAAAAA==",
+        "file": "?",
+        "content": "SNAPPYSNZIP",
+        "delete": true
     }
 }
