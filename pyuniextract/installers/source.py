@@ -2,6 +2,7 @@ import subprocess
 import tempfile
 import os, os.path
 from .testarchiver import test_archiver
+from .config import tools_path
 
 # return True if the archiver needed to unpack d is already in the system path.
 def archiver_in_path(d):
