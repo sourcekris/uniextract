@@ -5,6 +5,7 @@ import json
 # config
 definitions_path = "defs/"
 tools_path = "tools/"
+default_fn = "0"
 
 def load_defs(addfn=False):
     defnames = glob(os.path.join(definitions_path, "*.json"))

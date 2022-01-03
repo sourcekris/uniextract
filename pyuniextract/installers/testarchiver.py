@@ -4,6 +4,7 @@ from base64 import b64decode
 import os, os.path
 import subprocess
 from .config import tools_path
+from .template import prepare_cmdline, prepare_exe
 
 # used for:
 #  - archivers that extract entire blocks to disk e.g. CPM archivers.
@@ -39,20 +40,8 @@ def test_archiver(d):
             with tempfile.TemporaryDirectory() as tmpdir:
                 tools = os.path.join(os.getcwd(), tools_path)
                 basename = os.path.splitext(os.path.basename(arcfile.name))[0]
-                windest = "z:" + tmpdir.replace("/","\\\\")
-                winarc = "z:" + arcfile.name.replace("/","\\\\")
-                exe = d["unpack"]["exe"]
-                exe = exe.replace("$tools", tools)
-                cmdline = d["unpack"]["cmdline"]
-                cmdline = cmdline.replace("$tools", tools)
-                cmdline = cmdline.replace("$tool", exe)
-                cmdline = cmdline.replace("$archive", arcfile.name)
-                cmdline = cmdline.replace("$arcloc", os.path.dirname(arcfile.name))
-                cmdline = cmdline.replace("$windestdir", windest)
-                cmdline = cmdline.replace("$winarchive", winarc)
-                cmdline = cmdline.replace("$destdir", tmpdir)
-                cmdline = cmdline.replace("$basename", basename)
-                cmdline = cmdline.replace("$shortname", basename[:6]+"~1"+extension) # for dos unpackers, but ~1 might not be good enough?
+                exe = prepare_exe(d["unpack"]["exe"], tools)
+                cmdline = prepare_cmdline(exe, d["unpack"]["cmdline"], tools, destdir=tmpdir, archive=arcfile.name, ext=extension)
 
                 #print(f"{cmdline}", flush=True, end="")
                 try:
@@ -67,13 +56,11 @@ def test_archiver(d):
                 extracted_file = os.path.join(tmpdir, d["test"]["file"])
                 if extracted_file.endswith("?"):
                     # in case the archive does not store the name of the compressed file, e.g. gzip.
-                    basename = os.path.splitext(os.path.basename(arcfile.name))[0]
                     extracted_file = os.path.join(tmpdir, basename)
                 
                 if "?/" in extracted_file:
                     fn = extracted_file.split("/")[-1]
                     # in case the archive creates a folder based on the archive name to put the files into e.g. msi.
-                    basename = os.path.splitext(os.path.basename(arcfile.name))[0]
                     extracted_file = os.path.join(tmpdir, basename, fn)
 
                 resultdata = ""
