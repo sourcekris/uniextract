@@ -1,0 +1,28 @@
+{
+    "name": "ASD",
+    "comment": "Developed by Tobias Svensson - http://fileformats.archiveteam.org/wiki/ASD_Archiver",
+    "extensions": ["asd"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/sourcekris/asd",
+        "build":"make && cp asd $tools",
+        "exist_check":["asd -h","ASD - archiver"]
+    },
+    "pack": {
+        "exe": "$tools/asd",
+        "cmdline": "$tool a $file.asd $file",
+        "type": "archiver"
+    },
+    "unpack": {
+        "exe": "$tools/asd",
+        "cmdline": "cd $destdir && $tool x $archive",
+        "extension": "asd",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAIjf0mEC/3MMdjEwlGJkYDRgZmBg+L3VLq9oi3LIkkYRBsdgFwDdA9LHHQAAAA==",
+        "file": "0",
+        "content": "ASD",
+        "delete": true
+    }
+}

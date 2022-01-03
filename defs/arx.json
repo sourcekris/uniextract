@@ -1,0 +1,28 @@
+{
+    "name": "ARX",
+    "comment": "A DOS archive utility by Michael Kosior - http://fileformats.archiveteam.org/wiki/ARX",
+    "extensions": ["arx"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/jsummers/deark",
+        "build":"make && cp deark $tools",
+        "exist_check":["deark -version","Deark version:"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "dosbox -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:arx a 0.arx 0\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe":"$tools/deark",
+        "cmdline":"$tool -od $destdir -o 0 $archive && $tool -od $destdir -o 0 $destdir/0.000.lha",
+        "extension":"arx",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAL/X0mEC/xNn0M3JMNRlAAFmIPbeoByiwMBowOAYFMEQFJGTYaALFkeWywEAyBWAYzUAAAA=",
+        "file": "0.000.0",
+        "content": "ARX",
+        "delete": true
+    }
+}
