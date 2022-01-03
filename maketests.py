@@ -13,6 +13,7 @@ from pyuniextract.installers.template import prepare_cmdline, prepare_exe
 from pyuniextract.installers.testarchiver import pad
 
 def_store = "defs/"
+do_types = ["blob", "archiver", "dosbox", "wine"]
 
 def do_blob_test(name, blob):
     print(f"{name} test: ", flush=True, end="")
@@ -104,6 +105,9 @@ def main(argv):
     ap.add_argument('-l',"--list", choices=["tests", "types"], help="List tests or types of tests.")
     args = ap.parse_args(argv[1:])
 
+    if args.type:
+        do_types = [args.type]
+
     defs = load_defs(addfn=True)
     found_types = []
     for d in defs:
@@ -148,20 +152,19 @@ def main(argv):
             print(f"{fn}: {name}")
             continue
 
-        if test_type == "blob":
+        if test_type == "blob" and "blob" in do_types:
             do_blob_test(name, d["pack"]["blob"])
-        elif test_type == "archiver":
-            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
-        elif test_type == "wine":
-            # seperated so we can opt to skip them as they take a little while to run.
-            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
-        elif test_type == "dosbox":
-            # seperated so we can opt to skip them as they take a little while to run.
-            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
-        else:
-            print(f"not yet implemented for test {name}")
         
+        if test_type == "archiver" and "archiver" in do_types:
+            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+        
+        if test_type == "wine" and "wine" in do_types:
+            # seperated so we can opt to skip them as they take a little while to run.
+            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
 
+        if test_type == "dosbox" and "dosbox" in do_types:
+            # seperated so we can opt to skip them as they take a little while to run.
+            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
 
     if args.list == "types":
         print(f"Test types: {found_types}")
