@@ -1,25 +1,26 @@
 {
-    "name":"CAB",
-    "comment":"Microsoft Cabinet Archive",
-    "extensions":["cab"],
+    "name": "CAB",
+    "comment": "Microsoft Cabinet Archive",
+    "extensions": ["cab"],
     "install": {
-        "method":"apt",
-        "packages":["gcab"]
+        "method": "apt",
+        "packages": ["gcab"]
     },
     "pack": {
-        "exe":"gcab",
-        "cmdline":"$tool -c $file.cab $file"
+        "exe": "gcab",
+        "cmdline": "$tool -c $file.cab $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"gcab",
-        "cmdline":"$tool -x -C $destdir $archive",
-        "extension":"cab",
+        "exe": "gcab",
+        "cmdline": "$tool -x -C $destdir $archive",
+        "extension": "cab",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAAJpzmEAA/MNdnZjAAJPBgjQgdLMjIwMjFC2HRCD2MwMMDA/eKaQAoMBg6OjA1CUmcHZ0QkA1WEjeUkAAAA=",
-        "file":"0",
-        "content":"CAB",
-        "delete":true
+        "blob": "H4sIAAJpzmEAA/MNdnZjAAJPBgjQgdLMjIwMjFC2HRCD2MwMMDA/eKaQAoMBg6OjA1CUmcHZ0QkA1WEjeUkAAAA=",
+        "file": "0",
+        "content": "CAB",
+        "delete": true
     }
 }

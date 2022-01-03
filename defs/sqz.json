@@ -1,25 +1,26 @@
 {
-    "name":"SqueezeIt",
-    "comment":"An early-1990s archival/compression program for DOS - http://fileformats.archiveteam.org/wiki/Squeeze_It",
-    "extensions":["sqz"],
+    "name": "SqueezeIt",
+    "comment": "An early-1990s archival/compression program for DOS - http://fileformats.archiveteam.org/wiki/Squeeze_It",
+    "extensions": ["sqz"],
     "install": {
-        "method":"apt",
-        "packages":["dosbox"]
+        "method": "apt",
+        "packages": ["dosbox"]
     },
     "pack": {
-        "exe":"dosbox",
-        "cmdline":"p=$(pwd) && cp $tools/SQZ.EXE $p && $tool -noconsole -c \"MOUNT D $p\" -c \"D:\" -c \"SQZ a $file $file\" -c \"exit\" && mv $file.SQZ $file.sqz"
+        "exe": "dosbox",
+        "cmdline": "p=$(pwd) && cp $tools/SQZ.EXE $p && $tool -noconsole -c \"MOUNT D $p\" -c \"D:\" -c \"SQZ a $file $file\" -c \"exit\" && mv $file.SQZ $file.sqz",
+        "type": "dosbox"
     },
     "unpack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"MOUNT D $tools\" -c \"MOUNT E $destdir\" -c \"MOUNT F $arcloc\" -c \"D:\\\\SQZ x F:\\\\$shortname E:\\\\\" -c \"exit\"",
-        "extension":"sqz",
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"MOUNT D $tools\" -c \"MOUNT E $destdir\" -c \"MOUNT F $arcloc\" -c \"D:\\\\SQZ x F:\\\\$shortname E:\\\\\" -c \"exit\"",
+        "extension": "sqz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAORQ0GEAA/PwCQ6MMmRgFvnFwMHAAMa+DEohCr+eqpbHGAQHhrq6RnmGMLMyeIAUMgAAnELYqi8AAAA=",
-        "file":"0",
-        "content":"SQUEEZIT",
-        "delete":true
+        "blob": "H4sIAORQ0GEAA/PwCQ6MMmRgFvnFwMHAAMa+DEohCr+eqpbHGAQHhrq6RnmGMLMyeIAUMgAAnELYqi8AAAA=",
+        "file": "0",
+        "content": "SQUEEZIT",
+        "delete": true
     }
 }

@@ -1,24 +1,25 @@
 {
-    "name":"lzip",
-    "extensions":["lz"],
+    "name": "lzip",
+    "extensions": ["lz"],
     "install": {
-        "method":"apt",
-        "packages":["atool", "lzip"]
+        "method": "apt",
+        "packages": ["atool", "lzip"]
     },
-    "pack":{
-        "exe":"lzip",
-        "cmdline":"$tool $file"
+    "pack": {
+        "exe": "lzip",
+        "cmdline": "$tool $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"atool",
-        "cmdline":"$tool --extract-to=$destdir $archive",
-        "extension":"lz",
+        "exe": "atool",
+        "cmdline": "$tool --extract-to=$destdir $archive",
+        "extension": "lz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPdRzGEAA/OJ8gxg5GFQE2s1bbr05///3zYMDO5mtbdZGCBAA0oDAOo8TYAoAAAA",
-        "file":"?",
-        "content":"LZIP",
-        "delete":true
+        "blob": "H4sIAPdRzGEAA/OJ8gxg5GFQE2s1bbr05///3zYMDO5mtbdZGCBAA0oDAOo8TYAoAAAA",
+        "file": "?",
+        "content": "LZIP",
+        "delete": true
     }
 }

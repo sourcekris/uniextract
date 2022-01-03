@@ -1,24 +1,25 @@
 {
-    "name":"ARC",
-    "extensions":["arc", "ark"],
+    "name": "ARC",
+    "extensions": ["arc", "ark"],
     "install": {
-        "method":"apt",
-        "packages":["atool", "nomarch", "arc"]
+        "method": "apt",
+        "packages": ["atool", "nomarch", "arc"]
     },
-    "pack":{
-        "exe":"arc",
-        "cmdline":"$tool an $file.arc $file"
+    "pack": {
+        "exe": "arc",
+        "cmdline": "$tool an $file.arc $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"atool",
-        "cmdline":"$tool --extract-to=$destdir $archive",
-        "extension":"arc",
+        "exe": "atool",
+        "cmdline": "$tool --extract-to=$destdir $archive",
+        "extension": "arc",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAGQSzWEAA5NiMmCAACYQwQzEc4MT2nVaQSzHIGcpBgDis68mIgAAAA==",
-        "file":"0",
-        "content":"ARC",
-        "delete":true
+        "blob": "H4sIAGQSzWEAA5NiMmCAACYQwQzEc4MT2nVaQSzHIGcpBgDis68mIgAAAA==",
+        "file": "0",
+        "content": "ARC",
+        "delete": true
     }
 }

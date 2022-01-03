@@ -1,24 +1,25 @@
 {
-    "name":"lrzip",
-    "extensions":["lrz"],
+    "name": "lrzip",
+    "extensions": ["lrz"],
     "install": {
-        "method":"apt",
-        "packages":["lrzip"]
+        "method": "apt",
+        "packages": ["lrzip"]
     },
-    "pack":{
-        "exe":"lrzip",
-        "cmdline":"$tool -q $file"
+    "pack": {
+        "exe": "lrzip",
+        "cmdline": "$tool -q $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"lrzip",
-        "cmdline":"$tool -d -O $destdir $archive",
-        "extension":"lrz",
+        "exe": "lrzip",
+        "cmdline": "$tool -d -O $destdir $archive",
+        "extension": "lrz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAC7+y2EAA/MJivJkYGNlQAGMQMTIwMzAwAHEYsxcXAwMYBX7a/5cZ2ZlZfABagrgelq4ZD7n2z877FY9Db9/fS8ASygA/koAAAA=",
-        "file":"?",
-        "content":"LRZIP",
-        "delete":true
+        "blob": "H4sIAC7+y2EAA/MJivJkYGNlQAGMQMTIwMzAwAHEYsxcXAwMYBX7a/5cZ2ZlZfABagrgelq4ZD7n2z877FY9Db9/fS8ASygA/koAAAA=",
+        "file": "?",
+        "content": "LRZIP",
+        "delete": true
     }
 }

@@ -1,24 +1,25 @@
 {
-    "name":"lzma",
-    "extensions":["lzma"],
+    "name": "lzma",
+    "extensions": ["lzma"],
     "install": {
-        "method":"apt",
-        "packages":["atool", "lzma"]
+        "method": "apt",
+        "packages": ["atool", "lzma"]
     },
-    "pack":{
-        "exe":"lzma",
-        "cmdline":"$tool $file"
+    "pack": {
+        "exe": "lzma",
+        "cmdline": "$tool $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"atool",
-        "cmdline":"$tool --extract-to=$destdir $archive",
-        "extension":"lzma",
+        "exe": "atool",
+        "cmdline": "$tool --extract-to=$destdir $archive",
+        "extension": "lzma",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPEczGEAA4tlYGhgYGGAAjWx1j0ua7QZAGXCesIWAAAA",
-        "file":"?",
-        "content":"LZMA",
-        "delete":true
+        "blob": "H4sIAPEczGEAA4tlYGhgYGGAAjWx1j0ua7QZAGXCesIWAAAA",
+        "file": "?",
+        "content": "LZMA",
+        "delete": true
     }
 }

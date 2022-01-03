@@ -1,27 +1,26 @@
 {
-    "name":"AR7",
-    "comment":"A DOS compression utility by Timothy R. Erickson - http://fileformats.archiveteam.org/wiki/AR7",
-    "extensions":["ar7"],
+    "name": "AR7",
+    "comment": "A DOS compression utility by Timothy R. Erickson - http://fileformats.archiveteam.org/wiki/AR7",
+    "extensions": ["ar7"],
     "install": {
-        "method":"apt",
-        "packages":["dosbox"]
+        "method": "apt",
+        "packages": ["dosbox"]
     },
     "pack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"ar7 a $file.ar7 $file\" -c \"exit\""
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"ar7 a $file.ar7 $file\" -c \"exit\"",
+        "type": "dosbox"
     },
     "unpack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"D:\\\\ar7 x F:\\\\$shortname\" -c \"exit\"",
-        "extension":"ar7",
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"D:\\\\ar7 x F:\\\\$shortname\" -c \"exit\"",
+        "extension": "ar7",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAFmj0WEAA9NxDDJXSNXNTczMSUzKSVVILErOyCxLtVIw0EssMuflUrRTqlMMVHJTclIMUQxUVFdUAUMYDYMuiqpAGKIYoFQDZINEUsuiebmA+lV4uQDvA252ZAAAAA==",
-        "file":"0",
-        "content":"AR7",
-        "delete":true
+        "blob": "H4sIAFmj0WEAA9NxDDJXSNXNTczMSUzKSVVILErOyCxLtVIw0EssMuflUrRTqlMMVHJTclIMUQxUVFdUAUMYDYMuiqpAGKIYoFQDZINEUsuiebmA+lV4uQDvA252ZAAAAA==",
+        "file": "0",
+        "content": "AR7",
+        "delete": true
     }
 }
-
-

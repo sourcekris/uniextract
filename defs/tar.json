@@ -1,24 +1,25 @@
 {
-    "name":"Tar",
-    "extensions":["tar", "ctar"],
+    "name": "Tar",
+    "extensions": ["tar", "ctar"],
     "install": {
-        "method":"apt",
-        "packages":["tar"]
+        "method": "apt",
+        "packages": ["tar"]
     },
-    "pack":{
-        "exe":"tar",
-        "cmdline":"$tool cf $file.tar $file"
+    "pack": {
+        "exe": "tar",
+        "cmdline": "$tool cf $file.tar $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"tar",
-        "cmdline":"$tool xf $archive -C $destdir",
-        "extension":"tar",
+        "exe": "tar",
+        "cmdline": "$tool xf $archive -C $destdir",
+        "extension": "tar",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIALcMy2EAA+3OwQnCQBAF0CllS9jEdXK2BbEBKwjE2L9LjjkoCCrCe5cP8+fwa3xe7bK1Lbt9docY2pBj1hyPU79P2WqU+oVtcb+t16WUWOZ5ffb3qv9Tl9P51xMAAAAAAAAAAAB4wwOnuq3gACgAAA==",
-        "file":"0",
-        "content":"TAR",
-        "delete":true
+        "blob": "H4sIALcMy2EAA+3OwQnCQBAF0CllS9jEdXK2BbEBKwjE2L9LjjkoCCrCe5cP8+fwa3xe7bK1Lbt9docY2pBj1hyPU79P2WqU+oVtcb+t16WUWOZ5ffb3qv9Tl9P51xMAAAAAAAAAAAB4wwOnuq3gACgAAA==",
+        "file": "0",
+        "content": "TAR",
+        "delete": true
     }
 }

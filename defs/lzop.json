@@ -1,24 +1,25 @@
 {
-    "name":"LZOP",
-    "extensions":["lzo", "lzop"],
+    "name": "LZOP",
+    "extensions": ["lzo", "lzop"],
     "install": {
-        "method":"apt",
-        "packages":["lzop"]
+        "method": "apt",
+        "packages": ["lzop"]
     },
-    "pack":{
-        "exe":"lzop",
-        "cmdline":"$tool -o $file.lzo $file"
+    "pack": {
+        "exe": "lzop",
+        "cmdline": "$tool -o $file.lzo $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"lzop",
-        "cmdline":"$tool -d -p$destdir $archive",
-        "extension":"lzo",
+        "exe": "lzop",
+        "cmdline": "$tool -d -p$destdir $archive",
+        "extension": "lzo",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAJLky2EAA+v0ifJn4OWS4hJwUFjA6cDMyczAwMjA0Lgk8fSTSQxAwGjg/JA1CchgAWFmA0Y3oI4AkAwAzRgAdzsAAAA=",
-        "file":"?",
-        "content":"LZOP",
-        "delete":true
+        "blob": "H4sIAJLky2EAA+v0ifJn4OWS4hJwUFjA6cDMyczAwMjA0Lgk8fSTSQxAwGjg/JA1CchgAWFmA0Y3oI4AkAwAzRgAdzsAAAA=",
+        "file": "?",
+        "content": "LZOP",
+        "delete": true
     }
 }

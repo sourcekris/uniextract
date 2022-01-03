@@ -1,25 +1,26 @@
 {
-    "name":"SQX",
-    "comment":"SQX, Squeez 5 format - http://fileformats.archiveteam.org/wiki/SQX",
-    "extensions":["sqx"],
+    "name": "SQX",
+    "comment": "SQX, Squeez 5 format - http://fileformats.archiveteam.org/wiki/SQX",
+    "extensions": ["sqx"],
     "install": {
-        "method":"apt",
-        "packages":["wine"]
+        "method": "apt",
+        "packages": ["wine"]
     },
     "pack": {
-        "exe":"wine",
-        "cmdline":"$tool $tools/sqc.exe a $file.sqx $file"
+        "exe": "wine",
+        "cmdline": "$tool $tools/sqc.exe a $file.sqx $file",
+        "type": "wine"
     },
     "unpack": {
-        "exe":"wine",
-        "cmdline":"cd $destdir && $tool $tools/sqc.exe e z:$archive",
-        "extension":"sqx",
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/sqc.exe e z:$archive",
+        "extension": "sqx",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPhp0GEAAwvYEMTAIMmgW1xYocvNgATcV7gwsOqAWCIiTJFvj9xQADIXcSqFyABpTjAuyS2Iyc3PjzFIYwEJMDiwAolHMglWv1/c51g2xcyZgUHd2047mIGBnQEAYXdFnmgAAAA=",
-        "file":"0",
-        "content":"SQXSQUEEZ",
-        "delete":true
+        "blob": "H4sIAPhp0GEAAwvYEMTAIMmgW1xYocvNgATcV7gwsOqAWCIiTJFvj9xQADIXcSqFyABpTjAuyS2Iyc3PjzFIYwEJMDiwAolHMglWv1/c51g2xcyZgUHd2047mIGBnQEAYXdFnmgAAAA=",
+        "file": "0",
+        "content": "SQXSQUEEZ",
+        "delete": true
     }
 }

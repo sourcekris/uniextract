@@ -1,24 +1,25 @@
 {
-    "name":"AR",
-    "extensions":["ar", "a"],
+    "name": "AR",
+    "extensions": ["ar", "a"],
     "install": {
-        "method":"apt",
-        "packages":["binutils", "atool"]
+        "method": "apt",
+        "packages": ["binutils", "atool"]
     },
-    "pack":{
-        "exe":"atool",
-        "cmdline":"$tool -a -q $file.a $file"
+    "pack": {
+        "exe": "atool",
+        "cmdline": "$tool -a -q $file.a $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"ar",
-        "cmdline":"$tool x --output=$destdir $archive",
-        "extension":"ar",
+        "exe": "ar",
+        "cmdline": "$tool x --output=$destdir $archive",
+        "extension": "ar",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIANn3y2EAA1O0SSxKzrDjMtBXQAEGGGwIaWZiAqaN4LIJXI5BABdO6idGAAAA",
-        "file":"0",
-        "content":"AR",
-        "delete":true
+        "blob": "H4sIANn3y2EAA1O0SSxKzrDjMtBXQAEGGGwIaWZiAqaN4LIJXI5BABdO6idGAAAA",
+        "file": "0",
+        "content": "AR",
+        "delete": true
     }
 }

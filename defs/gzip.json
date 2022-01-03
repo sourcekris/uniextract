@@ -1,24 +1,25 @@
 {
-    "name":"Gzip",
-    "extensions":["gz", "tgz"],
+    "name": "Gzip",
+    "extensions": ["gz", "tgz"],
     "install": {
-        "method":"apt",
-        "packages":["atool"]
+        "method": "apt",
+        "packages": ["atool"]
     },
-    "pack":{
-        "exe":"gzip",
-        "cmdline":"$tool $file"
+    "pack": {
+        "exe": "gzip",
+        "cmdline": "$tool $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"atool",
-        "cmdline":"$tool --extract-to $destdir $archive",
-        "extension":"gz",
+        "exe": "atool",
+        "cmdline": "$tool --extract-to $destdir $archive",
+        "extension": "gz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAIcOy2EAA5Pv5mAAA+bifiaG68XxpUxAPgBupYmVFgAAAA==",
-        "file":"?",
-        "content":"GZ",
-        "delete":true
+        "blob": "H4sIAIcOy2EAA5Pv5mAAA+bifiaG68XxpUxAPgBupYmVFgAAAA==",
+        "file": "?",
+        "content": "GZ",
+        "delete": true
     }
 }

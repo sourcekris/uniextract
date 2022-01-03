@@ -1,24 +1,25 @@
 {
-    "name":"RAR",
-    "extensions":["rar", "r00"],
+    "name": "RAR",
+    "extensions": ["rar", "r00"],
     "install": {
-        "method":"apt",
-        "packages":["unrar"]
+        "method": "apt",
+        "packages": ["unrar"]
     },
-    "pack":{
-        "exe":"rar",
-        "cmdline":"$tool a -inul $file.rar $file"
+    "pack": {
+        "exe": "rar",
+        "cmdline": "$tool a -inul $file.rar $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"unrar",
-        "cmdline":"$tool x $archive -op $destdir",
-        "extension":"rar",
+        "exe": "unrar",
+        "cmdline": "$tool x $archive -op $destdir",
+        "extension": "rar",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIACMAy2EAAwtKLFKUYmdkMJ609SkXIysbAysjY0MDQ7C1Zpo8EzN3MwNLM8OSZqaA3Lo/DQyMjAZczMLiDKcT1yvFGQc5BsmWhwUys7IwAABZeEQERgAAAA==",
-        "file":"0",
-        "content":"RAR",
-        "delete":true
+        "blob": "H4sIACMAy2EAAwtKLFKUYmdkMJ609SkXIysbAysjY0MDQ7C1Zpo8EzN3MwNLM8OSZqaA3Lo/DQyMjAZczMLiDKcT1yvFGQc5BsmWhwUys7IwAABZeEQERgAAAA==",
+        "file": "0",
+        "content": "RAR",
+        "delete": true
     }
 }

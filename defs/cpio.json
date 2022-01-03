@@ -1,24 +1,25 @@
 {
-    "name":"CPIO",
-    "extensions":["cpio"],
+    "name": "CPIO",
+    "extensions": ["cpio"],
     "install": {
-        "method":"apt",
-        "packages":["cpio"]
+        "method": "apt",
+        "packages": ["cpio"]
     },
-    "pack":{
-        "exe":"cpio",
-        "cmdline":"echo $file | $tool -o --quiet -F $file.cpio"
+    "pack": {
+        "exe": "cpio",
+        "cmdline": "echo $file | $tool -o --quiet -F $file.cpio",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"cpio",
-        "cmdline":"$tool -i -D $destdir -F $archive",
-        "extension":"cpio",
+        "exe": "cpio",
+        "cmdline": "$tool -i -D $destdir -F $archive",
+        "extension": "cpio",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIADDsy2EAAzteyMjxuWhJIwMQMALx6USDN0xAmoXBgME5wNP/eCEDHDBCaW4wGRLk6OnjGqSoqMgwCoYsAADcJzxcAAIAAA==",
-        "file":"0",
-        "content":"CPIO",
-        "delete":true
+        "blob": "H4sIADDsy2EAAzteyMjxuWhJIwMQMALx6USDN0xAmoXBgME5wNP/eCEDHDBCaW4wGRLk6OnjGqSoqMgwCoYsAADcJzxcAAIAAA==",
+        "file": "0",
+        "content": "CPIO",
+        "delete": true
     }
 }

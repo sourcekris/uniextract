@@ -1,29 +1,28 @@
 {
-    "name":"ACB",
-    "comment":"A DOS compression utility by George Buyanovsky - http://fileformats.archiveteam.org/wiki/ACB_(compressed_archive)",
-    "extensions":["acb"],
+    "name": "ACB",
+    "comment": "A DOS compression utility by George Buyanovsky - http://fileformats.archiveteam.org/wiki/ACB_(compressed_archive)",
+    "extensions": ["acb"],
     "install": {
-        "method":"apt",
-        "packages":["dosbox"]
+        "method": "apt",
+        "packages": ["dosbox"]
     },
     "pack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\"-c \"acb b $file.acb $file\" -c \"exit\" && mv $file.ACB $file.acb"
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\"-c \"acb b $file.acb $file\" -c \"exit\" && mv $file.ACB $file.acb",
+        "type": "dosbox"
     },
     "unpack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"D:\\\\acb r F:\\\\$shortname E:\\\\\" -c \"exit\"",
-        "extension":"acb",
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"D:\\\\acb r F:\\\\$shortname E:\\\\\" -c \"exit\"",
+        "extension": "acb",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAACF0WEAA+Nq4GDosSx+OvP57Ps8j/mCX3MBABFWmRcSAAAA",
-        "file":"0",
-        "content":"ACB",
-        "padbyte":"0x41",
-        "padlen":260,
-        "delete":true
+        "blob": "H4sIAACF0WEAA+Nq4GDosSx+OvP57Ps8j/mCX3MBABFWmRcSAAAA",
+        "file": "0",
+        "content": "ACB",
+        "padbyte": "0x41",
+        "padlen": 260,
+        "delete": true
     }
 }
-
-

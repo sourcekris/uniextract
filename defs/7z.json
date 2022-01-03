@@ -1,24 +1,25 @@
 {
-    "name":"7-zip",
-    "extensions":["7z"],
+    "name": "7-zip",
+    "extensions": ["7z"],
     "install": {
-        "method":"apt",
-        "packages":["7zip"]
+        "method": "apt",
+        "packages": ["7zip"]
     },
-    "pack":{
-        "exe":"7z",
-        "cmdline":"$tool a $file.7z $file"
+    "pack": {
+        "exe": "7z",
+        "cmdline": "$tool a $file.7z $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"7z",
-        "cmdline":"$tool x $archive -o$destdir",
-        "extension":"7z",
+        "exe": "7z",
+        "cmdline": "$tool x $archive -o$destdir",
+        "extension": "7z",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAOgCy2EAAzOv2rNeXYaB5WV6/QkOBgjwgtIFJzk+MDIwm0d5BjAwsrAxMHJyMLBzMzIwKioyMvCwMHBwMd4SdE5nYGBllORhQAKCrAwGQEqEi5Gh4aCIwrPf1xlF2RgZFBqWNDIwAAC370SicgAAAA==",
-        "file":"0",
-        "content":"7ZIP",
-        "delete":true
+        "blob": "H4sIAOgCy2EAAzOv2rNeXYaB5WV6/QkOBgjwgtIFJzk+MDIwm0d5BjAwsrAxMHJyMLBzMzIwKioyMvCwMHBwMd4SdE5nYGBllORhQAKCrAwGQEqEi5Gh4aCIwrPf1xlF2RgZFBqWNDIwAAC370SicgAAAA==",
+        "file": "0",
+        "content": "7ZIP",
+        "delete": true
     }
 }

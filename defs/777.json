@@ -1,25 +1,26 @@
 {
-    "name":"777",
-    "comment":"Precursor to 7z by Igor Pavlov - http://fileformats.archiveteam.org/wiki/777",
-    "extensions":["777"],
+    "name": "777",
+    "comment": "Precursor to 7z by Igor Pavlov - http://fileformats.archiveteam.org/wiki/777",
+    "extensions": ["777"],
     "install": {
-        "method":"apt",
-        "packages":["wine"]
+        "method": "apt",
+        "packages": ["wine"]
     },
     "pack": {
-        "exe":"wine",
-        "cmdline":"$tool $tools/777 a $file.777 $file"
+        "exe": "wine",
+        "cmdline": "$tool $tools/777 a $file.777 $file",
+        "type": "wine"
     },
     "unpack": {
-        "exe":"wine",
-        "cmdline":"cd $destdir && $tool $tools/777 e -o. z:$archive",
-        "extension":"777",
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/777 e -o. z:$archive",
+        "extension": "777",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPmA0WEAAzM3Nz926SADQ3BY7yMGBksGIGBhUACSuYbTXRUZbjCi0zb6978xMQMVgDAjg4G5uTkAC15DQkQAAAA=",
-        "file":"0",
-        "content":"777",
-        "delete":true
+        "blob": "H4sIAPmA0WEAAzM3Nz926SADQ3BY7yMGBksGIGBhUACSuYbTXRUZbjCi0zb6978xMQMVgDAjg4G5uTkAC15DQkQAAAA=",
+        "file": "0",
+        "content": "777",
+        "delete": true
     }
 }

@@ -1,27 +1,26 @@
 {
-    "name":"AIN",
-    "comment":"A DOS compression utility by Transas Marine Ltd - http://fileformats.archiveteam.org/wiki/AIN",
-    "extensions":["ain"],
+    "name": "AIN",
+    "comment": "A DOS compression utility by Transas Marine Ltd - http://fileformats.archiveteam.org/wiki/AIN",
+    "extensions": ["ain"],
     "install": {
-        "method":"apt",
-        "packages":["dosbox"]
+        "method": "apt",
+        "packages": ["dosbox"]
     },
     "pack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"scancode WaitForText 25,1 \\\"Press\\\",\\\"y\\\"\" -c \"ain a $file.ain $file\" -c \"exit\" && mv $file.AIN $file.ain"
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"scancode WaitForText 25,1 \\\"Press\\\",\\\"y\\\"\" -c \"ain a $file.ain $file\" -c \"exit\" && mv $file.AIN $file.ain",
+        "type": "dosbox"
     },
     "unpack": {
-        "exe":"dosbox",
-        "cmdline":"$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"D:\\\\scancode WaitForText 25,1 \\\"Press\\\",\\\"y\\\"\" -c \"D:\\\\ain e F:\\\\$shortname E:\\\\\" -c \"exit\"",
-        "extension":"ain",
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"D:\\\\scancode WaitForText 25,1 \\\"Press\\\",\\\"y\\\"\" -c \"D:\\\\ain e F:\\\\$shortname E:\\\\\" -c \"exit\"",
+        "extension": "ain",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAFGh0WEAA1MUYgADRgar/UohmkBWvAgDQ1a4jAqLg64P38ZPDSwNL+b8+c94zUVAqOE2x4mMDomVmz/y/girETt38yWLxs9bZUdP8ce8fqD5zlzhfz0APVvWJFAAAAA=",
-        "file":"0",
-        "content":"AIN",
-        "delete":true
+        "blob": "H4sIAFGh0WEAA1MUYgADRgar/UohmkBWvAgDQ1a4jAqLg64P38ZPDSwNL+b8+c94zUVAqOE2x4mMDomVmz/y/girETt38yWLxs9bZUdP8ce8fqD5zlzhfz0APVvWJFAAAAA=",
+        "file": "0",
+        "content": "AIN",
+        "delete": true
     }
 }
-
-

@@ -1,24 +1,25 @@
 {
-    "name":"uuencode",
-    "extensions":["uue", "uu"],
+    "name": "uuencode",
+    "extensions": ["uue", "uu"],
     "install": {
-        "method":"apt",
-        "packages":["sharutils"]
+        "method": "apt",
+        "packages": ["sharutils"]
     },
-    "pack":{
-        "exe":"uuencode",
-        "cmdline":"$tool $file $file > $file.uue"
+    "pack": {
+        "exe": "uuencode",
+        "cmdline": "$tool $file $file > $file.uue",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"uudecode",
-        "cmdline":"cd $destdir && $tool $archive",
-        "extension":"uue",
+        "exe": "uudecode",
+        "cmdline": "cd $destdir && $tool $archive",
+        "extension": "uue",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAIpgzGEAA0tKTc/MUzAzMVEw4FI2NTVV5UrgSs1L4QIA/50+/xgAAAA=",
-        "file":"0",
-        "content":"UUE",
-        "delete":true
+        "blob": "H4sIAIpgzGEAA0tKTc/MUzAzMVEw4FI2NTVV5UrgSs1L4QIA/50+/xgAAAA=",
+        "file": "0",
+        "content": "UUE",
+        "delete": true
     }
 }

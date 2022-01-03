@@ -1,24 +1,25 @@
 {
-    "name":"base64",
-    "extensions":["b64", "mme", "mime"],
+    "name": "base64",
+    "extensions": ["b64", "mme", "mime"],
     "install": {
-        "method":"apt",
-        "packages":["coreutils"]
+        "method": "apt",
+        "packages": ["coreutils"]
     },
-    "pack":{
-        "exe":"base64",
-        "cmdline":"$tool $file > $file.b64"
+    "pack": {
+        "exe": "base64",
+        "cmdline": "$tool $file > $file.b64",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"base64",
-        "cmdline":"$tool -d $archive > $destdir/$basename",
-        "extension":"b64",
+        "exe": "base64",
+        "cmdline": "$tool -d $archive > $destdir/$basename",
+        "extension": "b64",
         "force_extension": false
     },
     "test": {
-        "blob":"H4sIAOlmzGEAAwvMdgsJCok04AIAWDkn5AkAAAA=",
-        "file":"?",
-        "content":"BASE64",
-        "delete":true
+        "blob": "H4sIAOlmzGEAAwvMdgsJCok04AIAWDkn5AkAAAA=",
+        "file": "?",
+        "content": "BASE64",
+        "delete": true
     }
 }

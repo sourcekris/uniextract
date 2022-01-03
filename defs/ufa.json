@@ -1,25 +1,26 @@
 {
-    "name":"UFA",
-    "comment":"Precursor to 7z by Igor Pavlov - http://fileformats.archiveteam.org/wiki/UFA",
-    "extensions":["ufa"],
+    "name": "UFA",
+    "comment": "Precursor to 7z by Igor Pavlov - http://fileformats.archiveteam.org/wiki/UFA",
+    "extensions": ["ufa"],
     "install": {
-        "method":"apt",
-        "packages":["wine"]
+        "method": "apt",
+        "packages": ["wine"]
     },
     "pack": {
-        "exe":"wine",
-        "cmdline":"$tool $tools/ufa a $file.ufa $file"
+        "exe": "wine",
+        "cmdline": "$tool $tools/ufa a $file.ufa $file",
+        "type": "wine"
     },
     "unpack": {
-        "exe":"wine",
-        "cmdline":"cd $destdir && $tool $tools/ufa e -o. z:$archive",
-        "extension":"ufa",
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/ufa e -o. z:$archive",
+        "extension": "ufa",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAHqA0WEAAwt1czx26SADgyZTaQ4DgyUDELAwKADJv5NKfikw3GBEp8+sOWfExAxUAMKMDAahbo4AMxwO1UQAAAA=",
-        "file":"0",
-        "content":"UFA",
-        "delete":true
+        "blob": "H4sIAHqA0WEAAwt1czx26SADgyZTaQ4DgyUDELAwKADJv5NKfikw3GBEp8+sOWfExAxUAMKMDAahbo4AMxwO1UQAAAA=",
+        "file": "0",
+        "content": "UFA",
+        "delete": true
     }
 }

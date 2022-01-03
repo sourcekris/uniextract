@@ -1,24 +1,25 @@
 {
-    "name":"compress",
-    "extensions":["Z"],
+    "name": "compress",
+    "extensions": ["Z"],
     "install": {
-        "method":"apt",
-        "packages":["atool", "ncompress"]
+        "method": "apt",
+        "packages": ["atool", "ncompress"]
     },
-    "pack":{
-        "exe":"compress",
-        "cmdline":"$tool -f $file"
+    "pack": {
+        "exe": "compress",
+        "cmdline": "$tool -f $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"atool",
-        "cmdline":"$tool --extract-to=$destdir $archive",
-        "extension":"Z",
+        "exe": "atool",
+        "cmdline": "$tool --extract-to=$destdir $archive",
+        "extension": "Z",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAJ78y2EAA5OfOyGKAQAZw//WBQAAAA==",
-        "file":"?",
-        "content":"Z",
-        "delete":true
+        "blob": "H4sIAJ78y2EAA5OfOyGKAQAZw//WBQAAAA==",
+        "file": "?",
+        "content": "Z",
+        "delete": true
     }
 }
