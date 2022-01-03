@@ -1,6 +1,6 @@
 {
     "name": "AR",
-    "extensions": ["ar", "a"],
+    "extensions": ["a", "ar"],
     "install": {
         "method": "apt",
         "packages": ["binutils", "atool"]

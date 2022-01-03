@@ -8,7 +8,7 @@
     },
     "pack": {
         "exe": "msibuild",
-        "cmdline": "$tool $file.cab -a $file $file",
+        "cmdline": "$tool $file.msi -a $file $file",
         "type": "archiver"
     },
     "unpack": {

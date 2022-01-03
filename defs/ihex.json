@@ -7,7 +7,7 @@
         "packages": ["binutils"]
     },
     "pack": {
-        "exe": "obcopy",
+        "exe": "objcopy",
         "cmdline": "$tool -I binary $file -O ihex $file.ihex",
         "type": "archiver"
     },

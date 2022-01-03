@@ -8,7 +8,7 @@
     },
     "pack": {
         "exe": "xdftool",
-        "cmdline": "$tool $file.adf create size=1M + format $file + write $file",
+        "cmdline": "$tool $file.hdf create size=1M + format $file + write $file",
         "type": "archiver"
     },
     "unpack": {

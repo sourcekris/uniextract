@@ -8,7 +8,7 @@
     },
     "pack": {
         "exe": "xxd",
-        "cmdline": "$tool -p $file $file.xxd",
+        "cmdline": "$tool -p $file $file.hex",
         "type": "archiver"
     },
     "unpack": {

@@ -8,7 +8,7 @@
     "pack": {
         "type":"archiver",
         "exe":"arj",
-        "cmdline":"$tool a $file.$extension $file"
+        "cmdline":"$tool a $file.arj $file"
     },
     "unpack": {
         "exe":"arj",

@@ -27,7 +27,8 @@ def do_blob_test(name, blob):
 
 def do_archiver_test(name, msg, ext, exe, cmdline, rmorig):
     print(f"{name} test: ", flush=True, end="")
-    tools = os.path.join(os.getcwd(), tools_path)
+    cwd = os.getcwd()
+    tools = os.path.join(cwd, tools_path)
     ext = "." + ext
     with tempfile.TemporaryDirectory() as tmpdir:
         os.chdir(tmpdir)
@@ -39,10 +40,12 @@ def do_archiver_test(name, msg, ext, exe, cmdline, rmorig):
             outs, errs = p.communicate()
         except Exception as e:
             print(f"failed doing test {name} due to: {e}")
+            os.chdir(cwd)
             return False
         arcname = default_fn+ext
         if not os.path.exists(arcname):
             print(f"failed doing test {name} file {arcname} was not created")
+            os.chdir(cwd)
             return False
         
         d = b64encode(compress(open(arcname, 'rb').read())).decode() # compress and base64 the result
@@ -52,8 +55,10 @@ def do_archiver_test(name, msg, ext, exe, cmdline, rmorig):
             os.unlink(default_fn)
         
         print(d, flush=True)
+        os.chdir(cwd)
         return True
 
+# valid_def checks that a definition has the required components to make a test blob.
 def valid_def(d):
     if "name" not in d:
         print(f"test is missing a name: {d}")
@@ -108,6 +113,8 @@ def main(argv):
             else:
                 print(f"not yet implemented for test {name}")
                 return
+            
+            return
     
         if args.list == "types":
             if d["pack"]["type"] not in found_types:
@@ -117,6 +124,13 @@ def main(argv):
         if args.list == "tests":
             print(f"{fn}: {name}")
             continue
+
+        if test_type == "blob":
+            do_blob_test(name, d["pack"]["blob"])
+        elif test_type == "archiver":
+            do_archiver_test(name, d["test"]["content"], def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+        else:
+            print(f"not yet implemented for test {name}")
         
 
 

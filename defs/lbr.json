@@ -11,7 +11,7 @@
     "pack": {
         "type":"archiver",
         "exe":"$tools/lar",
-        "cmdline":"echo 1 | $tool u $file.$extension $file"
+        "cmdline":"echo 1 | $tool u $file.lbr $file"
     },
     "unpack": {
         "exe":"$tools/lar",

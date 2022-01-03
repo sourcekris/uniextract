@@ -8,7 +8,7 @@
     },
     "pack": {
         "exe": "afio",
-        "cmdline": "echo $file | $tool -o $file.cpio",
+        "cmdline": "echo $file | $tool -o $file.afio",
         "type": "archiver"
     },
     "unpack": {

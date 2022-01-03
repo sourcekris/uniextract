@@ -11,7 +11,7 @@
     "pack":{
       "type":"archiver",
       "exe":"$tools/zoo",
-      "cmdline":"$tool a $file.$extension $file"
+      "cmdline":"$tool a $file.zoo $file"
     },
     "unpack": {
         "exe":"$tools/zoo",

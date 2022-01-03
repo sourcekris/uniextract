@@ -8,7 +8,7 @@
     },
     "pack": {
         "exe": "dar",
-        "cmdline": "$tool -c $file -X $file.1.dar",
+        "cmdline": "$tool -c $file -X $file.1.dar && mv $file.1.dar $file.dar",
         "type": "archiver"
     },
     "unpack": {
