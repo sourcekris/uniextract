@@ -1,0 +1,26 @@
+{
+    "name": "BLINK",
+    "comment": "Blink is a DOS compression utility developed by De Trans Software - http://fileformats.archiveteam.org/wiki/BLINK",
+    "extensions": ["bli"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "dosbox -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:blink a 0.bli 0\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:blink e f:$shortname 0\" -c \"exit\"",
+        "extension": "bli",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAOHo0mEC/3PKyczLVkiqVHDRC9EL1mP4z2DAgAQUWIGEcsi7nQysDE4+nn7eABNVH0AwAAAA",
+        "file": "0",
+        "content": "BLINK",
+        "delete": true
+    }
+}

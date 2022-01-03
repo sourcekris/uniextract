@@ -1,0 +1,26 @@
+{
+    "name": "BSA",
+    "comment": "BSA a DOS compression utility developed by PhysTechSoft (PTS) - http://fileformats.archiveteam.org/wiki/BSArc_and_BSA",
+    "extensions": ["bsa"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "dosbox -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:bsa a 0.bsa 0\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:bsa e f:$shortname\" -c \"exit\"",
+        "extension": "bsa",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAMvp0mEC/xNnWMfAzMAAxlm7lEOuMYAAowGDU7AjA8PKo6szGAoAndd3iSQAAAA=",
+        "file": "0",
+        "content": "BSA",
+        "delete": true
+    }
+}
