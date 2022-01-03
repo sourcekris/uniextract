@@ -13,7 +13,6 @@ from pyuniextract.installers.template import prepare_cmdline, prepare_exe
 from pyuniextract.installers.testarchiver import pad
 
 def_store = "defs/"
-do_types = ["blob", "archiver", "dosbox", "wine"]
 
 def do_blob_test(name, blob):
     print(f"{name} test: ", flush=True, end="")
@@ -105,6 +104,7 @@ def main(argv):
     ap.add_argument('-l',"--list", choices=["tests", "types"], help="List tests or types of tests.")
     args = ap.parse_args(argv[1:])
 
+    do_types = ["blob", "archiver", "dosbox", "wine"]
     if args.type:
         do_types = [args.type]
 
