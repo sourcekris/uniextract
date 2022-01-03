@@ -10,7 +10,7 @@
     },
     "pack": {
         "exe": "dosbox",
-        "cmdline": "p=$(pwd) && cp $tools/LZWCOM.EXE $p && $tool -noconsole -c \"MOUNT D $p\" -c \"D:\" -c \"LZWCOM $file $file.lzw\" -c \"exit\" && mv $file.LZW $file.lzw",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:lzwcom $file $file.lzw\" -c \"exit\"",
         "type": "dosbox"
     },
     "unpack": {

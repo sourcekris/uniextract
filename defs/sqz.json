@@ -8,12 +8,12 @@
     },
     "pack": {
         "exe": "dosbox",
-        "cmdline": "p=$(pwd) && cp $tools/SQZ.EXE $p && $tool -noconsole -c \"MOUNT D $p\" -c \"D:\" -c \"SQZ a $file $file\" -c \"exit\" && mv $file.SQZ $file.sqz",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:sqz a $file $file\" -c \"exit\"",
         "type": "dosbox"
     },
     "unpack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"MOUNT D $tools\" -c \"MOUNT E $destdir\" -c \"MOUNT F $arcloc\" -c \"D:\\\\SQZ x F:\\\\$shortname E:\\\\\" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"d:sqz x f:$shortname e:\\\\\" -c \"exit\"",
         "extension": "sqz",
         "force_extension": true
     },
