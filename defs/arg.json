@@ -8,7 +8,7 @@
     },
     "pack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"mount d $(pwd)\" -c \"mount e $tools\" -c \"e:\" -c \"arg a $file.arg $file\" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:arg a $file.arg $file\" -c \"exit\"",
         "type": "dosbox"
     },
     "unpack": {

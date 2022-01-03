@@ -8,12 +8,12 @@
     },
     "pack": {
         "exe": "dosbox",
-        "cmdline": "p=$(pwd) && dosbox -noconsole -c \"MOUNT D $p\" -c \"MOUNT E $p/tools\" -c \"E:\" -c \"AMGC a D:\\0.$e D:\\0\" -c \"exit\" > /dev/null && mv 0.AMG 0.amg",
+        "cmdline": "dosbox -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:amgc a e:0.amg e:0\" -c \"exit\"",
         "type": "dosbox"
     },
     "unpack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"MOUNT D $tools\" -c \"MOUNT E $destdir\" -c \"MOUNT F $arcloc\" -c \"D:\\\\AMGC e F:\\\\$shortname E:\\\\\" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount E $destdir\" -c \"mount f $arcloc\" -c \"D:amgc e f:$shortname E:\" -c \"exit\"",
         "extension": "amg",
         "force_extension": true
     },

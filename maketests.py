@@ -10,6 +10,7 @@ from subprocess import Popen, PIPE
 from pyuniextract.installers.config import load_defs, default_fn, tools_path
 #from pyuniextract.common import prettyjson
 from pyuniextract.installers.template import prepare_cmdline, prepare_exe
+from pyuniextract.installers.testarchiver import pad
 
 def_store = "defs/"
 
@@ -42,7 +43,11 @@ def do_archiver_test(name, msg, ext, exe, cmdline, rmorig):
             print(f"failed doing test {name} due to: {e}")
             os.chdir(cwd)
             return False
+
         arcname = default_fn+ext
+        if os.path.exists(arcname.upper()): # dos archivers use uppercase.
+            arcname = arcname.upper()
+
         if not os.path.exists(arcname):
             print(f"failed doing test {name} file {arcname} was not created")
             os.chdir(cwd)
@@ -81,6 +86,15 @@ def valid_def(d):
     if "extensions" not in d or len(d["extensions"]) == 0:
         print(f"test {name} is missing extensions")
         return False
+
+    if "test" not in d or "content" not in d["test"]:
+        print(f"test configuration missing for {name} or no content is specified in test")
+        return False
+    
+    if not d["test"]["content"]:
+        print(f"content is empty in test {name}")
+        return False
+
     return True
 
 def main(argv):
@@ -105,11 +119,20 @@ def main(argv):
         if args.test and args.test != name:
             continue
 
+        msg = d["test"]["content"]
+        if "padbyte" in d["test"] and "padlen" in d["test"]:
+            msg = pad(msg, d["test"]["padbyte"], d["test"]["padlen"])
+
         if args.test:
             if test_type == "blob":
                 do_blob_test(name, d["pack"]["blob"])
             elif test_type == "archiver":
-                do_archiver_test(name, d["test"]["content"], def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+                do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+            elif test_type == "wine":
+                do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+            elif test_type == "dosbox":
+                # seperated so we can opt to skip them as they take a little while to run.
+                do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
             else:
                 print(f"not yet implemented for test {name}")
                 return
@@ -128,7 +151,13 @@ def main(argv):
         if test_type == "blob":
             do_blob_test(name, d["pack"]["blob"])
         elif test_type == "archiver":
-            do_archiver_test(name, d["test"]["content"], def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+        elif test_type == "wine":
+            # seperated so we can opt to skip them as they take a little while to run.
+            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
+        elif test_type == "dosbox":
+            # seperated so we can opt to skip them as they take a little while to run.
+            do_archiver_test(name, msg, def_extension, d["pack"]["exe"], d["pack"]["cmdline"], d["test"]["delete"])
         else:
             print(f"not yet implemented for test {name}")
         
