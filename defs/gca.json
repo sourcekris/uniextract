@@ -1,0 +1,26 @@
+{
+    "name": "GCA",
+    "comment": "Win32 archiver developed in 2000 by Japanese programmer Shin-ichi Tsuruta - http://fileformats.archiveteam.org/wiki/GCA",
+    "extensions": ["gca"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"]
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/gcac.exe a $file.gca $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $arcloc && $tool $tools/gcac.exe e $basename.gca && mv 0 $destdir",
+        "extension": "gca",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIACk61GEC/3N3doxgAAJpBghwd3YzYAbTjkBkLABkOjMgQMnO74cZoezp+tIBCkD6fsGCBSmMNxiZoeLcUJqRwQAAqrpmXF4AAAA=",
+        "file": "0",
+        "content": "GCA",
+        "delete": true
+    }
+}
