@@ -1,0 +1,26 @@
+{
+    "name": "ERI",
+    "comment": "http://fileformats.archiveteam.org/wiki/ERI_(compressed_archive)",
+    "extensions": ["eri"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:eri a $file.eri $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:eri x F:$shortname \" -c \"exit\"",
+        "extension": "eri",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAB001GEC/zNQQADRbSohzAwMDPJA/MTW6ZVrkCcA7jFaTR8AAAA=",
+        "file": "0",
+        "content": "ERI",
+        "delete": true
+    }
+}
