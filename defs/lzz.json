@@ -1,0 +1,26 @@
+{
+    "name": "LZZ",
+    "comment": "Single file version of ChiefLZ - http://fileformats.archiveteam.org/wiki/ChiefLZ",
+    "extensions": ["lzz"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"]
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/LZA32.EXE $file $file.lzz",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/LZA32.EXE z:$archive $basename /U",
+        "extension": "lzz",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAOUf1GEC/+NIdM7ITE3zVWZgYGZgYGAB4nOrVEIUgHTTAm1fRgMGCIAzBhKw0MDM6wkOsQCKPPdsBQEAAA==",
+        "file": "?",
+        "content": "LZ",
+        "delete": true
+    }
+}

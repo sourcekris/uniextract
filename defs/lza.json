@@ -1,0 +1,26 @@
+{
+    "name": "LZA",
+    "comment": "http://fileformats.archiveteam.org/wiki/ChiefLZ",
+    "extensions": ["lza"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"]
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/LZA32.EXE $file.lza $file /A",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/LZA32.EXE z:$archive . /X",
+        "extension": "lza",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAHgf1GEC/+Nh4XXOSPOJijdiZWNhgANGIGaGYhDb+/6GAgY0wMLCysj0cd3//zCBOf/////3/f9/nn///z/48/9/zR+IHM9/PgElNxczMSe+hnYGDMBoAGPBbJyySiVEAUjnZfodZwRZz2TiE+VIA/sBjQBDoP4AAAA=",
+        "file": "0",
+        "content": "LZA",
+        "delete": true
+    }
+}

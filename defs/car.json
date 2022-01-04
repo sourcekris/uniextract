@@ -1,0 +1,26 @@
+{
+    "name": "CAR",
+    "comment": "DOS Archiver developed by MylesHi! Software / Chris Campbell - http://fileformats.archiveteam.org/wiki/CAR_(MylesHi!)",
+    "extensions": ["car"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:car a $file.car $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"d:car x F:$shortname E:\" -c \"exit\"",
+        "extension": "car",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAH0b1GEC/5NS0s3JMNBlZmBgAGFGA4dKBYaSFSohCgwMzo5BDACDitVrIAAAAA==",
+        "file": "0",
+        "content": "CAR",
+        "delete": true
+    }
+}

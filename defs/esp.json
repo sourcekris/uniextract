@@ -1,0 +1,26 @@
+{
+    "name": "ESP",
+    "comment": "http://fileformats.archiveteam.org/wiki/ESP_(compressed_archive)",
+    "extensions": ["esp"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount c /tmp\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:esp $file.esp $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:unesp e F:$shortname\" -c \"exit\"",
+        "extension": "esp",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAHs11GEC/wE7AMT/RVNQPhYAGwAAAJtfbQt2lZVxonhgS5agkbREn18FSZdmeHsn8Wb7TmOpR45vbgruvvr5QMDFpkCblkTf5omoOwAAAA==",
+        "file": "0",
+        "content": "ESP",
+        "delete": true
+    }
+}

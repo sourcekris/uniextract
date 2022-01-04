@@ -1,0 +1,26 @@
+{
+    "name": "CAZIPXP",
+    "comment": "http://fileformats.archiveteam.org/wiki/CAZIPXP",
+    "extensions": ["caz"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"]
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/Cazipxp.exe -a $file $file.caz",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/Cazipxp.exe -e z:$archive",
+        "extension": "caz",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAIUd1GEC/3N2jPIMYFFQULAwNTRTMFQwYTCxZGAwYDE2NjIwUzBSMFcwNDMxNLI0NDS2xME0VzBgcAYZExEAAIXLYrROAAAA",
+        "file": "0",
+        "content": "CAZIPXP",
+        "delete": true
+    }
+}
