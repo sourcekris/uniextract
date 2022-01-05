@@ -7,8 +7,10 @@ definitions_path = "defs/"
 tools_path = "tools/"
 default_fn = "0"
 
-def load_defs(addfn=False):
-    defnames = glob(os.path.join(definitions_path, "*.json"))
+def load_defs(addfn=False, defpath=None):
+    if not defpath:
+        defpath = definitions_path
+    defnames = glob(os.path.join(defpath, "*.json"))
     definitions = []
     for d in defnames:
         try:

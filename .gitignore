@@ -5,3 +5,5 @@
 3rdparty/*
 
 __pycache__
+
+.vscode
