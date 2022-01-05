@@ -4,7 +4,9 @@
     "extensions": ["bli"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"blink.exe",
+        "container":"win32/blink/blink.zip"
     },
     "pack": {
         "exe": "dosbox",

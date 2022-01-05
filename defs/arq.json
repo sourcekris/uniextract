@@ -4,7 +4,9 @@
     "extensions": ["arq"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"ARQ.EXE",
+        "container":"win32/arq/arq32.zip"
     },
     "pack": {
         "exe": "dosbox",

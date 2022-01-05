@@ -4,7 +4,9 @@
     "extensions": ["esp"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"ESP.EXE",
+        "container":"win32/esp/esp_v192.zip"
     },
     "pack": {
         "exe": "dosbox",

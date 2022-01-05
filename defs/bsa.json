@@ -4,7 +4,9 @@
     "extensions": ["bsa"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"BSA.EXE",
+        "container":"win32/bsa/bsa.zip"
     },
     "pack": {
         "exe": "dosbox",

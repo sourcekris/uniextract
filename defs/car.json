@@ -4,7 +4,9 @@
     "extensions": ["car"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"CAR.EXE",
+        "container":"win32/car/car150.zip"
     },
     "pack": {
         "exe": "dosbox",

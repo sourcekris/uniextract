@@ -4,7 +4,9 @@
     "extensions": ["arg"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"arg.exe",
+        "container":"win32/arg/arg.zip"
     },
     "pack": {
         "exe": "dosbox",

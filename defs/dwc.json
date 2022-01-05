@@ -4,7 +4,9 @@
     "extensions": ["dwc"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"DWC.EXE",
+        "container":"win32/dwc/dwc-a510.zip"
     },
     "pack": {
         "exe": "dosbox",

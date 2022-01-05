@@ -6,7 +6,9 @@
         "method":"source",
         "repo":"https://github.com/jsummers/deark",
         "build":"make && cp deark $tools",
-        "exist_check":["deark -version","Deark version:"]
+        "exist_check":["deark -version","Deark version:"],
+        "tool":"ARX.EXE",
+        "container":"win32/arx/arx100.zip"
     },
     "pack": {
         "exe": "dosbox",

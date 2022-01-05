@@ -4,7 +4,9 @@
     "extensions": ["acb"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"ACB.EXE",
+        "container":"win32/acb/acb_200c.zip"
     },
     "pack": {
         "exe": "dosbox",

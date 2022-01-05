@@ -4,7 +4,9 @@
     "extensions": ["ar7"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"AR7.EXE",
+        "container":"win32/ar7/ar712.zip"
     },
     "pack": {
         "exe": "dosbox",

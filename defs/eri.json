@@ -4,7 +4,9 @@
     "extensions": ["eri"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"ERI.EXE",
+        "container":"win32/eri/eri51fre.zip"
     },
     "pack": {
         "exe": "dosbox",

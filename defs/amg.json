@@ -4,7 +4,9 @@
     "extensions": ["amg"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"]
+        "packages": ["dosbox"],
+        "tool":"AMGC.EXE",
+        "container":"win32/amg/amgc22.zip"
     },
     "pack": {
         "exe": "dosbox",
