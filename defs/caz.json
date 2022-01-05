@@ -4,7 +4,9 @@
     "extensions": ["caz"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"Cazipxp.exe",
+        "container":"win32/caz/cazipxp.zip"
     },
     "pack": {
         "exe": "wine",

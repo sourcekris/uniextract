@@ -4,7 +4,9 @@
     "extensions": ["dgc", "dgca"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"dgcac.exe",
+        "container":"win32/dgc/dgca_v110.zip"
     },
     "pack": {
         "exe": "wine $tools/dgcac.exe",

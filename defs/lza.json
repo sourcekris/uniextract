@@ -4,7 +4,9 @@
     "extensions": ["lza"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"LZA32.EXE",
+        "container":"win32/lza/lza101.zip"
     },
     "pack": {
         "exe": "wine",

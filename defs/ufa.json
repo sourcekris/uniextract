@@ -4,7 +4,9 @@
     "extensions": ["ufa"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"ufa.exe",
+        "container":"win32/ufa/ufa004b1.zip"
     },
     "pack": {
         "exe": "wine",

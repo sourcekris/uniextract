@@ -4,7 +4,10 @@
     "extensions": ["sqx"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"sqc.exe",
+        "dependencies":["CxLib72.dll", "CxSqx72.dll"],
+        "container":"win32/sqx/sc16.zip"
     },
     "pack": {
         "exe": "wine",

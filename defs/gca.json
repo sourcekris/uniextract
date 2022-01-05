@@ -4,7 +4,9 @@
     "extensions": ["gca"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"gcac.exe",
+        "container":"win32/gca/gca_v09k.zip"
     },
     "pack": {
         "exe": "wine",

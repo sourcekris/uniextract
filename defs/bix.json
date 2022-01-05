@@ -4,7 +4,9 @@
     "extensions": ["bix"],
     "install": {
         "method": "apt",
-        "packages": ["wine"]
+        "packages": ["wine"],
+        "tool":"bix.exe",
+        "container":"win32/bix/bix100b7.zip"
     },
     "pack": {
         "exe": "wine",
