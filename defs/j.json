@@ -1,0 +1,28 @@
+{
+    "name": "ARJSoftwareJAR",
+    "comment": "http://fileformats.archiveteam.org/wiki/JAR_(ARJ_Software)",
+    "extensions": ["j"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"JAR32.EXE",
+        "container":"win32/j/jar102x.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/JAR32.EXE a $file.j $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/JAR32.EXE e z:$archive",
+        "extension": "j",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAGKE1WEC/9uhe+KEAwMDgwUjkGCQ8koskgYxGP4tyb7BwMDO4ANkh6pKGTDgAJLTWA3EDJwZmAUEFKFCjPOFT3HrSzD5FbDOSeCxWDg/QcLiYGJBk/QDFvcDrGqNwjyywgwcFooHnn6qtWXW28XDxN7wa4c8zKz7DOwgs5ihZl1+HdYoPYdhu3QBc575DMa8DPMdjHk7RK9IF2jvuFunYX+DpS7D/gZ73QfGPw84fiz8n8DyY+HfBxwWBzk+/H7I/qduA+Ofuh8L/9Ud4P/Kbn7gPbv1Af6335t1H7SJ1/34m2d/5T6//Q/GPPs/CZsFmA2Yv1t5Lji/fILsjt8OZaEJFpyC8//KOLhm3brPrP5nn3bxX11NT2HrgndfeA+2hjE1H9ZPKItympzAe9D02pzS5uVHHy0s/dC3XVnmtrxv8dpfZ9QX+9TwTmU5pzW1IedAYLWFGcPXT0sZGeyZ7h8GADMASBB4AQAA",
+        "file": "0",
+        "content": "J",
+        "delete": true
+    }
+}

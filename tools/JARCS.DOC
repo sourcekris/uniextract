@@ -1,0 +1,399 @@
+                                    JARCS
+
+                             JPMdL Archival System
+
+                         (c)1995 Junichi Uekawa / JPMdL
+
+                                PUBLIC GAMMA
+
+                             VERSION 0.94โ:257
+
+
++===========================================================================+
+|-----------------------------------INDEX-----------------------------------|
++===========================================================================+
+////=====================================================================\\\\
+--=[ INTRODUCTION ]=====-----------------------------------------------------
+--=[ FILES IN THE ARCHIVE ]=======-------------------------------------------
+--=[ ACKNOWLEDGEMENTS ]=======-----------------------------------------------
+--=[ WARNING ]======---------------------------------------------------------
+--=[ COMMAND LINES ]=====----------------------------------------------------
+--=[ Da Jeneral Unpack Shell ]======-----------------------------------------
+--=[ COMPRESSION METHODS ]=====----------------------------------------------
+--=[ BUG REPORTS ]=====------------------------------------------------------
+--=[ KNOWN BUGS ]======------------------------------------------------------
+--=[ HISTORY ]=====----------------------------------------------------------
+\\\\=====================================================================////
+
+--=[ INTRODUCTION ]=====-----------------------------------------------------
+
+JARCS is a compression program that attempts to beat all the lame compression
+programs. This is the documentation for it.
+
+This is a public GAMMA version, please be careful in using this archiver. It
+has been tested, but not fully. If you find any bugs, please report to
+Junichi Uekawa. A Fidonet conference JARCS and JARCS.BETA are available.
+
+
+--=[ FILES IN THE ARCHIVE ]=======-------------------------------------------
+
+
+    JARCS.EXE       The main executable, that is optimized.
+    JARCSD.EXE      The debug compile of the executable (beta/alpha only)
+    JARCSX.EXE      The 32-bit version of the executable (32-bit dist only)
+    UNJAR.EXE       The UNJAR utility that will stay FREE even when the
+                    shareware non-beta version of JARCS is released
+    GO32.EXE        The DOS extender for running JARCSX.EXE (32-bit dist only)
+    JARCS.DOC       The registration key, also doubling up as a documentation
+                    file. If you delete this file, you can't run JARCS :)
+    FILE_ID.DIZ     The FILE_ID.DIZ for sysops.
+    JARCS.REG       How to register this package
+    SYSOP.DOC       Restriction on this program's distribution
+
+--=[ ACKNOWLEDGEMENTS ]=======-----------------------------------------------
+
+
+JARCS interface :
+
+                            JARCS (tm) source code
+
+             Copyright (c) 1995 Junichi Uekawa, ALL RIGHTS RESERVED
+
+
+LZHUF compression :
+ 
+ LZHUF.C (c)1989 by Haruyasu Yoshizaki, Haruhiko Okumura, and Kenji Rikitake.
+ All rights reserved. Permission granted for non-commercial use.
+ 
+SIXPACK compression :
+  /********************************************/
+  /*  SIXPACK.C -- Data compression program   */
+  /*  Written by Philip G. Gage, April 1991   */
+  /********************************************/
+
+Ideas on "Da Jeneral (Un)Pack Shell":
+  Û฿฿฿ Û  Û Û฿฿฿  General Unpack Shell ณ  Copyright (C) 1994 and written by   
+  Û ฿Û Û  Û ฿฿฿Û        for DOS        ณ          Johan Zwiekhorst            
+  ÛÜÜÛ ÛÜÜÛ ÜÜÜÛ     version  1.91     ณ       - ALL RIGHTS RESERVED -        
+  อออออออออออออออออออออออออออออออออออออฯออออออออออออออออออออออออออออออออออออออ
+
+
+--=[ WARNING ]======---------------------------------------------------------
+
+Well 0.93 beta circulation 0 has been successful in unpacking. I do think 
+that some anti-virus softwares will be able to kill the program tho'.
+
+The beta circulation 2 of version 0.93 contains "Da Jeneral (Un)Pack Shell"
+for updating archives, and nothing else. If I want to go around implementing
+all the others, I will need to go and get the configs for the archivers 
+working. It's gonna be hard :)
+
+Another WARNING on JARCS. JARCS DOES NOT CURRENTLY STORE FILES' TIMESTAMPS, 
+NOR SCAN DIRECTORIES TO STORE FILES, THEREFORE YOU CANNOT SPECIFY *.* AS 
+FILESPEC FOR JARCS !!
+
+The GAMMA circulation has the JARCS' own JSW003 compression installed as
+-C4. It has been throughly tested by quite a lot of people and it seems
+to work. However if you think the program is producing some garbage, please
+give me the version number, and the file you tried to compress failing. Also
+which version of JARCS you tried to use (JARCS, JARCSD, JARCSX, UNJAR).
+JSW003 file format has changed over versions, and if you feed older version
+archives to this version of JARCS in JSW003 format, the result is
+undefined. Maybe a corrupt file :(
+
+--=[ COMMAND LINES ]=====----------------------------------------------------
+
+
+Examples are here :
+
+
+JARCS A -PZIP Archive Filename
+  
+  Adds Filename to archive using ZIP. Also other compressions supported:
+    LHA, ARJ, RAR
+
+JARCS A Archive Filename Filename2
+
+  Add Filename and Filename2 to the archive distributedly using SIXPACK
+
+JARCS A -S Archive Filename Filename2
+
+  Add Filename and Filename2 to the archive solidly using SIXPACK
+
+JARCS A -C1 Archive Filename
+
+  Add Filename to archive distributedly using LZHUF
+  
+JARCS A -C1 -S Archive Filename
+
+  Add Filename to archive solidly using LZHUF
+
+JARCS V Archive
+
+  View the contents of the archive
+
+JARCS E Archive filename filename2 ...
+
+  Extract filename and filename2 from the archive.
+
+JARCS T Archive
+
+  Tests the content of the archive
+
+JARCS Z Archive Commentfile
+
+  Adds a comment to the archive
+
+JARCS S Archive
+
+  Creates a Self-Extracting archive
+
+JARCS A -A Archive filename
+
+  Creates an archive with analytic mode on, this implies that every single
+  compression available is used with the archive, and leaves the best only.
+  Quite good I think, to make THE BEST.
+
+--=[ Da Jeneral Unpack Shell ]======-----------------------------------------
+
+  "Da Jeneral Unpack Shell" is a feature in which you can use this JARCS 
+  archiver as a shell for many other archiving programs.
+
+  The configuration file, JARCS.INI which is designed to make Windows phreaks
+  happier with, is used to configure the Jeneral Unpack Shell routines as
+  well as other JARCS.
+
+  Da Jeneral Unpack Shell is just execution of JARCS with slightly altered
+  command line, namely adding the option '-p<archiver name>'. Initially
+  you will have -pZIP -pLHA -pARJ and -pRAR defined. Most of them will not
+  work for you, since the directory path the files are set to are not the
+  directory path which your files are stored. It's just set to "C:\USER"
+  for convenience purpose only, since most people who have been using VAX
+  will want to set a C:\USER directory, and any user who doesn't have his
+  own directory would have copied all the archivers to that directory...
+
+  Anyway, so it's just the normal JARCS command line with -P option enabled.
+
+  However, you don't need to have the -P option unless you are adding
+  to the archive. Therefore, normally you can just say :
+
+    JARCS E archive 
+
+  and it will instantly unarchive the file for you.
+
+  The configuration for JARCS used to be editable, but since I use 
+  precompiled configuration file .CFG instead of .INI (JARCS.CFG is compiled
+  version of JARCS.INI), you can't now. It's faster tho'.. only acceses
+  the file 2 times, not about 20 times ...
+
+
+  Anyway, without you fiddling with all this, you can just go and run
+    JARCS E      
+    JARCS T        
+    JARCS V     
+    JARCS A
+  commands supporting PKZIP, RAR, LHA, ARJ and all sorts of stuffs... 14
+  of them are supported, so run it :)
+
+--=[ COMPRESSION METHODS ]=====----------------------------------------------
+
+
+ 0: SIXPACK     The one from DDJ's compression competition. Slick and FAST
+                and compresses executable sort of files most.
+ 1: LZHUF       From the UNIX version of LHARC source-codes. Quite good 
+                compression gained. Text files seem to compress with this
+                method the best.
+ 2: JUNRLE      JPMdL/Junichi Uekawa's implementation of RLE method. Modified
+                somewhat, as always is. FAST and does not require much
+                memory in decompression. Graphics files, pretty text files
+                with loads of repeating characters always gets good 
+                compression with this method... But it's basically impractical.
+ 3: JUNRLE-2    JPMdL/Junichi Uekawa's implementation of RLE method level 2.
+                added in 0.91. A more efficient method of RLE compression 
+                that uses the most infrequent number for the escape code for
+                JunRLE compression packet. It uses a new format called 
+                JunRLE-2 packet. Quite good, I daresay. Anyway, compresses
+                the solid archives better !!
+ 4: JSW003      JPMdL/Junichi Uekawa's implementation of his own compression
+                method that uses a Sliding Window that does not slide :) It's
+                quite good compression. However, haven't found the optimal
+                compression yet, so you can go and change the -XA values
+                and -XB values yourself to make it compress best, and you
+                will tell me the one that work best, won't you ??? :)
+ 5: JSW004A     JPMdL/Junichi Uekawa's implementation of his own compression
+                method that does not mimick any of LZSS, LZW, Huffman, nor 
+                RLE. Potentially VERY fast, but the compression is not very
+                impressive...
+
+--=[ BUG REPORTS ]=====------------------------------------------------------
+
+Please report bugs at :
+
+
+Junichi Uekawa at
+                JPMdL R. R. BBS 01628 25708
+
+     or
+
+
+Junichi Uekawa at   2:252/334@fidonet   
+                    115:4401/102@pascalnet    
+                    111:4400/334@technet.intl
+                    22:100/2@techlink
+                    405:110/6@bbsnet
+                    44:2520/334@chatnet
+
+Junichi.Uekawa@f334.n252.z2.fidonet.org
+Junichi.Uekawa@f334.n252.z2.fidouk.org  <- This seems to be working
+
+
+    Junichi Uekawa
+    3, Clappers Meadow,
+    Maidenhead, Berks.
+    SL6 8TT
+    The United Kingdom.
+
+
+       JARCS.BETA echo           \ from 2:252/334
+       JARCS echo                /
+
+
+--=[ KNOWN BUGS ]======------------------------------------------------------
+
+  No unfixed bugs reported yet.....
+
+--=[ HISTORY ]=====----------------------------------------------------------
+
+VERSION DATE                   FILENAME     SerialNo.
+0.01เ   16.1.1995 - 17.1.1995  JARCS001.ZIP   6- 46
+
+  ! Created the archiver !!
+  + ADD command added
+  + VIEW command added
+  + EXTRACT command added
+  + SOLID archive.
+  + DISTRIBUTED archive.
+  + SIXPACK compression
+  + LZHUF compression.
+
+0.02เ   18.1.1995              JARCS002.ZIP  46- 60
+
+  + TEST commanded
+
+0.03เ   18.1.1995              JARCS003.ZIP  63- 69
+
+  ! Massive memory requirement removed, 16-bit versions workeable
+  - 32-bit versions getting obsolete...
+  + .JAR extentions is put
+  + paths are removed from filenames before being stored.
+
+0.04เ   19.1.1995              JARCS004.ZIP  76- 78
+
+  + Includes the JunCRC testing
+  = VIEW command improved
+  
+
+0.90เ   19.1.1995              JARCS090.ZIP  83- 95
+
+  - File format has changed, so no compatibility
+  + Version field is added, this is version 2 archive.
+  + Extraction routine checks for CRC
+  + File concatenation routine checks for CRC
+  + Solid extraction routine checks for CRC
+  + JUNRLE compression (FAST, but crappy compression)
+  
+0.91เ   20.1.1995              JARCS091.ZIP 102-107
+
+  + JUNRLE-2 compression (FAST, improved version of JUNRLE)
+  
+0.92เ   20.1.1995              JARCS092.ZIP 109-110
+  
+  = Solidation routine (AddHeader) fixed
+  + Commenting field has been added
+  - File format changed, so no compatibility
+
+0.93แ0  20.1.1995 - 21.1.1995  093JARC0.EXE 111-130
+
+  + SFX (SelF eXtraction) routine (primitive) created
+  = Commenting routine fixed.
+  
+0.93แ1  21.1.1995 - 22.1.1995  093JARC1.EXE 131-134
+
+  + UNJAR program
+  = SFX (SelF eXtraction) routine speeded up
+
+0.93แ2  22.1.1995              093JARC2.EXE 142-153
+
+  + Da Jeneral (Un)Pack Shell APPEND routines added
+  + Da Jeneral (Un)Pack Shell ZIP support added
+  + Da Jeneral (Un)Pack Shell ARJ support added
+  + Da Jeneral (Un)Pack Shell LHA support added
+  + Da Jeneral (Un)Pack Shell RAR support added
+  + Ini file added
+  + Macro for INI file added
+
+0.93แ3  22.1.1995 - 23.1.1995  093JARC3.EXE 156-168
+
+  + Macro filen=xxxx is added, and @@ = @ in INI
+  + Da Jeneral (Un)Pack Shell EXTRACT routine added
+  + Da Jeneral (Un)Pack Shell VIEW routine added
+  + Da Jeneral (Un)Pack Shell TEST routine added
+
+0.93แ4  23.1.1995 - 24.1.1995  093JARC4.EXE 177-187
+  
+  + JSW003 compression theory is put to implementation (buggy)
+  ! This version had a bit of problem just before being released, the release
+    SFX did not extract !! Anyway, it got fixed before getting out.
+
+0.93โ   24.1.1995              JARCS093.EXE 189-201
+  
+  = JSW003 compression is working without ANY bugs. Although slow, it works.
+  + Extra parameters are added, -XaN is the format, like -XA100.
+  + JSW003 compression is configurable using -XA8 -XB5 etc commands.
+  - JSW003 file format has changed, so older JSW003 packets (bad ones tho')
+    cannot be decompressed without the system crashing...
+
+0.94เ1  24.1.1995              094JARCA.EXE 203-206
+
+ + JSW003 compression optimization : Speed improved !!
+ + JSW003 compression optimization : Compression optimized !!
+ + JSW003 compression optimization : Default set to -XA8 -XB5 !!
+ ! -XA value, when increased by one will double the time it takes to 
+   compress!!
+
+0.94แ1  25.1.1995 - 26.1.1995  094JARC1.EXE 207-212
+
+ + Da Jeneral (Un)Pack Shell ZOO (-PZOO) support added
+ + Da Jeneral (Un)Pack Shell ARC (-PARC) support added
+ + Da Jeneral (Un)Pack Shell UC2 (-PUC2) support added
+ + Da Jeneral (Un)Pack Shell HYPER (-PHYPER) support added
+ + Da Jeneral (Un)Pack Shell LIMIT (-PLIMIT) support added
+ + Da Jeneral (Un)Pack Shell HAP (-PHAP) support added
+ ! There could be problems with detection, so if any files are misdetected,
+   please forward the file and the command line used to Junichi Uekawa.
+ ! Da Jeneral (Un)Pack Shell DWC (-PDWC) support NOT added for macro language
+   restriction I'm putting on for the current version. Maybe next time.
+ + Da Jeneral (Un)Pack Shell LARC (-PLARC) support added
+ + Da Jeneral (Un)Pack Shell SQZ (-PSQZ) support added
+ + Da Jeneral (Un)Pack Shell now shows command lines sent to O/S.
+ + Da Jeneral (Un)Pack Shell AMG (-PAMG) support added
+ + JARCS.INI is now translated to JARCS.CFG, thus faster access, and faster
+   compression format access. Also the file is smaller (by a bit...) and all
+   comments are stripped :)
+ = Da Jeneral (Un)Pack Shell UC2 support fixed
+ = Da Jeneral (Un)Pack Shell LIMIT support fixed
+
+0.94แ2  26.1.1995 - 27.1.1995  094JARC2.EXE 216-238
+
+ + JARCS SelF eXtraction routine FASTER
+ + JARCS CRC check on extracted files after decompression.
+ + Faster startup... (slightly).
+ + Progress indicators on compression methods -C1 and -C4.
+ + Da Jeneral (Un)Pack Shell DWC (-PDWC) support added
+ + JARCS.CFG format extended to allow more archivers to be supported.
+
+0.94แ3  27.1.1995              not released 243-255
+
+ + Analytic mode has been added.
+ + JSW004A compression has been added
+ 

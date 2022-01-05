@@ -1,0 +1,29 @@
+{
+    "name": "JARCS",
+    "comment": "http://fileformats.archiveteam.org/wiki/JARCS",
+    "extensions": ["jar"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"JARCS.EXE",
+        "container":"dos/jar/jarcs094.zip",
+        "dependencies":["JARCS.DOC","UNJAR.EXE"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:JARCS.EXE A $file.jar $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:UNJAR.EXE E F:$shortname *\" -c \"exit\"",
+        "extension": "jar",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAC6G1WEC//NyDHIOZmBgYGaAgP9AwIAGDBjoA9iBeAKnBRsjkOaZOYMJRMe/U26JYA8AAPisnD+nAAAA",
+        "file": "0",
+        "content": "JARCS",
+        "delete": true
+    }
+}
