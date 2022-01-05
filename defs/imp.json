@@ -1,0 +1,28 @@
+{
+    "name": "IMP",
+    "comment": "http://fileformats.archiveteam.org/wiki/IMP",
+    "extensions": ["imp"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"imp.exe",
+        "container":"win32/imp/imp112.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/imp.exe a $file.imp $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/imp.exe e z:$archive",
+        "extension": "imp",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAEeD1WEC//P0DeDyZGBgYGRAgFIglmdABbx7PH0DfDwYCpgYjBgYmME6ohQsFBgMgOIP+betA1IurgwfWRh8GBQ4MgQZGAJqDRvW3ypn+qfF//D2q30uDg1bxYKm5n9ilWYGABK7H3h1AAAA",
+        "file": "0",
+        "content": "IMP",
+        "delete": true
+    }
+}

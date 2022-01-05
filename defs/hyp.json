@@ -1,0 +1,28 @@
+{
+    "name": "HYP",
+    "comment": "http://fileformats.archiveteam.org/wiki/HYP",
+    "extensions": ["hyp"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"HYPER.EXE",
+        "container":"dos/hyp/HYPER2_6.ZIP"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:HYPER.EXE -a $file.hyp $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:HYPER.EXE -x F:$shortname \" -c \"exit\"",
+        "extension": "hyp",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIANuB1WEC/5MKDlFjZmBgAGHRLaohLiwMDAqMBh6RAQDLJ+UsGgAAAA==",
+        "file": "0",
+        "content": "HYP",
+        "delete": true
+    }
+}
