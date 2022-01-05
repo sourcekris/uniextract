@@ -10,33 +10,66 @@ a Linux environment with a Python API.
 
 ```json
 {
-    "name":"ZIP",
-    "extensions":["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm"],
+    "name": "ZIP",
+    "extensions": ["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm"],
     "install": {
-        "method":"apt",
-        "packages":["unzip"]
+        "method": "apt",
+        "packages": ["unzip"]
     },
     "pack": {
-      "exe":"zip",
-      "cmdline":"$tool $file.zip $file"  
+        "exe": "zip",
+        "cmdline": "$tool -q $file.zip $file",
+        "type": "archiver"
     },
     "unpack": {
-        "exe":"unzip",
-        "cmdline":"$tool $archive -d $destdir",
-        "extension":"zip",
+        "exe": "unzip",
+        "cmdline": "$tool $archive -d $destdir",
+        "extension": "zip",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAOL0ymEAAwvwZmbhYgCBhs1zgs9c33WFGcgGYUYGGQaD0BBOBuYDX04lgnBpBTcDIwtILZiI8gwI8GZkkmPGpV8CLM4IxEsaQSygaawQ09BMCvBmZYMoZWRwB9J2YI0AHG5Bv5sAAAA=",
-        "file":"0",
-        "content":"ZIP"
+        "blob": "H4sIAOL0ymEAAwvwZmbhYgCBhs1zgs9c33WFGcgGYUYGGQaD0BBOBuYDX04lgnBpBTcDIwtILZiI8gwI8GZkkmPGpV8CLM4IxEsaQSygaawQ09BMCvBmZYMoZWRwB9J2YI0AHG5Bv5sAAAA=",
+        "file": "0",
+        "content": "ZIP",
+        "delete": true
     }
 }
 ```
 
+- Install methods supported:
+ - "apt" (sudo apt install <packages[0]> <packages[1]> ...)
+ - "pip" (sudo pip install <packages[0]> <packages[1]> ...)
+ - "source" (git clone <repo>)
+  - Adds more fields:
+   - "repo" - the git repo - (currently only git is supported)
+   - "build" - build script
+   - "exist_check" - allows you to bypass cloning and installing if the tool is already on your system
+   - Example:
+        ```json
+            "install": {
+            "method": "source",
+            "repo": "https://github.com/kubo/snzip",
+            "build": "apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+            "exist_check": ["snzip -h", "Usage: snzip"]
+        },
+        ```
+ - Pack field types:
+  - "archiver" - a packer we can run natively exists to generate a testable archive file
+  - "dosbox" - a packer we can run via DOSbox exists to generate a testable archive file
+  - "wine" - a packer we can run via Wine exists to generate a testable archive file
+  - "blob" - no archiver we can run exists but we have an extractor we can test with a base64 blob of data 
+   - Adds more fields:
+    - "blob" - the base64 encoded archive
+    - Example:
+        ```json
+        "pack":{
+            "type":"blob",
+            "blob":"RUdHQQABpuPSNQAAAAAiguII45CFCgAAAAADAAAAAAAAAKyRhQoAAQAwC5WGLAAJAADg7qdn/NcBACKC4ggTDLUCAQUDAAAABQAAAMibkN4iguIIc3V3BwAiguII"
+        },
+        ```
 ### Supported Formats
 
-TBD
+ - See defs/ for the full list but the plan is to support extracting for every format in that folder.
 
 ### To Do Archive Formats
 
