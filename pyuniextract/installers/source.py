@@ -2,7 +2,9 @@ import subprocess
 import tempfile
 import os, os.path
 from .testarchiver import test_archiver
+from .extracttool import extracttool
 from .config import tools_path
+
 
 # return True if the archiver needed to unpack d is already in the system path.
 def archiver_in_path(d):
@@ -65,6 +67,7 @@ def install_from_source(definitions):
 
                     print("Built, ", end="")
             
+                extracttool(d)
                 if test_archiver(d):
                     print("OK")
                 else:

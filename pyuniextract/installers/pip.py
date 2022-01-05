@@ -1,5 +1,6 @@
 import subprocess
 from .testarchiver import test_archiver
+from .extracttool import extracttool
 
 def install_pip_packages(definitions):
     for d in definitions:
@@ -13,7 +14,8 @@ def install_pip_packages(definitions):
                 except Exception as e:
                     print(f'error installing archiver {d["name"]}: {e}')
                     continue
-            
+
+                extracttool(d)
                 if test_archiver(d):
                     print("OK")
                 else:
