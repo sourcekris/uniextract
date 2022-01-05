@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# prereqs.py -
+# Installs the pre-requisite archivers, packages, and platforms necessary to extract the archive types.
+
 import sys
 from pyuniextract.installers.apt import install_apt_packages
 from pyuniextract.installers.pip import install_pip_packages

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# maketests.py -
+# tests that we can pack an archive with the archiver and emits a compressed, base64 encoded
+# archive blob for storage as the json configuration "test"->"blob" value.
+
 import argparse
 import sys
 import os, os.path
@@ -8,7 +12,6 @@ from gzip import compress
 from base64 import b64encode, b64decode
 from subprocess import Popen, PIPE
 from pyuniextract.installers.config import load_defs, default_fn, tools_path
-#from pyuniextract.common import prettyjson
 from pyuniextract.installers.template import prepare_cmdline, prepare_exe
 from pyuniextract.installers.testarchiver import pad
 
