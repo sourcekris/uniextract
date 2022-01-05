@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"ARQ.EXE",
-        "container":"win32/arq/arq32.zip"
+        "container":"dos/arq/arq32.zip"
     },
     "pack": {
         "exe": "dosbox",

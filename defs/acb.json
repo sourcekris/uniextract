@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"ACB.EXE",
-        "container":"win32/acb/acb_200c.zip"
+        "container":"dos/acb/acb_200c.zip"
     },
     "pack": {
         "exe": "dosbox",

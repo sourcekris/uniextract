@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"SQZ.EXE",
-        "container":"win32/sqz/sqz1084.zip"
+        "container":"dos/sqz/sqz1084.zip"
     },
     "pack": {
         "exe": "dosbox",

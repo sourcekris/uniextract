@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"BSA.EXE",
-        "container":"win32/bsa/bsa.zip"
+        "container":"dos/bsa/bsa.zip"
     },
     "pack": {
         "exe": "dosbox",

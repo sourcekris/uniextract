@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"AR7.EXE",
-        "container":"win32/ar7/ar712.zip"
+        "container":"dos/ar7/ar712.zip"
     },
     "pack": {
         "exe": "dosbox",

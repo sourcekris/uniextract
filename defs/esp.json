@@ -6,7 +6,8 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"ESP.EXE",
-        "container":"win32/esp/esp_v192.zip"
+        "container":"dos/esp/esp_v192.zip",
+        "dependencies":["UNESP.EXE"]
     },
     "pack": {
         "exe": "dosbox",

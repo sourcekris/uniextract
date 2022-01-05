@@ -1,5 +1,6 @@
 import subprocess
 from .testarchiver import test_archiver
+from .extracttool import extracttool
 
 # return True if the apt packages are already installed.
 def apt_already_installed(d):
@@ -36,6 +37,7 @@ def install_apt_packages(definitions):
                 # else:
                 #     print('skipped install')
 
+                extracttool(d)
                 #print(f"Installed, Testing: ", flush=True, end="")
                 if test_archiver(d):
                     print("OK")

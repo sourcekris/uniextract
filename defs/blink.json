@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"blink.exe",
-        "container":"win32/blink/blink.zip"
+        "container":"dos/blink/blink.zip"
     },
     "pack": {
         "exe": "dosbox",

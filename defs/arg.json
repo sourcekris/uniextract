@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"arg.exe",
-        "container":"win32/arg/arg.zip"
+        "container":"dos/arg/arg.zip"
     },
     "pack": {
         "exe": "dosbox",

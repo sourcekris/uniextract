@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"AMGC.EXE",
-        "container":"win32/amg/amgc22.zip"
+        "container":"dos/amg/amgc22.zip"
     },
     "pack": {
         "exe": "dosbox",

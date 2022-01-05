@@ -5,6 +5,7 @@ import json
 # config
 definitions_path = "defs/"
 tools_path = "tools/"
+toolsdist_path = "toolsdist/"
 default_fn = "0"
 
 def load_defs(addfn=False, defpath=None):

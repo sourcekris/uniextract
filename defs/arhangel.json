@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"ARHANGEL.EXE",
-        "container":"win32/arhangel/arh140.zip"
+        "container":"dos/arhangel/arh140.zip"
     },
     "pack": {
         "exe": "dosbox",

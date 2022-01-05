@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"CAR.EXE",
-        "container":"win32/car/car150.zip"
+        "container":"dos/car/car150.zip"
     },
     "pack": {
         "exe": "dosbox",

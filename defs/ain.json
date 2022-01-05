@@ -6,7 +6,7 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"AIN.EXE",
-        "container":"win32/ain/ain232.zip"
+        "container":"dos/ain/ain232.zip"
     },
     "pack": {
         "exe": "dosbox",
