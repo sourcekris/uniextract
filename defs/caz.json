@@ -15,7 +15,7 @@
     },
     "unpack": {
         "exe": "wine",
-        "cmdline": "cd $destdir && $tool $tools/Cazipxp.exe -e z:$archive",
+        "cmdline": "cd $destdir && $tool $tools/Cazipxp.exe -u z:$archive",
         "extension": "caz",
         "force_extension": true
     },

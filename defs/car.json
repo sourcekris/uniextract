@@ -15,7 +15,7 @@
     },
     "unpack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"d:car x F:$shortname E:\" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:car x F:$shortname\" -c \"exit\"",
         "extension": "car",
         "force_extension": true
     },
