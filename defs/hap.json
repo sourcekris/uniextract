@@ -1,0 +1,29 @@
+{
+    "name": "HAP",
+    "comment": "http://fileformats.archiveteam.org/wiki/HAP",
+    "extensions": ["hap"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"HAP3.EXE",
+        "container":"dos/hap/HAP300.ZIP",
+        "dependencies":["PAH3.EXE"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:HAP3.EXE a $file.hap $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:PAH3.EXE e F:$shortname *\" -c \"exit\"",
+        "extension": "hap",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIADV/1WEC/5to7OHGgAB9GV7hzEh8BoU1m1RDQCIGyKKiHo4BAP8fW8c6AAAA",
+        "file": "0",
+        "content": "HAP",
+        "delete": true
+    }
+}

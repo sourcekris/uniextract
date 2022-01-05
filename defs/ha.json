@@ -1,0 +1,28 @@
+{
+    "name": "HA",
+    "comment": "http://fileformats.archiveteam.org/wiki/HA",
+    "extensions": ["ha"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"HA.EXE",
+        "container":"dos/ha/ha0999.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:HA.EXE a $file.ha $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:HA.EXE x F:$shortname \" -c \"exit\"",
+        "extension": "ha",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIABZ81WEC//NwZGRQYGJgYADhL8sWVYjEXktkMGBgYlTwcAQAJtAyQB0AAAA=",
+        "file": "0",
+        "content": "HA",
+        "delete": true
+    }
+}
