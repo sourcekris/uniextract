@@ -1,0 +1,28 @@
+{
+    "name": "MSXiE",
+    "comment": "http://fileformats.archiveteam.org/wiki/MXSiE",
+    "extensions": ["xie"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"MSXIE.COM",
+        "container":"dos/msxie/msxie140.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:MSXIE.COM a $file.xie $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:MSXIE.COM e F:$shortname \" -c \"exit\"",
+        "extension": "xie",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAFbF1mEC//MN5mNiZWBgAGFGAwYE8I0I9nQFAK8Bp9oeAAAA",
+        "file": "0",
+        "content": "MXSIE",
+        "delete": true
+    }
+}
