@@ -1,0 +1,28 @@
+{
+    "name": "MDCD",
+    "comment": "http://fileformats.archiveteam.org/wiki/MDCD",
+    "extensions": ["md"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"MDCD.EXE",
+        "container":"dos/mdcd/MDCD10.ZIP"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:MDCD.EXE C $file $file.md\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:MDCD.EXE D F:$shortname e:\" -c \"exit\"",
+        "extension": "md",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAH/C1mEC//N1yU3hYqxiwAAsUKzAMH2VWsiKY4wGCgjA7GoVo0Ah8HVxdgEAU4OKrX4AAAA=",
+        "file": "0",
+        "content": "MDCD",
+        "delete": true
+    }
+}

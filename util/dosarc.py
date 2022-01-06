@@ -22,7 +22,7 @@ jsontemplate = """{
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"#BIN#",
-        "container":"dos/#EXT#/#DIST#"#DEPBLOCK#
+        "container":"dos/#DISTFOLDER#/#DIST#"#DEPBLOCK#
     },
     "pack": {
         "exe": "dosbox",
@@ -50,6 +50,7 @@ def main(argv):
     ap.add_argument("-b", "--binary", help="archiver executable name. Default is whatever the extension is e.g. arj")
     ap.add_argument("-u", "--unarchiver", help="unarchiver executable name. Default is whatever the extension is e.g. arj")
     ap.add_argument("-d", "--distfile", help="Archive distfile from dos/*/??.zip")
+    ap.add_argument("-g", "--distfolder", help="Archive distfile folder from dos/<distfolder>/??.zip")
     ap.add_argument("-n", "--name", help="Profile name, default is whatever the extension is in uppercase. e.g. arj -> ARJ")
     ap.add_argument("-m", "--msg", help="Archive message, default is whatever the extension is in uppercase. e.g. arj -> ARJ")
     ap.add_argument("-a", "--addfiles", default="a", help="The command the archiver uses to add files to an archive.")
@@ -66,6 +67,12 @@ def main(argv):
     if os.path.isfile(def_file):
         print(f"{def_file} already exists, aborting.")
         return
+    
+    distfolder = args.distfolder
+    if not args.distfolder:
+        distfolder = args.extension
+
+
 
     binary = args.binary
     if not args.binary:
@@ -77,6 +84,13 @@ def main(argv):
         binary2 = binary
     else:
         depblock = f",\n        \"dependencies\":[\"{binary2}\"]"
+    
+    if args.distfile:
+        # prebuild fake d
+        d = {"install":{"container":f"dos/{distfolder}/{args.distfile}","tool":f"{binary}","dependencies":[]}}
+        if depblock:
+            d["install"]["dependencies"].append(binary2)
+        extracttool(d)
     
     tool = os.path.join("tools", binary.upper() + ".EXE")
     if not os.path.isfile(tool):
@@ -105,6 +119,7 @@ def main(argv):
     config = config.replace("#DIST#", args.distfile)
     config = config.replace("#BIN2#", binary2)
     config = config.replace("#DEPBLOCK#", depblock)
+    config = config.replace("#DISTFOLDER#", distfolder)
 
     print(f'writing config: {def_file}')
     open(def_file,'w').write(config)
@@ -128,6 +143,7 @@ def main(argv):
     config = config.replace("#DIST#", args.distfile)
     config = config.replace("#BIN2#", binary2)
     config = config.replace("#DEPBLOCK#", depblock)
+    config = config.replace("#DISTFOLDER#", distfolder)
 
     print(f'writing config w/blob this time: {def_file}')
     open(def_file,'w').write(config)
