@@ -1,0 +1,27 @@
+{
+    "name": "NSK",
+    "comment": "http://fileformats.archiveteam.org/wiki/NSK",
+    "extensions": ["nsk"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"NSK.EXE",
+        "container":"dos/nsk/nsk50.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:nsk $file /T:$file.nsk\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "type":"builtin",
+        "module": "nsk",
+        "force_extension": false
+    },
+    "test": {
+        "blob": "H4sIABnc1mEC//ML9uZgYGBQcNipFsIMZDAaMLDN8Ynk+sEOAEadnJUaAAAA",
+        "file": "0",
+        "content": "NSK",
+        "delete": true
+    }
+}
