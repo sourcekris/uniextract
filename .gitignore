@@ -5,9 +5,7 @@
 3rdparty/*
 
 # for dos and windows tools, just store the distribution ZIP in toolsdist/ not the binary itself. 
-tools/*.EXE
-tools/*.exe
-tools/*.dll
+tools/*
 
 __pycache__
 

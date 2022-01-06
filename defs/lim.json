@@ -1,0 +1,28 @@
+{
+    "name": "LIMIT",
+    "comment": "http://fileformats.archiveteam.org/wiki/LIMIT",
+    "extensions": ["lim"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"LIMIT.EXE",
+        "container":"dos/lim/LIMIT12.ZIP"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:LIMIT.EXE a $file.lim $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:LIMIT.EXE e F:$shortname \" -c \"exit\"",
+        "extension": "lim",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIACWZ1mEC//PxleJgEBJgaLjIysCg/FGagYGBa7JaiAIDA5APxhe0DnUYMPh4+nqGCP8ACgAAPkf+4DIAAAA=",
+        "file": "0",
+        "content": "LIMIT",
+        "delete": true
+    }
+}

@@ -1,6 +1,6 @@
 {
     "name":"LZX",
-    "comment":"Older compression format popular on the Amiga",
+    "comment":"Older compression format popular on the Amiga - http://fileformats.archiveteam.org/wiki/LZX",
     "extensions":["lzx"],
     "install": {
         "method":"apt",

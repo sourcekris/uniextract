@@ -5,37 +5,56 @@ from .testarchiver import test_archiver
 from .extracttool import extracttool
 from .config import tools_path
 
+def exist_checker(cmdline, want):
+    try:
+        p = subprocess.Popen(cmdline, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        out, err = p.communicate()
+        if want in out.decode() or want in err.decode():
+            return True
+    except subprocess.CalledProcessError as e:
+        # Some processes return an erroneous exit code even when they are working.
+        try:
+            if want in e.stdout.decode() or want in e.stderr.decode():
+                return True
+        except AttributeError:
+            return False
+
+    return False
+
+# return True if the archiver needed to unpack d is already in the tools path.
+def archiver_in_tools_path(d):
+    if "install" in d and "exist_check" in d["install"] and len(d["install"]["exist_check"]) > 1:
+        cmdline = d["install"]["exist_check"][0]
+        want = d["install"]["exist_check"][1]
+
+        bin = cmdline.split()[0]
+        if os.path.isfile(os.path.join(tools_path, bin)):
+            if "$tools" not in cmdline:
+                cmdline = tools_path + cmdline
+            return exist_checker(cmdline, want)
+        
+    return False
 
 # return True if the archiver needed to unpack d is already in the system path.
 def archiver_in_path(d):
     if "install" in d and "exist_check" in d["install"] and len(d["install"]["exist_check"]) > 1:
         cmdline = d["install"]["exist_check"][0]
         want = d["install"]["exist_check"][1]
+        return exist_checker(cmdline, want)
 
-        try:
-            p = subprocess.Popen(cmdline, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-            out, err = p.communicate()
-            if want in out.decode() or want in err.decode():
-                return True
-        except subprocess.CalledProcessError as e:
-            # Some processes return an erroneous exit code even when they are working.
-            try:
-                if want in e.stdout.decode() or want in e.stderr.decode():
-                    return True
-            except AttributeError:
-                return False
-
-            return False
     return False
 
 
 def install_from_source(definitions):
     for d in definitions:
+        in_path = False
         if archiver_in_path(d):
+            d["unpack"]["exe"] = d["unpack"]["exe"].replace("$tools/","")
+            in_path = True
+
+        if in_path or archiver_in_tools_path(d):
             print(f"trying to build archiver: {d['name']}: Exists, Testing: ", flush=True, end="")
 
-            # archiver is in path so, overwrite the local stash folder that comes in the config.
-            d["unpack"]["exe"] = d["unpack"]["exe"].replace("$tools/","")
             if test_archiver(d):
                 print("OK")
             else:

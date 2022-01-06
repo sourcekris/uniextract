@@ -1,6 +1,6 @@
 {
     "name": "ZIP",
-    "extensions": ["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm"],
+    "extensions": ["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm","maff"],
     "install": {
         "method": "apt",
         "packages": ["unzip"]

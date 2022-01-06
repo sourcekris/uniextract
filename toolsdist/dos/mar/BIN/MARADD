@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Usage: "maradd <archive> <files>"
+
+TESTALGO="-a bwt"
+USEALGO="-a bwt"
+
+ARCHIVE="$1"
+shift
+
+for FILE
+do
+
+  echo $FILE
+
+  BESTDELTA=0
+  BESTSIZE=`cat $FILE | wc -c`
+
+  for DELTA in 0 1 2 3 4
+  do
+    SIZE=`mcr $TESTALGO -t $DELTA $FILE | wc -c`
+    echo "D$DELTA $SIZE"
+    if [ $SIZE -lt $BESTSIZE ]
+    then
+      BESTSIZE=$SIZE
+      BESTDELTA=$DELTA
+    fi
+  done
+
+  echo "BEST $BESTDELTA"
+
+  if [ -f $ARCHIVE ]
+  then
+    echo "mar $USEALGO -t $BESTDELTA -v 5 a $ARCHIVE $FILE"
+    mar $USEALGO -t $BESTDELTA a $ARCHIVE $FILE
+  else
+    echo "mar $USEALGO -t $BESTDELTA -v 5 c $ARCHIVE $FILE"
+    mar $USEALGO -t $BESTDELTA c $ARCHIVE $FILE
+  fi
+
+done
+

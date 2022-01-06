@@ -1,0 +1,28 @@
+{
+    "name": "LHARK",
+    "comment": "Utility for DOS, developed by Kerwin Medina with a custom compression scheme - http://fileformats.archiveteam.org/wiki/LHARK",
+    "extensions": ["lzh"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"LHARK.EXE",
+        "container":"dos/lhark/lhark04d.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:LHARK.EXE a $file.lzh $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:LHARK.EXE e F:$shortname \" -c \"exit\"",
+        "extension": "lzh",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAP2X1mEC/5NapZuTYaDLysDAAMI5k9RCFBgZDbR1FRgYfDwcg7wZAGxWh3IiAAAA",
+        "file": "0",
+        "content": "LHARK",
+        "delete": true
+    }
+}

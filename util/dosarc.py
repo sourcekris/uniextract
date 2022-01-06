@@ -54,10 +54,15 @@ def main(argv):
     ap.add_argument("-m", "--msg", help="Archive message, default is whatever the extension is in uppercase. e.g. arj -> ARJ")
     ap.add_argument("-a", "--addfiles", default="a", help="The command the archiver uses to add files to an archive.")
     ap.add_argument("-x", "--extfiles", default="x", help="The command the archiver uses to extract files from an archive.")
+    ap.add_argument("-f", "--deffilename", help="The filename for the definition json.")
     args = ap.parse_args(argv)
 
     os.chdir('..')
-    def_file = os.path.join("defs", args.extension + ".json")
+    deffn = args.deffilename
+    if not deffn:
+        deffn = args.extension + ".json"
+
+    def_file = os.path.join("defs", deffn)
     if os.path.isfile(def_file):
         print(f"{def_file} already exists, aborting.")
         return
