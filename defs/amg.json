@@ -1,7 +1,7 @@
 {
     "name": "AMG",
     "comment": "An early-1990s archival/compression program for DOS - http://fileformats.archiveteam.org/wiki/AMG_(compressed_archive)",
-    "extensions": ["amg"],
+    "extensions": ["amg", "oop"],
     "install": {
         "method": "apt",
         "packages": ["dosbox"],

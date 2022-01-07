@@ -1,0 +1,28 @@
+{
+    "name": "oPAQue",
+    "comment": "http://fileformats.archiveteam.org/wiki/oPAQue",
+    "extensions": ["paq"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"PAQ.EXE",
+        "container":"dos/paq/pak1_0.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:PAQ.EXE a $file.paq $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:PAQ.EXE x F:$shortname \" -c \"exit\"",
+        "extension": "paq",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAHQ42GEC/1tgoauu1rN9HwMU2AExI4jBaMCAAGxQ/PTZkRsKYJH3GYK+td4ARZSJ2j4AAAA=",
+        "file": "0",
+        "content": "OPAQUE",
+        "delete": true
+    }
+}

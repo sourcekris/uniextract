@@ -1,0 +1,27 @@
+{
+    "name":"packARC",
+    "extensions":["pja"],
+    "install": {
+        "method":"source",
+        "repo":"https://github.com/packjpg/packARC",
+        "build":"cd source && sh build_packarc_linux.sh && cp packARC.lxe $tools",
+        "exist_check":["packARC.lxe -h","packARC Frontend"]
+    },
+    "pack":{
+        "exe": "$tools/packARC.lxe",
+        "cmdline": "$tool a -np $file.pja $file",
+        "type": "archiver"
+    },
+    "unpack": {
+        "exe":"$tools/packARC.lxe",
+        "cmdline":"cd $destdir && $tool x -np $archive",
+        "extension":"pja",
+        "force_extension": true
+    },
+    "test": {
+        "blob":"H4sIAK492GEC/zNgWGd7I5GBnYEBjANVWQ7wH/B/H+Do7O0Y5PwfCICiDAFejuwAaIodfioAAAA=",
+        "file":"0",
+        "content":"PACKARC",
+        "delete":true
+    }
+}
