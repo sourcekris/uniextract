@@ -1,0 +1,28 @@
+{
+    "name": "PACKER",
+    "comment": "http://fileformats.archiveteam.org/wiki/PACKER",
+    "extensions": ["pak"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"PACKER.EXE",
+        "container":"dos/pak/FINISH26.ZIP"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:PACKER.EXE  $file.pak $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:PACKER.EXE F:$shortname /X\" -c \"exit\"",
+        "extension": "pak",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAO8+2GEC/2MIYBD5y/SXiZGL0YCNgYFBI+QP0/Fjt1QZREC8AEdnb9cgOQYA65kXZiYAAAA=",
+        "file": "0",
+        "content": "PACKER",
+        "delete": true
+    }
+}
