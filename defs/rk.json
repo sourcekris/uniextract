@@ -1,0 +1,28 @@
+{
+    "name": "RK",
+    "comment": "http://fileformats.archiveteam.org/wiki/RK",
+    "extensions": ["rk"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"rk.exe",
+        "container":"win32/rk/rk104a1e.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/rk.exe -c $file.rk $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/rk.exe -e $winarchive",
+        "extension": "rk",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAK8o2WEAA9N0+9vyioGBgQWIn7AwMDIwyB+qZDqcYVEPFBB8+/jtydsGbtX5vEZs4hsuuq/4I3PIhgECGMGkDJzFARVnaGRhDPIGANei0v9YAAAA",
+        "file": "0",
+        "content": "RK",
+        "delete": true
+    }
+}
