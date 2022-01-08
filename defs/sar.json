@@ -1,0 +1,28 @@
+{
+    "name": "SAR",
+    "comment": "http://fileformats.archiveteam.org/wiki/SAR",
+    "extensions": ["sar"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"SAR.EXE",
+        "container":"dos/sar/sar1.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:SAR.EXE a $file.sar $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:SAR.EXE e F:$shortname \" -c \"exit\"",
+        "extension": "sar",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAF8q2WEC/5NeoeDjYaDAzMDAAMIgoMDIZKDnuEeBgSHYMYgBAMOijNEhAAAA",
+        "file": "0",
+        "content": "SAR",
+        "delete": true
+    }
+}

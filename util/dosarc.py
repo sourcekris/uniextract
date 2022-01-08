@@ -54,7 +54,7 @@ def main(argv):
     ap.add_argument("-n", "--name", help="Profile name, default is whatever the extension is in uppercase. e.g. arj -> ARJ")
     ap.add_argument("-m", "--msg", help="Archive message, default is whatever the extension is in uppercase. e.g. arj -> ARJ")
     ap.add_argument("-a", "--addfiles", default="a", help="The command the archiver uses to add files to an archive.")
-    ap.add_argument("-x", "--extfiles", default="x", help="The command the archiver uses to extract files from an archive.")
+    ap.add_argument("-x", "--extfiles", default="e", help="The command the archiver uses to extract files from an archive.")
     ap.add_argument("-f", "--deffilename", help="The filename for the definition json.")
     args = ap.parse_args(argv)
 
