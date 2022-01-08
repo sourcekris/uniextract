@@ -14,9 +14,10 @@
         "type": "dosbox"
     },
     "unpack": {
-        "type":"builtin",
-        "module": "nsk",
-        "force_extension": false
+        "exe": "$tools/unnsk",
+        "cmdline": "$tool -e $archive -d $destdir",
+        "extension": "nsk",
+        "force_extension": true
     },
     "test": {
         "blob": "H4sIABnc1mEC//ML9uZgYGBQcNipFsIMZDAaMLDN8Ynk+sEOAEadnJUaAAAA",

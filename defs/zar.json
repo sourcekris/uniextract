@@ -1,0 +1,28 @@
+{
+    "name": "ZAR",
+    "comment": "http://fileformats.archiveteam.org/wiki/ZAR",
+    "extensions": ["zar"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"ZIP.EXE",
+        "container":"dos/zar/zip_ar26.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:ZIP.EXE $file.zar $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "$tools/unzar",
+        "cmdline": "$tool -e $archive -d $destdir",
+        "extension": "zar",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAC2l2WEC/2NkU1B6xvKHudGAg4GBgZmBjSEgRA0A1UgQ4hUAAAA=",
+        "file": "0",
+        "content": "ZAR",
+        "delete": true
+    }
+}
