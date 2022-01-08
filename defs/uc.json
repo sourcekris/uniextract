@@ -1,6 +1,6 @@
 {
     "name": "UltraCompressor",
-    "comment": "http://fileformats.archiveteam.org/wiki/UltraCompressor",
+    "comment": "http://fileformats.archiveteam.org/wiki/UltraCompressor_II",
     "extensions": ["uc"],
     "install": {
         "method": "apt",
