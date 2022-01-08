@@ -1,0 +1,28 @@
+{
+    "name": "UltraCompressor",
+    "comment": "http://fileformats.archiveteam.org/wiki/UltraCompressor",
+    "extensions": ["uc"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"UC.EXE",
+        "container":"dos/uc/uc237b.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:UC.EXE a $file.uc $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:UC.EXE e F:$shortname \" -c \"exit\"",
+        "extension": "uc",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAK2d2WEC/wt1NpJKYWBgsDiyiZGBEcgwBuJfBxhOM5xgYDiwod6+4R6Dw8Klr+xuWL1h/P5YYAEDGDCD1R7aqMvFfHF1isKkY9KnbZ8bs6ZW8vSmmvB0PutsMhP+apEWc8x688c5nO0bTSZJsk1lfZ+u4BCKbCEAXwZkzX4AAAA=",
+        "file": "0",
+        "content": "UC",
+        "delete": true
+    }
+}

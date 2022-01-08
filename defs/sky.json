@@ -1,6 +1,6 @@
 {
     "name": "SKY",
-    "comment": "http://fileformats.archiveteam.org/wiki/SKY",
+    "comment": "http://fileformats.archiveteam.org/wiki/SKY_(compressed_archive)",
     "extensions": ["sky"],
     "install": {
         "method": "apt",

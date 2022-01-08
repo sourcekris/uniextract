@@ -1,6 +1,6 @@
 {
     "name": "SquashARH",
-    "comment": "http://fileformats.archiveteam.org/wiki/SquashARH",
+    "comment": "http://fileformats.archiveteam.org/wiki/Squash_ARH",
     "extensions": ["arh"],
     "install": {
         "method": "apt",
