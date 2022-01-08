@@ -1,0 +1,28 @@
+{
+    "name": "ZPK",
+    "comment": "http://fileformats.archiveteam.org/wiki/ZPK",
+    "extensions": ["zpk"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"PACK.EXE",
+        "container":"dos/zpk/ZILITE.ZIP"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:PACK.EXE a $file.zpk $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:PACK.EXE x F:$shortname \" -c \"exit\"",
+        "extension": "zpk",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAPyq2WEC/2OMCvBmZPjTfSuRkcGAAQmoC2mGMANpfiCOUUGWAYkysGh4qm4zc5rBeIKRAQCwv2oFRAAAAA==",
+        "file": "0",
+        "content": "ZPK",
+        "delete": true
+    }
+}
