@@ -1,0 +1,28 @@
+{
+    "name": "RKV",
+    "comment": "http://fileformats.archiveteam.org/wiki/RKIVE",
+    "extensions": ["rkv"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"rkive.exe",
+        "container":"dos/rkv/rkv192b1.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:rkive.exe a $file.rkv $file\" ",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:rkive.exe x F:$shortname \" -c \"exit\"",
+        "extension": "rkv",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAMMp2WEC/9N0+9vyioGBgQWIn7AwMDIwyB+qZDqcYVEPFBB8+/jtydsGbtX5vEZsspM/f15e/3KZDQMEMIJJGTiLA0S4uga5NbIwBnkDAJTZDeBYAAAA",
+        "file": "0",
+        "content": "RKV",
+        "delete": true
+    }
+}
