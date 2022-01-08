@@ -1,0 +1,28 @@
+{
+    "name": "PSA",
+    "comment": "http://fileformats.archiveteam.org/wiki/PSA",
+    "extensions": ["psa"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"PSA.EXE",
+        "container":"win32/psa/psa91w32.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/psa.exe a $file.psa $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/psa.exe e z:$archive",
+        "extension": "psa",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAIYM2WEC/wsIdmRkVmJgYCgukYxhYPj/n5mBGcjbnLoimQEMGBkMAoIdAUlVZR0nAAAA",
+        "file": "0",
+        "content": "PSA",
+        "delete": true
+    }
+}
