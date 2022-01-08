@@ -1,0 +1,29 @@
+{
+    "name": "YZ1",
+    "comment": "http://fileformats.archiveteam.org/wiki/Yamazaki_zipper_archive",
+    "extensions": ["yz1"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"yzenc.exe",
+        "container":"win32/yz1/deepf106.zip",
+        "dependencies":["yzdec.exe"]
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/yzenc.exe $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/yzdec.exe z:$archive",
+        "extension": "yz1",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIADip2WEC/6usMjA0MDUwYGBg4AViLiBmLJ7z3PLcKEEK8Wzr2uyoa1BCOMoNmYtGKEpd29KLTSKTA0RIXcOjF43IuEWWLLUD4E/cEd2IAwDWm9y3SgIAAA==",
+        "file": "0",
+        "content": "YZ1",
+        "delete": true
+    }
+}

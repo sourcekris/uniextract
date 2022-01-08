@@ -1,0 +1,28 @@
+{
+    "name": "YAC",
+    "comment": "http://fileformats.archiveteam.org/wiki/YAC",
+    "extensions": ["yac"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"YAC.EXE",
+        "container":"dos/yac/yac102.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:YAC.EXE a $file.yac $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:YAC.EXE e F:$shortname \" -c \"exit\"",
+        "extension": "yac",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAM6n2WEC/0v478WQwMDAwMgwE0hEOjOA2Y/lgZTCB34GXICRIV9AM0SBgRnInt8FEjHYecC+4BD7sgZuHW5xCzsuhoY1ifUMDAAiqdhKYAAAAA==",
+        "file": "0",
+        "content": "YAC",
+        "delete": true
+    }
+}

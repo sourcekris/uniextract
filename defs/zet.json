@@ -1,0 +1,28 @@
+{
+    "name": "ZET",
+    "comment": "http://fileformats.archiveteam.org/wiki/ZET",
+    "extensions": ["zet"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"ZET.EXE",
+        "container":"dos/zet/zet010.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:ZET.EXE a $file.zet $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:ZET.EXE e F:$shortname \" -c \"exit\"",
+        "extension": "zet",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAKup2WEC//OPuiuUxsMABCkMjCCKwT/qAY/2VAYo+5Fc1TJ+IIuR4WZMUj0Dg2ZIkaACAzNQxAAo+5DHgokByGNmiHIN8Y+6x5ZRAwC8F9IAUQAAAA==",
+        "file": "0",
+        "content": "ZET",
+        "delete": true
+    }
+}
