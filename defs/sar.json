@@ -1,6 +1,6 @@
 {
     "name": "SAR",
-    "comment": "http://fileformats.archiveteam.org/wiki/SAR",
+    "comment": "http://fileformats.archiveteam.org/wiki/SAR_(Streamline_Design)",
     "extensions": ["sar"],
     "install": {
         "method": "apt",

@@ -1,0 +1,28 @@
+{
+    "name": "SLIM",
+    "comment": "http://fileformats.archiveteam.org/wiki/Slim!",
+    "extensions": ["fb"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"slim23d.exe",
+        "container":"win32/slim/slim023d.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/slim23d.exe a $file.fb $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/slim23d.exe x z:$archive",
+        "extension": "fb",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAOss2WEC/2NQZ2NgYHBzcnMSZ2D+bQRkKwBx9Yxta8JZbjCi0ywMEKACpUNXha4yYOBYBeIzMsgxgClGEMUCxWAOw9d1vjKNGR0MAMCNC2JuAAAA",
+        "file": "0",
+        "content": "SLIM",
+        "delete": true
+    }
+}
