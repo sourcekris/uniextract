@@ -1,0 +1,29 @@
+{
+    "name": "PUT",
+    "comment": "http://fileformats.archiveteam.org/wiki/PUT",
+    "extensions": ["put"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"PUT.EXE",
+        "container":"dos/put/put347.zip",
+        "dependencies": ["GET.EXE"]
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"ren $file $file.TXT\" -c \"d:put $file.TXT $file.put QUIET\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:get F:$shortname 0.TXT QUIET\" -c \"exit\"",
+        "extension": "put",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIACYP2WEC/5MO0c2JMtBlZmBgAOGuSo0QBQZWA72QiBC7fQGhIQzMGgC5wa6ZIwAAAA==",
+        "file": "0.TXT/0.TXT",
+        "content": "PUT",
+        "delete": false
+    }
+}
