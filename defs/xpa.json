@@ -1,0 +1,28 @@
+{
+    "name": "XPACK",
+    "comment": "http://fileformats.archiveteam.org/wiki/XPACK_archive",
+    "extensions": ["xpa"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool":"XPA32.EXE",
+        "container":"win32/xpa/xpa32.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/XPA32.EXE a $file.xpa $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/XPA32.EXE e z:$archive *",
+        "extension": "xpa",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIALyh2WEC/6soSGRgFCzJLYgBYsuUTMuClOKsGANmBgYGViCOMAhwZGAAAPRh/TElAAAA",
+        "file": "0",
+        "content": "XPA",
+        "delete": true
+    }
+}
