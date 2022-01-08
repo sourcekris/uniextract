@@ -1,0 +1,28 @@
+{
+    "name": "RAX",
+    "comment": "http://fileformats.archiveteam.org/wiki/RAX_(compressed_archive)",
+    "extensions": ["rax"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"rax.exe",
+        "container":"dos/rax/rax_102.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:rax.exe a $file.rax $file\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:rax.exe x F:$shortname \" -c \"exit\"",
+        "extension": "rax",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIANUi2WEC/wv1cXXiYgCClEcMzAyM0l0tGiHMQK4SEPu1rJYxAHEYC5sYOhgZGP8DAL+kWEkuAAAA",
+        "file": "0",
+        "content": "RAX",
+        "delete": true
+    }
+}
