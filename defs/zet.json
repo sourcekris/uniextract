@@ -1,6 +1,6 @@
 {
     "name": "ZET",
-    "comment": "http://fileformats.archiveteam.org/wiki/ZET",
+    "comment": "http://fileformats.archiveteam.org/wiki/Zet",
     "extensions": ["zet"],
     "install": {
         "method": "apt",
