@@ -1,3 +1,7 @@
+#
+# packer.py -
+# archiver packing functions.
+
 import os, os.path
 import tempfile
 from subprocess import Popen, PIPE
@@ -34,27 +38,28 @@ def pack_file(archiver, filename=default_fn, content=""):
     if not content:
         content = archiver.upper()
 
-    with tempfile.TemporaryDirectory() as tmpdir:
-        os.chdir(tmpdir)
-        open(filename, "w").write(content) # write the file to archive to disk
-        cmdline = prepare_cmdline(prepare_exe(exe, tools), cmdline, tools, file=filename, ext=ext)
-        print(f"cmdline: {cmdline}")
-        try:
-            p = Popen(cmdline, shell=True, stderr=PIPE, stdout=PIPE) # run the archiver
-            outs, errs = p.communicate()
-        except Exception as e:
-            print(f"failed packing with {archiver} due to: {e}")
-            os.chdir(cwd)
-            return None
-
-        arcname = filename+ext
-        if os.path.exists(arcname.upper()): # dos archivers use uppercase.
-            arcname = arcname.upper()
-
-        if not os.path.exists(arcname):
-            print(f"failed packing file with {archiver}: {arcname} was not created")
-            os.chdir(cwd)
-            return None
-
+    tmpdir = tempfile.mkdtemp()
+    # with tempfile.TemporaryDirectory() as tmpdir:
+    os.chdir(tmpdir)
+    open(filename, "w").write(content) # write the file to archive to disk
+    cmdline = prepare_cmdline(prepare_exe(exe, tools), cmdline, tools, file=filename, ext=ext)
+    #print(f"cmdline: {cmdline}")
+    try:
+        p = Popen(cmdline, shell=True, stderr=PIPE, stdout=PIPE) # run the archiver
+        outs, errs = p.communicate()
+    except Exception as e:
+        print(f"failed packing with {archiver} due to: {e}")
         os.chdir(cwd)
-        return os.path.join(tmpdir, arcname)
+        return None
+
+    arcname = filename+ext
+    if os.path.exists(arcname.upper()): # dos archivers use uppercase.
+        arcname = arcname.upper()
+
+    if not os.path.exists(arcname):
+        print(f"failed packing file with {archiver}: {arcname} was not created")
+        os.chdir(cwd)
+        return None
+
+    os.chdir(cwd)
+    return os.path.join(tmpdir, arcname)

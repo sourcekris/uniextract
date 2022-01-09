@@ -6,16 +6,12 @@
 
 import argparse
 import sys
-import os, os.path
-import tempfile
+import os, os.path, shutil
 from gzip import compress
 from base64 import b64encode, b64decode
-from subprocess import Popen, PIPE
-from pyuniextract.installers.config import load_defs, default_fn, tools_path
-from pyuniextract.installers.template import prepare_cmdline, prepare_exe
+from pyuniextract.installers.config import load_defs
 from pyuniextract.installers.testarchiver import pad
-
-def_store = "defs/"
+from pyuniextract.installers.packer import pack_file
 
 def do_blob_test(name, blob):
     print(f"{name} test: ", flush=True, end="")
@@ -31,40 +27,17 @@ def do_blob_test(name, blob):
 
 def do_archiver_test(name, msg, ext, exe, cmdline, rmorig):
     print(f"{name} test: ", flush=True, end="")
-    cwd = os.getcwd()
-    tools = os.path.join(cwd, tools_path)
-    ext = "." + ext
-    with tempfile.TemporaryDirectory() as tmpdir:
-        os.chdir(tmpdir)
-        open(default_fn, "w").write(msg) # write the file to archive to disk
-        cmdline = prepare_cmdline(prepare_exe(exe, tools), cmdline, tools, file=default_fn, ext=ext)
-        #print(f"cmdline: {cmdline}")
-        try:
-            p = Popen(cmdline, shell=True, stderr=PIPE, stdout=PIPE) # run the archiver
-            outs, errs = p.communicate()
-        except Exception as e:
-            print(f"failed doing test {name} due to: {e}")
-            os.chdir(cwd)
-            return False
+    arcname = pack_file(name)
+    td = os.path.dirname(arcname)
 
-        arcname = default_fn+ext
-        if os.path.exists(arcname.upper()): # dos archivers use uppercase.
-            arcname = arcname.upper()
+    # compress and base64 the result
+    d = b64encode(compress(open(arcname, 'rb').read())).decode() 
+    # cleanup
+    if td.startswith('/tmp/tmp'):
+        shutil.rmtree(td)
 
-        if not os.path.exists(arcname):
-            print(f"failed doing test {name} file {arcname} was not created")
-            os.chdir(cwd)
-            return False
-        
-        d = b64encode(compress(open(arcname, 'rb').read())).decode() # compress and base64 the result
-
-        os.unlink(arcname)  # cleanup
-        if rmorig:
-            os.unlink(default_fn)
-        
-        print(d, flush=True)
-        os.chdir(cwd)
-        return True
+    print(d, flush=True)
+    return True
 
 # valid_def checks that a definition has the required components to make a test blob.
 def valid_def(d):
