@@ -3,7 +3,7 @@ from gzip import decompress
 from base64 import b64decode
 import os, os.path
 import subprocess
-from .config import tools_path
+from .config import tools_path, should_skip_test
 from .template import prepare_cmdline, prepare_exe
 
 # used for:
@@ -15,10 +15,16 @@ def pad(data, padbyte, padlen):
     return data + (pb * pbl)
 
 # test the archiver give the test parameters in the definition for that archiver
-def test_archiver(d):
+def test_archiver(d, field="install"):
     if "test" not in d or len([True for x in ["blob", "file", "content"] if x in d["test"]]) != 3:
         # a test is not properly defined.
         return -1
+    
+    # It's sometimes desirable to be able to force skip a test if a config has multiple tests.
+    if should_skip_test(d, field=field):
+        print("Skipping Test ", end="")
+        # its ok to skip, so return 1
+        return 1
     
     # what extension should our test archive have?
     extension = d["extensions"][0]              # default.
@@ -43,7 +49,6 @@ def test_archiver(d):
                 exe = prepare_exe(d["unpack"]["exe"], tools)
                 cmdline = prepare_cmdline(exe, d["unpack"]["cmdline"], tools, destdir=tmpdir, archive=arcfile.name, ext=extension)
 
-                #print(f"{cmdline}", flush=True, end="")
                 try:
                     extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
                 except Exception as e:

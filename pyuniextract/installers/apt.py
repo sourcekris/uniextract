@@ -34,11 +34,8 @@ def install_apt_packages(definitions):
                     except Exception as e:
                         print(f'error installing archiver {d["name"]}: {e}')
                         continue
-                # else:
-                #     print('skipped install')
 
                 extracttool(d)
-                #print(f"Installed, Testing: ", flush=True, end="")
                 if test_archiver(d):
                     print("OK")
                 else:

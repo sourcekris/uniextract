@@ -44,10 +44,21 @@ def is_pip(d):
         return True
     return False
 
-def is_source(d):
+def is_source(d, field="install"):
     if is_builtin(d):
         return False
-    if "install" in d and "method" in d["install"] and d["install"]["method"] == "source":
+    if field in d and "method" in d[field] and d[field]["method"] == "source":
+        return True
+    return False
+
+def should_skip_test(d, field="install"):
+    if field in d and "test_install" in d[field]:
+        if not d[field]["test_install"]:
+            return True
+    return False
+
+def has_unpackinstall(d):
+    if "unpackinstall" in d:
         return True
     return False
 
