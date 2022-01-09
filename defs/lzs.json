@@ -16,7 +16,7 @@
     },
     "unpack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:LARC.EXE x F:$shortname \" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:LARC.EXE E F:$shortname\" -c \"exit\"",
         "extension": "lzs",
         "force_extension": true
     },
