@@ -1,0 +1,28 @@
+{
+    "name": "TSCOMP",
+    "comment": "http://fileformats.archiveteam.org/wiki/TSCOMP",
+    "extensions": ["tsc"],
+    "install": {
+        "method": "apt",
+        "packages": ["dosbox"],
+        "tool":"tscomp.exe",
+        "container":"dos/tsc/tscomp.zip"
+    },
+    "pack": {
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:tscomp.exe $file $file.tsc\" -c \"exit\"",
+        "type": "dosbox"
+    },
+    "unpack": {
+        "exe": "$tools/untsc",
+        "cmdline": "$tool -e $archive -d $destdir",
+        "extension": "tsc",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIABtg2mEC/0uNFe7hYGRmYGQAAiFuBgjQDHGsZGBgNGBgYFvhI/lpCWfIAXsAJvBWUCoAAAA=",
+        "file": "0",
+        "content": "TSCOMP",
+        "delete": true
+    }
+}
