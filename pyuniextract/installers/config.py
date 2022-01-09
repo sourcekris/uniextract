@@ -62,3 +62,9 @@ def has_unpackinstall(d):
         return True
     return False
 
+def should_rename_tool(d):
+    if "install" in d and "renametool" in d["install"] and "tool" in d["install"]:
+        if d["install"]["renametool"] != d["install"]["tool"]:
+            return True
+    return False
+

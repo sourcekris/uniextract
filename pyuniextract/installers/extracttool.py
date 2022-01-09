@@ -1,18 +1,22 @@
 
-from .config import toolsdist_path, tools_path
+from .config import toolsdist_path, tools_path, should_rename_tool
 import zipfile
+import tempfile
 import os.path
+import shutil
 
 def get_tool_config(d):
     if "install" not in d:
         return
     
-    toolcfg = {"container":"", "tool":"", "dependencies":[]}
+    toolcfg = {"container":"", "tool":"", "dependencies":[], "renametool":""}
     if "container" in d["install"] and "tool" in d["install"]:
         toolcfg["container"] = d["install"]["container"]
         toolcfg["tool"] = d["install"]["tool"]
         if "dependencies" in d["install"]:
             toolcfg["dependencies"] += d["install"]["dependencies"]
+        if should_rename_tool(d):
+            toolcfg["renametool"] = d["install"]["renametool"]
 
         return toolcfg
 
@@ -20,8 +24,15 @@ def get_tool_from_container(toolcfg):
     flist = [toolcfg["tool"]]
     flist += toolcfg["dependencies"]
 
+    clist = []
+    if toolcfg["renametool"]:
+        clist.append(toolcfg["renametool"])
+    else:
+        clist.append(toolcfg["tool"])
+    clist += toolcfg["dependencies"]
+
     inst = []
-    for fn in flist:
+    for fn in clist:
         inst.append(os.path.isfile(os.path.join(tools_path, fn)))
     
     if all(inst):
@@ -38,8 +49,12 @@ def get_tool_from_container(toolcfg):
         for fn in zf.namelist():
             if fn in flist:
                 extracted.append(fn)
-                zf.extract(fn, path=tools_path)
-                # print(f"extracted tool file: {fn} from {zfpath}")
+                if toolcfg["renametool"] and fn == toolcfg["tool"]:
+                    with tempfile.TemporaryDirectory() as tmpdir:
+                        zf.extract(fn, path=tmpdir)
+                        shutil.move(os.path.join(tmpdir, fn), os.path.join(tools_path, toolcfg["renametool"]))
+                else:            
+                    zf.extract(fn, path=tools_path)
     
     if len(extracted) == len(flist):
         return True

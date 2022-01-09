@@ -6,16 +6,17 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool":"PAQ.EXE",
+        "renametool":"OPAQ.EXE",
         "container":"dos/paq/pak1_0.zip"
     },
     "pack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:PAQ.EXE a $file.paq $file\" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:OPAQ.EXE a $file.paq $file\" -c \"exit\"",
         "type": "dosbox"
     },
     "unpack": {
         "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:PAQ.EXE x F:$shortname \" -c \"exit\"",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:OPAQ.EXE x F:$shortname \" -c \"exit\"",
         "extension": "paq",
         "force_extension": true
     },
