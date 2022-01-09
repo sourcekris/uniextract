@@ -3,10 +3,8 @@
     "comment": "A hashed LZW compressor which was a precursor to Crunch - http://fileformats.archiveteam.org/wiki/LZWCOM",
     "extensions": ["lzw"],
     "install": {
-        "method": "source",
-        "repo": "https://github.com/jsummers/deark",
-        "build": "make && cp deark $tools",
-        "exist_check": ["deark -version", "Deark version:"],
+        "method": "apt",
+        "packages": ["dosbox"],
         "tool":"LZWCOM.EXE",
         "container":"dos/lzw/lzw.zip"
     },
