@@ -25,6 +25,17 @@ def load_defs(addfn=False, defpath=None):
         definitions.append(jd)
     return definitions
 
+def get_def(defname, addfn=False, defpath=None):
+    if not defpath:
+        defpath = definitions_path
+
+    defs = load_defs(addfn=addfn, defpath=defpath)
+    for d in defs:
+        if "name" in d and d["name"] == defname:
+            return d
+    
+    return None
+
 def is_builtin(d):
     if "unpack" in d and "type" in d["unpack"] and d["unpack"]["type"] == "builtin":
         return True
