@@ -5,18 +5,18 @@ import tempfile
 import os.path
 import shutil
 
-def get_tool_config(d):
-    if "install" not in d:
+def get_tool_config(d, field="install"):
+    if field not in d:
         return
     
     toolcfg = {"container":"", "tool":"", "dependencies":[], "renametool":""}
-    if "container" in d["install"] and "tool" in d["install"]:
-        toolcfg["container"] = d["install"]["container"]
-        toolcfg["tool"] = d["install"]["tool"]
-        if "dependencies" in d["install"]:
-            toolcfg["dependencies"] += d["install"]["dependencies"]
+    if "container" in d[field] and "tool" in d[field]:
+        toolcfg["container"] = d[field]["container"]
+        toolcfg["tool"] = d[field]["tool"]
+        if "dependencies" in d[field]:
+            toolcfg["dependencies"] += d[field]["dependencies"]
         if should_rename_tool(d):
-            toolcfg["renametool"] = d["install"]["renametool"]
+            toolcfg["renametool"] = d[field]["renametool"]
 
         return toolcfg
 
@@ -40,7 +40,6 @@ def get_tool_from_container(toolcfg):
         return True
 
     zfpath = os.path.join(toolsdist_path, toolcfg["container"])
-
     if not os.path.isfile(zfpath):
         return False
 
@@ -61,8 +60,8 @@ def get_tool_from_container(toolcfg):
     
     return False
     
-def extracttool(d):
-    tc = get_tool_config(d)
+def extracttool(d, field="install"):
+    tc = get_tool_config(d, field=field)
     if tc:
         return get_tool_from_container(tc)
     

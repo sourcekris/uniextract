@@ -8,7 +8,7 @@ import argparse
 from pyuniextract.installers.apt import install_apt_packages
 from pyuniextract.installers.pip import install_pip_packages
 from pyuniextract.installers.source import install_from_source
-from pyuniextract.installers.config import load_defs, is_apt, is_builtin, is_source, is_pip, has_unpackinstall
+from pyuniextract.installers.config import load_defs, is_apt, is_builtin, is_source, is_pip, has_unpackinstall, has_packinstall
 
 def main(argv):
     ap = argparse.ArgumentParser(description="Install and test the archiver pre-requisites")
@@ -45,6 +45,9 @@ def main(argv):
                     install_pip_packages([d])
                 if is_source(d):
                     install_from_source([d])
+                if has_packinstall(d):
+                    if is_apt(d, field="packinstall"):
+                        install_apt_packages([d], field="packinstall")
                 if has_unpackinstall(d):
                     if is_source(d, field="unpackinstall"):
                         install_from_source([d], field="unpackinstall")

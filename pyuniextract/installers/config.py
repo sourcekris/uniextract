@@ -45,17 +45,17 @@ def is_builtin(d):
         return True
     return False
 
-def is_apt(d):
+def is_apt(d, field="install"):
     if is_builtin(d):
         return False
-    if "install" in d and "method" in d["install"] and d["install"]["method"] == "apt":
+    if field in d and "method" in d[field] and d[field]["method"] == "apt":
         return True
     return False
 
-def is_pip(d):
+def is_pip(d, field="install"):
     if is_builtin(d):
         return False
-    if "install" in d and "method" in d["install"] and d["install"]["method"] == "pip":
+    if field in d and "method" in d[field] and d[field]["method"] == "pip":
         return True
     return False
 
@@ -74,6 +74,11 @@ def should_skip_test(d, field="install"):
 
 def has_unpackinstall(d):
     if "unpackinstall" in d:
+        return True
+    return False
+
+def has_packinstall(d):
+    if "packinstall" in d:
         return True
     return False
 
