@@ -13,7 +13,7 @@
     "unpack": {
         "exe": "ar",
         "cmdline": "$tool x --output=$destdir $archive",
-        "extension": "ar",
+        "extension": "a",
         "force_extension": true
     },
     "test": {

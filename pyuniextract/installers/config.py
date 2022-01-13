@@ -8,6 +8,10 @@ tools_path = "tools/"
 toolsdist_path = "toolsdist/"
 default_fn = "0"
 
+trid_defs = "/usr/share/trid/triddefs.trd"
+trid_args = ['/usr/local/bin/trid', '-n:1', f'-d:{trid_defs}']
+trid_env = {"LC_ALL":"C"}
+
 def load_defs(addfn=False, defpath=None):
     if not defpath:
         defpath = definitions_path

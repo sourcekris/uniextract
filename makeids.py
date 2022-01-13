@@ -4,11 +4,12 @@
 # pack an archive then attempt to uniquely identify the format using file, trid, idarc etc.
 
 import argparse
+import subprocess
 import sys
 import os, os.path
 from subprocess import Popen, PIPE
-from pyuniextract.installers.config import load_defs
-
+from pyuniextract.installers.config import load_defs, trid_args, trid_env
+from pyuniextract.installers.packer import pack_file
 
 # makes sure we can pack an archive with this profile.
 def valid_def(d):
@@ -22,41 +23,75 @@ def valid_def(d):
     # if there's a packer, we assume its valid.    
     return True
 
+def id_via_file(arcfile):
+    id = b""
+    try:
+        id = subprocess.check_output(['file', arcfile])
+    except Exception as e:
+        print(f"id_via_file failed: {e}")
+        return None
+    
+    id = id.decode().strip()
+    if ":" not in id or id.split(": ")[1] == "data":
+        return None
+    return id.split(": ")[1]
+
+def id_via_trid(arcfile):
+    id = b""
+    try:
+        id = subprocess.check_output(trid_args + [arcfile], env=trid_env)
+    except Exception as e:
+        print(f"id_via_trid failed: {e}")
+        return None
+    
+    id = id.decode().strip().splitlines()
+    if 'Unknown!'  in id[-1]:
+        return None
+
+    for i, line in enumerate(id):
+        if 'found no file' in line:
+            return None
+        if 'Collecting data from file' in line:
+            break
+    
+    if len(id) >= i:
+        return id[i+1]
+
+        
+
+def id_via_arcid(arcfile):
+    return None
+
+def identify_archive(arcfile):
+    return id_via_trid(arcfile)
+
 def main(argv):
     ap = argparse.ArgumentParser(description="Make test archives then attempt to identify them")
-    ap.add_argument('-s',"--test", help="Run a specific identification only, if test not found nothing is done.")
-    ap.add_argument('-t',"--type", help="Run a specific type of identification only.")
-    ap.add_argument('-l',"--list", choices=["tests", "types"], help="List tests or types of tests.")
+    ap.add_argument('-s',"--specific", help="Run a specific identification only, if test not found nothing is done.")
     args = ap.parse_args(argv[1:])
 
-    do_types = ["blob", "archiver", "dosbox", "wine"]
-    if args.type:
-        do_types = [args.type]
-
     defs = load_defs(addfn=True)
-    found_types = []
     for d in defs:
-        name = d["name"]
-        fn = os.path.basename(d["definition_filename"])
-        del d["definition_filename"]
-
         if not valid_def(d):
             continue
 
-        if args.test and args.test != name:
-            continue
-   
-        if args.list == "types":
-            if d["pack"]["type"] not in found_types:
-                found_types.append(d["pack"]["type"])
-                continue
+        name = d["name"]
+        fn = os.path.basename(d["definition_filename"])
 
-        if args.list == "tests":
-            print(f"{fn}: {name}")
+        if args.specific:
+            if name == args.specific:
+                af = pack_file(name)
+                id = identify_archive(af)
+                print(f'archiver {name} identified as: {id}')
+
             continue
 
-    if args.list == "types":
-        print(f"Test types: {found_types}")
+        af = pack_file(name)
+        id = identify_archive(af)
+        print(f'archiver {name} identified as: {id}')
+        
+
+
 
 if __name__ == "__main__":
     main(sys.argv)

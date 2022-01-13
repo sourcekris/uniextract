@@ -28,6 +28,8 @@ def do_blob_test(name, blob):
 def do_archiver_test(name, msg, ext, exe, cmdline, rmorig):
     print(f"{name} test: ", flush=True, end="")
     arcname = pack_file(name)
+    if not arcname:
+        return False
     td = os.path.dirname(arcname)
 
     # compress and base64 the result
