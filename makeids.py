@@ -61,13 +61,16 @@ def id_via_trid(arcfile):
     if len(id) >= i:
         return id[i+1]
 
-        
-
 def id_via_arcid(arcfile):
     return None
 
 def identify_archive(arcfile):
-    return id_via_trid(arcfile)
+    id = id_via_file(arcfile)
+    if not id:
+        return id_via_trid(arcfile)
+    
+    return id
+    
 
 def main(argv):
     ap = argparse.ArgumentParser(description="Make test archives then attempt to identify them")
