@@ -24,10 +24,16 @@ def get_packer_cmd(d):
         if "cmdline" in d["pack"]:
             cmdline = d["pack"]["cmdline"]
     return exe, cmdline
+
+def get_content(d):
+    if "test" in d and "content" in d["test"] and "padbyte" not in d["test"]:
+        return d["test"]["content"]
     
+    if "test" in d and "padbyte" in d["test"] and "content" in d["test"] and "padlen" in d["test"]:
+        return d["test"]["content"] + (d["test"]["padbyte"] * d["test"]["padlen"])    
     
 # Creates an archive given an arbitrary archiver.
-def pack_file(archiver, filename=default_fn, content=""):
+def pack_file(archiver, filename=default_fn):
     d = get_def(archiver)
 
     cwd = os.getcwd()
@@ -35,6 +41,7 @@ def pack_file(archiver, filename=default_fn, content=""):
     exe, cmdline = get_packer_cmd(d)
     ext = "." + get_pack_ext(d)
 
+    content = get_content(d)
     if not content:
         content = archiver.upper()
 
