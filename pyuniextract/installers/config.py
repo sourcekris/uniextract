@@ -66,6 +66,11 @@ def is_source(d, field="install"):
         return True
     return False
 
+def is_blob(d):
+    if "pack" in d and "type" in d["pack"] and d["pack"]["type"] == "blob":
+        return True
+    return False
+
 def should_skip_test(d, field="install"):
     if field in d and "test_install" in d[field]:
         if not d[field]["test_install"]:
