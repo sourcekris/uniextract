@@ -40,6 +40,7 @@ def id_via_trid(arcfile):
     id = b""
     try:
         id = subprocess.check_output(trid_args + [arcfile], env=trid_env)
+        #print(id)
     except Exception as e:
         print(f"id_via_trid failed: {e}\n{e.stdout.decode()}")
         return None
@@ -53,7 +54,10 @@ def id_via_trid(arcfile):
             return None
         if 'Collecting data from file' in line:
             break
-    
+
+    if 'Warning: file seems to be plain text/ASCII' in id:
+        i += 4
+
     if len(id) >= i:
         return id[i+1]
 
