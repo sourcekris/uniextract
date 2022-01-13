@@ -62,7 +62,7 @@ def pack_file(archiver, filename=default_fn):
 
     open(filename, "w").write(content) # write the file to archive to disk
     cmdline = prepare_cmdline(prepare_exe(exe, tools), cmdline, tools, file=filename, ext=ext)
-    #print(f"cmdline: {cmdline}")
+    # print(f"cmdline: {cmdline}")
     try:
         p = Popen(cmdline, shell=True, stderr=PIPE, stdout=PIPE) # run the archiver
         outs, errs = p.communicate()
@@ -73,6 +73,7 @@ def pack_file(archiver, filename=default_fn):
 
     if os.path.exists(arcname.upper()): # dos archivers use uppercase.
         arcname = arcname.upper()
+        fullarc = os.path.join(tmpdir, arcname)
 
     if not os.path.exists(arcname):
         print(f"failed packing file with {archiver}: {arcname} was not created")
