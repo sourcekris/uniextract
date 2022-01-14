@@ -3,7 +3,11 @@
     "extensions": ["arc", "ark"],
     "install": {
         "method": "apt",
-        "packages": ["atool", "nomarch", "arc"]
+        "packages": [
+            "atool",
+            "nomarch",
+            "arc"
+        ]
     },
     "pack": {
         "exe": "arc",
@@ -21,5 +25,6 @@
         "file": "0",
         "content": "ARC",
         "delete": true
-    }
+    },
+    "identification": { "file": "ARC archive data, uncompressed", "trid": "(.PAK/ARC) PAK/ARC Compressed archive" }
 }

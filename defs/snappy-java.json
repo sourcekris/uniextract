@@ -24,5 +24,6 @@
         "file": "?",
         "content": "SNAPPYJAVA",
         "delete": false
-    }
+    },
+    "identification": { "file": "None", "trid": "(.SNAPPY) Snzip compressed (snappy-java format)" }
 }

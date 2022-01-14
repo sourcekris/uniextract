@@ -5,9 +5,9 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"ESP.EXE",
-        "container":"dos/esp/esp_v192.zip",
-        "dependencies":["UNESP.EXE"]
+        "tool": "ESP.EXE",
+        "container": "dos/esp/esp_v192.zip",
+        "dependencies": ["UNESP.EXE"]
     },
     "pack": {
         "exe": "dosbox",
@@ -25,5 +25,6 @@
         "file": "0",
         "content": "ESP",
         "delete": true
-    }
+    },
+    "identification": { "file": "ESP archive data", "trid": "(.ESP) ESP - Extension Sort Packer compressed archive" }
 }

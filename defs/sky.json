@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"SKY.EXE",
-        "container":"dos/sky/sky115.zip"
+        "tool": "SKY.EXE",
+        "container": "dos/sky/sky115.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "SKY",
         "delete": true
-    }
+    },
+    "identification": { "file": "Sky archive data", "trid": "(.SKY) SKY compressed archive" }
 }

@@ -1,12 +1,12 @@
 {
-    "name":"GSARCPAK",
-    "comment":"DOS Archiver developed by NoGate Consulting - http://fileformats.archiveteam.org/wiki/PAK_(ARC_extension)",
-    "extensions":["pak" , "arc"],
+    "name": "GSARCPAK",
+    "comment": "DOS Archiver developed by NoGate Consulting - http://fileformats.archiveteam.org/wiki/PAK_(ARC_extension)",
+    "extensions": ["pak", "arc"],
     "install": {
-        "method":"apt",
-        "packages":["unar","dosbox"],
-        "tool":"PAK.EXE",
-        "container":"dos/gsarc/pak251.zip"
+        "method": "apt",
+        "packages": ["unar", "dosbox"],
+        "tool": "PAK.EXE",
+        "container": "dos/gsarc/pak251.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -14,15 +14,16 @@
         "type": "dosbox"
     },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"pak",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "pak",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAM0E2WEC/5NiMmCwEXMr4mBgYBARFQZRGiFtxV//gFjuwY5BzgGO3lIM/5gYGUDgHwMA3KdOsDEAAAA=",
-        "file":"0",
-        "content":"GSARCPAK",
-        "delete":true
-    }
+        "blob": "H4sIAM0E2WEC/5NiMmCwEXMr4mBgYBARFQZRGiFtxV//gFjuwY5BzgGO3lIM/5gYGUDgHwMA3KdOsDEAAAA=",
+        "file": "0",
+        "content": "GSARCPAK",
+        "delete": true
+    },
+    "identification": { "file": "ARC archive data, uncompressed", "trid": "(.PAK/ARC) PAK/ARC Compressed archive" }
 }

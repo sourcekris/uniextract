@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"MDCD.EXE",
-        "container":"dos/mdcd/MDCD10.ZIP"
+        "tool": "MDCD.EXE",
+        "container": "dos/mdcd/MDCD10.ZIP"
     },
     "pack": {
         "exe": "dosbox",
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "MDCD",
         "delete": true
-    }
+    },
+    "identification": { "file": "MDCD archive data", "trid": " (.MD/CD) MDCD compressed archive (v1.0)" }
 }

@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"ACB.EXE",
-        "container":"dos/acb/acb_200c.zip"
+        "tool": "ACB.EXE",
+        "container": "dos/acb/acb_200c.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -26,5 +26,6 @@
         "padbyte": "0x41",
         "padlen": 260,
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": "None" }
 }

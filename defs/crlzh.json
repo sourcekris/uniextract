@@ -1,27 +1,25 @@
 {
-    "name":"CrLZH",
-    "comment":"LHA compression format CP/M era - http://fileformats.archiveteam.org/wiki/CrLZH",
-    "extensions":["yyy"],
+    "name": "CrLZH",
+    "comment": "LHA compression format CP/M era - http://fileformats.archiveteam.org/wiki/CrLZH",
+    "extensions": ["yyy"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack": {
-        "type":"blob",
-        "blob":"dv0wLiAgIAAgIAAF5vc63k6Wk5oBfAF/digBDg=="
-    },
+    "pack": { "type": "blob", "blob": "dv0wLiAgIAAgIAAF5vc63k6Wk5oBfAF/digBDg==" },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"yyy",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "yyy",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAJv8z2EAAyv7a6CnoKDAAESsz75b3fObNnkWYw1jfZkGIx8A2v7FOxwAAAA=",
-        "file":"0.",
-        "content":"CRLZH",
-        "padbyte":"0x1a",
-        "padlen":128,
-        "delete":true
-    }
+        "blob": "H4sIAJv8z2EAAyv7a6CnoKDAAESsz75b3fObNnkWYw1jfZkGIx8A2v7FOxwAAAA=",
+        "file": "0.",
+        "content": "CRLZH",
+        "padbyte": "0x1a",
+        "padlen": 128,
+        "delete": true
+    },
+    "identification": { "file": "LZH compressed data, original name 0.", "trid": "(.YYY) CrLZH compressed" }
 }

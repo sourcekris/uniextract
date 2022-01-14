@@ -3,16 +3,16 @@
     "comment": "A DOS archive utility by Michael Kosior - http://fileformats.archiveteam.org/wiki/ARX",
     "extensions": ["arx"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/jsummers/deark",
-        "build":"make && cp deark $tools",
-        "exist_check":["deark -version","Deark version:"]
+        "method": "source",
+        "repo": "https://github.com/jsummers/deark",
+        "build": "make && cp deark $tools",
+        "exist_check": ["deark -version", "Deark version:"]
     },
     "packinstall": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"ARX.EXE",
-        "container":"dos/arx/arx100.zip"
+        "tool": "ARX.EXE",
+        "container": "dos/arx/arx100.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -20,9 +20,9 @@
         "type": "dosbox"
     },
     "unpack": {
-        "exe":"$tools/deark",
-        "cmdline":"$tool -od $destdir -o 0 $archive && $tool -od $destdir -o 0 $destdir/0.000.lha",
-        "extension":"arx",
+        "exe": "$tools/deark",
+        "cmdline": "$tool -od $destdir -o 0 $archive && $tool -od $destdir -o 0 $destdir/0.000.lha",
+        "extension": "arx",
         "force_extension": true
     },
     "test": {
@@ -30,5 +30,6 @@
         "file": "0.000.0",
         "content": "ARX",
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": " (.ARX) ARX compressed archive" }
 }

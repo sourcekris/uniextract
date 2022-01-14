@@ -21,5 +21,6 @@
         "file": "?",
         "content": "GZ",
         "delete": false
-    }
+    },
+    "identification": { "file": "gzip compressed data, was \"0\", last modified", "trid": "(.GZ/GZIP) GZipped data" }
 }

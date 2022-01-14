@@ -3,10 +3,10 @@
     "comment": "Developed by Tobias Svensson - http://fileformats.archiveteam.org/wiki/ASD_Archiver",
     "extensions": ["asd"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/sourcekris/asd",
-        "build":"make && cp asd $tools",
-        "exist_check":["asd -h","ASD - archiver"]
+        "method": "source",
+        "repo": "https://github.com/sourcekris/asd",
+        "build": "make && cp asd $tools",
+        "exist_check": ["asd -h", "ASD - archiver"]
     },
     "pack": {
         "exe": "$tools/asd",
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "ASD",
         "delete": true
-    }
+    },
+    "identification": { "file": "ASD archive data", "trid": "(.ASD) ASD Archiever compressed archive" }
 }

@@ -5,20 +5,20 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"tscomp.exe",
-        "container":"dos/tsc/tscomp.zip",
-        "test_install":false
+        "tool": "tscomp.exe",
+        "container": "dos/tsc/tscomp.zip",
+        "test_install": false
     },
     "pack": {
         "exe": "dosbox",
         "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:tscomp.exe $file $file.tsc\" -c \"exit\"",
         "type": "dosbox"
     },
-    "unpackinstall":{
-        "method":"source",
-        "repo":"https://github.com/sourcekris/untsc",
-        "build":"go build && cp untsc $tools",
-        "exist_check":["untsc -h","The TSC file"]
+    "unpackinstall": {
+        "method": "source",
+        "repo": "https://github.com/sourcekris/untsc",
+        "build": "go build && cp untsc $tools",
+        "exist_check": ["untsc -h", "The TSC file"]
     },
     "unpack": {
         "exe": "$tools/untsc",
@@ -31,5 +31,6 @@
         "file": "0",
         "content": "TSCOMP",
         "delete": true
-    }
+    },
+    "identification": { "file": "TSComp archive data", "trid": "(.) TSComp compressed data" }
 }

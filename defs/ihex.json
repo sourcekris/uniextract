@@ -22,5 +22,6 @@
         "file": "?",
         "content": "IHEX",
         "delete": true
-    }
+    },
+    "identification": { "file": "ASCII text, with CRLF line terminators", "trid": "None" }
 }

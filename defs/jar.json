@@ -5,9 +5,9 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"JARCS.EXE",
-        "container":"dos/jar/jarcs094.zip",
-        "dependencies":["JARCS.DOC","UNJAR.EXE"]
+        "tool": "JARCS.EXE",
+        "container": "dos/jar/jarcs094.zip",
+        "dependencies": ["JARCS.DOC", "UNJAR.EXE"]
     },
     "pack": {
         "exe": "dosbox",
@@ -25,5 +25,6 @@
         "file": "0",
         "content": "JARCS",
         "delete": true
-    }
+    },
+    "identification": { "file": "JAR (ARJ Software, Inc.) archive data", "trid": "(.JAR) JARCS compressed archive" }
 }

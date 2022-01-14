@@ -5,9 +5,9 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"HAP3.EXE",
-        "container":"dos/hap/HAP300.ZIP",
-        "dependencies":["PAH3.EXE"]
+        "tool": "HAP3.EXE",
+        "container": "dos/hap/HAP300.ZIP",
+        "dependencies": ["PAH3.EXE"]
     },
     "pack": {
         "exe": "dosbox",
@@ -25,5 +25,6 @@
         "file": "0",
         "content": "HAP",
         "delete": true
-    }
+    },
+    "identification": { "file": "HAP archive data", "trid": "(.HAP) Hamarsoft HAP compressed archive (v3.00)" }
 }

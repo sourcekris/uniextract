@@ -1,28 +1,29 @@
 {
-    "name":"LBR",
-    "comment":"Library Archive from the CP/M era - http://fileformats.archiveteam.org/wiki/LBR",
-    "extensions":["lbr"],
+    "name": "LBR",
+    "comment": "Library Archive from the CP/M era - http://fileformats.archiveteam.org/wiki/LBR",
+    "extensions": ["lbr"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/sourcekris/lar",
-        "build":"make && cp lar $tools",
-        "exist_check":["lar -h","Usage: lar"]
+        "method": "source",
+        "repo": "https://github.com/sourcekris/lar",
+        "build": "make && cp lar $tools",
+        "exist_check": ["lar -h", "Usage: lar"]
     },
     "pack": {
-        "type":"archiver",
-        "exe":"$tools/lar",
-        "cmdline":"echo 1 | $tool u $file.lbr $file"
+        "type": "archiver",
+        "exe": "$tools/lar",
+        "cmdline": "echo 1 | $tool u $file.lbr $file"
     },
     "unpack": {
-        "exe":"$tools/lar",
-        "cmdline":"cd $destdir && $tool e $archive",
-        "extension":"lbr",
+        "exe": "$tools/lar",
+        "cmdline": "cd $destdir && $tool e $archive",
+        "extension": "lbr",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIABZ70mEAA2NQQAAGBkaGq29P2Z2yS6xOrGaAAAOEPCNQ/l8WTL4WLP0fRT8mICTv4xQkNZAAAFP6BcgAAQAA",
-        "file":"0.",
-        "content":"LBR",
-        "delete":true
-    }
+        "blob": "H4sIABZ70mEAA2NQQAAGBkaGq29P2Z2yS6xOrGaAAAOEPCNQ/l8WTL4WLP0fRT8mICTv4xQkNZAAAFP6BcgAAQAA",
+        "file": "0.",
+        "content": "LBR",
+        "delete": true
+    },
+    "identification": { "file": "LBR archive data", "trid": " (.LBR) LU library" }
 }

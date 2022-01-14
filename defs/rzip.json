@@ -21,5 +21,6 @@
         "file": "?",
         "content": "RZIP",
         "delete": false
-    }
+    },
+    "identification": { "file": "rzip compressed data - version 2.1 (4 bytes)", "trid": " (.RZ) rzip compressed archive" }
 }

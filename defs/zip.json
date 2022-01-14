@@ -1,6 +1,17 @@
 {
     "name": "ZIP",
-    "extensions": ["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm","maff"],
+    "extensions": [
+        "zip",
+        "jar",
+        "xpi",
+        "wz",
+        "exe",
+        "imz",
+        "apk",
+        "docx",
+        "docm",
+        "maff"
+    ],
     "install": {
         "method": "apt",
         "packages": ["unzip"]
@@ -21,5 +32,6 @@
         "file": "0",
         "content": "ZIP",
         "delete": true
-    }
+    },
+    "identification": { "file": "Zip archive data, at least v1.0 to extract", "trid": " (.ZIP) ZIP compressed archive" }
 }

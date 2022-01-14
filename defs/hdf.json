@@ -22,5 +22,6 @@
         "file": "0/0",
         "content": "HDF",
         "delete": true
-    }
+    },
+    "identification": { "file": "Amiga DOS disk", "trid": " (.ADF) Amiga Disk image File (OFS)" }
 }

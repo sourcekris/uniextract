@@ -21,5 +21,6 @@
         "file": "?",
         "content": "Z",
         "delete": false
-    }
+    },
+    "identification": { "file": "compress'd data 16 bits", "trid": " (.Z) UNIX Compressed data" }
 }

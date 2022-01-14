@@ -1,24 +1,25 @@
 {
-    "name":"MacBinary",
-    "extensions":["bin"],
+    "name": "MacBinary",
+    "extensions": ["bin"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"AAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAN3yD6/d8hQ6AAAAbUJJTgAAAAAAAAAAAAAAAAAAAACBgeItAABNQUNCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    "pack": {
+        "type": "blob",
+        "blob": "AAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAN3yD6/d8hQ6AAAAbUJJTgAAAAAAAAAAAAAAAAAAAACBgeItAABNQUNCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
     },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"bin",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "bin",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIALtlzGEAA2NgNGCgPmABEXc/8a+/+0nECsjMdfL0Q1fT2PhIl4HB19HZiQYOIBoAAMMU5G4AAQAA",
-        "file":"0",
-        "content":"MACB",
-        "delete":true
-    }
+        "blob": "H4sIALtlzGEAA2NgNGCgPmABEXc/8a+/+0nECsjMdfL0Q1fT2PhIl4HB19HZiQYOIBoAAMMU5G4AAQAA",
+        "file": "0",
+        "content": "MACB",
+        "delete": true
+    },
+    "identification": { "file": "MacBinary II, Thu Dec 30 00:14:23 2021, modified Thu Dec 30 00:33:46 2021, 4 bytes \"0\"", "trid": " (.PI2) DEGAS med-res bitmap" }
 }

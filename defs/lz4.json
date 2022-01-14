@@ -24,5 +24,6 @@
         "file": "?",
         "content": "ZSTANDARDLZ4",
         "delete": true
-    }
+    },
+    "identification": { "file": "LZ4 compressed data (v1.4+)", "trid": "(.LZ4) LZ4 compressed stream" }
 }

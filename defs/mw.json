@@ -24,5 +24,6 @@
         "file": "?",
         "content": "MWSQUEEZE",
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": "None" }
 }

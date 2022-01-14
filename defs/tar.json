@@ -21,5 +21,6 @@
         "file": "0",
         "content": "TAR",
         "delete": true
-    }
+    },
+    "identification": { "file": "POSIX tar archive (GNU)", "trid": " (.DBF) Sybase iAnywhere database files" }
 }

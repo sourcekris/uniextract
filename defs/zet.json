@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"ZET.EXE",
-        "container":"dos/zet/zet010.zip"
+        "tool": "ZET.EXE",
+        "container": "dos/zet/zet010.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "ZET",
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": "(.ZET) ZET compressed archive" }
 }

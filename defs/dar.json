@@ -22,5 +22,6 @@
         "file": "0",
         "content": "DAR",
         "delete": false
-    }
+    },
+    "identification": { "file": "dar archive, label \"440ae161 00000000 32fd\" end slice", "trid": "(.DAR) Dar archive" }
 }

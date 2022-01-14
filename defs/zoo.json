@@ -1,28 +1,29 @@
 {
-    "name":"Zoo",
-    "comment":"Zoo archiver, popularized on Amiga and OpenVMS - http://fileformats.archiveteam.org/wiki/Zoo",
-    "extensions":["zoo"],
+    "name": "Zoo",
+    "comment": "Zoo archiver, popularized on Amiga and OpenVMS - http://fileformats.archiveteam.org/wiki/Zoo",
+    "extensions": ["zoo"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/troglobit/zoo",
-        "build":"./autogen.sh && ./configure --enable-ooz && make && cp src/zoo src/ooz src/unzoo $tools",
-        "exist_check":["zoo -h","zoo COMMAND"]
+        "method": "source",
+        "repo": "https://github.com/troglobit/zoo",
+        "build": "./autogen.sh && ./configure --enable-ooz && make && cp src/zoo src/ooz src/unzoo $tools",
+        "exist_check": ["zoo -h", "zoo COMMAND"]
     },
-    "pack":{
-      "type":"archiver",
-      "exe":"$tools/zoo",
-      "cmdline":"$tool a $file.zoo $file"
+    "pack": {
+        "type": "archiver",
+        "exe": "$tools/zoo",
+        "cmdline": "$tool a $file.zoo $file"
     },
     "unpack": {
-        "exe":"$tools/zoo",
-        "cmdline":"cd $destdir && $tool e $archive",
-        "extension":"zoo",
+        "exe": "$tools/zoo",
+        "cmdline": "cd $destdir && $tool e $archive",
+        "extension": "zoo",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAEInzWEAA4vy91cw0jM0UHAsSs7ILEvVk2JguLP8yF8tBgaGa////2diYGQAA2aQKBNDCZBZCMTzgjWLQ68zgySAGKoGCAwYkAAXQ73gHwTXQVNZgyHK3x9iEqngTzMAsiZHV6wAAAA=",
-        "file":"0",
-        "content":"ZOO",
-        "delete":true
-    }
+        "blob": "H4sIAEInzWEAA4vy91cw0jM0UHAsSs7ILEvVk2JguLP8yF8tBgaGa////2diYGQAA2aQKBNDCZBZCMTzgjWLQ68zgySAGKoGCAwYkAAXQ73gHwTXQVNZgyHK3x9iEqngTzMAsiZHV6wAAAA=",
+        "file": "0",
+        "content": "ZOO",
+        "delete": true
+    },
+    "identification": { "file": "Zoo archive data, v2.10, modify", "trid": " (.ZOO) ZOO compressed archive" }
 }

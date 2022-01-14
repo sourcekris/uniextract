@@ -1,25 +1,23 @@
 {
-    "name":"ALZip",
-    "comment":"ALZip is a Windows and Mac archiver by ESTSoft and has been supersceeded by the EGG archive format - http://fileformats.archiveteam.org/wiki/ALZ",
-    "extensions":["alz"],
+    "name": "ALZip",
+    "comment": "ALZip is a Windows and Mac archiver by ESTSoft and has been supersceeded by the EGG archive format - http://fileformats.archiveteam.org/wiki/ALZ",
+    "extensions": ["alz"],
     "install": {
-        "method":"apt",
-        "packages":["atool", "unalz"]
+        "method": "apt",
+        "packages": ["atool", "unalz"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg=="
-    },
+    "pack": { "type": "blob", "blob": "QUxaAQoAAABCTFoBAQAghR6dUyAAAgC/b4hZBwAFADBz9InyDAAAQ0xaAQAAAAAAAAAAQ0xaAg==" },
     "unpack": {
-        "exe":"unalz",
-        "cmdline":"$tool -d $destdir $archive",
-        "extension":"alz",
+        "exe": "unalz",
+        "cmdline": "$tool -d $destdir $archive",
+        "extension": "alz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPdRzGEAA3P0iWLkYmBgcALSjAwKrXJzgxUYmBj253dEsjOwMhgUf+n8xMPA4AyUZoACIJsJAPUf+dQ3AAAA",
-        "file":"0",
-        "content":"ALZIP",
-        "delete":true
-    }
+        "blob": "H4sIAPdRzGEAA3P0iWLkYmBgcALSjAwKrXJzgxUYmBj253dEsjOwMhgUf+n8xMPA4AyUZoACIJsJAPUf+dQ3AAAA",
+        "file": "0",
+        "content": "ALZIP",
+        "delete": true
+    },
+    "identification": { "file": "None", "trid": "(.ALZ) ALZip compressed archive" }
 }

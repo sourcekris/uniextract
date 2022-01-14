@@ -1,25 +1,26 @@
 {
-    "name":"ARJ",
-    "extensions":["arj"],
+    "name": "ARJ",
+    "extensions": ["arj"],
     "install": {
-        "method":"apt",
-        "packages":["arj"]
+        "method": "apt",
+        "packages": ["arj"]
     },
     "pack": {
-        "type":"archiver",
-        "exe":"arj",
-        "cmdline":"$tool a $file.arj $file"
+        "type": "archiver",
+        "exe": "arj",
+        "cmdline": "$tool a $file.arj $file"
     },
     "unpack": {
-        "exe":"arj",
-        "cmdline":"$tool x -ht$destdir $archive",
-        "extension":"arj",
+        "exe": "arj",
+        "cmdline": "$tool x -ht$destdir $archive",
+        "extension": "arj",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAN71y2EAA0t4pcmgxM3IJMDAtPDe19OJIMyAAQz0EouyGBiCtr2tYGBIeGXIoAfWwnAPpJwZqACE966cO4GBYYkgRAuyYQYMDFwqH34xMDgGeSW8YmAAAAQMFYJ1AAAA",
-        "file":"0",
-        "content":"ARJ",
-        "delete":true
-    }
+        "blob": "H4sIAN71y2EAA0t4pcmgxM3IJMDAtPDe19OJIMyAAQz0EouyGBiCtr2tYGBIeGXIoAfWwnAPpJwZqACE966cO4GBYYkgRAuyYQYMDFwqH34xMDgGeSW8YmAAAAQMFYJ1AAAA",
+        "file": "0",
+        "content": "ARJ",
+        "delete": true
+    },
+    "identification": { "file": "ARJ archive data, v11, slash-switched, original name", "trid": "(.ARJ) ARJ compressed archive" }
 }

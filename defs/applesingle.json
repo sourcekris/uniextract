@@ -1,24 +1,22 @@
 {
-    "name":"AppleSingle",
-    "extensions":["as"],
+    "name": "AppleSingle",
+    "extensions": ["as"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"AAUWAAACAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAPgAAAAEAAAAIAAAAPwAAABAAAAABAAAATwAAAAswKV8brylfIJ2AAAAAgAAAAEFQUExFU0lOR0xF"
-    },
+    "pack": { "type": "blob", "blob": "AAUWAAACAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAPgAAAAEAAAAIAAAAPwAAABAAAAABAAAATwAAAAswKV8brylfIJ2AAAAAgAAAAEFQUExFU0lOR0xF" },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"as",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "as",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIACpmzGEAA2NgFWNgYGLABMxQbAfEjEDMAcT2QCwA5fsDMbeBZrz0es14hbkNQB4IOwYE+LgGe/q5+7gCAO9NUadaAAAA",
-        "file":"0",
-        "content":"APPLESINGLE",
-        "delete":true
-    }
+        "blob": "H4sIACpmzGEAA2NgFWNgYGLABMxQbAfEjEDMAcT2QCwA5fsDMbeBZrz0es14hbkNQB4IOwYE+LgGe/q5+7gCAO9NUadaAAAA",
+        "file": "0",
+        "content": "APPLESINGLE",
+        "delete": true
+    },
+    "identification": { "file": "AppleSingle encoded Macintosh file", "trid": " (.AS) Mac AppleSingle encoded" }
 }

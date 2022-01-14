@@ -1,27 +1,25 @@
 {
-    "name":"Crush",
-    "comment":"CRUSH is a DOS archive utility by PocketWare - http://fileformats.archiveteam.org/wiki/CRUSH",
-    "extensions":["cru"],
+    "name": "Crush",
+    "comment": "CRUSH is a DOS archive utility by PocketWare - http://fileformats.archiveteam.org/wiki/CRUSH",
+    "extensions": ["cru"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/jsummers/deark",
-        "build":"make && cp deark $tools",
-        "exist_check":["deark -version","Deark version:"]
+        "method": "source",
+        "repo": "https://github.com/jsummers/deark",
+        "build": "make && cp deark $tools",
+        "exist_check": ["deark -version", "Deark version:"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"Q1JVU0ggdjEuOAoaAHSgVwAAAgAAACAAAABDUlVDUlUAIFuMnlMDAAAAMC5UWFQAq9AjIn8AAAAAIK6OnlMDAAAAMS5UWFQAAAAAAAAAAAA="
-    },
+    "pack": { "type": "blob", "blob": "Q1JVU0ggdjEuOAoaAHSgVwAAAgAAACAAAABDUlVDUlUAIFuMnlMDAAAAMC5UWFQAq9AjIn8AAAAAIK6OnlMDAAAAMS5UWFQAAAAAAAAAAAA=" },
     "unpack": {
-        "exe":"$tools/deark",
-        "cmdline":"$tool -od $destdir -o 0 $archive",
-        "extension":"cru",
+        "exe": "$tools/deark",
+        "cmdline": "$tool -od $destdir -o 0 $archive",
+        "extension": "cru",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAPRXzWEAA3MOCg32UCgz1LPgkmIoWRDOwMDEwMCgAMTOQaFAxKAQ3TMvmBnIN9ALiQhhWH1BWameAaRkXR9E3BAsDgMABPACV1AAAAA=",
-        "file":"0.000.0.TXT",
-        "content":"CRU",
-        "delete":true
-    }
+        "blob": "H4sIAPRXzWEAA3MOCg32UCgz1LPgkmIoWRDOwMDEwMCgAMTOQaFAxKAQ3TMvmBnIN9ALiQhhWH1BWameAaRkXR9E3BAsDgMABPACV1AAAAA=",
+        "file": "0.000.0.TXT",
+        "content": "CRU",
+        "delete": true
+    },
+    "identification": { "file": "Crush archive data", "trid": "(.CRU) Crush archive" }
 }

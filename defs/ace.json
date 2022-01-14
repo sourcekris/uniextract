@@ -1,24 +1,22 @@
 {
-    "name":"ACE",
-    "extensions":["ace"],
+    "name": "ACE",
+    "extensions": ["ace"],
     "install": {
-        "method":"pip",
-        "packages":["acefile"]
+        "method": "pip",
+        "packages": ["acefile"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U="
-    },
+    "pack": { "type": "blob", "blob": "TikxAAAAECoqQUNFKioUFAIA9CWcU3NysUtTIAAAFipVTlJFR0lTVEVSRUQgVkVSU0lPTir1+iAAAQEAAwAAAAMAAADGI5xTIAAAAMNoBKwAAwoAVEUBADBBQ0U=" },
     "unpack": {
-        "exe":"acefile-unace",
-        "cmdline":"$tool --extract -d $destdir $archive",
-        "extension":"ace",
+        "exe": "acefile-unace",
+        "cmdline": "$tool --extract -d $destdir $archive",
+        "extension": "ace",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAOcEy2EAA4vlM2RgYJigpeXo7KqlJSLCxDBHZU6wdPFNL6Awg5hWqF+Qq7tncIhrkKuLQphrULCnv5/WA3kFBkbGBmagChA+pjwnWAFIH85gWcPAysUQ4srIYAA0DwB+L0ozXAAAAA==",
-        "file":"0",
-        "content":"ACE",
-        "delete":true
-    }
+        "blob": "H4sIAOcEy2EAA4vlM2RgYJigpeXo7KqlJSLCxDBHZU6wdPFNL6Awg5hWqF+Qq7tncIhrkKuLQphrULCnv5/WA3kFBkbGBmagChA+pjwnWAFIH85gWcPAysUQ4srIYAA0DwB+L0ozXAAAAA==",
+        "file": "0",
+        "content": "ACE",
+        "delete": true
+    },
+    "identification": { "file": "ACE archive data version 20, from Win/32, version 20 to extract, contains AV-String (unregistered)", "trid": "(.ACE) ACE compressed archive (3509/2/1)" }
 }

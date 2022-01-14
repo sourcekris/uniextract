@@ -3,20 +3,20 @@
     "comment": "http://fileformats.archiveteam.org/wiki/MAr_(Melting-Pot)",
     "extensions": ["mar"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/sourcekris/mar",
-        "build":"make && cp mar $tools",
-        "exist_check":["mar -h","Usage: "]
+        "method": "source",
+        "repo": "https://github.com/sourcekris/mar",
+        "build": "make && cp mar $tools",
+        "exist_check": ["mar -h", "Usage: "]
     },
     "pack": {
-        "type":"archiver",
-        "exe":"$tools/mar",
-        "cmdline":"$tool c $file.mar $file"
+        "type": "archiver",
+        "exe": "$tools/mar",
+        "cmdline": "$tool c $file.mar $file"
     },
     "unpack": {
-        "exe":"$tools/mar",
-        "cmdline":"cd $destdir && $tool x $archive",
-        "extension":"mar",
+        "exe": "$tools/mar",
+        "cmdline": "cd $destdir && $tool x $archive",
+        "extension": "mar",
         "force_extension": true
     },
     "test": {
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "MAR",
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": "(.MAR) MAr compressed archive" }
 }

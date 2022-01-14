@@ -21,5 +21,6 @@
         "file": "?",
         "content": "XZ",
         "delete": false
-    }
+    },
+    "identification": { "file": "XZ compressed data", "trid": " (.XZ) xz compressed container" }
 }

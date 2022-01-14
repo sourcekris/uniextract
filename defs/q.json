@@ -5,9 +5,13 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"PAQ.EXE",
-        "container":"dos/q/quant097.zip",
-        "dependencies":["UNPAQ.EXE", "32RTM.EXE", "DPMI32VM.OVL"]
+        "tool": "PAQ.EXE",
+        "container": "dos/q/quant097.zip",
+        "dependencies": [
+            "UNPAQ.EXE",
+            "32RTM.EXE",
+            "DPMI32VM.OVL"
+        ]
     },
     "pack": {
         "exe": "dosbox",
@@ -25,5 +29,6 @@
         "file": "0",
         "content": "QUANTUM",
         "delete": true
-    }
+    },
+    "identification": { "file": "Quantum archive data", "trid": "(.Q/PAK) Quantum compressed archive" }
 }

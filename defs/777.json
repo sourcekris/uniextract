@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["wine"],
-        "tool":"777.exe",
-        "container":"win32/777/777004b1.zip"
+        "tool": "777.exe",
+        "container": "win32/777/777004b1.zip"
     },
     "pack": {
         "exe": "wine",
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "777",
         "delete": true
-    }
+    },
+    "identification": { "file": "777 archive data", "trid": "(.777) 777 compressed archive" }
 }

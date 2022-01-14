@@ -22,5 +22,6 @@
         "file": "?",
         "content": "YENC",
         "delete": true
-    }
+    },
+    "identification": { "file": "Non-ISO extended-ASCII text, with CRLF line terminators", "trid": "None" }
 }

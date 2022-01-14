@@ -22,5 +22,6 @@
         "file": "?",
         "content": "XXD",
         "delete": true
-    }
+    },
+    "identification": { "file": "ASCII text", "trid": "None" }
 }

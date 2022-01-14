@@ -1,25 +1,23 @@
 {
-    "name":"LZX",
-    "comment":"Older compression format popular on the Amiga - http://fileformats.archiveteam.org/wiki/LZX",
-    "extensions":["lzx"],
+    "name": "LZX",
+    "comment": "Older compression format popular on the Amiga - http://fileformats.archiveteam.org/wiki/LZX",
+    "extensions": ["lzx"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"TFpYAAwACgQAAA8AAwAAAAMAAAAKAAAAAAoAAPXazQWuwSWjJjEkcAEwTFpY"
-    },
+    "pack": { "type": "blob", "blob": "TFpYAAwACgQAAA8AAwAAAAMAAAAKAAAAAAoAAPXazQWuwSWjJjEkcAEwTFpY" },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"lzx",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "lzx",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAHYVzWEAA/OJimDgYeBiYWDgZ2BmYABjLgYI8fXWWdZ1B1UXqxmqFDAa+ERFAABCWw5/LQAAAA==",
-        "file":"0",
-        "content":"LZX",
-        "delete":true
-    }
+        "blob": "H4sIAHYVzWEAA/OJimDgYeBiYWDgZ2BmYABjLgYI8fXWWdZ1B1UXqxmqFDAa+ERFAABCWw5/LQAAAA==",
+        "file": "0",
+        "content": "LZX",
+        "delete": true
+    },
+    "identification": { "file": "LZX compressed archive (Amiga)", "trid": "(.LZX) LZX Amiga compressed archive" }
 }

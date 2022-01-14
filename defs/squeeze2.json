@@ -1,27 +1,29 @@
 {
-    "name":"Squeeze2",
-    "comment":"Variant of the Squeeze format for CP/M - http://fileformats.archiveteam.org/wiki/SQ2",
-    "extensions":["sq2", "qqq", "zsq"],
+    "name": "Squeeze2",
+    "comment": "Variant of the Squeeze format for CP/M - http://fileformats.archiveteam.org/wiki/SQ2",
+    "extensions": [
+        "sq2",
+        "qqq",
+        "zsq"
+    ],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/jsummers/deark",
-        "build":"make && cp deark $tools",
-        "exist_check":["deark -version","Deark version:"]
+        "method": "source",
+        "repo": "https://github.com/jsummers/deark",
+        "build": "make && cp deark $tools",
+        "exist_check": ["deark -version", "Deark version:"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"+v8wADAxLzAxLzEyMgAAGtYAIVRulwMAAQACAK7/rP/N///+0ho="
-    },
+    "pack": { "type": "blob", "blob": "+v8wADAxLzAxLzEyMgAAGtYAIVRulwMAAQACAK7/rP/N///+0ho=" },
     "unpack": {
-        "exe":"$tools/deark",
-        "cmdline":"$tool -od $destdir -o 0 $archive",
-        "extension":"sq2",
+        "exe": "$tools/deark",
+        "cmdline": "$tool -od $destdir -o 0 $archive",
+        "extension": "sq2",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAHRH0GEAA/v134DBwFAfiAyNjBgYpK4xKIbkTWdmYGRgYlj3f83/s////7skBQC2Nc1TJgAAAA==",
-        "file":"0.000.0",
-        "content":"SQ2",
-        "delete":true
-    }
+        "blob": "H4sIAHRH0GEAA/v134DBwFAfiAyNjBgYpK4xKIbkTWdmYGRgYlj3f83/s////7skBQC2Nc1TJgAAAA==",
+        "file": "0.000.0",
+        "content": "SQ2",
+        "delete": true
+    },
+    "identification": { "file": "None", "trid": "(.) SQ2 compressed data" }
 }

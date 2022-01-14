@@ -21,5 +21,6 @@
         "file": "?",
         "content": "LRZIP",
         "delete": true
-    }
+    },
+    "identification": { "file": "LRZIP compressed data - version 0.6", "trid": "(.LRZ) Long Range Zip compressed" }
 }

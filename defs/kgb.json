@@ -23,5 +23,6 @@
         "file": "0",
         "content": "KGB",
         "delete": true
-    }
+    },
+    "identification": { "file": "KGB Archiver file with compression level 3", "trid": "(.KGB) KGB Archiver compressed archive" }
 }

@@ -1,24 +1,26 @@
 {
-    "name":"SITX",
-    "extensions":["sitx", "sit", "sit5"],
+    "name": "SITX",
+    "extensions": [
+        "sitx",
+        "sit",
+        "sit5"
+    ],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"U3R1ZmZJdCGhCpvdQhUzmVelAuMQEJyw11hPVhTvf7Gv8RF8KW4xgrunZoX/wAACArEbsZpRBUsFScxoSwpRFHcAAAADAAAAAVQA2Ke9dkwA/wIV3AYoWgJjWwEZJPL0HhcCFTtTweEC1woZmPZCiFECAlU="
-    },
+    "pack": { "type": "blob", "blob": "U3R1ZmZJdCGhCpvdQhUzmVelAuMQEJyw11hPVhTvf7Gv8RF8KW4xgrunZoX/wAACArEbsZpRBUsFScxoSwpRFHcAAAADAAAAAVQA2Ke9dkwA/wIV3AYoWgJjWwEZJPL0HhcCFTtTweEC1woZmPZCiFECAlU=" },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"sitx",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "sitx",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAP1izGEAAwF0AIv/U3R1ZmZJdCGhCpvdQhUzmVelAuMQEJyw11hPVhTvf7Gv8RF8KW4xgrunZoX/wAACArEbsZpRBUsFScxoSwpRFHcAAAADAAAAAVQA2Ke9dkwA/wIV3AYoWgJjWwEZJPL0HhcCFTtTweEC1woZmPZCiFECAlWd0CuvdAAAAA==",
-        "file":"0",
-        "content":"SIT",
-        "delete":true
-    }
+        "blob": "H4sIAP1izGEAAwF0AIv/U3R1ZmZJdCGhCpvdQhUzmVelAuMQEJyw11hPVhTvf7Gv8RF8KW4xgrunZoX/wAACArEbsZpRBUsFScxoSwpRFHcAAAADAAAAAVQA2Ke9dkwA/wIV3AYoWgJjWwEZJPL0HhcCFTtTweEC1woZmPZCiFECAlWd0CuvdAAAAA==",
+        "file": "0",
+        "content": "SIT",
+        "delete": true
+    },
+    "identification": { "file": "StuffIt Archive", "trid": "(.SITX) StuffIt X compressed archive" }
 }

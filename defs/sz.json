@@ -24,5 +24,6 @@
         "file": "?",
         "content": "SNAPPYSZ",
         "delete": false
-    }
+    },
+    "identification": { "file": "snappy framed data", "trid": " (.SZ) Snzip compressed (framing2 format)" }
 }

@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"MAR.EXE",
-        "container":"dos/micrognosis/MAR10.ZIP"
+        "tool": "MAR.EXE",
+        "container": "dos/micrognosis/MAR10.ZIP"
     },
     "pack": {
         "exe": "dosbox",
@@ -24,5 +24,6 @@
         "file": "0",
         "content": "MICRONOGSIS",
         "delete": true
-    }
+    },
+    "identification": { "file": "MAR archive data", "trid": "(.MAR) Micrognosis compressed archive" }
 }

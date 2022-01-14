@@ -1,7 +1,11 @@
 {
     "name": "Hex",
     "comment": "Hex encoded file, aka base16 encoded",
-    "extensions": ["hex", "b16", "base16"],
+    "extensions": [
+        "hex",
+        "b16",
+        "base16"
+    ],
     "install": {
         "method": "apt",
         "packages": ["xxd"]
@@ -22,5 +26,6 @@
         "file": "?",
         "content": "HEX",
         "delete": true
-    }
+    },
+    "identification": { "file": "ASCII text", "trid": "None" }
 }

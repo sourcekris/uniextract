@@ -21,5 +21,6 @@
         "file": "?",
         "content": "LZIP",
         "delete": false
-    }
+    },
+    "identification": { "file": "lzip compressed data, version", "trid": "(.LZ) LZIP compressed archive" }
 }

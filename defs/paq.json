@@ -5,9 +5,9 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"PAQ.EXE",
-        "renametool":"OPAQ.EXE",
-        "container":"dos/paq/pak1_0.zip"
+        "tool": "PAQ.EXE",
+        "renametool": "OPAQ.EXE",
+        "container": "dos/paq/pak1_0.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -25,5 +25,6 @@
         "file": "0",
         "content": "OPAQUE",
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": "None" }
 }

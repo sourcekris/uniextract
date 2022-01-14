@@ -1,27 +1,25 @@
 {
-    "name":"Crunch",
-    "comment":"CP/M era LZW compression that superceeded Squeeze - http://fileformats.archiveteam.org/wiki/Crunch",
-    "extensions":["zzz"],
+    "name": "Crunch",
+    "comment": "CP/M era LZW compression that superceeded Squeeze - http://fileformats.archiveteam.org/wiki/Crunch",
+    "extensions": ["zzz"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE="
-    },
+    "pack": { "type": "blob", "blob": "dv4wLiAgIAAgIAABIZSKpOIZIACQPUAAwwE=" },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"zzz",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "zzz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAJv8z2EAAyv7Z6CnoKDAAESMilO6ljySVGCYYOvAcJgRAO0q5aQaAAAA",
-        "file":"0.",
-        "content":"CRUNCH",
-        "padbyte":"0x00",
-        "padlen":128,
-        "delete":true
-    }
+        "blob": "H4sIAJv8z2EAAyv7Z6CnoKDAAESMilO6ljySVGCYYOvAcJgRAO0q5aQaAAAA",
+        "file": "0.",
+        "content": "CRUNCH",
+        "padbyte": "0x00",
+        "padlen": 128,
+        "delete": true
+    },
+    "identification": { "file": "crunched data, original name 0.", "trid": "(.) Crunch compressed archive" }
 }

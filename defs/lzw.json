@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"LZWCOM.EXE",
-        "container":"dos/lzw/lzw.zip"
+        "tool": "LZWCOM.EXE",
+        "container": "dos/lzw/lzw.zip"
     },
     "pack": {
         "exe": "dosbox",
@@ -24,5 +24,6 @@
         "file": "0.000.unc",
         "content": "LZWCOM",
         "delete": true
-    }
+    },
+    "identification": { "file": "ISO-8859 text, with no line terminators", "trid": "None" }
 }

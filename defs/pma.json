@@ -1,27 +1,25 @@
 {
-    "name":"PMArc",
-    "comment":"PMArc from the MSX and CP/M era - http://fileformats.archiveteam.org/wiki/PMA",
-    "extensions":["pma"],
+    "name": "PMArc",
+    "comment": "PMArc from the MSX and CP/M era - http://fileformats.archiveteam.org/wiki/PMA",
+    "extensions": ["pma"],
     "install": {
-        "method":"apt",
-        "packages":["unar"]
+        "method": "apt",
+        "packages": ["unar"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"GKEtcG0yLREAAACAAAAAAAAAACAAAjAuXMvsoBIAAAAAALgAIHBpDWvkAAA="
-    },
+    "pack": { "type": "blob", "blob": "GKEtcG0yLREAAACAAAAAAAAAACAAAjAuXMvsoBIAAAAAALgAIHBpDWvkAAA=" },
     "unpack": {
-        "exe":"unar",
-        "cmdline":"$tool -o $destdir $archive",
-        "extension":"pma",
+        "exe": "unar",
+        "cmdline": "$tool -o $destdir $archive",
+        "extension": "pma",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAA35z2EAA5NYqFuQa6QryMDA0MAAAQoMTAZ6MaffLBACc3cwKBRk8mY/YWAAAGlwX0gsAAAA",
-        "file":"0.",
-        "content":"PMARC",
-        "padbyte":"0x1a",
-        "padlen":128,
-        "delete":true
-    }
+        "blob": "H4sIAA35z2EAA5NYqFuQa6QryMDA0MAAAQoMTAZ6MaffLBACc3cwKBRk8mY/YWAAAGlwX0gsAAAA",
+        "file": "0.",
+        "content": "PMARC",
+        "padbyte": "0x1a",
+        "padlen": 128,
+        "delete": true
+    },
+    "identification": { "file": "  PMarc archive data [pm2], with \"0.\"", "trid": "(.PMA) PMarc compressed archive" }
 }

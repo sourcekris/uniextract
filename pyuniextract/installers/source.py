@@ -44,7 +44,6 @@ def archiver_in_path(d, field="install"):
 
     return False
 
-
 def install_from_source(definitions, field="install"):
     for d in definitions:
         in_path = False

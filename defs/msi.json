@@ -22,5 +22,6 @@
         "file": "?/0",
         "content": "MSI",
         "delete": true
-    }
+    },
+    "identification": { "file": "Composite Document File V2 Document, Little Endian, Os", "trid": " (.MST) Windows SDK Setup Transform script (61000/1/5)" }
 }

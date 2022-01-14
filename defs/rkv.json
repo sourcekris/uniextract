@@ -5,8 +5,8 @@
     "install": {
         "method": "apt",
         "packages": ["dosbox"],
-        "tool":"rkive.exe",
-        "container":"dos/rkv/rkv192b1.zip",
+        "tool": "rkive.exe",
+        "container": "dos/rkv/rkv192b1.zip",
         "dependencies": ["CWSDPMI.EXE"]
     },
     "pack": {
@@ -25,5 +25,6 @@
         "file": "0",
         "content": "RKV",
         "delete": true
-    }
+    },
+    "identification": { "file": "None", "trid": "None" }
 }

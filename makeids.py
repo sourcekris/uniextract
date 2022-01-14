@@ -64,9 +64,12 @@ def id_via_trid(arcfile):
 def id_via_arcid(arcfile):
     return None
 
-def identify_archive(arcfile):
+def identify_archive(arcfile, idtype=""):
     id = id_via_file(arcfile)
-    if not id:
+    if idtype == "file":
+        return id
+
+    if not id or idtype == "trid":
         return id_via_trid(arcfile)
     
     return id
@@ -75,6 +78,7 @@ def identify_archive(arcfile):
 def main(argv):
     ap = argparse.ArgumentParser(description="Make test archives then attempt to identify them")
     ap.add_argument('-s',"--specific", help="Run a specific identification only, if test not found nothing is done.")
+    ap.add_argument('-t',"--type", choices=["file","trid"],help="Use file or trid only.")
     args = ap.parse_args(argv[1:])
 
     defs = load_defs(addfn=True)
@@ -88,13 +92,13 @@ def main(argv):
         if args.specific:
             if name == args.specific:
                 af = pack_file(name)
-                id = identify_archive(af)
+                id = identify_archive(af, idtype=args.type)
                 print(f'archiver {name} identified as: {id}')
 
             continue
 
         af = pack_file(name)
-        id = identify_archive(af)
+        id = identify_archive(af, idtype=args.type)
         print(f'archiver {name} identified as: {id}')
         
 

@@ -1,26 +1,24 @@
 {
-    "name":"LotusCMZ",
-    "extensions":["cmz"],
+    "name": "LotusCMZ",
+    "extensions": ["cmz"],
     "install": {
-        "method":"source",
-        "repo":"https://github.com/sourcekris/uncmz",
-        "build":"go build && cp uncmz $tools",
-        "exist_check":["uncmz -h","The CMZ file"]
+        "method": "source",
+        "repo": "https://github.com/sourcekris/uncmz",
+        "build": "go build && cp uncmz $tools",
+        "exist_check": ["uncmz -h", "The CMZ file"]
     },
-    "pack":{
-        "type":"blob",
-        "blob":"Q2xheQgAAAADAAAAnhgAdAEAAgAwAAaGNNEK+Ac="
-    },
+    "pack": { "type": "blob", "blob": "Q2xheQgAAAADAAAAnhgAdAEAAgAwAAaGNNEK+Ac=" },
     "unpack": {
-        "exe":"$tools/uncmz",
-        "cmdline":"$tool -e $archive -d $destdir",
-        "extension":"cmz",
+        "exe": "$tools/uncmz",
+        "cmdline": "$tool -e $archive -d $destdir",
+        "extension": "cmz",
         "force_extension": true
     },
     "test": {
-        "blob":"H4sIAOBW2mEC/3POSazkYGBgYAbieRIMJYwMTAwGDGxtJhe5frADABV2zPMdAAAA",
-        "file":"0",
-        "content":"CMZ",
-        "delete":true
-    }
+        "blob": "H4sIAOBW2mEC/3POSazkYGBgYAbieRIMJYwMTAwGDGxtJhe5frADABV2zPMdAAAA",
+        "file": "0",
+        "content": "CMZ",
+        "delete": true
+    },
+    "identification": { "file": "None", "trid": "(.CMZ) CMZ Compressed archive" }
 }

@@ -22,5 +22,6 @@
         "file": "0",
         "content": "ZPAQ",
         "delete": true
-    }
+    },
+    "identification": { "file": "ZPAQ file", "trid": "(.ZPAQ) zpaq compressed archive" }
 }
