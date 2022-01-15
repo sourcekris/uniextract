@@ -1,6 +1,7 @@
 from glob import glob
 import os.path
 import json
+import re
 
 # config
 definitions_path = "defs/"
@@ -11,6 +12,9 @@ default_fn = "0"
 trid_defs = "/usr/share/trid/triddefs.trd"
 trid_args = ['/usr/local/bin/trid', '-n:1', f'-d:{trid_defs}']
 trid_env = {"LC_ALL":"C"}
+
+pcntre = re.compile("\d+\.\d\%\s")
+numre = re.compile("\s\(\d+\/\d+\)")
 
 def load_defs(addfn=False, defpath=None):
     if not defpath:
@@ -29,15 +33,30 @@ def load_defs(addfn=False, defpath=None):
         definitions.append(jd)
     return definitions
 
-def get_def(defname, addfn=False, defpath=None):
-    if not defpath:
-        defpath = definitions_path
-
+def get_def(defname, addfn=False, defpath=definitions_path):
     defs = load_defs(addfn=addfn, defpath=defpath)
     for d in defs:
         if "name" in d and d["name"] == defname:
             return d
     
+    return None
+
+def get_def_by_id(id, defpath=definitions_path):
+    id = pcntre.sub("", numre.sub("", id))
+    defs = load_defs(defpath=defpath)
+    for d in defs:
+        if "identification" in d and (d["identification"]["file"] == id or d["identification"]["trid"] == id):
+            return d
+    
+    return None
+
+
+# return the most preferred extension for archive profile.
+def get_pack_ext(d):
+    if "unpack" in d and "extension" in d["unpack"]:
+        return '.' + d["unpack"]["extension"]
+    if "install" in d and "extensions" in d["install"] and len(d["install"]["extensions"]) > 0:
+        return '.' + d["install"]["extensions"][0]
     return None
 
 def is_builtin(d):
@@ -92,4 +111,3 @@ def should_rename_tool(d):
         if d["install"]["renametool"] != d["install"]["tool"]:
             return True
     return False
-

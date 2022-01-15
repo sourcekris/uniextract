@@ -6,16 +6,8 @@ import os, os.path
 import tempfile
 from base64 import b64decode
 from subprocess import Popen, PIPE
-from .config import get_def, tools_path, default_fn, is_blob
+from .config import get_def, tools_path, default_fn, is_blob, get_pack_ext
 from .template import prepare_cmdline, prepare_exe
-
-# return the most preferred extension for archive profile.
-def get_pack_ext(d):
-    if "unpack" in d and "extension" in d["unpack"]:
-        return d["unpack"]["extension"]
-    if "install" in d and "extensions" in d["install"] and len(d["install"]["extensions"]) > 0:
-        return d["install"]["extensions"][0]
-    return None
 
 def get_packer_cmd(d):
     exe = cmdline = ""
@@ -44,7 +36,7 @@ def pack_file(archiver, filename=default_fn):
     cwd = os.getcwd()
     tools = os.path.join(cwd, tools_path)
     exe, cmdline = get_packer_cmd(d)
-    ext = "." + get_pack_ext(d)
+    ext = get_pack_ext(d)
     arcname = filename+ext
 
     content = get_content(d)
