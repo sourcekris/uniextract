@@ -4,6 +4,7 @@
 
 import argparse
 import sys
+import os.path
 from pyuniextract.identify.identify import identify_archive
 from pyuniextract.installers.unpacker import unpack_archive
 from pyuniextract.installers.config import get_def_by_id
@@ -22,11 +23,17 @@ def main(argv):
         return
     
     print(f"Archive type: {d['name']}")
-    if args.destination:
-        print(f"Extracting to: {args.destination}")
-    
-    #unpack_archive(d, args.extract, destdir=args.destination)
 
+    destination = "."
+    if args.destination:
+        destination = args.destination
+    
+    if not os.path.isdir(destination):
+        print(f"{destination} folder does not exist")
+        return
+
+    print(f"Extracting to folder: {destination}")   
+    unpack_archive(args.extract, d, destdir=destination)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

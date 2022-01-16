@@ -5,6 +5,7 @@
 import subprocess
 import tempfile
 import os, os.path
+import shutil
 from .config import get_pack_ext, tools_path
 from .template import prepare_cmdline, prepare_exe
 
@@ -24,17 +25,6 @@ def unpack_archive(archive, d, destdir=None):
             #print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
             return 0
 
-        #print("Extracted, ", flush=True, end="") 
-        #print(subprocess.check_output(f"ls -la {os.path.basename(arcfile.name)}",shell=True).decode())
-        extracted_file = os.path.join(tmpdir, d["test"]["file"])
-        if extracted_file.endswith("?"):
-            # in case the archive does not store the name of the compressed file, e.g. gzip.
-            extracted_file = os.path.join(tmpdir, basename)
-        
-        if "?/" in extracted_file:
-            fn = extracted_file.split("/")[-1]
-            # in case the archive creates a folder based on the archive name to put the files into e.g. msi.
-            extracted_file = os.path.join(tmpdir, basename, fn)
-        
-    
-        print(f'filename: {extracted_file}')
+        files = os.listdir(tmpdir)
+        for fn in files:
+            shutil.move(os.path.join(tmpdir, fn), destdir)
