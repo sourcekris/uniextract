@@ -3,11 +3,15 @@
 # extract a file to a folder - irrespective of the underlying format.
 
 import argparse
+from os import defpath
 import sys
 import os.path
 from pyuniextract.identify.identify import identify_archive
 from pyuniextract.installers.unpacker import unpack_archive
 from pyuniextract.installers.config import get_def_by_id
+
+defpath = os.path.join(os.path.realpath(__file__), 'defs')
+toolspath = os.path.join(os.path.realpath(__file__), 'tools')
 
 def main(argv):
     ap = argparse.ArgumentParser(description=f"Extract Files.", 
@@ -17,7 +21,7 @@ def main(argv):
     args = ap.parse_args(argv)
 
     id = identify_archive(args.extract)
-    d = get_def_by_id(id)
+    d = get_def_by_id(id, defpath=defpath)
     if not d:
         print(f"Unrecognized archive type: {id}")
         return
@@ -33,7 +37,7 @@ def main(argv):
         return
 
     print(f"Extracting to folder: {destination}")   
-    unpack_archive(args.extract, d, destdir=destination)
+    unpack_archive(args.extract, d, destdir=destination, toolspath=toolspath)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

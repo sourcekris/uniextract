@@ -1,4 +1,5 @@
 import subprocess
+import os.path
 from .config import trid_args, trid_env
 
 def id_via_file(arcfile):
@@ -39,6 +40,10 @@ def id_via_trid(arcfile):
     if len(id) >= i:
         return id[i+1]
 
+def id_via_extension(arcfile):
+    if '.' in arcfile:
+        return os.path.splitext(os.path.basename(arcfile))[1]
+
 def id_via_arcid(arcfile):
     return None
 
@@ -49,6 +54,11 @@ def identify_archive(arcfile, idtype=""):
         return id
 
     if not id or idtype == "trid":
-        return id_via_trid(arcfile)
+        id = id_via_trid(arcfile)
+        if idtype == "trid":
+            return id
+
+    if not id:
+        id = id_via_extension(arcfile)
     
     return id
