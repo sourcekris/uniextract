@@ -22,5 +22,9 @@
         "content": "LZOP",
         "delete": true
     },
-    "identification": { "file": "lzop compressed data - version 1.040, LZO1X-1, os", "trid": "(.LZO) lzop compressed" }
+    "identification": {
+        "file": "lzop compressed data - version 1.040, LZO1X-1, os",
+        "trid": "(.LZO) lzop compressed",
+        "idarc": "LZO"
+    }
 }

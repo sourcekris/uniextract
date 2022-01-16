@@ -25,5 +25,9 @@
         "content": "MAR",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.MAR) MAr compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.MAR) MAr compressed archive",
+        "idarc": "None"
+    }
 }

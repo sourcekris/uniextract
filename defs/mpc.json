@@ -26,5 +26,9 @@
         "content": "MPC",
         "delete": true
     },
-    "identification": { "file": "MP3-Archiver archive data", "trid": "(.MP3) MPC compressed archive" }
+    "identification": {
+        "file": "MP3-Archiver archive data",
+        "trid": "(.MP3) MPC compressed archive",
+        "idarc": "MP3(MarcoCzudej)"
+    }
 }

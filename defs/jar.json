@@ -26,5 +26,9 @@
         "content": "JARCS",
         "delete": true
     },
-    "identification": { "file": "JAR (ARJ Software, Inc.) archive data", "trid": "(.JAR) JARCS compressed archive" }
+    "identification": {
+        "file": "JAR (ARJ Software, Inc.) archive data",
+        "trid": "(.JAR) JARCS compressed archive",
+        "idarc": "JArcs"
+    }
 }

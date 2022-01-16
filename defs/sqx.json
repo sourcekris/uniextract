@@ -26,5 +26,9 @@
         "content": "SQXSQUEEZ",
         "delete": true
     },
-    "identification": { "file": "None", "trid": " (.SQX) SQX compressed archive (2506/2/1)" }
+    "identification": {
+        "file": "None",
+        "trid": " (.SQX) SQX compressed archive (2506/2/1)",
+        "idarc": "None"
+    }
 }

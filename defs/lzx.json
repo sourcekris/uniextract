@@ -19,5 +19,9 @@
         "content": "LZX",
         "delete": true
     },
-    "identification": { "file": "LZX compressed archive (Amiga)", "trid": "(.LZX) LZX Amiga compressed archive" }
+    "identification": {
+        "file": "LZX compressed archive (Amiga)",
+        "trid": "(.LZX) LZX Amiga compressed archive",
+        "idarc": "None"
+    }
 }

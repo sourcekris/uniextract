@@ -25,5 +25,9 @@
         "content": "MICRONOGSIS",
         "delete": true
     },
-    "identification": { "file": "MAR archive data", "trid": "(.MAR) Micrognosis compressed archive" }
+    "identification": {
+        "file": "MAR archive data",
+        "trid": "(.MAR) Micrognosis compressed archive",
+        "idarc": "MAR"
+    }
 }

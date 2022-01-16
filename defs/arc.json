@@ -26,5 +26,9 @@
         "content": "ARC",
         "delete": true
     },
-    "identification": { "file": "ARC archive data, uncompressed", "trid": "(.PAK/ARC) PAK/ARC Compressed archive" }
+    "identification": {
+        "file": "ARC archive data, uncompressed",
+        "trid": "(.PAK/ARC) PAK/ARC Compressed archive",
+        "idarc": "ARC"
+    }
 }

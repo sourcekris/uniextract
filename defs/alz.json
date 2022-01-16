@@ -19,5 +19,9 @@
         "content": "ALZIP",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.ALZ) ALZip compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.ALZ) ALZip compressed archive",
+        "idarc": "None"
+    }
 }

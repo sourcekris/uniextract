@@ -18,5 +18,9 @@
         "content": "ACE",
         "delete": true
     },
-    "identification": { "file": "ACE archive data version 20, from Win/32, version 20 to extract, contains AV-String (unregistered)", "trid": "(.ACE) ACE compressed archive (3509/2/1)" }
+    "identification": {
+        "file": "ACE archive data version 20, from Win/32, version 20 to extract, contains AV-String (unregistered)",
+        "trid": "(.ACE) ACE compressed archive (3509/2/1)",
+        "idarc": "ACE"
+    }
 }

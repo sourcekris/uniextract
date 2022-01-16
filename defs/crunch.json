@@ -21,5 +21,9 @@
         "padlen": 128,
         "delete": true
     },
-    "identification": { "file": "crunched data, original name 0.", "trid": "(.) Crunch compressed archive" }
+    "identification": {
+        "file": "crunched data, original name 0.",
+        "trid": "(.) Crunch compressed archive",
+        "idarc": "None"
+    }
 }

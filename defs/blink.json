@@ -25,5 +25,9 @@
         "content": "BLINK",
         "delete": true
     },
-    "identification": { "file": "Blink archive data", "trid": " (.BLI) BLINK compressed archive" }
+    "identification": {
+        "file": "Blink archive data",
+        "trid": " (.BLI) BLINK compressed archive",
+        "idarc": "Blink(D.T.S.)"
+    }
 }

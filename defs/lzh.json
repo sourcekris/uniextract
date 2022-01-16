@@ -26,5 +26,9 @@
         "content": "LZH",
         "delete": true
     },
-    "identification": { "file": "  LHarc 1.x/ARX archive data  [lh0], 0x0 OS", "trid": "(.LZH/LHA) LHARC/LZARK compressed archive (generic)" }
+    "identification": {
+        "file": "  LHarc 1.x/ARX archive data  [lh0], 0x0 OS",
+        "trid": "(.LZH/LHA) LHARC/LZARK compressed archive (generic)",
+        "idarc": "LZH"
+    }
 }

@@ -22,5 +22,9 @@
         "content": "LZIP",
         "delete": false
     },
-    "identification": { "file": "lzip compressed data, version", "trid": "(.LZ) LZIP compressed archive" }
+    "identification": {
+        "file": "lzip compressed data, version",
+        "trid": "(.LZ) LZIP compressed archive",
+        "idarc": "None"
+    }
 }

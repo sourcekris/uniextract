@@ -25,5 +25,9 @@
         "content": "SNAPPYIWA",
         "delete": false
     },
-    "identification": { "file": "None", "trid": "None" }
+    "identification": {
+        "file": "None",
+        "trid": "None",
+        "idarc": "None"
+    }
 }

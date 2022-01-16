@@ -25,5 +25,9 @@
         "content": "SNAPPYRAW",
         "delete": false
     },
-    "identification": { "file": "ASCII text, with no line terminators", "trid": "None" }
+    "identification": {
+        "file": "ASCII text, with no line terminators",
+        "trid": "None",
+        "idarc": "None"
+    }
 }

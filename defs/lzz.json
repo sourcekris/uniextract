@@ -25,5 +25,9 @@
         "content": "LZ",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.LZZ) LZA compressed data" }
+    "identification": {
+        "file": "None",
+        "trid": "(.LZZ) LZA compressed data",
+        "idarc": "None"
+    }
 }

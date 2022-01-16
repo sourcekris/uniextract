@@ -22,5 +22,9 @@
         "content": "UUE",
         "delete": true
     },
-    "identification": { "file": "uuencoded or xxencoded, ASCII text", "trid": "(.UUE/UU/XXE) UUencoded/XXencoded text" }
+    "identification": {
+        "file": "uuencoded or xxencoded, ASCII text",
+        "trid": "(.UUE/UU/XXE) UUencoded/XXencoded text",
+        "idarc": "None"
+    }
 }

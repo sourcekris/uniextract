@@ -25,5 +25,9 @@
         "content": "SQ2",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.) SQ2 compressed data" }
+    "identification": {
+        "file": "None",
+        "trid": "(.) SQ2 compressed data",
+        "idarc": "None"
+    }
 }

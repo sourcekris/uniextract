@@ -22,5 +22,9 @@
         "content": "SIT",
         "delete": true
     },
-    "identification": { "file": "StuffIt Archive", "trid": "(.SITX) StuffIt X compressed archive" }
+    "identification": {
+        "file": "StuffIt Archive",
+        "trid": "(.SITX) StuffIt X compressed archive",
+        "idarc": "None"
+    }
 }

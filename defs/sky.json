@@ -25,5 +25,9 @@
         "content": "SKY",
         "delete": true
     },
-    "identification": { "file": "Sky archive data", "trid": "(.SKY) SKY compressed archive" }
+    "identification": {
+        "file": "Sky archive data",
+        "trid": "(.SKY) SKY compressed archive",
+        "idarc": "SKY"
+    }
 }

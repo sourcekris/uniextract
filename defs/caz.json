@@ -25,5 +25,9 @@
         "content": "CAZIPXP",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.CAZ) CAZIPXP compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.CAZ) CAZIPXP compressed archive",
+        "idarc": "None"
+    }
 }

@@ -32,5 +32,9 @@
         "content": "TSCOMP",
         "delete": true
     },
-    "identification": { "file": "TSComp archive data", "trid": "(.) TSComp compressed data" }
+    "identification": {
+        "file": "TSComp archive data",
+        "trid": "(.) TSComp compressed data",
+        "idarc": "TSComp"
+    }
 }

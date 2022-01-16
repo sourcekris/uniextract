@@ -26,5 +26,9 @@
         "content": "HAP",
         "delete": true
     },
-    "identification": { "file": "HAP archive data", "trid": "(.HAP) Hamarsoft HAP compressed archive (v3.00)" }
+    "identification": {
+        "file": "HAP archive data",
+        "trid": "(.HAP) Hamarsoft HAP compressed archive (v3.00)",
+        "idarc": "HAP"
+    }
 }

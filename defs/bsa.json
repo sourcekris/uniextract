@@ -25,5 +25,9 @@
         "content": "BSA",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.BSA) BSArc compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.BSA) BSArc compressed archive",
+        "idarc": "None"
+    }
 }

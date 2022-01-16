@@ -25,5 +25,9 @@
         "content": "MXSIE",
         "delete": true
     },
-    "identification": { "file": "MSXiE archive data", "trid": "None" }
+    "identification": {
+        "file": "MSXiE archive data",
+        "trid": "None",
+        "idarc": "MSXiE"
+    }
 }

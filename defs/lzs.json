@@ -26,5 +26,9 @@
         "content": "LZS",
         "delete": true
     },
-    "identification": { "file": "   LHarc 1.x archive data [lz4], with \"0\"", "trid": "(.LZS) LArc compressed archive" }
+    "identification": {
+        "file": "   LHarc 1.x archive data [lz4], with \"0\"",
+        "trid": "(.LZS) LArc compressed archive",
+        "idarc": "LZS"
+    }
 }

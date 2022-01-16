@@ -26,5 +26,9 @@
         "content": "JRC",
         "delete": true
     },
-    "identification": { "file": "JRC archive data", "trid": "(.JRC) JRchive compressed archive" }
+    "identification": {
+        "file": "JRC archive data",
+        "trid": "(.JRC) JRchive compressed archive",
+        "idarc": "JRC"
+    }
 }

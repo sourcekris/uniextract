@@ -26,5 +26,9 @@
         "content": "YZ1",
         "delete": true
     },
-    "identification": { "file": "DeepFreezer archive data", "trid": " (.YZ1) Yamazaki Zipper compressed archive" }
+    "identification": {
+        "file": "DeepFreezer archive data",
+        "trid": " (.YZ1) Yamazaki Zipper compressed archive",
+        "idarc": "DeepFreezer"
+    }
 }

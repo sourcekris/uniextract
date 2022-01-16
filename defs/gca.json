@@ -25,5 +25,9 @@
         "content": "GCA",
         "delete": true
     },
-    "identification": { "file": "GCA archive data", "trid": " (.GCA) G Compression Archiver" }
+    "identification": {
+        "file": "GCA archive data",
+        "trid": " (.GCA) G Compression Archiver",
+        "idarc": "GCA"
+    }
 }

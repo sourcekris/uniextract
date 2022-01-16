@@ -23,5 +23,9 @@
         "content": "ADF",
         "delete": true
     },
-    "identification": { "file": "Amiga DOS disk", "trid": " (.ADF) Amiga Disk image File (OFS)" }
+    "identification": {
+        "file": "Amiga DOS disk",
+        "trid": " (.ADF) Amiga Disk image File (OFS)",
+        "idarc": "None"
+    }
 }

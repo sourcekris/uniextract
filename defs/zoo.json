@@ -25,5 +25,9 @@
         "content": "ZOO",
         "delete": true
     },
-    "identification": { "file": "Zoo archive data, v2.10, modify", "trid": " (.ZOO) ZOO compressed archive" }
+    "identification": {
+        "file": "Zoo archive data, v2.10, modify",
+        "trid": " (.ZOO) ZOO compressed archive",
+        "idarc": "ZOO"
+    }
 }

@@ -25,5 +25,9 @@
         "content": "UC",
         "delete": true
     },
-    "identification": { "file": "UC2 archive data", "trid": "(.UC2) UltraCompressor 2 Archive" }
+    "identification": {
+        "file": "UC2 archive data",
+        "trid": "(.UC2) UltraCompressor 2 Archive",
+        "idarc": "UC2"
+    }
 }

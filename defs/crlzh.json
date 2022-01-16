@@ -21,5 +21,9 @@
         "padlen": 128,
         "delete": true
     },
-    "identification": { "file": "LZH compressed data, original name 0.", "trid": "(.YYY) CrLZH compressed" }
+    "identification": {
+        "file": "LZH compressed data, original name 0.",
+        "trid": "(.YYY) CrLZH compressed",
+        "idarc": "None"
+    }
 }

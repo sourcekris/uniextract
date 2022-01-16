@@ -25,5 +25,9 @@
         "content": "ZAR",
         "delete": true
     },
-    "identification": { "file": "VAX-order 68k Blit mpx/mux executable", "trid": "(.) TTComp archive compressed (ASCII-4K)" }
+    "identification": {
+        "file": "VAX-order 68k Blit mpx/mux executable",
+        "trid": "(.) TTComp archive compressed (ASCII-4K)",
+        "idarc": "None"
+    }
 }

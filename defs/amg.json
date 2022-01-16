@@ -25,5 +25,9 @@
         "content": "AMG",
         "delete": true
     },
-    "identification": { "file": "AMGC archive data", "trid": " (.AMG) AMGC compressed archive" }
+    "identification": {
+        "file": "AMGC archive data",
+        "trid": " (.AMG) AMGC compressed archive",
+        "idarc": "AMGC"
+    }
 }

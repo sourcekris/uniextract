@@ -25,5 +25,9 @@
         "content": "SNAPPYSNZIP",
         "delete": false
     },
-    "identification": { "file": "None", "trid": "(.SNZ) Snzip compressed (snzip format)" }
+    "identification": {
+        "file": "None",
+        "trid": "(.SNZ) Snzip compressed (snzip format)",
+        "idarc": "None"
+    }
 }

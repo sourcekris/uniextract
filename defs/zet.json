@@ -25,5 +25,9 @@
         "content": "ZET",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.ZET) ZET compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.ZET) ZET compressed archive",
+        "idarc": "ZET"
+    }
 }

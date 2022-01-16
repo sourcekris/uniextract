@@ -25,5 +25,9 @@
         "content": "LIMIT",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.LIM) Limit compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.LIM) Limit compressed archive",
+        "idarc": "LIM"
+    }
 }

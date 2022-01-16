@@ -21,5 +21,9 @@
         "padlen": 128,
         "delete": true
     },
-    "identification": { "file": "  PMarc archive data [pm2], with \"0.\"", "trid": "(.PMA) PMarc compressed archive" }
+    "identification": {
+        "file": "  PMarc archive data [pm2], with \"0.\"",
+        "trid": "(.PMA) PMarc compressed archive",
+        "idarc": "None"
+    }
 }

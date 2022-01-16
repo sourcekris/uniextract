@@ -25,5 +25,9 @@
         "content": "IMP",
         "delete": true
     },
-    "identification": { "file": "IMP archive data", "trid": "(.IMP) Imp compressed archive" }
+    "identification": {
+        "file": "IMP archive data",
+        "trid": "(.IMP) Imp compressed archive",
+        "idarc": "IMP"
+    }
 }

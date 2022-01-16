@@ -22,5 +22,9 @@
         "content": "7ZIP",
         "delete": true
     },
-    "identification": { "file": "7-zip archive data, version 0.4", "trid": " (.7Z) 7-Zip compressed archive (v0.4)" }
+    "identification": {
+        "file": "7-zip archive data, version 0.4",
+        "trid": " (.7Z) 7-Zip compressed archive (v0.4)",
+        "idarc": "7z"
+    }
 }

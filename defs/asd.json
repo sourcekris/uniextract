@@ -25,5 +25,9 @@
         "content": "ASD",
         "delete": true
     },
-    "identification": { "file": "ASD archive data", "trid": "(.ASD) ASD Archiever compressed archive" }
+    "identification": {
+        "file": "ASD archive data",
+        "trid": "(.ASD) ASD Archiever compressed archive",
+        "idarc": "ASD"
+    }
 }

@@ -25,5 +25,9 @@
         "content": "SLIM",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.FB) Slim! compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.FB) Slim! compressed archive",
+        "idarc": "None"
+    }
 }

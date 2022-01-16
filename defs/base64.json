@@ -26,5 +26,9 @@
         "content": "BASE64",
         "delete": true
     },
-    "identification": { "file": "ASCII text", "trid": "None" }
+    "identification": {
+        "file": "ASCII text",
+        "trid": "None",
+        "idarc": "None"
+    }
 }

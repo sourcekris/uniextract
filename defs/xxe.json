@@ -29,5 +29,9 @@
         "content": "XXENC",
         "delete": true
     },
-    "identification": { "file": "ASCII text", "trid": "None" }
+    "identification": {
+        "file": "ASCII text",
+        "trid": "None",
+        "idarc": "None"
+    }
 }

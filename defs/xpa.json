@@ -25,5 +25,9 @@
         "content": "XPA",
         "delete": true
     },
-    "identification": { "file": "XPA32 archive data", "trid": "(.XPA) Xpack compressed archive (Win)" }
+    "identification": {
+        "file": "XPA32 archive data",
+        "trid": "(.XPA) Xpack compressed archive (Win)",
+        "idarc": "XPA32(J.Tseng)"
+    }
 }

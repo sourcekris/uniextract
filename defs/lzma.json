@@ -22,5 +22,9 @@
         "content": "LZMA",
         "delete": false
     },
-    "identification": { "file": "LZMA compressed data, non-streamed, size 4", "trid": "(.LZMA) LZMA compressed archive" }
+    "identification": {
+        "file": "LZMA compressed data, non-streamed, size 4",
+        "trid": "(.LZMA) LZMA compressed archive",
+        "idarc": "None"
+    }
 }

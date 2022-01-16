@@ -23,5 +23,9 @@
         "content": "CAB",
         "delete": true
     },
-    "identification": { "file": "Microsoft Cabinet archive data, 73 bytes, 1 file, at 0x2c +A \"0\", number 1, 1 datablock, 0x0 compression", "trid": "(.CAB) Microsoft Cabinet Archive" }
+    "identification": {
+        "file": "Microsoft Cabinet archive data, 73 bytes, 1 file, at 0x2c +A \"0\", number 1, 1 datablock, 0x0 compression",
+        "trid": "(.CAB) Microsoft Cabinet Archive",
+        "idarc": "MicrosoftCAB"
+    }
 }

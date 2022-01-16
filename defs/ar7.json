@@ -25,5 +25,9 @@
         "content": "AR7",
         "delete": true
     },
-    "identification": { "file": "AR7 archive data", "trid": "(.AR7) ar7 compressed archive" }
+    "identification": {
+        "file": "AR7 archive data",
+        "trid": "(.AR7) ar7 compressed archive",
+        "idarc": "AR7"
+    }
 }

@@ -25,5 +25,9 @@
         "content": "LBR",
         "delete": true
     },
-    "identification": { "file": "LBR archive data", "trid": " (.LBR) LU library" }
+    "identification": {
+        "file": "LBR archive data",
+        "trid": " (.LBR) LU library",
+        "idarc": "LBR"
+    }
 }

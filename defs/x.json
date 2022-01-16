@@ -25,5 +25,9 @@
         "content": "X1",
         "delete": true
     },
-    "identification": { "file": "X1 archive data", "trid": "(.X) X1 compressed archive" }
+    "identification": {
+        "file": "X1 archive data",
+        "trid": "(.X) X1 compressed archive",
+        "idarc": "X1"
+    }
 }

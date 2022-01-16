@@ -25,5 +25,9 @@
         "content": "RAX",
         "delete": true
     },
-    "identification": { "file": "RAX archive data", "trid": "(.RAX) RAX compressed archive" }
+    "identification": {
+        "file": "RAX archive data",
+        "trid": "(.RAX) RAX compressed archive",
+        "idarc": "RAX"
+    }
 }

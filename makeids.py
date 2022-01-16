@@ -25,7 +25,7 @@ def valid_def(d):
 def main(argv):
     ap = argparse.ArgumentParser(description="Make test archives then attempt to identify them")
     ap.add_argument('-s',"--specific", help="Run a specific identification only, if test not found nothing is done.")
-    ap.add_argument('-t',"--type", choices=["file","trid"],help="Use file or trid only.")
+    ap.add_argument('-t',"--type", choices=["file","trid", "idarc"],help="Use file, trid or idarc only.")
     args = ap.parse_args(argv[1:])
 
     defs = load_defs(addfn=True)

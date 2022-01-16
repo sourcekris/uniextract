@@ -25,5 +25,9 @@
         "content": "UFA",
         "delete": true
     },
-    "identification": { "file": "UFA archive data", "trid": "(.UFA) UFA compressed archive" }
+    "identification": {
+        "file": "UFA archive data",
+        "trid": "(.UFA) UFA compressed archive",
+        "idarc": "UFA"
+    }
 }

@@ -25,5 +25,9 @@
         "content": "YAC",
         "delete": true
     },
-    "identification": { "file": "YAC archive data", "trid": "(.YC) YAC compressed archive" }
+    "identification": {
+        "file": "YAC archive data",
+        "trid": "(.YC) YAC compressed archive",
+        "idarc": "YAC"
+    }
 }

@@ -25,5 +25,9 @@
         "content": "PACKER",
         "delete": true
     },
-    "identification": { "file": "PFT archive data", "trid": "(.PAK) PACKER compressed archive" }
+    "identification": {
+        "file": "PFT archive data",
+        "trid": "(.PAK) PACKER compressed archive",
+        "idarc": "PFT"
+    }
 }

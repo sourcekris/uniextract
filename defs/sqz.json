@@ -25,5 +25,9 @@
         "content": "SQUEEZIT",
         "delete": true
     },
-    "identification": { "file": "Squeeze It archive data", "trid": "(.SQZ) Squeeze It compressed archive" }
+    "identification": {
+        "file": "Squeeze It archive data",
+        "trid": "(.SQZ) Squeeze It compressed archive",
+        "idarc": "SQZ(SqueezeIt)"
+    }
 }

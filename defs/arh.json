@@ -25,5 +25,9 @@
         "content": "SQUASHARH",
         "delete": true
     },
-    "identification": { "file": "Squash archive data", "trid": "(.ARH) Squash compressed archive" }
+    "identification": {
+        "file": "Squash archive data",
+        "trid": "(.ARH) Squash compressed archive",
+        "idarc": "Squash"
+    }
 }

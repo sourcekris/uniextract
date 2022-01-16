@@ -25,5 +25,9 @@
         "content": "777",
         "delete": true
     },
-    "identification": { "file": "777 archive data", "trid": "(.777) 777 compressed archive" }
+    "identification": {
+        "file": "777 archive data",
+        "trid": "(.777) 777 compressed archive",
+        "idarc": "777"
+    }
 }

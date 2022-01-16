@@ -23,5 +23,9 @@
         "content": "AFIO",
         "delete": true
     },
-    "identification": { "file": "ASCII cpio archive (pre-SVR4 or odc)", "trid": " (.CPIO) CPIO archive (portable)" }
+    "identification": {
+        "file": "ASCII cpio archive (pre-SVR4 or odc)",
+        "trid": " (.CPIO) CPIO archive (portable)",
+        "idarc": "None"
+    }
 }

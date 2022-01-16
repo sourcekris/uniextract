@@ -25,5 +25,9 @@
         "content": "ARG",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.ABR) Adobe PhotoShop Brush" }
+    "identification": {
+        "file": "None",
+        "trid": "(.ABR) Adobe PhotoShop Brush",
+        "idarc": "None"
+    }
 }

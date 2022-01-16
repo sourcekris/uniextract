@@ -18,5 +18,9 @@
         "content": "APPLESINGLE",
         "delete": true
     },
-    "identification": { "file": "AppleSingle encoded Macintosh file", "trid": " (.AS) Mac AppleSingle encoded" }
+    "identification": {
+        "file": "AppleSingle encoded Macintosh file",
+        "trid": " (.AS) Mac AppleSingle encoded",
+        "idarc": "None"
+    }
 }

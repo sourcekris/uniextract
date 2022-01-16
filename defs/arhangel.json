@@ -25,5 +25,9 @@
         "content": "ARHANGEL",
         "delete": true
     },
-    "identification": { "file": "Arhangel archive data", "trid": "(.LG) ARHANGEL compressed archive" }
+    "identification": {
+        "file": "Arhangel archive data",
+        "trid": "(.LG) ARHANGEL compressed archive",
+        "idarc": "Arhangel"
+    }
 }

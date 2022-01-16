@@ -25,5 +25,9 @@
         "content": "ZPK",
         "delete": true
     },
-    "identification": { "file": "ZPack archive data", "trid": "(.ZPK) ZPack Lite compressed archive" }
+    "identification": {
+        "file": "ZPack archive data",
+        "trid": "(.ZPK) ZPack Lite compressed archive",
+        "idarc": "ZPack"
+    }
 }

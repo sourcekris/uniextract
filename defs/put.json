@@ -26,5 +26,9 @@
         "content": "PUT",
         "delete": false
     },
-    "identification": { "file": "PUT archive data", "trid": "(.PUT/INS) Microfox Company PUT compressed archive" }
+    "identification": {
+        "file": "PUT archive data",
+        "trid": "(.PUT/INS) Microfox Company PUT compressed archive",
+        "idarc": "PUT"
+    }
 }

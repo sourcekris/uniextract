@@ -25,5 +25,9 @@
         "content": "NSK",
         "delete": true
     },
-    "identification": { "file": "NaShrink archive data", "trid": "(.NSK) NaShrinK compressed archive" }
+    "identification": {
+        "file": "NaShrink archive data",
+        "trid": "(.NSK) NaShrinK compressed archive",
+        "idarc": "NaShrink"
+    }
 }

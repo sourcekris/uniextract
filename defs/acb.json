@@ -27,5 +27,9 @@
         "padlen": 260,
         "delete": true
     },
-    "identification": { "file": "None", "trid": "None" }
+    "identification": {
+        "file": "None",
+        "trid": "None",
+        "idarc": "ACB"
+    }
 }

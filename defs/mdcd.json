@@ -25,5 +25,9 @@
         "content": "MDCD",
         "delete": true
     },
-    "identification": { "file": "MDCD archive data", "trid": " (.MD/CD) MDCD compressed archive (v1.0)" }
+    "identification": {
+        "file": "MDCD archive data",
+        "trid": " (.MD/CD) MDCD compressed archive (v1.0)",
+        "idarc": "MDCD"
+    }
 }

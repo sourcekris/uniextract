@@ -25,5 +25,9 @@
         "content": "ARQ",
         "delete": true
     },
-    "identification": { "file": "ARQ archive data", "trid": "(.ARQ) ARQ archive" }
+    "identification": {
+        "file": "ARQ archive data",
+        "trid": "(.ARQ) ARQ archive",
+        "idarc": "ARQ"
+    }
 }

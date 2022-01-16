@@ -20,5 +20,9 @@
         "content": "EGG",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.EGG) EGG compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.EGG) EGG compressed archive",
+        "idarc": "None"
+    }
 }

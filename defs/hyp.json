@@ -25,5 +25,9 @@
         "content": "HYP",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "None" }
+    "identification": {
+        "file": "None",
+        "trid": "None",
+        "idarc": "None"
+    }
 }

@@ -22,5 +22,9 @@
         "content": "AR",
         "delete": true
     },
-    "identification": { "file": "current ar archive", "trid": "(.AR/A/LBR/LIB) ar archive" }
+    "identification": {
+        "file": "current ar archive",
+        "trid": "(.AR/A/LBR/LIB) ar archive",
+        "idarc": "None"
+    }
 }

@@ -20,5 +20,9 @@
         "content": "CMZ",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.CMZ) CMZ Compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.CMZ) CMZ Compressed archive",
+        "idarc": "None"
+    }
 }

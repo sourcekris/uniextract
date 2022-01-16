@@ -26,5 +26,9 @@
         "content": "ESP",
         "delete": true
     },
-    "identification": { "file": "ESP archive data", "trid": "(.ESP) ESP - Extension Sort Packer compressed archive" }
+    "identification": {
+        "file": "ESP archive data",
+        "trid": "(.ESP) ESP - Extension Sort Packer compressed archive",
+        "idarc": "ESP"
+    }
 }

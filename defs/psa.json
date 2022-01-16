@@ -25,5 +25,9 @@
         "content": "PSA",
         "delete": true
     },
-    "identification": { "file": "PSA archive data", "trid": " (.PSA) Pretty Simple Archiver compressed archive" }
+    "identification": {
+        "file": "PSA archive data",
+        "trid": " (.PSA) Pretty Simple Archiver compressed archive",
+        "idarc": "PSA"
+    }
 }

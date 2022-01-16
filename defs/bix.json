@@ -25,5 +25,9 @@
         "content": "BIX",
         "delete": true
     },
-    "identification": { "file": "BIX archive data", "trid": " (.BIX) BIX Archiver compressed archive" }
+    "identification": {
+        "file": "BIX archive data",
+        "trid": " (.BIX) BIX Archiver compressed archive",
+        "idarc": "BIX(IgorPavlov)"
+    }
 }

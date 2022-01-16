@@ -22,5 +22,9 @@
         "content": "CPIO",
         "delete": true
     },
-    "identification": { "file": "cpio archive", "trid": "(.CPIO) CPIO archive (binary)" }
+    "identification": {
+        "file": "cpio archive",
+        "trid": "(.CPIO) CPIO archive (binary)",
+        "idarc": "None"
+    }
 }

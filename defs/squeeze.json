@@ -25,5 +25,9 @@
         "padlen": 128,
         "delete": true
     },
-    "identification": { "file": "Squeezed (apple ][) data", "trid": "(.) Squeeze compressed archive" }
+    "identification": {
+        "file": "Squeezed (apple ][) data",
+        "trid": "(.) Squeeze compressed archive",
+        "idarc": "NSQ"
+    }
 }

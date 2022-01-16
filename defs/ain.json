@@ -25,5 +25,9 @@
         "content": "AIN",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.AIN) AIN compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.AIN) AIN compressed archive",
+        "idarc": "AIN"
+    }
 }

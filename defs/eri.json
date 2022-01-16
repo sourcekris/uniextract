@@ -25,5 +25,9 @@
         "content": "ERI",
         "delete": true
     },
-    "identification": { "file": "Biosig/EDF", "trid": "None" }
+    "identification": {
+        "file": "Biosig/EDF",
+        "trid": "None",
+        "idarc": "None"
+    }
 }

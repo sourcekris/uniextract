@@ -25,5 +25,9 @@
         "content": "HA",
         "delete": true
     },
-    "identification": { "file": "HA archive data 1 file, first is type CPY", "trid": "(.HA) HA compressed archive" }
+    "identification": {
+        "file": "HA archive data 1 file, first is type CPY",
+        "trid": "(.HA) HA compressed archive",
+        "idarc": "HA"
+    }
 }

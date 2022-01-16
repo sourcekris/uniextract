@@ -22,5 +22,9 @@
         "content": "RAR",
         "delete": true
     },
-    "identification": { "file": "RAR archive data, v5", "trid": " (.RAR) RAR compressed archive (v5.0)" }
+    "identification": {
+        "file": "RAR archive data, v5",
+        "trid": " (.RAR) RAR compressed archive (v5.0)",
+        "idarc": "RAR"
+    }
 }

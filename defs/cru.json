@@ -21,5 +21,9 @@
         "content": "CRU",
         "delete": true
     },
-    "identification": { "file": "Crush archive data", "trid": "(.CRU) Crush archive" }
+    "identification": {
+        "file": "Crush archive data",
+        "trid": "(.CRU) Crush archive",
+        "idarc": "Crush/uncomp."
+    }
 }

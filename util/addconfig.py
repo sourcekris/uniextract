@@ -25,18 +25,21 @@ def main(argv):
         fn = d["definition_filename"]
         del d["definition_filename"]
 
-        fileres = subprocess.check_output(['./makeids.py','-s',d["name"],'-t','file'], cwd='..')
-        tridres = subprocess.check_output(['./makeids.py','-s',d["name"],'-t','trid'], cwd='..')
+        # fileres = subprocess.check_output(['./makeids.py','-s',d["name"],'-t','file'], cwd='..')
+        # tridres = subprocess.check_output(['./makeids.py','-s',d["name"],'-t','trid'], cwd='..')
+        idarcres = subprocess.check_output(['./makeids.py','-s',d["name"],'-t','idarc'], cwd='..')
 
-        fileres = fileres.decode().strip().split(': ')[1]
-        tridres = tridres.decode().strip().split(': ')[1]
+        # fileres = fileres.decode().strip().split(': ')[1]
+        # tridres = tridres.decode().strip().split(': ')[1]
+        idarcres = idarcres.decode().strip().split(': ')[1]
 
-        tridres = pcntre.sub("", tridres)
-        tridres = numre.sub("", tridres)
-        d["identification"] = {"file":fileres, "trid":tridres}
-        
+        # tridres = pcntre.sub("", tridres)
+        # tridres = numre.sub("", tridres)
+        d["identification"]["idarc"] = idarcres
+        print(f"doing {d['name']}")
         open(fn, 'w').write(dumppretty(d))
-        # print(dumppretty(d))
+        #print(dumppretty(d))
+
         
         
 

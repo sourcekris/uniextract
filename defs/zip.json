@@ -33,5 +33,9 @@
         "content": "ZIP",
         "delete": true
     },
-    "identification": { "file": "Zip archive data, at least v1.0 to extract", "trid": " (.ZIP) ZIP compressed archive" }
+    "identification": {
+        "file": "Zip archive data, at least v1.0 to extract",
+        "trid": " (.ZIP) ZIP compressed archive",
+        "idarc": "ZIP"
+    }
 }

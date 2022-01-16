@@ -25,5 +25,9 @@
         "content": "FACEBOOKZSTD",
         "delete": true
     },
-    "identification": { "file": "Zstandard compressed data (v0.8+), Dictionary ID", "trid": "(.ZST) Zstandard compressed data" }
+    "identification": {
+        "file": "Zstandard compressed data (v0.8+), Dictionary ID",
+        "trid": "(.ZST) Zstandard compressed data",
+        "idarc": "None"
+    }
 }

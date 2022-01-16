@@ -25,5 +25,9 @@
         "content": "CAR",
         "delete": true
     },
-    "identification": { "file": "  LHarc 1.x/ARX archive data  [lh0], with \"\\203.T \"", "trid": "(.LZH/LHA) LHARC/LZARK compressed archive (generic)" }
+    "identification": {
+        "file": "  LHarc 1.x/ARX archive data  [lh0], with \"\\203.T \"",
+        "trid": "(.LZH/LHA) LHARC/LZARK compressed archive (generic)",
+        "idarc": "CAR(MylesHi!)"
+    }
 }

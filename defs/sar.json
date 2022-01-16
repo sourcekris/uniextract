@@ -25,5 +25,9 @@
         "content": "SAR",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.SAR) Streamline compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": "(.SAR) Streamline compressed archive",
+        "idarc": "None"
+    }
 }

@@ -31,5 +31,9 @@
         "content": "ARX",
         "delete": true
     },
-    "identification": { "file": "None", "trid": " (.ARX) ARX compressed archive" }
+    "identification": {
+        "file": "None",
+        "trid": " (.ARX) ARX compressed archive",
+        "idarc": "ARX"
+    }
 }

@@ -25,5 +25,9 @@
         "content": "DGCA",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "(.DGC) DGCA Digital G Codec Archiver" }
+    "identification": {
+        "file": "None",
+        "trid": "(.DGC) DGCA Digital G Codec Archiver",
+        "idarc": "None"
+    }
 }

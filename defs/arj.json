@@ -22,5 +22,9 @@
         "content": "ARJ",
         "delete": true
     },
-    "identification": { "file": "ARJ archive data, v11, slash-switched, original name", "trid": "(.ARJ) ARJ compressed archive" }
+    "identification": {
+        "file": "ARJ archive data, v11, slash-switched, original name",
+        "trid": "(.ARJ) ARJ compressed archive",
+        "idarc": "ARJ"
+    }
 }

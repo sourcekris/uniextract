@@ -21,5 +21,9 @@
         "content": "CPZ",
         "delete": true
     },
-    "identification": { "file": "None", "trid": "None" }
+    "identification": {
+        "file": "None",
+        "trid": "None",
+        "idarc": "CPZ(CPShrink)"
+    }
 }

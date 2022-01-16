@@ -25,5 +25,9 @@
         "content": "LZWCOM",
         "delete": true
     },
-    "identification": { "file": "ISO-8859 text, with no line terminators", "trid": "None" }
+    "identification": {
+        "file": "ISO-8859 text, with no line terminators",
+        "trid": "None",
+        "idarc": "None"
+    }
 }
