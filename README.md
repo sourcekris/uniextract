@@ -10,29 +10,38 @@ a Linux environment with a Python API.
 
 ```json
 {
-    "name": "ZIP",
-    "comment": "PKZip format",
-    "extensions": ["zip", "jar", "xpi", "wz", "exe", "imz", "apk", "docx", "docm"],
+    "name": "ACB",
+    "comment": "A DOS compression utility by George Buyanovsky - http://fileformats.archiveteam.org/wiki/ACB_(compressed_archive)",
+    "extensions": ["acb"],
     "install": {
         "method": "apt",
-        "packages": ["unzip"]
+        "packages": ["dosbox"],
+        "tool": "ACB.EXE",
+        "container": "dos/acb/acb_200c.zip"
     },
     "pack": {
-        "exe": "zip",
-        "cmdline": "$tool -q $file.zip $file",
-        "type": "archiver"
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $(pwd)\" -c \"e:\" -c \"d:acb b $file.acb $file\" -c \"exit\"",
+        "type": "dosbox"
     },
     "unpack": {
-        "exe": "unzip",
-        "cmdline": "$tool $archive -d $destdir",
-        "extension": "zip",
+        "exe": "dosbox",
+        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"d:acb r f:$shortname e:\" -c \"exit\"",
+        "extension": "acb",
         "force_extension": true
     },
     "test": {
-        "blob": "H4sIAOL0ymEAAwvwZmbhYgCBhs1zgs9c33WFGcgGYUYGGQaD0BBOBuYDX04lgnBpBTcDIwtILZiI8gwI8GZkkmPGpV8CLM4IxEsaQSygaawQ09BMCvBmZYMoZWRwB9J2YI0AHG5Bv5sAAAA=",
+        "blob": "H4sIAACF0WEAA+Nq4GDosSx+OvP57Ps8j/mCX3MBABFWmRcSAAAA",
         "file": "0",
-        "content": "ZIP",
+        "content": "ACB",
+        "padbyte": "0x41",
+        "padlen": 260,
         "delete": true
+    },
+    "identification": {
+        "file": "None",
+        "trid": "None",
+        "idarc": "ACB"
     }
 }
 ```
@@ -97,12 +106,14 @@ a Linux environment with a Python API.
             - CP/M era archiver. CP/M binary executors exist on Linux like [tnylpo](https://gitlab.com/gbrein/tnylpo)
             but they weren't working for this use case somehow. So blobs it is.
 
+### How To Use
+
+```
+./extract.py -e <archive> -d <destination_folder>
+```
+
 
 ### Supported Formats
-
- - See defs/ for the full list but the plan is to support extracting for every format in that folder.
-
-### To Do Archive Formats
 
 | Archive type   | Common file extension(s)                                     |
 | -------------- | ------------------------------------------------------------ |
@@ -127,10 +138,9 @@ a Linux environment with a Python API.
 | LZO            | .lzo                                                         |
 | LZW            | .Z, .tz, .tar.Z                                              |
 | LZX            | .lzx                                                         |
-| PEA            | .pea                                                         |
 | RAR            | .rar, .exe, .001, .r00, .part1.rar                           |
 | StuffIt        | .sit, sitx                                                   |
-| TAR            | .tar, .tbz2, .tgz, .txz, .tz, .tar.bz2, .tar.gz, .tar.xz, .tar.Z, ctar |
+| TAR            | .tar, ctar                                                   |
 | UHARC          | .uha                                                         |
 | UPX            | .exe, .dll                                                   |
 | XZ             | .xz, .txz, .tar.xz                                           |
