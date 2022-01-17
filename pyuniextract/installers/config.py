@@ -45,7 +45,10 @@ def get_def_by_id(id, defpath=definitions_path):
     id = pcntre.sub("", numre.sub("", id))
     defs = load_defs(defpath=defpath)
     for d in defs:
-        if "identification" in d and (d["identification"]["file"] == id or d["identification"]["trid"] == id):
+        if "identification" in d and id in [d["identification"][x] for x in d["identification"].keys()]:
+            return d
+        
+        if "unpack" in d and "extension" in d["unpack"] and id.startswith('.') and id[1:] == d["unpack"]["extension"]:
             return d
     
     return None
