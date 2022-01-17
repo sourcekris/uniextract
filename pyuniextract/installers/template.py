@@ -30,7 +30,10 @@ def prepare_cmdline(exe, cmdline, tool_path, destdir=None, archive=None, file=No
         cmdline = cmdline.replace("$destdir", destdir)
     
     if ext and archive:
-        cmdline = cmdline.replace("$shortname", basename[:6]+"~1"+ext) # for dos unpackers, but ~1 might not be good enough?
+        if len(basename) > 8: 
+            cmdline = cmdline.replace("$shortname", basename[:6]+"~1"+ext) # for dos unpackers, but ~1 might not be good enough?
+        else:
+            cmdline = cmdline.replace("$shortname", basename+ext)
     
     if file:
         cmdline = cmdline.replace("$file", file)
