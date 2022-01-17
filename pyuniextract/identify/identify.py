@@ -18,7 +18,7 @@ def id_via_file(arcfile):
 def id_via_trid(arcfile):
     id = b""
     try:
-        id = subprocess.check_output(trid_args + [arcfile], env=trid_env)
+        id = subprocess.check_output(trid_args + [os.path.abspath(arcfile)], env=trid_env)
         #print(id)
     except Exception as e:
         print(f"id_via_trid failed: {e}\n{e.stdout.decode()}")
