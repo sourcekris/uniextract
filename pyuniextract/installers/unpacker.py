@@ -26,4 +26,8 @@ def unpack_archive(archive, d, destdir=None, toolspath=tools_path):
 
         files = os.listdir(tmpdir)
         for fn in files:
+            dst = os.path.join(destdir, fn)
+            if os.path.exists(dst):
+                print(f'destination file exists, not overwriting: {dst}')
+                continue
             shutil.move(os.path.join(tmpdir, fn), destdir)
