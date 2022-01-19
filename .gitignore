@@ -6,6 +6,7 @@
 
 # for dos and windows tools, just store the distribution ZIP in toolsdist/ not the binary itself. 
 tools/*
+!tools/idarc
 
 __pycache__
 
