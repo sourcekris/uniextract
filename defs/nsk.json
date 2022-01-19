@@ -4,9 +4,10 @@
     "extensions": ["nsk"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"],
+        "packages": ["dosbox", "golang"],
         "tool": "NSK.EXE",
-        "container": "dos/nsk/nsk50.zip"
+        "container": "dos/nsk/nsk50.zip",
+        "test_install": false
     },
     "pack": {
         "exe": "dosbox",
