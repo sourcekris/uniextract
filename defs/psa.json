@@ -5,7 +5,7 @@
     "install": {
         "method": "apt",
         "packages": ["wine"],
-        "tool": "PSA.EXE",
+        "tool": "psa.exe",
         "container": "win32/psa/psa91w32.zip"
     },
     "pack": {
