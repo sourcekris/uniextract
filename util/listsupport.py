@@ -26,8 +26,17 @@ def main(argv):
 
     print(f'| {"Archive type".ljust(namelen," ")} | {"Common file extension(s)".ljust(extlen," ")} |')
     print(f'| {"-".ljust(namelen,"-")} | {"-".ljust(extlen,"-")} |')
+
+    names = []
+    n2e = {}
     for d in defs:
-        print(f'| {d["name"].ljust(namelen," ")} | {", ".join(d["extensions"]).ljust(extlen," ")} |')
+        names.append(d["name"])
+        n2e[d["name"]] = d["extensions"]
+    
+    names.sort()
+
+    for d in names:
+        print(f'| {d.ljust(namelen," ")} | {", ".join(n2e[d]).ljust(extlen," ")} |')
 
 
 if __name__ == "__main__":

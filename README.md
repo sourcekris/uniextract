@@ -117,130 +117,130 @@ a Linux environment with a Python API.
 
 | Archive type                   | Common file extension(s)                           |
 | ------------------------------ | -------------------------------------------------- |
-| JRchive                        | jrc                                                |
 | 7-zip                          | 7z                                                 |
-| ZET                            | zet                                                |
-| LBR                            | lbr                                                |
-| Gzip                           | gz, tgz                                            |
-| xz                             | xz                                                 |
-| XXD                            | xxd                                                |
-| CAR                            | car                                                |
-| yEnc                           | yenc                                               |
-| PSA                            | psa                                                |
-| AIN                            | ain                                                |
-| YAC                            | yac                                                |
-| ASD                            | asd                                                |
-| Zoo                            | zoo                                                |
-| ARHANGEL                       | lg                                                 |
-| ARJSoftwareJAR                 | j                                                  |
-| LZZ                            | lzz                                                |
-| ADF                            | adf                                                |
-| SKY                            | sky                                                |
-| Quantum                        | q                                                  |
-| HAP                            | hap                                                |
-| TSCOMP                         | tsc                                                |
-| EGG                            | egg                                                |
-| bzip2                          | bz2                                                |
-| MWSqueeze                      | mw                                                 |
-| HA                             | ha                                                 |
-| Squeeze                        | qqq, sq, sqz                                       |
-| SquashARH                      | arh                                                |
-| XPACK                          | xpa                                                |
-| PMArc                          | pma                                                |
-| oPAQue                         | paq                                                |
-| PUT                            | put                                                |
-| Hex                            | hex, b16, base16                                   |
-| UFA                            | ufa                                                |
-| LZA                            | lza                                                |
-| MSI                            | msi                                                |
-| MicrognosisCompressionArchiver | mar                                                |
-| ERI                            | eri                                                |
-| AMG                            | amg, oop                                           |
-| FacebookZstandardLz4           | lz4                                                |
-| MAr                            | mar                                                |
-| Dar                            | dar                                                |
-| CPShrink                       | cpz                                                |
-| Crush                          | cru                                                |
-| SnappyFraming                  | sz, snappy                                         |
-| HDF                            | hdf                                                |
-| IntelHex                       | ihex                                               |
-| LIMIT                          | lim                                                |
-| SITX                           | sitx, sit, sit5                                    |
-| LZX                            | lzx                                                |
-| BSA                            | bsa                                                |
-| ZPK                            | zpk                                                |
-| BIX                            | bix                                                |
-| rzip                           | rz                                                 |
-| ARJ                            | arj                                                |
-| Squeeze2                       | sq2, qqq, zsq                                      |
-| CAZIPXP                        | caz                                                |
-| ARC                            | arc, ark                                           |
-| X1                             | x                                                  |
-| MSXiE                          | xie                                                |
-| Tar                            | tar, ctar                                          |
-| lrzip                          | lrz                                                |
-| ZAR                            | zar                                                |
-| CAB                            | cab                                                |
-| CPIO                           | cpio                                               |
-| AppleiWork                     | iwa, snappy                                        |
-| lzip                           | lz                                                 |
-| RK                             | rk                                                 |
-| compress                       | Z                                                  |
-| LArc                           | lzs                                                |
-| SQX                            | sqx                                                |
-| SqueezeIt                      | sqz                                                |
-| LZOP                           | lzo, lzop                                          |
-| PACKER                         | pak                                                |
-| SnappySnzip                    | snz, snappy                                        |
-| JARCS                          | jar                                                |
-| DWC                            | dwc                                                |
-| UltraCompressor                | uc                                                 |
-| base64                         | b64, mme, mime                                     |
-| packARC                        | pja                                                |
-| NSK                            | nsk                                                |
-| ACE                            | ace                                                |
-| HYP                            | hyp                                                |
-| lzma                           | lzma                                               |
 | 777                            | 777                                                |
-| SnappyRaw                      | raw, snappy                                        |
-| RAX                            | rax                                                |
-| AR7                            | ar7                                                |
-| LHARK                          | lzh                                                |
-| GCA                            | gca                                                |
-| DGCA                           | dgc, dgca                                          |
-| FacebookZstandard              | zst                                                |
-| ZIP                            | zip, jar, xpi, wz, exe, imz, apk, docx, docm, maff |
-| Crunch                         | zzz                                                |
-| MDCD                           | md                                                 |
-| LZWCOM                         | lzw                                                |
-| AR                             | a, ar                                              |
-| RKV                            | rkv                                                |
-| uuencode                       | uue, uu                                            |
-| SAR                            | sar                                                |
-| ZPAQ                           | zpaq                                               |
-| MPC                            | mp3                                                |
-| SnappyHadoop                   | snappy                                             |
-| BLINK                          | bli                                                |
-| ALZip                          | alz                                                |
-| SLIM                           | fb                                                 |
-| GSARCPAK                       | pak, arc                                           |
-| xxencode                       | xxe, xxenc, xx                                     |
-| ARQ                            | arq                                                |
-| AFIO                           | afio, af                                           |
-| ARG                            | arg                                                |
-| ESP                            | esp                                                |
-| SnappyJava                     | snappy                                             |
-| KGB                            | kgb, kge                                           |
-| YZ1                            | yz1                                                |
-| LotusCMZ                       | cmz                                                |
-| ARX                            | arx                                                |
-| MacBinary                      | bin                                                |
-| lzh                            | lzh, lha                                           |
 | ACB                            | acb                                                |
+| ACE                            | ace                                                |
+| ADF                            | adf                                                |
+| AFIO                           | afio, af                                           |
+| AIN                            | ain                                                |
+| ALZip                          | alz                                                |
+| AMG                            | amg, oop                                           |
+| AR                             | a, ar                                              |
+| AR7                            | ar7                                                |
+| ARC                            | arc, ark                                           |
+| ARG                            | arg                                                |
+| ARHANGEL                       | lg                                                 |
+| ARJ                            | arj                                                |
+| ARJSoftwareJAR                 | j                                                  |
+| ARQ                            | arq                                                |
+| ARX                            | arx                                                |
+| ASD                            | asd                                                |
 | AppleSingle                    | as                                                 |
-| IMP                            | imp                                                |
+| AppleiWork                     | iwa, snappy                                        |
+| BIX                            | bix                                                |
+| BLINK                          | bli                                                |
+| BSA                            | bsa                                                |
+| CAB                            | cab                                                |
+| CAR                            | car                                                |
+| CAZIPXP                        | caz                                                |
+| CPIO                           | cpio                                               |
+| CPShrink                       | cpz                                                |
 | CrLZH                          | yyy                                                |
+| Crunch                         | zzz                                                |
+| Crush                          | cru                                                |
+| DGCA                           | dgc, dgca                                          |
+| DWC                            | dwc                                                |
+| Dar                            | dar                                                |
+| EGG                            | egg                                                |
+| ERI                            | eri                                                |
+| ESP                            | esp                                                |
+| FacebookZstandard              | zst                                                |
+| FacebookZstandardLz4           | lz4                                                |
+| GCA                            | gca                                                |
+| GSARCPAK                       | pak, arc                                           |
+| Gzip                           | gz, tgz                                            |
+| HA                             | ha                                                 |
+| HAP                            | hap                                                |
+| HDF                            | hdf                                                |
+| HYP                            | hyp                                                |
+| Hex                            | hex, b16, base16                                   |
+| IMP                            | imp                                                |
+| IntelHex                       | ihex                                               |
+| JARCS                          | jar                                                |
+| JRchive                        | jrc                                                |
+| KGB                            | kgb, kge                                           |
+| LArc                           | lzs                                                |
+| LBR                            | lbr                                                |
+| LHARK                          | lzh                                                |
+| LIMIT                          | lim                                                |
+| LZA                            | lza                                                |
+| LZOP                           | lzo, lzop                                          |
+| LZWCOM                         | lzw                                                |
+| LZX                            | lzx                                                |
+| LZZ                            | lzz                                                |
+| LotusCMZ                       | cmz                                                |
+| MAr                            | mar                                                |
+| MDCD                           | md                                                 |
+| MPC                            | mp3                                                |
+| MSI                            | msi                                                |
+| MSXiE                          | xie                                                |
+| MWSqueeze                      | mw                                                 |
+| MacBinary                      | bin                                                |
+| MicrognosisCompressionArchiver | mar                                                |
+| NSK                            | nsk                                                |
+| PACKER                         | pak                                                |
+| PMArc                          | pma                                                |
+| PSA                            | psa                                                |
+| PUT                            | put                                                |
+| Quantum                        | q                                                  |
 | RAR                            | rar, r00                                           |
+| RAX                            | rax                                                |
+| RK                             | rk                                                 |
+| RKV                            | rkv                                                |
+| SAR                            | sar                                                |
+| SITX                           | sitx, sit, sit5                                    |
+| SKY                            | sky                                                |
+| SLIM                           | fb                                                 |
+| SQX                            | sqx                                                |
+| SnappyFraming                  | sz, snappy                                         |
+| SnappyHadoop                   | snappy                                             |
+| SnappyJava                     | snappy                                             |
+| SnappyRaw                      | raw, snappy                                        |
+| SnappySnzip                    | snz, snappy                                        |
+| SquashARH                      | arh                                                |
+| Squeeze                        | qqq, sq, sqz                                       |
+| Squeeze2                       | sq2, qqq, zsq                                      |
+| SqueezeIt                      | sqz                                                |
+| TSCOMP                         | tsc                                                |
+| Tar                            | tar, ctar                                          |
+| UFA                            | ufa                                                |
+| UltraCompressor                | uc                                                 |
+| X1                             | x                                                  |
+| XPACK                          | xpa                                                |
+| XXD                            | xxd                                                |
+| YAC                            | yac                                                |
+| YZ1                            | yz1                                                |
+| ZAR                            | zar                                                |
+| ZET                            | zet                                                |
+| ZIP                            | zip, jar, xpi, wz, exe, imz, apk, docx, docm, maff |
+| ZPAQ                           | zpaq                                               |
+| ZPK                            | zpk                                                |
+| Zoo                            | zoo                                                |
+| base64                         | b64, mme, mime                                     |
+| bzip2                          | bz2                                                |
+| compress                       | Z                                                  |
+| lrzip                          | lrz                                                |
+| lzh                            | lzh, lha                                           |
+| lzip                           | lz                                                 |
+| lzma                           | lzma                                               |
+| oPAQue                         | paq                                                |
+| packARC                        | pja                                                |
+| rzip                           | rz                                                 |
+| uuencode                       | uue, uu                                            |
+| xxencode                       | xxe, xxenc, xx                                     |
+| xz                             | xz                                                 |
+| yEnc                           | yenc                                               |
 
 ### Author
 
