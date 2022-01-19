@@ -109,6 +109,13 @@ a Linux environment with a Python API.
 ### How To Use
 
 ```
+git clone https://github.com/sourcekris/uniextract
+cd uniextract
+
+# install pre-requisite archivers
+./prereqs.py
+
+# extract whatever you want
 ./extract.py -e <archive> -d <destination_folder>
 ```
 
