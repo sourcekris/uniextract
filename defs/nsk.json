@@ -19,6 +19,12 @@
         "extension": "nsk",
         "force_extension": true
     },
+    "unpackinstall": {
+        "method": "source",
+        "repo": "https://github.com/sourcekris/unnsk",
+        "build": "go build && cp unnsk $tools",
+        "exist_check": ["unnsk -h", "The NSK file"]
+    },
     "test": {
         "blob": "H4sIABnc1mEC//ML9uZgYGBQcNipFsIMZDAaMLDN8Ynk+sEOAEadnJUaAAAA",
         "file": "0",
