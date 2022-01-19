@@ -115,38 +115,132 @@ a Linux environment with a Python API.
 
 ### Supported Formats
 
-| Archive type   | Common file extension(s)                                     |
-| -------------- | ------------------------------------------------------------ |
-| 7-zip          | .7z, .exe, .001                                              |
-| ACE            | .ace, .exe                                                   |
-| ALZip          | .alz                                                         |
-| ARC            | .arc                                                         |
-| ARJ            | .arj, .exe                                                   |
-| BCM            | .bcm                                                         |
-| BGA            | .bza, .gza                                                   |
-| bzip2          | .bz2, .tbz2, .tar.bz2                                        |
-| CPIO           | .cpio                                                        |
-| DGCA           | .dgc                                                         |
-| FreeArc¹       | .arc                                                         |
-| gzip archive   | .gz, .tgz, .tar.gz, .ipk                                     |
-| KGB            | .kgb, kge, .exe                                              |
-| Linux packages | .deb, .rpm                                                   |
-| LBR            | .lbr, .lzr, .lqr                                             |
-| LZIP           | .lz                                                          |
-| LZH            | .lzh, .lha                                                   |
-| LZMA           | .lzma                                                        |
-| LZO            | .lzo                                                         |
-| LZW            | .Z, .tz, .tar.Z                                              |
-| LZX            | .lzx                                                         |
-| RAR            | .rar, .exe, .001, .r00, .part1.rar                           |
-| StuffIt        | .sit, sitx                                                   |
-| TAR            | .tar, ctar                                                   |
-| UHARC          | .uha                                                         |
-| UPX            | .exe, .dll                                                   |
-| XZ             | .xz, .txz, .tar.xz                                           |
-| ZIP            | .zip, .jar, .xpi, .wz, .exe, .imz                            |
-| Zoo            | .zoo                                                         |
-| ZPAQ           | .zpaq                                                        |
+| Archive type                   | Common file extension(s)                           |
+| ------------------------------ | -------------------------------------------------- |
+| JRchive                        | jrc                                                |
+| 7-zip                          | 7z                                                 |
+| ZET                            | zet                                                |
+| LBR                            | lbr                                                |
+| Gzip                           | gz, tgz                                            |
+| xz                             | xz                                                 |
+| XXD                            | xxd                                                |
+| CAR                            | car                                                |
+| yEnc                           | yenc                                               |
+| PSA                            | psa                                                |
+| AIN                            | ain                                                |
+| YAC                            | yac                                                |
+| ASD                            | asd                                                |
+| Zoo                            | zoo                                                |
+| ARHANGEL                       | lg                                                 |
+| ARJSoftwareJAR                 | j                                                  |
+| LZZ                            | lzz                                                |
+| ADF                            | adf                                                |
+| SKY                            | sky                                                |
+| Quantum                        | q                                                  |
+| HAP                            | hap                                                |
+| TSCOMP                         | tsc                                                |
+| EGG                            | egg                                                |
+| bzip2                          | bz2                                                |
+| MWSqueeze                      | mw                                                 |
+| HA                             | ha                                                 |
+| Squeeze                        | qqq, sq, sqz                                       |
+| SquashARH                      | arh                                                |
+| XPACK                          | xpa                                                |
+| PMArc                          | pma                                                |
+| oPAQue                         | paq                                                |
+| PUT                            | put                                                |
+| Hex                            | hex, b16, base16                                   |
+| UFA                            | ufa                                                |
+| LZA                            | lza                                                |
+| MSI                            | msi                                                |
+| MicrognosisCompressionArchiver | mar                                                |
+| ERI                            | eri                                                |
+| AMG                            | amg, oop                                           |
+| FacebookZstandardLz4           | lz4                                                |
+| MAr                            | mar                                                |
+| Dar                            | dar                                                |
+| CPShrink                       | cpz                                                |
+| Crush                          | cru                                                |
+| SnappyFraming                  | sz, snappy                                         |
+| HDF                            | hdf                                                |
+| IntelHex                       | ihex                                               |
+| LIMIT                          | lim                                                |
+| SITX                           | sitx, sit, sit5                                    |
+| LZX                            | lzx                                                |
+| BSA                            | bsa                                                |
+| ZPK                            | zpk                                                |
+| BIX                            | bix                                                |
+| rzip                           | rz                                                 |
+| ARJ                            | arj                                                |
+| Squeeze2                       | sq2, qqq, zsq                                      |
+| CAZIPXP                        | caz                                                |
+| ARC                            | arc, ark                                           |
+| X1                             | x                                                  |
+| MSXiE                          | xie                                                |
+| Tar                            | tar, ctar                                          |
+| lrzip                          | lrz                                                |
+| ZAR                            | zar                                                |
+| CAB                            | cab                                                |
+| CPIO                           | cpio                                               |
+| AppleiWork                     | iwa, snappy                                        |
+| lzip                           | lz                                                 |
+| RK                             | rk                                                 |
+| compress                       | Z                                                  |
+| LArc                           | lzs                                                |
+| SQX                            | sqx                                                |
+| SqueezeIt                      | sqz                                                |
+| LZOP                           | lzo, lzop                                          |
+| PACKER                         | pak                                                |
+| SnappySnzip                    | snz, snappy                                        |
+| JARCS                          | jar                                                |
+| DWC                            | dwc                                                |
+| UltraCompressor                | uc                                                 |
+| base64                         | b64, mme, mime                                     |
+| packARC                        | pja                                                |
+| NSK                            | nsk                                                |
+| ACE                            | ace                                                |
+| HYP                            | hyp                                                |
+| lzma                           | lzma                                               |
+| 777                            | 777                                                |
+| SnappyRaw                      | raw, snappy                                        |
+| RAX                            | rax                                                |
+| AR7                            | ar7                                                |
+| LHARK                          | lzh                                                |
+| GCA                            | gca                                                |
+| DGCA                           | dgc, dgca                                          |
+| FacebookZstandard              | zst                                                |
+| ZIP                            | zip, jar, xpi, wz, exe, imz, apk, docx, docm, maff |
+| Crunch                         | zzz                                                |
+| MDCD                           | md                                                 |
+| LZWCOM                         | lzw                                                |
+| AR                             | a, ar                                              |
+| RKV                            | rkv                                                |
+| uuencode                       | uue, uu                                            |
+| SAR                            | sar                                                |
+| ZPAQ                           | zpaq                                               |
+| MPC                            | mp3                                                |
+| SnappyHadoop                   | snappy                                             |
+| BLINK                          | bli                                                |
+| ALZip                          | alz                                                |
+| SLIM                           | fb                                                 |
+| GSARCPAK                       | pak, arc                                           |
+| xxencode                       | xxe, xxenc, xx                                     |
+| ARQ                            | arq                                                |
+| AFIO                           | afio, af                                           |
+| ARG                            | arg                                                |
+| ESP                            | esp                                                |
+| SnappyJava                     | snappy                                             |
+| KGB                            | kgb, kge                                           |
+| YZ1                            | yz1                                                |
+| LotusCMZ                       | cmz                                                |
+| ARX                            | arx                                                |
+| MacBinary                      | bin                                                |
+| lzh                            | lzh, lha                                           |
+| ACB                            | acb                                                |
+| AppleSingle                    | as                                                 |
+| IMP                            | imp                                                |
+| CrLZH                          | yyy                                                |
+| RAR                            | rar, r00                                           |
 
 ### Author
 
