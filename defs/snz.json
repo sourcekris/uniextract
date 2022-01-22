@@ -5,7 +5,7 @@
     "install": {
         "method": "source",
         "repo": "https://github.com/kubo/snzip",
-        "build": "apt install libsnappy-dev && ./autogen.sh && ./configure --with-static-snappy && make && cp snzip $tools",
+        "build": "apt install automake make libsnappy-dev && ./autogen.sh && ./configure --disable-dependency-tracking --with-static-snappy && make && cp snzip $tools",
         "exist_check": ["snzip -h", "Usage: snzip"]
     },
     "pack": {
