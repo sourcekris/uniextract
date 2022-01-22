@@ -19,6 +19,12 @@
         "extension": "zar",
         "force_extension": true
     },
+    "unpackinstall": {
+        "method": "source",
+        "repo": "https://github.com/sourcekris/unzar",
+        "build": "go build && cp unzar $tools",
+        "exist_check": ["unzar -h", "The ZAR file"]
+    },
     "test": {
         "blob": "H4sIAC2l2WEC/2NkU1B6xvKHudGAg4GBgZmBjSEgRA0A1UgQ4hUAAAA=",
         "file": "0",
