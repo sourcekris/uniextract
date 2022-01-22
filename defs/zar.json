@@ -6,7 +6,8 @@
         "method": "apt",
         "packages": ["dosbox"],
         "tool": "ZIP.EXE",
-        "container": "dos/zar/zip_ar26.zip"
+        "container": "dos/zar/zip_ar26.zip",
+        "test_install": false
     },
     "pack": {
         "exe": "dosbox",
