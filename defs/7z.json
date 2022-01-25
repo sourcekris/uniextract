@@ -3,7 +3,7 @@
     "extensions": ["7z"],
     "install": {
         "method": "apt",
-        "packages": ["7zip"]
+        "packages": ["p7zip-full"]
     },
     "pack": {
         "exe": "7z",
