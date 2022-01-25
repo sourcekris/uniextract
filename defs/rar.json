@@ -12,7 +12,7 @@
     },
     "unpack": {
         "exe": "unrar",
-        "cmdline": "$tool x $archive -op $destdir",
+        "cmdline": "cd $destdir && $tool x $archive",
         "extension": "rar",
         "force_extension": true
     },
