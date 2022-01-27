@@ -5,7 +5,7 @@
     "install": {
         "method": "source",
         "repo": "https://github.com/facebook/zstd",
-        "build": "make && cp zstd $tools",
+        "build": "apt install -y liblz4-dev liblzma-dev && make && cp zstd $tools",
         "exist_check": ["zstd -V", "zstd command line interface"]
     },
     "pack": {
