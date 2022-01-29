@@ -3,7 +3,6 @@
 # extract a file to a folder - irrespective of the underlying format.
 
 import argparse
-from os import defpath
 import sys
 import os.path
 from pyuniextract.identify.identify import identify_archive
