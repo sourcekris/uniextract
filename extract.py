@@ -51,6 +51,10 @@ def main(argv):
         files = glob(os.path.join(args.all, "*"))
 
         for file in files:
+            # Skip non files.
+            if not os.path.isfile(file):
+                continue
+            # Decide where to put the output per file.
             dst = args.destination
             if not args.destination:
                 dst = "."
@@ -60,10 +64,9 @@ def main(argv):
                     print(f'subfolder {dst} already exists, skipping file {file}')
                     continue
                 os.mkdir(dst)
-                
+            
+            # Extract this file.
             extract(file, dst)
-
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])
