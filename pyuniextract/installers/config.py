@@ -19,18 +19,38 @@ trid_env = {"LC_ALL":"C"}
 pcntre = re.compile("\d+\.\d\%\s")
 numre = re.compile("\s\(\d+\/\d+\)")
 
-class Unpacker:
-    def __init__(self, d: dict):
-        self.method = d["install"]["method"]
-        self.name = d["name"]
-        if self.is_apt():
-            self.packages = d["install"]["packages"]
-    pass
+class Installer:
+    def __init__(self, d: dict) -> None:
+        self.method = d["method"]
+        self.test_install = d["test_install"] if "test_install" in d else True
+        self.container = d["container"] if "container" in d else ""
+        self.tool = d["tool"] if "tool" in d else ""
+
+        if self.is_apt() or self.is_pip():
+            self.packages = d["packages"]
+        
+        if self.is_source():
+            self.repo = d["repo"]
+            self.build = d["build"]
+            self.exist_check = d["exist_check"]
 
     def is_apt(self) -> bool:
         if self.method == "apt":
             return True
         return False
+    
+    def is_pip(self) -> bool:
+        if self.method == "pip":
+            return True
+        return False
+    
+    def is_source(self) -> bool:
+        if self.method == "source":
+            return True
+        return False
+
+class Unpacker:
+    pass
 
 class Packer:
     pass
@@ -42,11 +62,11 @@ class ArcTest:
     pass
 
 class Definition:
-    def __init__(self, d: dict):
+    def __init__(self, d: dict) -> None:
         validate(schema=schema, instance=d)
-
-    pass
-
+        self.name = d["name"]
+        self.installer = Installer(d["install"])
+        self.unpack_installer = Installer(d["unpackinstall"]) if "unpackinstall" in d else None
 
 def load_defs(addfn=False, defpath=None):
     if not defpath:
@@ -60,7 +80,8 @@ def load_defs(addfn=False, defpath=None):
         except Exception as e:
             print(f'error loading archiver definition {d}: {e}, continuing...')
             continue
-
+        # ddd = Definition(jd)
+        # print(ddd.name, ddd.unpack_installer)
         if addfn:
             jd["definition_filename"] = d
         definitions.append(jd)
