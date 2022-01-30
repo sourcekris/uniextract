@@ -1,7 +1,10 @@
 from glob import glob
+from jsonschema import validate
 import os.path
 import json
 import re
+
+from .schema import schema
 
 # config
 definitions_path = "defs/"
@@ -16,6 +19,24 @@ trid_env = {"LC_ALL":"C"}
 pcntre = re.compile("\d+\.\d\%\s")
 numre = re.compile("\s\(\d+\/\d+\)")
 
+class Unpacker:
+    pass
+
+class Packer:
+    pass
+
+class Identity:
+    pass
+
+class ArcTest:
+    pass
+
+class Definition:
+    def __init__(self, d: dict):
+        validate(schema=schema, instance=d)
+    pass
+
+
 def load_defs(addfn=False, defpath=None):
     if not defpath:
         defpath = definitions_path
@@ -24,6 +45,7 @@ def load_defs(addfn=False, defpath=None):
     for d in defnames:
         try:
             jd = json.loads(open(d).read())
+            validate(schema=schema, instance=jd)
         except Exception as e:
             print(f'error loading archiver definition {d}: {e}, continuing...')
             continue
