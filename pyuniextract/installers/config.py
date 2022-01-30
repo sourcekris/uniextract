@@ -20,7 +20,17 @@ pcntre = re.compile("\d+\.\d\%\s")
 numre = re.compile("\s\(\d+\/\d+\)")
 
 class Unpacker:
+    def __init__(self, d: dict):
+        self.method = d["install"]["method"]
+        self.name = d["name"]
+        if self.is_apt():
+            self.packages = d["install"]["packages"]
     pass
+
+    def is_apt(self) -> bool:
+        if self.method == "apt":
+            return True
+        return False
 
 class Packer:
     pass
@@ -34,6 +44,7 @@ class ArcTest:
 class Definition:
     def __init__(self, d: dict):
         validate(schema=schema, instance=d)
+
     pass
 
 
