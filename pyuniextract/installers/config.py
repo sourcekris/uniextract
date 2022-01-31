@@ -50,16 +50,24 @@ class Installer:
         return False
 
 class Unpacker:
-    pass
+    def __init__(self, d: dict) -> None:
+        return
 
 class Packer:
-    pass
+    def __init__(self, d: dict) -> None:
+        self.type = d["type"]
+        self.exe = d["exe"]
+        self.cmdline = d["cmdline"]
 
 class Identity:
-    pass
+    def __init__(self, d: dict) -> None:
+        self.trid = d["trid"]
+        self.file = d["file"]
+        self.idarc = d["idarc"]
 
 class ArcTest:
-    pass
+    def __init__(self, d: dict) -> None:
+        return
 
 class Definition:
     def __init__(self, d: dict) -> None:
@@ -67,6 +75,19 @@ class Definition:
         self.name = d["name"]
         self.installer = Installer(d["install"])
         self.unpack_installer = Installer(d["unpackinstall"]) if "unpackinstall" in d else None
+        self.pack_installer = Installer(d["packinstall"]) if "packinstall" in d else None
+        self.packer = Packer(d["pack"])
+        self.unpacker = Unpacker(d["unpack"])
+        self.identity = Identity(d["identification"])
+        self.test = ArcTest(d["test"])
+    
+    def addfn(self, fname: str) -> None:
+        self.definition_filename = fname
+    
+    def is_blob(self) -> bool:
+        if self.packer.type == "blob":
+            return True
+        return False
 
 def load_defs(addfn=False, defpath=None):
     if not defpath:
@@ -81,7 +102,7 @@ def load_defs(addfn=False, defpath=None):
             print(f'error loading archiver definition {d}: {e}, continuing...')
             continue
         # ddd = Definition(jd)
-        # print(ddd.name, ddd.unpack_installer)
+        # print(ddd.name, ddd.installer.is_blob())
         if addfn:
             jd["definition_filename"] = d
         definitions.append(jd)
