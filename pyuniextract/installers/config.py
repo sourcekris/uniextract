@@ -27,6 +27,7 @@ class Installer:
         self.tool = d["tool"] if "tool" in d else ""
         self.dependencies = d["dependencies"] if "dependencies" in d else None
         self.renametool = d["renametool"] if "renametool" in d else None
+        self.exist_check = None
 
         if self.is_apt() or self.is_pip():
             self.packages = d["packages"]
