@@ -3,7 +3,7 @@ from gzip import decompress
 from base64 import b64decode
 import os, os.path
 import subprocess
-from .config import tools_path, should_skip_test
+from .config import Definition, tools_path
 from .template import prepare_cmdline, prepare_exe
 
 # used for:
@@ -15,29 +15,20 @@ def pad(data, padbyte, padlen):
     return data + (pb * pbl)
 
 # test the archiver give the test parameters in the definition for that archiver
-def test_archiver(d, field="install"):
-    if "test" not in d or len([True for x in ["blob", "file", "content"] if x in d["test"]]) != 3:
-        # a test is not properly defined.
-        return -1
-    
+def test_archiver(d: Definition, field: str = "install") -> int:
+    i = d.get_installer(field)
     # It's sometimes desirable to be able to force skip a test if a config has multiple tests.
-    if should_skip_test(d, field=field):
+    if i.should_skip_test():
         print("Skipping Test ", end="")
         # its ok to skip, so return 1
         return 1
     
     # what extension should our test archive have?
-    extension = d["extensions"][0]              # default.
-    if "extension" in d["unpack"]:
-        extension = d["unpack"]["extension"]    # preferred one.
-    
-    if not extension.startswith("."):
-        extension = "." + extension
-
+    extension = d.get_pack_ext()
     with tempfile.NamedTemporaryFile(suffix=extension, delete=False) as arcfile:
         try:
             try:
-                arcfile.write(decompress(b64decode(d["test"]["blob"])))
+                arcfile.write(decompress(b64decode(d.test.blob)))
                 arcfile.flush()
             except Exception as e:
                 print(f"error writing test data: {e}\nfilename: {arcfile.name}")
@@ -46,8 +37,8 @@ def test_archiver(d, field="install"):
             with tempfile.TemporaryDirectory() as tmpdir:
                 tools = os.path.join(os.getcwd(), tools_path)
                 basename = os.path.splitext(os.path.basename(arcfile.name))[0]
-                exe = prepare_exe(d["unpack"]["exe"], tools)
-                cmdline = prepare_cmdline(exe, d["unpack"]["cmdline"], tools, destdir=tmpdir, archive=arcfile.name, ext=extension)
+                exe = prepare_exe(d.unpacker.exe, tools)
+                cmdline = prepare_cmdline(exe, d.unpacker.cmdline, tools, destdir=tmpdir, archive=arcfile.name, ext=extension)
 
                 try:
                     extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)
@@ -58,7 +49,7 @@ def test_archiver(d, field="install"):
 
                 #print("Extracted, ", flush=True, end="") 
                 #print(subprocess.check_output(f"ls -la {os.path.basename(arcfile.name)}",shell=True).decode())
-                extracted_file = os.path.join(tmpdir, d["test"]["file"])
+                extracted_file = os.path.join(tmpdir, d.test.file)
                 if extracted_file.endswith("?"):
                     # in case the archive does not store the name of the compressed file, e.g. gzip.
                     extracted_file = os.path.join(tmpdir, basename)
@@ -76,10 +67,11 @@ def test_archiver(d, field="install"):
                     #print(subprocess.check_output(f"ls -la {tmpdir}",shell=True).decode())
 
                 # did we get want we want?
-                want = d["test"]["content"]
-                if "padbyte" in d["test"] and "padlen" in d["test"]:
-                    # some formats come padded (CP/M)
-                    want = pad(want, d["test"]["padbyte"],d["test"]["padlen"])
+                want = d.get_content()
+                # want = d["test"]["content"]
+                # if "padbyte" in d["test"] and "padlen" in d["test"]:
+                #     # some formats come padded (CP/M)
+                #     want = pad(want, d["test"]["padbyte"],d["test"]["padlen"])
 
                 if resultdata == want:
                     return 1
@@ -87,5 +79,5 @@ def test_archiver(d, field="install"):
                     print(f"archiver test file content mismatch:\ngot: {resultdata.encode()}\nwant: {want.encode()}")
                     return 0
         finally:
-            if "delete" in d["test"] and d["test"]["delete"]:
+            if d.test.delete:
                 os.unlink(arcfile.name)

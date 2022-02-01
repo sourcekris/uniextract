@@ -25,6 +25,8 @@ class Installer:
         self.test_install = d["test_install"] if "test_install" in d else True
         self.container = d["container"] if "container" in d else ""
         self.tool = d["tool"] if "tool" in d else ""
+        self.dependencies = d["dependencies"] if "dependencies" in d else None
+        self.renametool = d["renametool"] if "renametool" in d else None
 
         if self.is_apt() or self.is_pip():
             self.packages = d["packages"]
@@ -48,6 +50,14 @@ class Installer:
         if self.method == "source":
             return True
         return False
+    
+    def should_rename_tool(self) -> bool:
+        if self.renametool and self.renametool != self.tool:
+            return True
+        return False
+    
+    def should_skip_test(self) -> bool:
+        return not self.test_install
 
 class Unpacker:
     def __init__(self, d: dict) -> None:
@@ -59,14 +69,19 @@ class Unpacker:
 class Packer:
     def __init__(self, d: dict) -> None:
         self.type = d["type"]
-        self.exe = d["exe"]
-        self.cmdline = d["cmdline"]
+        self.blob = d["blob"] if self.type == "blob" else None
+        if self.type != "blob":
+            self.exe = d["exe"]
+            self.cmdline = d["cmdline"]
 
 class Identity:
     def __init__(self, d: dict) -> None:
         self.trid = d["trid"]
         self.file = d["file"]
         self.idarc = d["idarc"]
+    
+    def identities(self) -> list:
+        return [self.trid, self.file, self.idarc]
 
 class ArcTest:
     def __init__(self, d: dict) -> None:
@@ -74,6 +89,8 @@ class ArcTest:
         self.file = d["file"]
         self.content = d["content"]
         self.delete = d["delete"]
+        self.padbyte = None
+        self.padlen = None
 
         if "padlen" in d:
             self.padbyte = d["padbyte"]
@@ -106,8 +123,23 @@ class Definition:
         if len(self.extensions) > 0:
             return '.' + self.extensions[0]
         return None
+    
+    def get_content(self) -> str:
+        if self.test.padbyte:
+            return self.test.content + (self.test.padbyte * self.test.padlen)
+        return self.test.content
+    
+    def get_installer(self, field: str) -> Installer:      
+        if field == "packinstall":
+            return self.pack_installer
+        
+        if field == "unpackinstall":
+            return self.unpack_installer
+        
+        return self.installer
+            
 
-def load_defs(addfn=False, defpath=None):
+def load_defs(addfn:bool = False, defpath: str = None) -> list[Definition]:
     if not defpath:
         defpath = definitions_path
     defnames = glob(os.path.join(defpath, "*.json"))
@@ -119,79 +151,28 @@ def load_defs(addfn=False, defpath=None):
         except Exception as e:
             print(f'error loading archiver definition {d}: {e}, continuing...')
             continue
-        # ddd = Definition(jd)
-        # print(ddd.name, ddd.installer.is_blob())
+        do = Definition(jd)
         if addfn:
-            jd["definition_filename"] = d
-        definitions.append(jd)
+            do.addfn(d)
+        definitions.append(do)
     return definitions
 
-def get_def(defname, addfn=False, defpath=definitions_path):
+def get_def(defname: str, addfn: bool = False, defpath: str = definitions_path) -> Definition:
     defs = load_defs(addfn=addfn, defpath=defpath)
     for d in defs:
-        if "name" in d and d["name"] == defname:
+        if d.name == defname:
             return d
     
     return None
 
-def get_def_by_id(id, defpath=definitions_path):
+def get_def_by_id(id: str, defpath: str = definitions_path) -> Definition:
     id = pcntre.sub("", numre.sub("", id))
     defs = load_defs(defpath=defpath)
     for d in defs:
-        if "identification" in d and id in [d["identification"][x] for x in d["identification"].keys()]:
+        if id in d.identity.identities():
             return d
         
-        if "unpack" in d and "extension" in d["unpack"] and id.startswith('.') and id[1:] == d["unpack"]["extension"]:
+        if id.startswith('.') and id[1:] == d.unpacker.extension:
             return d
     
     return None
-
-# return the most preferred extension for archive profile.
-def get_pack_ext(d):
-    if "unpack" in d and "extension" in d["unpack"]:
-        return '.' + d["unpack"]["extension"]
-    if "install" in d and "extensions" in d["install"] and len(d["install"]["extensions"]) > 0:
-        return '.' + d["install"]["extensions"][0]
-    return None
-
-def is_apt(d, field="install"):
-    if field in d and "method" in d[field] and d[field]["method"] == "apt":
-        return True
-    return False
-
-def is_pip(d, field="install"):
-    if field in d and "method" in d[field] and d[field]["method"] == "pip":
-        return True
-    return False
-
-def is_source(d, field="install"):
-    if field in d and "method" in d[field] and d[field]["method"] == "source":
-        return True
-    return False
-
-def is_blob(d):
-    if "pack" in d and "type" in d["pack"] and d["pack"]["type"] == "blob":
-        return True
-    return False
-
-def should_skip_test(d, field="install"):
-    if field in d and "test_install" in d[field]:
-        if not d[field]["test_install"]:
-            return True
-    return False
-
-def has_unpackinstall(d):
-    if "unpackinstall" in d:
-        return True
-    return False
-
-def has_packinstall(d):
-    if "packinstall" in d:
-        return True
-    return False
-
-def should_rename_tool(d):
-    if "install" in d and "renametool" in d["install"] and "tool" in d["install"]:
-        if d["install"]["renametool"] != d["install"]["tool"]:
-            return True
-    return False

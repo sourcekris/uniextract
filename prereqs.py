@@ -8,7 +8,7 @@ import argparse
 from pyuniextract.installers.apt import install_apt_packages
 from pyuniextract.installers.pip import install_pip_packages
 from pyuniextract.installers.source import install_from_source
-from pyuniextract.installers.config import load_defs, is_apt, is_source, is_pip, has_unpackinstall, has_packinstall
+from pyuniextract.installers.config import load_defs
 
 def main(argv):
     ap = argparse.ArgumentParser(description="Install and test the archiver pre-requisites")
@@ -23,12 +23,8 @@ def main(argv):
         # Just print the list and return.
         for d in defs:
             if args.list == "archivers":
-                print(d["name"])
-            if "install" in d and "method" in d["install"]:
-                types.add(d["install"]["method"])
-            
-            if "unpack" in d and "type" in d["unpack"]:
-                types.add(d["unpack"]["type"])
+                print(d.name)
+            types.add(d.installer.method)
     
         if args.list == "types":
                 print(types)
@@ -36,18 +32,18 @@ def main(argv):
 
     if args.specific:
         for d in defs:
-            if "name" in d and d["name"] == args.specific:
-                if is_apt(d):
+            if d.name == args.specific:
+                if d.installer.is_apt():
                     install_apt_packages([d])
-                if is_pip(d):
+                if d.installer.is_pip():
                     install_pip_packages([d])
-                if is_source(d):
+                if d.installer.is_source():
                     install_from_source([d])
-                if has_packinstall(d):
-                    if is_apt(d, field="packinstall"):
+                if d.pack_installer:
+                    if d.get_installer("packinstall").is_apt():
                         install_apt_packages([d], field="packinstall")
-                if has_unpackinstall(d):
-                    if is_source(d, field="unpackinstall"):
+                if d.unpack_installer:
+                    if d.get_installer("unpackinstall").is_source():
                         install_from_source([d], field="unpackinstall")
                 
         return

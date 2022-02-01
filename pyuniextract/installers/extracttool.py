@@ -1,26 +1,24 @@
 
-from .config import toolsdist_path, tools_path, should_rename_tool
+from .config import toolsdist_path, tools_path, Definition
 import zipfile
 import tempfile
 import os.path
 import shutil
 
-def get_tool_config(d, field="install"):
-    if field not in d:
-        return
-    
+def get_tool_config(d: Definition, field: str = "install") -> dict:
+    i = d.get_installer(field)
     toolcfg = {"container":"", "tool":"", "dependencies":[], "renametool":""}
-    if "container" in d[field] and "tool" in d[field]:
-        toolcfg["container"] = d[field]["container"]
-        toolcfg["tool"] = d[field]["tool"]
-        if "dependencies" in d[field]:
-            toolcfg["dependencies"] += d[field]["dependencies"]
-        if should_rename_tool(d):
-            toolcfg["renametool"] = d[field]["renametool"]
+    if i.container and i.tool:
+        toolcfg["container"] = i.container
+        toolcfg["tool"] = i.tool
+        if i.dependencies:
+            toolcfg["dependencies"] += i.dependencies
+        if i.should_rename_tool():
+            toolcfg["renametool"] = i.renametool
 
         return toolcfg
 
-def get_tool_from_container(toolcfg):
+def get_tool_from_container(toolcfg: dict) -> bool:
     flist = [toolcfg["tool"]]
     flist += toolcfg["dependencies"]
 
@@ -60,7 +58,7 @@ def get_tool_from_container(toolcfg):
     
     return False
     
-def extracttool(d, field="install"):
+def extracttool(d: Definition, field: str = "install"):
     tc = get_tool_config(d, field=field)
     if tc:
         return get_tool_from_container(tc)

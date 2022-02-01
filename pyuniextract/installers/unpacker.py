@@ -6,16 +6,16 @@ import subprocess
 import tempfile
 import os, os.path
 import shutil
-from .config import get_pack_ext, tools_path
+from .config import tools_path, Definition
 from .template import prepare_cmdline, prepare_exe
 
-def unpack_archive(archive, d, destdir=None, toolspath=tools_path):
-    extension = get_pack_ext(d)
+def unpack_archive(archive: str, d: Definition, destdir: str = None, toolspath: str = tools_path) -> None:
+    extension = d.get_pack_ext()
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tools = os.path.join(os.getcwd(), toolspath)
-        exe = prepare_exe(d["unpack"]["exe"], tools)
-        cmdline = prepare_cmdline(exe, d["unpack"]["cmdline"], tools, destdir=tmpdir, archive=archive, ext=extension)
+        exe = prepare_exe(d.unpacker.exe, tools)
+        cmdline = prepare_cmdline(exe, d.unpacker.cmdline, tools, destdir=tmpdir, archive=archive, ext=extension)
 
         try:
             extractres = subprocess.check_output(cmdline, shell=True, stderr=subprocess.PIPE)

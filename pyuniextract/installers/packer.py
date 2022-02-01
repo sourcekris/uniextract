@@ -6,28 +6,11 @@ import os, os.path
 import tempfile
 from base64 import b64decode
 from subprocess import Popen, PIPE
-from .config import get_def, tools_path, default_fn, is_blob, get_pack_ext
+from .config import get_def, tools_path, default_fn, Definition
 from .template import prepare_cmdline, prepare_exe
 
-def get_packer_cmd(d):
-    exe = cmdline = ""
-    if "pack" in d:
-        if "exe" in d["pack"]:
-            exe = d["pack"]["exe"]
-        if "cmdline" in d["pack"]:
-            cmdline = d["pack"]["cmdline"]
-    return exe, cmdline
-
-def get_content(d):
-    if "test" in d and "content" in d["test"] and "padbyte" not in d["test"]:
-        return d["test"]["content"]
-    
-    if "test" in d and "padbyte" in d["test"] and "content" in d["test"] and "padlen" in d["test"]:
-        return d["test"]["content"] + (d["test"]["padbyte"] * d["test"]["padlen"])    
-
-def pack_blob(d, filename):
-    if "pack" in d and "blob" in d["pack"]:
-        open(filename,'wb').write(b64decode(d["pack"]["blob"]))
+def pack_blob(d: Definition, filename: str)-> None:
+    open(filename,'wb').write(b64decode(d.packer.blob))
 
 # Creates an archive given an arbitrary archiver.
 def pack_file(archiver, filename=default_fn):
@@ -35,11 +18,11 @@ def pack_file(archiver, filename=default_fn):
 
     cwd = os.getcwd()
     tools = os.path.join(cwd, tools_path)
-    exe, cmdline = get_packer_cmd(d)
-    ext = get_pack_ext(d)
+    exe, cmdline = d.packer.exe, d.packer.cmdline
+    ext = d.get_pack_ext()
     arcname = filename+ext
 
-    content = get_content(d)
+    content = d.get_content()
     if not content:
         content = archiver.upper()
 
@@ -47,7 +30,7 @@ def pack_file(archiver, filename=default_fn):
     fullarc = os.path.join(tmpdir, arcname)
     os.chdir(tmpdir)
 
-    if is_blob(d):
+    if d.is_blob():
         pack_blob(d, arcname)
         os.chdir(cwd)
         return fullarc
