@@ -13,7 +13,7 @@ def pack_blob(d: Definition, filename: str)-> None:
     open(filename,'wb').write(b64decode(d.packer.blob))
 
 # Creates an archive given an arbitrary archiver.
-def pack_file(archiver, filename=default_fn):
+def pack_file(archiver: str, filename:str = default_fn) -> str:
     d = get_def(archiver)
 
     cwd = os.getcwd()

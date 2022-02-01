@@ -10,10 +10,9 @@ import os, os.path, shutil
 from gzip import compress
 from base64 import b64encode, b64decode
 from pyuniextract.installers.config import load_defs
-from pyuniextract.installers.testarchiver import pad
 from pyuniextract.installers.packer import pack_file
 
-def do_blob_test(name, blob):
+def do_blob_test(name: str, blob: str) -> bool:
     print(f"{name} test: ", flush=True, end="")
     d = b''
     try:
@@ -25,7 +24,7 @@ def do_blob_test(name, blob):
     print(b64encode(compress(d)).decode(), flush=True)
     return True
 
-def do_archiver_test(name):
+def do_archiver_test(name: str) -> bool:
     print(f"{name} test: ", flush=True, end="")
     arcname = pack_file(name)
     if not arcname:
@@ -39,40 +38,6 @@ def do_archiver_test(name):
         shutil.rmtree(td)
 
     print(d, flush=True)
-    return True
-
-# valid_def checks that a definition has the required components to make a test blob.
-def valid_def(d):
-    if "name" not in d:
-        print(f"test is missing a name: {d}")
-        return False
-    name = d["name"]
-
-    if "pack" not in d:
-        print(f"test {name} is missing its packer configuration")
-        return False
-
-    if "type" not in d["pack"]:
-        print(f"test {name} is missing its pack type")
-        return False
-    test_type = d["pack"]["type"]
-    
-    if test_type == "blob" and ("blob" not in d["pack"] or not d["pack"]["blob"]):
-        print(f"blob test {name} is missing its blob or the blob is empty")
-        return False
-
-    if "extensions" not in d or len(d["extensions"]) == 0:
-        print(f"test {name} is missing extensions")
-        return False
-
-    if "test" not in d or "content" not in d["test"]:
-        print(f"test configuration missing for {name} or no content is specified in test")
-        return False
-    
-    if not d["test"]["content"]:
-        print(f"content is empty in test {name}")
-        return False
-
     return True
 
 def main(argv):
@@ -89,21 +54,17 @@ def main(argv):
     defs = load_defs(addfn=True)
     found_types = []
     for d in defs:
-        name = d["name"]
-        fn = os.path.basename(d["definition_filename"])
-        del d["definition_filename"]
+        name = d.name
+        fn = os.path.basename(d.definition_filename)
 
-        if not valid_def(d):
-            continue
-        test_type = d["pack"]["type"]
-        def_extension = d["extensions"][0]
+        test_type = d.packer.type
 
         if args.test and args.test != name:
             continue
 
         if args.test:
             if test_type == "blob":
-                do_blob_test(name, d["pack"]["blob"])
+                do_blob_test(name, d.packer.blob)
             elif test_type in ["archiver", "wine", "dosbox"]:
                 do_archiver_test(name)
             else:
@@ -113,7 +74,7 @@ def main(argv):
     
         if args.list == "types":
             if d["pack"]["type"] not in found_types:
-                found_types.append(d["pack"]["type"])
+                found_types.append(d.packer.type)
                 continue
 
         if args.list == "tests":
@@ -121,7 +82,7 @@ def main(argv):
             continue
 
         if test_type == "blob" and "blob" in do_types:
-            do_blob_test(name, d["pack"]["blob"])
+            do_blob_test(name, d.packer.blob)
         
         if test_type == "archiver" and "archiver" in do_types:
             do_archiver_test(name)
