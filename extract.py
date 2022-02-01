@@ -20,7 +20,7 @@ def extract(fname, dstpath):
         print(f"Unrecognized archive type: \"{id}\"")
         return
     
-    print(f"Archive type: {d['name']}")
+    print(f"Archive type: {d.name}")
 
     destination = "."
     if dstpath:
