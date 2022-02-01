@@ -8,7 +8,7 @@ import argparse
 from pyuniextract.installers.apt import install_apt_packages
 from pyuniextract.installers.pip import install_pip_packages
 from pyuniextract.installers.source import install_from_source
-from pyuniextract.installers.config import load_defs, is_apt, is_builtin, is_source, is_pip, has_unpackinstall, has_packinstall
+from pyuniextract.installers.config import load_defs, is_apt, is_source, is_pip, has_unpackinstall, has_packinstall
 
 def main(argv):
     ap = argparse.ArgumentParser(description="Install and test the archiver pre-requisites")
@@ -37,8 +37,6 @@ def main(argv):
     if args.specific:
         for d in defs:
             if "name" in d and d["name"] == args.specific:
-                if is_builtin(d):
-                    print(f"pack install and test for {args.specific} is not yet implemented.")
                 if is_apt(d):
                     install_apt_packages([d])
                 if is_pip(d):

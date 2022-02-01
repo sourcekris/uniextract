@@ -51,7 +51,10 @@ class Installer:
 
 class Unpacker:
     def __init__(self, d: dict) -> None:
-        return
+        self.exe = d["exe"]
+        self.cmdline = d["cmdline"]
+        self.extension = d["extension"]
+        self.force_extension = d["force_extension"]
 
 class Packer:
     def __init__(self, d: dict) -> None:
@@ -67,12 +70,20 @@ class Identity:
 
 class ArcTest:
     def __init__(self, d: dict) -> None:
-        return
+        self.blob = d["blob"]
+        self.file = d["file"]
+        self.content = d["content"]
+        self.delete = d["delete"]
+
+        if "padlen" in d:
+            self.padbyte = d["padbyte"]
+            self.padlen = d["padlen"]
 
 class Definition:
     def __init__(self, d: dict) -> None:
         validate(schema=schema, instance=d)
         self.name = d["name"]
+        self.extensions = d["extensions"]
         self.installer = Installer(d["install"])
         self.unpack_installer = Installer(d["unpackinstall"]) if "unpackinstall" in d else None
         self.pack_installer = Installer(d["packinstall"]) if "packinstall" in d else None
@@ -88,6 +99,13 @@ class Definition:
         if self.packer.type == "blob":
             return True
         return False
+    
+    def get_pack_ext(self) -> str:
+        if self.unpacker.extension:
+            return '.' + self.unpacker.extension
+        if len(self.extensions) > 0:
+            return '.' + self.extensions[0]
+        return None
 
 def load_defs(addfn=False, defpath=None):
     if not defpath:
@@ -128,7 +146,6 @@ def get_def_by_id(id, defpath=definitions_path):
     
     return None
 
-
 # return the most preferred extension for archive profile.
 def get_pack_ext(d):
     if "unpack" in d and "extension" in d["unpack"]:
@@ -137,28 +154,17 @@ def get_pack_ext(d):
         return '.' + d["install"]["extensions"][0]
     return None
 
-def is_builtin(d):
-    if "unpack" in d and "type" in d["unpack"] and d["unpack"]["type"] == "builtin":
-        return True
-    return False
-
 def is_apt(d, field="install"):
-    if is_builtin(d):
-        return False
     if field in d and "method" in d[field] and d[field]["method"] == "apt":
         return True
     return False
 
 def is_pip(d, field="install"):
-    if is_builtin(d):
-        return False
     if field in d and "method" in d[field] and d[field]["method"] == "pip":
         return True
     return False
 
 def is_source(d, field="install"):
-    if is_builtin(d):
-        return False
     if field in d and "method" in d[field] and d[field]["method"] == "source":
         return True
     return False
