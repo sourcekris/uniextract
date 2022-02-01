@@ -126,7 +126,9 @@ class Definition:
     
     def get_content(self) -> str:
         if self.test.padbyte:
-            return self.test.content + (self.test.padbyte * self.test.padlen)
+            pb = chr(int(self.test.padbyte, 16))
+            pbl = self.test.padlen - divmod(len(self.test.content), self.test.padlen)[1]
+            return self.test.content + (pb * pbl)
         return self.test.content
     
     def get_installer(self, field: str) -> Installer:      

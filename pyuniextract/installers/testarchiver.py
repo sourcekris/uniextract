@@ -6,14 +6,6 @@ import subprocess
 from .config import Definition, tools_path
 from .template import prepare_cmdline, prepare_exe
 
-# used for:
-#  - archivers that extract entire blocks to disk e.g. CPM archivers.
-#  - archivers that refuse to compress small files
-def pad(data, padbyte, padlen):
-    pb = chr(int(padbyte, 16))
-    pbl = padlen - divmod(len(data), padlen)[1]
-    return data + (pb * pbl)
-
 # test the archiver give the test parameters in the definition for that archiver
 def test_archiver(d: Definition, field: str = "install") -> int:
     i = d.get_installer(field)
