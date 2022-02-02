@@ -6,18 +6,18 @@ import os, os.path
 import tempfile
 from base64 import b64decode
 from subprocess import Popen, PIPE
-from .config import get_def, tools_path, default_fn, Definition
+from .config import get_def, definitions_path, tools_path, default_fn, Definition
 from .template import prepare_cmdline, prepare_exe
 
 def pack_blob(d: Definition, filename: str)-> None:
     open(filename,'wb').write(b64decode(d.packer.blob))
 
 # Creates an archive given an arbitrary archiver.
-def pack_file(archiver: str, filename:str = default_fn) -> str:
-    d = get_def(archiver)
+def pack_file(archiver: str, filename:str = default_fn, defpath: str = definitions_path, toolpath:str = tools_path) -> str:
+    d = get_def(archiver, defpath=defpath)
 
     cwd = os.getcwd()
-    tools = os.path.join(cwd, tools_path)
+    tools = os.path.join(cwd, toolpath)
     exe, cmdline = d.packer.exe, d.packer.cmdline
     ext = d.get_pack_ext()
     arcname = filename+ext
@@ -37,7 +37,6 @@ def pack_file(archiver: str, filename:str = default_fn) -> str:
 
     open(filename, "w").write(content) # write the file to archive to disk
     cmdline = prepare_cmdline(prepare_exe(exe, tools), cmdline, tools, file=filename, ext=ext)
-    # print(f"cmdline: {cmdline}")
     try:
         p = Popen(cmdline, shell=True, stderr=PIPE, stdout=PIPE) # run the archiver
         outs, errs = p.communicate()

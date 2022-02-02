@@ -5,7 +5,7 @@
 
 import argparse
 import sys
-import os.path
+import os, os.path
 import inspect
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -22,20 +22,19 @@ def main(argv):
     ap.add_argument('-t',"--type", choices=["file","trid", "idarc"],help="Use file, trid or idarc only.")
     args = ap.parse_args(argv[1:])
 
-    defs = load_defs(addfn=True)
+    dp = os.path.join(os.getcwd(), "..", "defs")
+    defs = load_defs(addfn=True, defpath=dp)
     for d in defs:
         name = d.name
-        fn = os.path.basename(d.definition_filename)
-
         if args.specific:
             if name == args.specific:
-                af = pack_file(name)
+                af = pack_file(name, defpath=dp, toolpath="../tools")
                 id = identify_archive(af, idtype=args.type)
                 print(f'archiver {name} identified as: {id}')
 
             continue
 
-        af = pack_file(name)
+        af = pack_file(name, defpath=dp, toolpath="../tools")
         id = identify_archive(af, idtype=args.type)
         print(f'archiver {name} identified as: {id}')
         
