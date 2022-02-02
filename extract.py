@@ -6,14 +6,14 @@ import argparse
 import sys
 import os, os.path
 from glob import glob
-from pyuniextract.identify.identify import identify_archive
+from pyuniextract.installers.identify import identify_archive
 from pyuniextract.installers.unpacker import unpack_archive
 from pyuniextract.installers.config import get_def_by_id
 
 defpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'defs')
 toolspath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tools')
 
-def extract(fname, dstpath):
+def extract(fname:str, dstpath:str) -> None:
     id = identify_archive(fname)
     d = get_def_by_id(id, defpath=defpath)
     if not d:

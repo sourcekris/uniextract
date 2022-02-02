@@ -12,7 +12,7 @@ current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfra
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 
-from pyuniextract.identify.identify import identify_archive
+from pyuniextract.installers.identify import identify_archive
 from pyuniextract.installers.config import load_defs
 from pyuniextract.installers.packer import pack_file
 

@@ -2,7 +2,7 @@ import subprocess
 import os.path
 from .config import trid_args, trid_env, idarcbin, packerNames
 
-def id_via_file(arcfile):
+def id_via_file(arcfile:str) -> str:
     id = b""
     try:
         id = subprocess.check_output(['file', arcfile])
@@ -15,7 +15,7 @@ def id_via_file(arcfile):
         return None
     return id.split(": ")[1]
 
-def id_via_trid(arcfile):
+def id_via_trid(arcfile:str) -> str:
     id = b""
     try:
         id = subprocess.check_output(trid_args + [os.path.abspath(arcfile)], env=trid_env)
@@ -39,11 +39,11 @@ def id_via_trid(arcfile):
     if len(id) >= i:
         return id[i+1]
 
-def id_via_extension(arcfile):
+def id_via_extension(arcfile:str) -> str:
     if '.' in arcfile:
         return os.path.splitext(os.path.basename(arcfile))[1]
 
-def id_via_arcid(arcfile):
+def id_via_arcid(arcfile:str) -> str:
     p = subprocess.Popen([idarcbin, arcfile], stdout=subprocess.PIPE)
     p.communicate()
 
@@ -53,7 +53,7 @@ def id_via_arcid(arcfile):
     return None
       
 # given some file arcfile, return an identification string.
-def identify_archive(arcfile, idtype=""):
+def identify_archive(arcfile:str, idtype: str = "") -> str:
     id = id_via_file(arcfile)
     if idtype == "file":
         return id
