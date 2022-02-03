@@ -13,7 +13,7 @@ current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfra
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 
-from pyuniextract.installers.config import load_defs
+from pyuniextract.config import load_defs
 
 
 pcntre = re.compile("\d+\.\d\%\s")
