@@ -6,9 +6,9 @@ import argparse
 import sys
 import os, os.path
 from glob import glob
-from pyuniextract.installers.identify import identify_archive
-from pyuniextract.installers.unpacker import unpack_archive
-from pyuniextract.installers.config import get_def_by_id
+from pyuniextract.identify import identify_archive
+from pyuniextract.unpacker import unpack_archive
+from pyuniextract.config import get_def_by_id
 
 defpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'defs')
 toolspath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tools')
