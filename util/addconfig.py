@@ -7,13 +7,14 @@ import re
 import sys
 import subprocess
 import os, os.path
+from prettyjson import dumppretty
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 
 from pyuniextract.installers.config import load_defs
-from pyuniextract.common.prettyjson import dumppretty
+
 
 pcntre = re.compile("\d+\.\d\%\s")
 numre = re.compile("\s\(\d+\/\d+\)")
