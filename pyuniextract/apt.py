@@ -1,6 +1,6 @@
 import subprocess
 
-from pyuniextract.installers.config import Definition
+from pyuniextract.config import Definition
 from .testarchiver import test_archiver
 from .extracttool import extracttool
 

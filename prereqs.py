@@ -5,10 +5,10 @@
 
 import sys
 import argparse
-from pyuniextract.installers.apt import install_apt_packages
-from pyuniextract.installers.pip import install_pip_packages
-from pyuniextract.installers.source import install_from_source
-from pyuniextract.installers.config import load_defs
+from pyuniextract.apt import install_apt_packages
+from pyuniextract.pip import install_pip_packages
+from pyuniextract.source import install_from_source
+from pyuniextract.config import load_defs
 
 def main(argv):
     ap = argparse.ArgumentParser(description="Install and test the archiver pre-requisites")

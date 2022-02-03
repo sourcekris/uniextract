@@ -3,7 +3,7 @@ from gzip import decompress
 from base64 import b64decode
 import os, os.path
 import subprocess
-from .config import Definition, tools_path
+from .config import Definition, tools_path 
 from .template import prepare_cmdline, prepare_exe
 
 # test the archiver give the test parameters in the definition for that archiver

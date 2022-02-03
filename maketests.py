@@ -9,8 +9,8 @@ import sys
 import os, os.path, shutil
 from gzip import compress
 from base64 import b64encode, b64decode
-from pyuniextract.installers.config import load_defs
-from pyuniextract.installers.packer import pack_file
+from pyuniextract.config import load_defs
+from pyuniextract.packer import pack_file
 
 def do_blob_test(name: str, blob: str) -> bool:
     print(f"{name} test: ", flush=True, end="")

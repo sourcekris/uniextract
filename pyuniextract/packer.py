@@ -7,7 +7,7 @@ import tempfile
 from base64 import b64decode
 from subprocess import Popen, PIPE
 from .config import get_def, definitions_path, tools_path, default_fn, Definition
-from .template import prepare_cmdline, prepare_exe
+from .template import prepare_cmdline, prepare_exe 
 
 def pack_blob(d: Definition, filename: str)-> None:
     open(filename,'wb').write(b64decode(d.packer.blob))
