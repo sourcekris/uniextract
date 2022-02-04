@@ -44,7 +44,7 @@ def archiver_in_path(i: Installer) -> bool:
 
     return False
 
-def install_from_source(definitions: list[Definition], field: str = "install"):
+def install_from_source(definitions: list, field: str = "install"):
     for d in definitions:
         i = d.get_installer(field)
         in_path = False

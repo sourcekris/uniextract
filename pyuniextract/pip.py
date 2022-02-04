@@ -4,7 +4,7 @@ from .config import Definition
 from .testarchiver import test_archiver
 from .extracttool import extracttool
 
-def install_pip_packages(definitions: list[Definition]):
+def install_pip_packages(definitions: list):
     for d in definitions:
         if "pip" in d.installer.method and len(d.installer.packages) > 0:
             print(f"trying to install archiver: {d.name}: ", flush=True, end="")

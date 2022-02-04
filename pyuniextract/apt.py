@@ -22,7 +22,7 @@ def apt_already_installed(d: Definition, field:str = "install") -> bool:
     
     return False
 
-def install_apt_packages(definitions: list[Definition], field: str = "install") -> None:
+def install_apt_packages(definitions: list, field: str = "install") -> None:
     for d in definitions:
         i = d.get_installer(field)
         if i.method == "apt" and len(i.packages) > 0:
