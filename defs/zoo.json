@@ -5,7 +5,7 @@
     "install": {
         "method": "source",
         "repo": "https://github.com/troglobit/zoo",
-        "build": "./autogen.sh && ./configure --enable-ooz && make && cp src/zoo src/ooz src/unzoo $tools",
+        "build": "sudo apt install -y automake && ./autogen.sh && ./configure --enable-ooz && make && cp src/zoo src/ooz src/unzoo $tools",
         "exist_check": ["zoo -h", "zoo COMMAND"]
     },
     "pack": {

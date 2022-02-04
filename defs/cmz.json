@@ -4,7 +4,7 @@
     "install": {
         "method": "source",
         "repo": "https://github.com/sourcekris/uncmz",
-        "build": "go build && cp uncmz $tools",
+        "build": "sudo apt install -y golang && go build && cp uncmz $tools",
         "exist_check": ["uncmz -h", "The CMZ file"]
     },
     "pack": { "type": "blob", "blob": "Q2xheQgAAAADAAAAnhgAdAEAAgAwAAaGNNEK+Ac=" },
