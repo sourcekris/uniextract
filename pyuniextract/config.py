@@ -164,7 +164,7 @@ class Definition:
         return self.installer
             
 
-def load_defs(addfn:bool = False, defpath: str = None) -> list[Definition]:
+def load_defs(addfn:bool = False, defpath: str = None) -> list:
     if not defpath:
         defpath = definitions_path
     defnames = glob(os.path.join(defpath, "*.json"))
