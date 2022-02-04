@@ -194,7 +194,7 @@ def get_def_by_id(id: str, defpath: str = definitions_path) -> Definition:
     id = pcntre.sub("", numre.sub("", id))
     defs = load_defs(defpath=defpath)
     for d in defs:
-        if len([True for x in d.identity.identities() if id in x]) > 0:
+        if len([True for x in d.identity.identities() if x in id]) > 0:
             return d
         
         if id.startswith('.') and id[1:] == d.unpacker.extension:
