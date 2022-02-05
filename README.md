@@ -110,16 +110,22 @@ See the [schema.py](pyuniextract/schema.py) for how we validate configurations w
 
 ### How To Use
 
-```
-git clone https://github.com/sourcekris/uniextract
-cd uniextract
+1. Clone and install python requirements.
+    ```
+    $ git clone https://github.com/sourcekris/uniextract
+    $ cd uniextract
+    $ pip install -r requirements.txt
+    ```
 
-# install pre-requisite archivers
-./prereqs.py
+2. Install and build pre-requisite archiver tools.
+    ```
+    $ ./prereqs.py
+    ```
 
-# extract whatever you want
-./extract.py -e <archive> -d <destination_folder>
-```
+3. Use to extract whatever you want.
+    ```
+    $ ./extract.py -e <archive> -d <destination_folder>
+    ```
 
 
 ### Supported Formats
