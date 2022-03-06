@@ -13,6 +13,28 @@ from pyuniextract.config import get_def_by_id
 defpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'defs')
 toolspath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tools')
 
+# extract all from path.
+def extractpath(path:str, dstpath:str, createsub:bool) -> None:
+    files = glob(os.path.join(path, "*"))
+
+    for file in files:
+        # Skip non files.
+        if not os.path.isfile(file):
+            continue
+        # Decide where to put the output per file.
+        dst = dstpath
+        if not dstpath:
+            dst = "."
+        if createsub:
+            dst = os.path.join(dst, os.path.splitext(os.path.basename(file))[0])
+            if os.path.exists(dst):
+                print(f'subfolder {dst} already exists, skipping file {file}')
+                continue
+            os.mkdir(dst)
+        
+        # Extract this file.
+        extract(file, dst)
+
 def extract(fname:str, dstpath:str) -> None:
     id = identify_archive(fname)
     d = get_def_by_id(id, defpath=defpath)
@@ -44,29 +66,16 @@ def main(argv):
     
     args = ap.parse_args(argv)
 
+    if args.destination:
+        if not os.path.isdir(args.destination):
+            print(f"{args.destination} folder does not exist")
+            return
+
     if args.extract:
         extract(args.extract, args.destination)
     
     if args.all:
-        files = glob(os.path.join(args.all, "*"))
-
-        for file in files:
-            # Skip non files.
-            if not os.path.isfile(file):
-                continue
-            # Decide where to put the output per file.
-            dst = args.destination
-            if not args.destination:
-                dst = "."
-            if args.createsubfolders:
-                dst = os.path.join(dst, os.path.splitext(os.path.basename(file))[0])
-                if os.path.exists(dst):
-                    print(f'subfolder {dst} already exists, skipping file {file}')
-                    continue
-                os.mkdir(dst)
-            
-            # Extract this file.
-            extract(file, dst)
+        extractpath(args.all, args.destination, args.createsubfolders)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
