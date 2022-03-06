@@ -23,7 +23,7 @@
         "delete": false
     },
     "identification": {
-        "file": "gzip compressed data, was ",
+        "file": "gzip compressed data, ",
         "trid": "(.GZ/GZIP) GZipped data",
         "idarc": "GZIP/Comp4.3"
     }

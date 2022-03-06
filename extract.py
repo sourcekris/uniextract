@@ -14,13 +14,23 @@ defpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'defs')
 toolspath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tools')
 
 # extract all from path.
-def extractpath(path:str, dstpath:str, createsub:bool) -> None:
+def extractpath(path:str, dstpath:str, createsub:bool, recurse:bool) -> None:
     files = glob(os.path.join(path, "*"))
 
     for file in files:
-        # Skip non files.
-        if not os.path.isfile(file):
+        # Skip non files in normal mode.
+        if not os.path.isfile(file) and not recurse:
             continue
+        
+        # Skip recursing into the dstpath.
+        if os.path.isdir(file) and file.endswith("/" + dstpath):
+            continue
+
+        # Recurse into subfolder if necessary.
+        if os.path.isdir(file):
+            extractpath(os.path.join(path, file), dstpath, createsub, recurse)
+            continue
+
         # Decide where to put the output per file.
         dst = dstpath
         if not dstpath:
@@ -63,6 +73,7 @@ def main(argv):
     mode.add_argument("-a", "--all", help=f"Extract all archives in a folder.", metavar="PATH")
     ap.add_argument("-c", "--createsubfolders", help=f"Create subfolders named for the archive when extracting using the --all mode.", action="store_true")
     ap.add_argument("-d", "--destination", help="An optional output folder.", metavar="PATH")
+    ap.add_argument("-r", "--recurse", help=f"Recurse subdirectories when extracting using the --all mode.", action="store_true")
     
     args = ap.parse_args(argv)
 
@@ -75,7 +86,7 @@ def main(argv):
         extract(args.extract, args.destination)
     
     if args.all:
-        extractpath(args.all, args.destination, args.createsubfolders)
+        extractpath(args.all, args.destination, args.createsubfolders, args.recurse)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
