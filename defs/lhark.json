@@ -4,7 +4,7 @@
     "extensions": ["lzh"],
     "install": {
         "method": "apt",
-        "packages": ["dosbox"],
+        "packages": ["dosbox", "p7zip-full"],
         "tool": "LHARK.EXE",
         "container": "dos/lhark/lhark04d.zip"
     },
@@ -14,8 +14,8 @@
         "type": "dosbox"
     },
     "unpack": {
-        "exe": "dosbox",
-        "cmdline": "$tool -noconsole -c \"mount d $tools\" -c \"mount e $destdir\" -c \"mount f $arcloc\" -c \"e:\" -c \"d:LHARK.EXE e F:$shortname \" -c \"exit\"",
+        "exe": "7z",
+        "cmdline": "$tool x $archive -o$destdir",
         "extension": "lzh",
         "force_extension": true
     },
