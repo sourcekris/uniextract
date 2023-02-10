@@ -10,12 +10,12 @@
     },
     "pack": {
         "exe": "wine",
-        "cmdline": "$tool $tools/ufa a $file.ufa $file",
+        "cmdline": "$tool $tools/ufa.exe a $file.ufa $file",
         "type": "wine"
     },
     "unpack": {
         "exe": "wine",
-        "cmdline": "cd $destdir && $tool $tools/ufa e -o. z:$archive",
+        "cmdline": "cd $destdir && $tool $tools/ufa.exe e -o. z:$archive",
         "extension": "ufa",
         "force_extension": true
     },

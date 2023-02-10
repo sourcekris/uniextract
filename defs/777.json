@@ -10,12 +10,12 @@
     },
     "pack": {
         "exe": "wine",
-        "cmdline": "$tool $tools/777 a $file.777 $file",
+        "cmdline": "$tool $tools/777.exe a $file.777 $file",
         "type": "wine"
     },
     "unpack": {
         "exe": "wine",
-        "cmdline": "cd $destdir && $tool $tools/777 e -o. z:$archive",
+        "cmdline": "cd $destdir && $tool $tools/777.exe e -o. z:$archive",
         "extension": "777",
         "force_extension": true
     },
