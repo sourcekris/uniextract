@@ -14,8 +14,8 @@
         "type": "wine"
     },
     "unpack": {
-        "exe": "wine $tools/dgcac.exe",
-        "cmdline": "cd $destdir && $tool e z:$archive",
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/dgcac.exe e $winarchive",
         "extension": "dgc",
         "force_extension": true
     },
