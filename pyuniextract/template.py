@@ -14,10 +14,10 @@ def prepare_exe(exe, tool_path, file=None, ext=None):
 
 def prepare_cmdline(exe, cmdline, tool_path, destdir=None, archive=None, file=None, ext=None):
     cmdline = cmdline.replace("$tools", tool_path)
-    cmdline = cmdline.replace("$tool", exe)
-    winarc = "z:" + archive.replace("/","\\\\")
+    cmdline = cmdline.replace("$tool", exe) 
 
     if archive:
+        winarc = "z:" + archive.replace("/","\\\\")
         basename = os.path.splitext(os.path.basename(archive))[0]
         cmdline = cmdline.replace("$basename", basename)
         cmdline = cmdline.replace("$archive", archive)
