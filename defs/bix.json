@@ -10,12 +10,12 @@
     },
     "pack": {
         "exe": "wine",
-        "cmdline": "$tool $tools/bix a $file.bix $file",
+        "cmdline": "$tool $tools/bix.exe a $file.bix $file",
         "type": "wine"
     },
     "unpack": {
         "exe": "wine",
-        "cmdline": "cd $destdir && $tool $tools/bix e -o. z:$archive",
+        "cmdline": "cd $destdir && $tool $tools/bix.exe e -o. z:$archive",
         "extension": "bix",
         "force_extension": true
     },
