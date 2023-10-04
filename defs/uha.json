@@ -1,0 +1,33 @@
+{
+    "name": "UHA",
+    "comment": "Multimedia archiver from 2005 developed by Uwe Herklotz - http://fileformats.archiveteam.org/wiki/UHARC",
+    "extensions": ["uha"],
+    "install": {
+        "method": "apt",
+        "packages": ["wine"],
+        "tool": "UHARC.EXE",
+        "container": "win32/uha/uharc06b.zip"
+    },
+    "pack": {
+        "exe": "wine",
+        "cmdline": "$tool $tools/UHARC.EXE a $file.uha $file",
+        "type": "wine"
+    },
+    "unpack": {
+        "exe": "wine",
+        "cmdline": "cd $destdir && $tool $tools/UHARC.EXE e -t. z:$archive",
+        "extension": "uha",
+        "force_extension": true
+    },
+    "test": {
+        "blob": "H4sIAHv/HGUC/wFKALX/VUhBBuJIsK//CSshL0NTaH+Qs9DvETNYfKjTCC9gnMj/wzQ8Au/6ABPmCcoUWQAzVwwVcdZCldmUg1lxlRnjr8cpbqY8CUYVA+oqivCVSgAAAA==",
+        "file": "0",
+        "content": "UHA",
+        "delete": true
+    },
+    "identification": {
+        "file": "UHarc archive data",
+        "trid": "(.UHA) UHARC compressed archive",
+        "idarc": "UHarc"
+    }
+}

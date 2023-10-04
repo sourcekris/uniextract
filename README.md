@@ -116,13 +116,19 @@ See the [schema.py](pyuniextract/schema.py) for how we validate configurations w
     $ cd uniextract
     $ pip install -r requirements.txt
     ```
+2. If you wish for any of the Wine based archivers to work, ensure you have a functional Wine installation. 
+   On my machine I needed to run:
 
-2. Install and build pre-requisite archiver tools.
+    ```
+    dpkg --add-architecture i386 && apt-get update && apt-get install wine32:i386
+    ```
+
+3. Install and build pre-requisite archiver tools.
     ```
     $ ./prereqs.py
     ```
 
-3. Use to extract whatever you want.
+4. Use to extract whatever you want.
     ```
     $ ./extract.py -e <archive> -d <destination_folder>
     ```
@@ -255,6 +261,44 @@ See the [schema.py](pyuniextract/schema.py) for how we validate configurations w
 | xxencode                       | xxe, xxenc, xx                                     |
 | xz                             | xz                                                 |
 | yEnc                           | yenc                                               |
+
+### FAQ
+
+- **Q**: Pre-reqs (`prereqs.py`) fails to install tools, for example:
+    ```
+    $ ./prereqs.py -s 777 
+    trying to install archiver: 777: error opening unarchived test data: [Errno 2] No such file or directory: '/tmp/tmpw71rxjc8/0'
+    archiver test file content mismatch:
+    got: b''
+    want: b'777'
+    Failed
+    ```
+- **A**: Ensure Wine works.
+    ```
+    $ wine
+    it looks like wine32 is missing, you should install it.
+    multiarch needs to be enabled first.  as root, please
+    execute "dpkg --add-architecture i386 && apt-get update && apt-get install wine32:i386"
+    $ dpkg --add-architecture i386 && apt-get update && apt-get install wine32:i386
+    ...
+    $ wine
+    Usage: wine PROGRAM [ARGUMENTS...]   Run the specified program
+       wine --help                   Display this help and exit
+       wine --version                Output version information and exit
+    ```
+- **Q**: Wine is installed but I get an error 53:
+    ```
+    $ ./prereqs.py -s 777
+    trying to install archiver: 777: error running unarchive of test data: Command 'cd /tmp/tmp2fr_bm3b && wine /root/uniextract/tools//777.exe e -o. z:/tmp/tmpcfq8vzqe.777' returned non-zero exit status 53.
+    cmdline: cd /tmp/tmp2fr_bm3b && wine /root/uniextract/tools//777.exe e -o. z:/tmp/tmpcfq8vzqe.777
+    Failed
+    ```
+- **A**: Rebuild your ~/.wine profile.
+    ```
+    $ mv ~/.wine ~/.wineold
+    $ ./prereqs.py -s 777
+    trying to install archiver: 777: OK
+    ```
 
 ### Author
 
